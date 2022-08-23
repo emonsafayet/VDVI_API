@@ -127,6 +127,82 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj",
+        "projectName": "VDVI.Services",
+        "projectPath": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj",
+        "packagesPath": "C:\\Users\\BS523\\.nuget\\packages\\",
+        "outputPath": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\BS523\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj": {
+                "projectPath": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -179,6 +255,9 @@
               },
               "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj": {
                 "projectPath": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj"
+              },
+              "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj": {
+                "projectPath": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj"
               }
             }
           }
@@ -224,6 +303,10 @@
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "NetTopologySuite": {
+              "target": "Package",
+              "version": "[2.5.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

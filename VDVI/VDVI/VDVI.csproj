@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+    <PackageReference Include="NetTopologySuite" Version="2.5.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="SoapHttpClient" Version="3.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.4.0" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ConsoleAppCore\SOAPAppCore.csproj" />
     <ProjectReference Include="..\VDVI.DB\VDVI.DB.csproj" />
+    <ProjectReference Include="..\VDVI.Services\VDVI.Services.csproj" />
   </ItemGroup>
 
 

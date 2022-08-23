@@ -11,6 +11,11 @@ using SOAPAppCore.Interfaces.Apma;
 using SOAPAppCore.Services;
 using SOAPAppCore.Services.Apma;
 using System;
+using VDVI.Common;
+using VDVI.DB.IServices;
+using VDVI.DB.Services;
+using VDVI.DB.Repository;
+using VDVI.DB.IRepository;
 
 namespace VDVI
 {
@@ -27,6 +32,9 @@ namespace VDVI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IRoomManagementSummariesService,RoomManagementSummariesService>();
+            services.AddScoped<IManagementRoomSummaryRepository, ManagementRoomSummaryRepository>();
+
             services.AddSwaggerGen();
             services.AddSwaggerGen(c =>
             {

@@ -42,8 +42,7 @@ namespace VDVI.Controllers
             {
 
                 return BadRequest();
-            }
-            //return Ok();
+            } 
         }
     }
 }
