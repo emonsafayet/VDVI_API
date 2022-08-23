@@ -7,6 +7,7 @@ using SOAPService;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Text.Json;
 using VDVI.DB.Models.ApmaModels;
 
@@ -18,31 +19,27 @@ namespace VDVI.Controllers
     {
         private readonly IReportManagementSummary _reportSummary;
 
-        public ApmaController(IReportManagementSummary reportSummary)
+        public ApmaController()
         {
-            _reportSummary = reportSummary;
+           
         }
 
         [HttpPost("GetReportManagement")]
-        public ActionResult<List<HcsReportManagementSummaryResponse>> GetReportManagement(DateTime startDate,DateTime enddate)
+        //public ActionResult<List<HcsReportManagementSummaryResponse>> GetReportManagement(DateTime startDate,DateTime enddate)
+        public IActionResult GetReportManagement(DateTime startDate, DateTime enddate)
         {
             try
-            { 
-                List<HcsReportManagementSummaryResponse> res = _reportSummary.GetReportManagementSummaryFromApma(startDate, enddate);
-               
-                //TODO: Go to service for data binding 
+            {
+                              
 
-                var jsonDatas = JsonConvert.SerializeObject(res, formatting: Newtonsoft.Json.Formatting.Indented);
- 
-               List<RerportManagementSummaryModel> reportManagementSummaries = JsonConvert.DeserializeObject<List<RerportManagementSummaryModel>>(jsonDatas);
-                
-               return Ok(reportManagementSummaries);
+                return Ok();
             }
             catch (Exception ex)
             {
 
                 return BadRequest();
-            } 
+            }
         }
-    }
+
+          }
 }

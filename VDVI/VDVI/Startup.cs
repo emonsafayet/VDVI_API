@@ -46,12 +46,12 @@ namespace VDVI
                 });
             });
             //Hangfire
-            //services.AddHangfire(config =>
-            //           config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-            //           .UseSimpleAssemblyNameTypeSerializer()
-            //           .UseDefaultTypeSerializer()
-            //           .UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddHangfireServer();
+            services.AddHangfire(config =>
+                       config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                       .UseSimpleAssemblyNameTypeSerializer()
+                       .UseDefaultTypeSerializer()
+                       .UseSqlServerStorage(Configuration.GetConnectionString("HangFireConnection")));
+            services.AddHangfireServer();
 
             //dependency resolve:
             services.AddTransient<IAuthService, AuthService>();
@@ -60,11 +60,11 @@ namespace VDVI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-                        //IConfiguration configuration,
-                        //IBackgroundJobClient backgroundJobClient,
-                        //IRecurringJobManager recurringJobManager,
-                        //IServiceProvider serviceProvider)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env
+                        ,IConfiguration configuration,
+                        IBackgroundJobClient backgroundJobClient,
+                        IRecurringJobManager recurringJobManager,
+                        IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -83,18 +83,20 @@ namespace VDVI
             {
                 endpoints.MapControllers();
             });
-            //app.UseHangfireDashboard("/hangfire", new DashboardOptions
-            //{
-            //    DashboardTitle = "Scheduled Jobs",
-            //    Authorization = new[]
-            //     {
-            //          new  HangfireAuthorizationFilter("admin")
-            //     }
-            //});
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                DashboardTitle = "Scheduled Jobs"
+                //,
+                //Authorization = new[]
+                // {
+                //      new  HangfireAuthorizationFilter("admin")
+                // }
+            });
             //recurringJobManager.AddOrUpdate(
             //      "ReadEmailJob",
-            //      () => serviceProvider.GetService<IMicrosoftGraphApiService>().GetInboxEmailAsync(),
-            //      configuration["AzureAD:ReadEmailFrequencyPattern"], TimeZoneInfo.Local
+            //      () => serviceProvider.GetService<IRoomManagementSummariesService>().InsertRoomSummary(null, null),
+            //      configuration["* * * *"], TimeZoneInfo.Local
+            //      //mm : hh:dd:yy
             //      );
 
 
@@ -102,7 +104,7 @@ namespace VDVI
             //recurringJobManager.AddOrUpdate(
             //    "NotifyIncidentOwnerJob",
             //    () => serviceProvider.GetService<ISystemNotificationBackgroundService>().NotifyOwnerEmailAcknowledgementAsync(),
-            //   configuration["AzureAD:SendEmailFrequencyPattern"], TimeZoneInfo.Local
+            //    configuration["* * * *"], TimeZoneInfo.Local
             //    );
         }
     }

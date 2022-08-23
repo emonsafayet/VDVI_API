@@ -10,5 +10,7 @@ namespace VDVI.DB.IServices
         void InsertRoomSummary(RoomSummary roomSummary);
         void InsertLedgerBalance(LedgerBalance ledgerBalance);
 
+        
+
     }
 }
