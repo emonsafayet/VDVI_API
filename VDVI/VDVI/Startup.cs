@@ -57,6 +57,8 @@ namespace VDVI
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IApmaService, ApmaService>();
             services.AddTransient<IReportManagementSummary, ReportManagementSummary>();
+            services.AddTransient<IManagementRoomSummaryRepository, ManagementRoomSummaryRepository>();
+            services.AddTransient<ITaskSchedulerRepository, TaskSchedulerRepository>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
+using VDVI.DB.IServices;
 using VDVI.DB.Models.ApmaModels;
 
 namespace VDVI.Controllers
@@ -17,21 +19,19 @@ namespace VDVI.Controllers
     [ApiController]
     public class ApmaController : ControllerBase
     {
-        private readonly IReportManagementSummary _reportSummary;
-
-        public ApmaController()
+        public IRoomManagementSummariesService _roomManagementSummariesService { get; }
+        public ApmaController(IRoomManagementSummariesService roomManagementSummariesService)
         {
-           
+            _roomManagementSummariesService = roomManagementSummariesService;
         }
 
+
         [HttpPost("GetReportManagement")]
-        //public ActionResult<List<HcsReportManagementSummaryResponse>> GetReportManagement(DateTime startDate,DateTime enddate)
-        public IActionResult GetReportManagement(DateTime startDate, DateTime enddate)
+        public  IActionResult GetReportManagement()
         {
             try
             {
-                              
-
+                _roomManagementSummariesService.GetManagementData();
                 return Ok();
             }
             catch (Exception ex)

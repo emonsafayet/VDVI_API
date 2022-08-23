@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using VDVI.DB.IRepository;
 using VDVI.DB.IServices;
-using VDVI.DB.Models.ApmaModels; 
+using VDVI.DB.Models.ApmaModels;
 
 namespace VDVI.DB.Services
 {
@@ -18,50 +18,41 @@ namespace VDVI.DB.Services
 
         public IManagementRoomSummaryRepository _managementRoomSummaryRepository;
         private readonly IReportManagementSummary _reportSummary;
+        private readonly ITaskSchedulerRepository _taskScheduler;
 
-        public RoomManagementSummariesService(IManagementRoomSummaryRepository managementRoomSummaryRepository, IReportManagementSummary reportSummary)
+        public RoomManagementSummariesService(IManagementRoomSummaryRepository managementRoomSummaryRepository,
+            IReportManagementSummary reportSummary, ITaskSchedulerRepository taskScheduler)
         {
             _managementRoomSummaryRepository = managementRoomSummaryRepository;
             _reportSummary = reportSummary;
+            _taskScheduler = taskScheduler;
         }
-       
+
         public void InsertLedgerBalance(LedgerBalance ledgerBalance)
         {
             //business logic
             _managementRoomSummaryRepository.InsertLedgerBalance(ledgerBalance);
         }
 
-        public void InsertRoomSummary(RoomSummary roomSummary)
+        public void InsertRoomSummary(Models.ApmaModels.RoomSummary roomSummary)
         {
             //business logic
             _managementRoomSummaryRepository.InsertRoomSummary(roomSummary);
         }
 
-        public void  Calling() 
-        
+        public void GetManagementData()
         {
+            //hangfire; Algorithm
+            string startDate = "2022/08/15";
+            string enddate = "2022/08/17";
+            DateTime StartDate = Convert.ToDateTime(startDate);
+            DateTime Enddate = Convert.ToDateTime(enddate);
 
-            //InsertLedgerBalance();
-
-
-        }
-
-
-
-
-
-
-        public void GetManagementData() {
-            DateTime startDate = new DateTime();
-            DateTime enddate = new DateTime();
-            List<HcsReportManagementSummaryResponse> res = _reportSummary.GetReportManagementSummaryFromApma(startDate, enddate);
-
-            //TODO: Go to service for data binding 
+            List<HcsReportManagementSummaryResponse> res = _reportSummary.GetReportManagementSummaryFromApma(StartDate, Enddate);
 
             var jsonDatas = JsonConvert.SerializeObject(res, formatting: Newtonsoft.Json.Formatting.Indented);
 
             List<RerportManagementSummaryModel> reportManagementSummaries = JsonConvert.DeserializeObject<List<RerportManagementSummaryModel>>(jsonDatas);
-
 
             List<HcsReportManagementSummaryResult> filterreportManagementSummaries = new List<HcsReportManagementSummaryResult>();
             filterreportManagementSummaries = reportManagementSummaries.Where(r => r.HcsReportManagementSummaryResult.Success == true).ToList().Select(x => x.HcsReportManagementSummaryResult).ToList();
@@ -75,19 +66,24 @@ namespace VDVI.DB.Services
 
         }
 
-
-
-        private List<VDVI.DB.Models.ApmaModels.ManagementSummary> GetmanagementSummaryList(List<VDVI.DB.Models.ApmaModels.HcsReportManagementSummaryResult> filterreportManagementSummaries)
+        private List<DB.Models.ApmaModels.ManagementSummary> GetmanagementSummaryList(List<VDVI.DB.Models.ApmaModels.HcsReportManagementSummaryResult> filterreportManagementSummaries)
         {
-            var list = filterreportManagementSummaries.Select(a => new DB.Models.ApmaModels.ManagementSummary()
-            {
-                PropertyCode = a.PropertyCode,
-                BusinessDate = a.ManagementSummaries.Select(x => x.BusinessDate).FirstOrDefault(),
-                RoomSummary = a.ManagementSummaries.Select(x => x.RoomSummary).FirstOrDefault(),
-                LedgerBalance = a.ManagementSummaries.Select(x => x.LedgerBalance).FirstOrDefault(),
+            var managementSummaryList = new List<Models.ApmaModels.ManagementSummary>();
 
-            }).ToList();
-            return list;
+            var r = filterreportManagementSummaries.Select(x => x);
+
+            foreach (var item in r)
+            {
+                var tempList = item.ManagementSummaries.Select(x => new DB.Models.ApmaModels.ManagementSummary()
+                {
+                    PropertyCode = item.PropertyCode,
+                    BusinessDate = x.BusinessDate,
+                    RoomSummary = x.RoomSummary,
+                    LedgerBalance = x.LedgerBalance
+                }).ToList();
+                managementSummaryList.AddRange(tempList);
+            }
+            return managementSummaryList;
         }
 
         private List<DB.Models.ApmaModels.RoomSummary> GetRoomSummary(List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList)
@@ -141,12 +137,16 @@ namespace VDVI.DB.Services
             return LedgerBalances;
         }
 
-         
     }
 }
 
 
 
 
-//TODO : 1. API Calling, If calling success : 2. Param , 3. data format, 4. Save in database , 5. updated next lAst executed date, 
+//TODO : 1. API Calling,
+//If calling success :
+//2. Param ,
+//3. data format,
+//4. Save in database ,
+//5. updated next lAst executed date, 
 // Database : ExecutedDateTime
