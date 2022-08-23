@@ -30,19 +30,24 @@ namespace VDVI.DB.Repository
         }
 
 
-        public void InsertLedgerBalance(LedgerBalance ledgerBalance)
+        public void InsertLedgerBalance(List<LedgerBalance> ledgerBalance)
         {
             try
             {
-                using (IDbConnection dbConnection = Connection)
+                DateTime localDate = DateTime.Now;
+                foreach (var properties in ledgerBalance)
                 {
-                    dbConnection.Open();
-                    string query = @"INSERT INTO [hce].[LedgerBalance](EntryDateTime,PropertyCode,BusinessDate,Reservations,InHouseReservations,GroupReservations,
-                                   InHouseGroupReservations,EventReservations,TotalTurnover,LodgingTurnover,PaymentsDebitor,PaymentsCash,CityLedger])  VALUES
-                                   (@EntryDateTime, @PropertyCode, @BusinessDate,@Reservations, @InHouseReservations,@GroupReservations,  @InHouseGroupReservations,
+                    using (IDbConnection dbConnection = Connection)
+                    {
+                        dbConnection.Open();
+                        string query = @"INSERT INTO [hce].[LedgerBalance](EntryDateTime,PropertyCode,BusinessDate,Reservations,InHouseReservations,GroupReservations,
+                                   InHouseGroupReservations,EventReservations,TotalTurnover,LodgingTurnover,PaymentsDebitor,PaymentsCash,CityLedger)  VALUES
+                                   (@BusinessDate, @PropertyCode, @BusinessDate,@Reservations, @InHouseReservations,@GroupReservations,  @InHouseGroupReservations,
                                    @EventReservations, @TotalTurnover, @LodgingTurnover,@PaymentsDebitor, @PaymentsCash , @CityLedger )";
-                    dbConnection.Execute(query, ledgerBalance);
+                        dbConnection.Execute(query, properties);
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -51,19 +56,27 @@ namespace VDVI.DB.Repository
             }
         }
 
-        public void InsertRoomSummary(RoomSummary roomSummary)
+        public void InsertRoomSummary(List<RoomSummary> roomSummary)
         {
             try
             {
-                using (IDbConnection dbConnection = Connection)
+                foreach (var item in roomSummary)
                 {
-                    dbConnection.Open();
-                    string query = @"INSERT INTO [hce].[RoomSummary]  EntryDateTime ,PropertyCode ,BusinessDate,InHouse ,DayUse ,LateArrival ,EarlyDeparture ,Departed ,ToDepart ,StayOver ,
-                                   EarlyArrival  ,Arrived ,ToArrive ,NoShow ,Complementary ,WalkIns ,RoomReservationCreated  ,RoomReservationCancelled) VALUES
-                                   (@EntryDateTime,@PropertyCode,@BusinessDate,@InHouse,  @DayUse,@LateArrival,@EarlyDeparture,@Departed, 
-                                   @ToDepart,@StayOver, @EarlyArrival,@Arrived, @ToArrive,@NoShow,@Complementary,@WalkIns,@RoomReservationCreated,@RoomReservationCancelled, ))";
-                    dbConnection.Execute(query, roomSummary);
+                    using (IDbConnection dbConnection = Connection)
+                    {
+                        dbConnection.Open();
+                        string query = @"INSERT INTO [hce].[RoomSummary]  (EntryDateTime ,PropertyCode ,BusinessDate,InHouse ,DayUse ,LateArrival ,EarlyDeparture 
+                                    ,Departed ,ToDepart ,StayOver ,  EarlyArrival  ,Arrived ,ToArrive ,
+                                    NoShow ,Complementary ,WalkIns ,RoomReservationCreated  ,
+                                    RoomReservationCancelled) VALUES
+                                   (@BusinessDate,@PropertyCode,@BusinessDate,@InHouse,  @DayUse,
+                                   @LateArrival,@EarlyDeparture,@Departed, 
+                                   @ToDepart,@StayOver, @EarlyArrival,@Arrived, @ToArrive,@NoShow,@Complementary,
+                                    @WalkIns,@RoomReservationCreated,@RoomReservationCancelled)";
+                        dbConnection.Execute(query, item);
+                    }
                 }
+
             }
             catch (Exception ex)
             {

@@ -19,8 +19,8 @@ namespace VDVI.Controllers
     [ApiController]
     public class ApmaController : ControllerBase
     {
-        public IRoomManagementSummariesService _roomManagementSummariesService { get; }
-        public ApmaController(IRoomManagementSummariesService roomManagementSummariesService)
+        public IReportManagementSummariesService _roomManagementSummariesService { get; }
+        public ApmaController(IReportManagementSummariesService roomManagementSummariesService)
         {
             _roomManagementSummariesService = roomManagementSummariesService;
         }

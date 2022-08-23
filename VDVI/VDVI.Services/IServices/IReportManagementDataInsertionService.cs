@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using VDVI.DB.Models.ApmaModels;
 
-namespace VDVI.DB.IRepository
+namespace VDVI.Services.IServices
 {
-    public  interface IManagementRoomSummaryRepository
+    public interface IReportManagementDataInsertionService
     {
         void InsertRoomSummary(List<RoomSummary> roomSummary);
         void InsertLedgerBalance(List<LedgerBalance> ledgerBalance);

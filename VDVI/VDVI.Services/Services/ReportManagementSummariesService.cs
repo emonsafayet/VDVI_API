@@ -10,36 +10,26 @@ using System.Text;
 using VDVI.DB.IRepository;
 using VDVI.DB.IServices;
 using VDVI.DB.Models.ApmaModels;
+using VDVI.Services.IServices;
 
 namespace VDVI.DB.Services
 {
-    public class RoomManagementSummariesService : IRoomManagementSummariesService
+    public class ReportManagementSummariesService : IReportManagementSummariesService
     {
-
-        public IManagementRoomSummaryRepository _managementRoomSummaryRepository;
+         
         private readonly IReportManagementSummary _reportSummary;
-        private readonly ITaskSchedulerRepository _taskScheduler;
+        private readonly IReportManagementDataInsertionService _reportManagementDataInsertionService;
 
-        public RoomManagementSummariesService(IManagementRoomSummaryRepository managementRoomSummaryRepository,
-            IReportManagementSummary reportSummary, ITaskSchedulerRepository taskScheduler)
-        {
-            _managementRoomSummaryRepository = managementRoomSummaryRepository;
+        private List<DB.Models.ApmaModels.RoomSummary> roomSummaryList=new List<DB.Models.ApmaModels.RoomSummary>();
+        private List<DB.Models.ApmaModels.LedgerBalance> ledgerBalanceList = new List<DB.Models.ApmaModels.LedgerBalance>();
+        public ReportManagementSummariesService(IReportManagementSummary reportSummary, 
+            IReportManagementDataInsertionService reportManagementDataInsertionService)
+        { 
             _reportSummary = reportSummary;
-            _taskScheduler = taskScheduler;
+            _reportManagementDataInsertionService = reportManagementDataInsertionService;
         }
 
-        public void InsertLedgerBalance(LedgerBalance ledgerBalance)
-        {
-            //business logic
-            _managementRoomSummaryRepository.InsertLedgerBalance(ledgerBalance);
-        }
-
-        public void InsertRoomSummary(Models.ApmaModels.RoomSummary roomSummary)
-        {
-            //business logic
-            _managementRoomSummaryRepository.InsertRoomSummary(roomSummary);
-        }
-
+       
         public void GetManagementData()
         {
             //hangfire; Algorithm
@@ -60,11 +50,13 @@ namespace VDVI.DB.Services
             List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList = new List<DB.Models.ApmaModels.ManagementSummary>();
             managementSummaryList = GetmanagementSummaryList(filterreportManagementSummaries);
 
-            List<DB.Models.ApmaModels.RoomSummary> roomSummaryList = GetRoomSummary(managementSummaryList);
+             roomSummaryList = GetRoomSummary(managementSummaryList);
 
-            List<DB.Models.ApmaModels.LedgerBalance> ledgerBalanceList = GetLedgerSummary(managementSummaryList);
+            ledgerBalanceList = GetLedgerSummary(managementSummaryList);
 
-        }
+            InsertReportManagenetRoomAndLedgerData();
+
+        }  
 
         private List<DB.Models.ApmaModels.ManagementSummary> GetmanagementSummaryList(List<VDVI.DB.Models.ApmaModels.HcsReportManagementSummaryResult> filterreportManagementSummaries)
         {
@@ -135,6 +127,13 @@ namespace VDVI.DB.Services
 
             }).ToList();
             return LedgerBalances;
+        }
+
+        public void  InsertReportManagenetRoomAndLedgerData() 
+        {
+
+            _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
+            _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);
         }
 
     }

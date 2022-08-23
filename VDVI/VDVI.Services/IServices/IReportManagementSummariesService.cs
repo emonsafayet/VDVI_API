@@ -5,12 +5,10 @@ using VDVI.DB.Models.ApmaModels;
 
 namespace VDVI.DB.IServices
 {
-    public interface IRoomManagementSummariesService
+    public interface IReportManagementSummariesService
     { 
-        void InsertRoomSummary(RoomSummary roomSummary);
-        void InsertLedgerBalance(LedgerBalance ledgerBalance);
-
         void GetManagementData();
+        void InsertReportManagenetRoomAndLedgerData();
 
     }
 }

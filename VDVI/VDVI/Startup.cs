@@ -16,6 +16,8 @@ using VDVI.DB.IServices;
 using VDVI.DB.Services;
 using VDVI.DB.Repository;
 using VDVI.DB.IRepository;
+using VDVI.Services.IServices;
+using VDVI.Services.Services;
 
 namespace VDVI
 {
@@ -32,7 +34,8 @@ namespace VDVI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<IRoomManagementSummariesService,RoomManagementSummariesService>();
+            services.AddScoped<IReportManagementSummariesService,ReportManagementSummariesService>();
+            services.AddScoped<IReportManagementDataInsertionService, ReportManagementDataInsertionService>();
             services.AddScoped<IManagementRoomSummaryRepository, ManagementRoomSummaryRepository>();
 
             services.AddSwaggerGen();
@@ -95,8 +98,8 @@ namespace VDVI
                 // }
             });
             //recurringJobManager.AddOrUpdate(
-            //      "ReadEmailJob",
-            //      () => serviceProvider.GetService<IRoomManagementSummariesService>().InsertRoomSummary(null, null),
+            //      "InsertReportManagementRoomAndLedgerJob",
+            //      () => serviceProvider.GetService<IReportManagementSummariesService>().InsertReportManagenetRoomAndLedgerData(),
             //      configuration["* * * *"], TimeZoneInfo.Local
             //      //mm : hh:dd:yy
             //      );
