@@ -18,3 +18,13 @@ E:\Brain Station\VDVI\MainProject\VDVI\ConsoleAppCore\obj\Debug\netcoreapp3.1\SO
 E:\Brain Station\VDVI\MainProject\VDVI\ConsoleAppCore\obj\Debug\netcoreapp3.1\SOAPAppCore.csproj.CoreCompileInputs.cache
 E:\Brain Station\VDVI\MainProject\VDVI\ConsoleAppCore\obj\Debug\netcoreapp3.1\SOAPAppCore.dll
 E:\Brain Station\VDVI\MainProject\VDVI\ConsoleAppCore\obj\Debug\netcoreapp3.1\SOAPAppCore.pdb
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\ConsoleAppCore\bin\Debug\netcoreapp3.1\SOAPAppCore.deps.json
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\ConsoleAppCore\bin\Debug\netcoreapp3.1\SOAPAppCore.dll
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\ConsoleAppCore\bin\Debug\netcoreapp3.1\SOAPAppCore.pdb
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\ConsoleAppCore\obj\Debug\netcoreapp3.1\SOAPAppCore.csproj.AssemblyReference.cache
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\ConsoleAppCore\obj\Debug\netcoreapp3.1\SOAPAppCore.GeneratedMSBuildEditorConfig.editorconfig
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\ConsoleAppCore\obj\Debug\netcoreapp3.1\SOAPAppCore.AssemblyInfoInputs.cache
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\ConsoleAppCore\obj\Debug\netcoreapp3.1\SOAPAppCore.AssemblyInfo.cs
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\ConsoleAppCore\obj\Debug\netcoreapp3.1\SOAPAppCore.csproj.CoreCompileInputs.cache
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\ConsoleAppCore\obj\Debug\netcoreapp3.1\SOAPAppCore.dll
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\ConsoleAppCore\obj\Debug\netcoreapp3.1\SOAPAppCore.pdb

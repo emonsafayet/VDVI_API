@@ -746,11 +746,11 @@
           }
         }
       },
-      "System.ServiceModel.Duplex/4.7.0": {
+      "System.ServiceModel.Duplex/4.10.0": {
         "type": "package",
         "dependencies": {
-          "System.Private.ServiceModel": "4.7.0",
-          "System.ServiceModel.Primitives": "4.7.0"
+          "System.Private.ServiceModel": "4.10.0",
+          "System.ServiceModel.Primitives": "4.10.0"
         },
         "compile": {
           "ref/netstandard2.0/System.ServiceModel.Duplex.dll": {}
@@ -759,11 +759,11 @@
           "lib/netstandard2.0/System.ServiceModel.Duplex.dll": {}
         }
       },
-      "System.ServiceModel.Http/4.7.0": {
+      "System.ServiceModel.Http/4.10.0": {
         "type": "package",
         "dependencies": {
-          "System.Private.ServiceModel": "4.7.0",
-          "System.ServiceModel.Primitives": "4.7.0"
+          "System.Private.ServiceModel": "4.10.0",
+          "System.ServiceModel.Primitives": "4.10.0"
         },
         "compile": {
           "ref/netstandard2.0/System.ServiceModel.Http.dll": {}
@@ -772,11 +772,11 @@
           "lib/netstandard2.0/System.ServiceModel.Http.dll": {}
         }
       },
-      "System.ServiceModel.NetTcp/4.7.0": {
+      "System.ServiceModel.NetTcp/4.10.0": {
         "type": "package",
         "dependencies": {
-          "System.Private.ServiceModel": "4.7.0",
-          "System.ServiceModel.Primitives": "4.7.0"
+          "System.Private.ServiceModel": "4.10.0",
+          "System.ServiceModel.Primitives": "4.10.0"
         },
         "compile": {
           "ref/netstandard2.0/System.ServiceModel.NetTcp.dll": {}
@@ -799,11 +799,11 @@
           "lib/netcoreapp3.1/System.ServiceModel.dll": {}
         }
       },
-      "System.ServiceModel.Security/4.7.0": {
+      "System.ServiceModel.Security/4.10.0": {
         "type": "package",
         "dependencies": {
-          "System.Private.ServiceModel": "4.7.0",
-          "System.ServiceModel.Primitives": "4.7.0"
+          "System.Private.ServiceModel": "4.10.0",
+          "System.ServiceModel.Primitives": "4.10.0"
         },
         "compile": {
           "ref/netstandard2.0/System.ServiceModel.Security.dll": {}
@@ -2332,13 +2332,14 @@
         "version.txt"
       ]
     },
-    "System.ServiceModel.Duplex/4.7.0": {
-      "sha512": "7GBKQc2QWRxnEVQ49zMKq3z3RFKaHhhWjfMWhp+DP+dgfp0X4Szln/eL+UQumOKvv+sTU5bhOXjnJg5045liCA==",
+    "System.ServiceModel.Duplex/4.10.0": {
+      "sha512": "4TiHY9zNCyU5++0hzgQQY8Lg2iUxBndRbo/xVWxljqekBiPSK037QASLD4ZZCKc/JcA4cpHUFDXZjzrdVVn6aw==",
       "type": "package",
-      "path": "system.servicemodel.duplex/4.7.0",
+      "path": "system.servicemodel.duplex/4.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -2346,6 +2347,8 @@
         "lib/net45/_._",
         "lib/net461/System.ServiceModel.Duplex.dll",
         "lib/net461/System.ServiceModel.Duplex.pdb",
+        "lib/net6.0/System.ServiceModel.Duplex.dll",
+        "lib/net6.0/System.ServiceModel.Duplex.pdb",
         "lib/netcore50/System.ServiceModel.Duplex.dll",
         "lib/netstandard1.3/System.ServiceModel.Duplex.dll",
         "lib/netstandard2.0/System.ServiceModel.Duplex.dll",
@@ -2360,6 +2363,7 @@
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
         "ref/net461/System.ServiceModel.Duplex.dll",
+        "ref/net6.0/System.ServiceModel.Duplex.dll",
         "ref/netcore50/System.ServiceModel.Duplex.dll",
         "ref/netstandard1.1/System.ServiceModel.Duplex.dll",
         "ref/netstandard2.0/System.ServiceModel.Duplex.dll",
@@ -2369,17 +2373,18 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.servicemodel.duplex.4.7.0.nupkg.sha512",
+        "system.servicemodel.duplex.4.10.0.nupkg.sha512",
         "system.servicemodel.duplex.nuspec"
       ]
     },
-    "System.ServiceModel.Http/4.7.0": {
-      "sha512": "+BB61ycl1cSlRbJDpABoqMa7bRE4boJfK1CfWfbNzTGeADFVmDkhylpfmC1bKloxtf95p2owj8/n7kilgRBAow==",
+    "System.ServiceModel.Http/4.10.0": {
+      "sha512": "/PbmNSEwTQ7Vizor3F/Zp8bzR6L9YZNGIwGr1Tyc//ZZuAYDhiwiMbNpX3EnPZM63qD2bJmR/FWH9S5Ffp8K6g==",
       "type": "package",
-      "path": "system.servicemodel.http/4.7.0",
+      "path": "system.servicemodel.http/4.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -2388,6 +2393,8 @@
         "lib/net46/System.ServiceModel.Http.dll",
         "lib/net461/System.ServiceModel.Http.dll",
         "lib/net461/System.ServiceModel.Http.pdb",
+        "lib/net6.0/System.ServiceModel.Http.dll",
+        "lib/net6.0/System.ServiceModel.Http.pdb",
         "lib/netcore50/System.ServiceModel.Http.dll",
         "lib/netstandard1.3/System.ServiceModel.Http.dll",
         "lib/netstandard2.0/System.ServiceModel.Http.dll",
@@ -2404,6 +2411,7 @@
         "ref/net45/_._",
         "ref/net46/System.ServiceModel.Http.dll",
         "ref/net461/System.ServiceModel.Http.dll",
+        "ref/net6.0/System.ServiceModel.Http.dll",
         "ref/netcore50/System.ServiceModel.Http.dll",
         "ref/netstandard1.0/System.ServiceModel.Http.dll",
         "ref/netstandard1.1/System.ServiceModel.Http.dll",
@@ -2416,17 +2424,18 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.servicemodel.http.4.7.0.nupkg.sha512",
+        "system.servicemodel.http.4.10.0.nupkg.sha512",
         "system.servicemodel.http.nuspec"
       ]
     },
-    "System.ServiceModel.NetTcp/4.7.0": {
-      "sha512": "snQgAc7kn4721eaus8nZ52eRu1QrdEnWGbru6I263hPWcISStntwHwSrT57Iwp1Z58b3Lz0J/hbjJhGP0yExOA==",
+    "System.ServiceModel.NetTcp/4.10.0": {
+      "sha512": "tG69H0sRdzEuOcdGzsZwbmPk54Akb3t1Db4SSXN6hSTOc2ZBFu1jLt5wJA6ATbIjJ5WqXA8beRNLhO77lBNIdA==",
       "type": "package",
-      "path": "system.servicemodel.nettcp/4.7.0",
+      "path": "system.servicemodel.nettcp/4.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -2435,6 +2444,8 @@
         "lib/net46/System.ServiceModel.NetTcp.dll",
         "lib/net461/System.ServiceModel.NetTcp.dll",
         "lib/net461/System.ServiceModel.NetTcp.pdb",
+        "lib/net6.0/System.ServiceModel.NetTcp.dll",
+        "lib/net6.0/System.ServiceModel.NetTcp.pdb",
         "lib/netcore50/System.ServiceModel.NetTcp.dll",
         "lib/netstandard1.3/System.ServiceModel.NetTcp.dll",
         "lib/netstandard2.0/System.ServiceModel.NetTcp.dll",
@@ -2450,6 +2461,7 @@
         "ref/net45/_._",
         "ref/net46/System.ServiceModel.NetTcp.dll",
         "ref/net461/System.ServiceModel.NetTcp.dll",
+        "ref/net6.0/System.ServiceModel.NetTcp.dll",
         "ref/netcore50/System.ServiceModel.NetTcp.dll",
         "ref/netstandard1.1/System.ServiceModel.NetTcp.dll",
         "ref/netstandard1.3/System.ServiceModel.NetTcp.dll",
@@ -2460,7 +2472,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.servicemodel.nettcp.4.7.0.nupkg.sha512",
+        "system.servicemodel.nettcp.4.10.0.nupkg.sha512",
         "system.servicemodel.nettcp.nuspec"
       ]
     },
@@ -2524,13 +2536,14 @@
         "system.servicemodel.primitives.nuspec"
       ]
     },
-    "System.ServiceModel.Security/4.7.0": {
-      "sha512": "LjYrQRrP1rw+s/wieB+QIv3p6/oG2ucTfVpg5iWmX8/7+nfUxcqmy9l8rsbtYE8X8BEQnSq42OhWap/Dlhlh9Q==",
+    "System.ServiceModel.Security/4.10.0": {
+      "sha512": "/COEfB7QqKW37DOfmzJG6rd0apH0uMMCYNDUir9ZVDQR/ulQHx12T/5jMTo25YgUUk++i0SfGDbzutMH3w/nQg==",
       "type": "package",
-      "path": "system.servicemodel.security/4.7.0",
+      "path": "system.servicemodel.security/4.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -2538,6 +2551,8 @@
         "lib/net45/_._",
         "lib/net461/System.ServiceModel.Security.dll",
         "lib/net461/System.ServiceModel.Security.pdb",
+        "lib/net6.0/System.ServiceModel.Security.dll",
+        "lib/net6.0/System.ServiceModel.Security.pdb",
         "lib/netcore50/System.ServiceModel.Security.dll",
         "lib/netstandard1.3/System.ServiceModel.Security.dll",
         "lib/netstandard2.0/System.ServiceModel.Security.dll",
@@ -2553,6 +2568,7 @@
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
         "ref/net461/System.ServiceModel.Security.dll",
+        "ref/net6.0/System.ServiceModel.Security.dll",
         "ref/netcore50/System.ServiceModel.Security.dll",
         "ref/netstandard1.0/System.ServiceModel.Security.dll",
         "ref/netstandard1.1/System.ServiceModel.Security.dll",
@@ -2564,7 +2580,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.servicemodel.security.4.7.0.nupkg.sha512",
+        "system.servicemodel.security.4.10.0.nupkg.sha512",
         "system.servicemodel.security.nuspec"
       ]
     },
@@ -2746,11 +2762,11 @@
       "Swashbuckle.AspNetCore.Swagger >= 6.4.0",
       "Swashbuckle.AspNetCore.SwaggerGen >= 6.4.0",
       "Swashbuckle.AspNetCore.SwaggerUI >= 6.4.0",
-      "System.ServiceModel.Duplex >= 4.7.*",
-      "System.ServiceModel.Http >= 4.7.*",
-      "System.ServiceModel.NetTcp >= 4.7.*",
+      "System.ServiceModel.Duplex >= 4.10.0",
+      "System.ServiceModel.Http >= 4.10.0",
+      "System.ServiceModel.NetTcp >= 4.10.0",
       "System.ServiceModel.Primitives >= 4.10.0",
-      "System.ServiceModel.Security >= 4.7.*",
+      "System.ServiceModel.Security >= 4.10.0",
       "VDVI.DB >= 1.0.0"
     ]
   },
@@ -2761,11 +2777,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Brain Station\\VDVI\\MainProject\\VDVI\\VDVI\\VDVI.csproj",
+      "projectUniqueName": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI\\VDVI.csproj",
       "projectName": "VDVI",
-      "projectPath": "E:\\Brain Station\\VDVI\\MainProject\\VDVI\\VDVI\\VDVI.csproj",
+      "projectPath": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI\\VDVI.csproj",
       "packagesPath": "C:\\Users\\BS523\\.nuget\\packages\\",
-      "outputPath": "E:\\Brain Station\\VDVI\\MainProject\\VDVI\\VDVI\\obj\\",
+      "outputPath": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2786,11 +2802,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "E:\\Brain Station\\VDVI\\MainProject\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj": {
-              "projectPath": "E:\\Brain Station\\VDVI\\MainProject\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj"
+            "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj": {
+              "projectPath": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj"
             },
-            "E:\\Brain Station\\VDVI\\MainProject\\VDVI\\VDVI.DB\\VDVI.DB.csproj": {
-              "projectPath": "E:\\Brain Station\\VDVI\\MainProject\\VDVI\\VDVI.DB\\VDVI.DB.csproj"
+            "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj": {
+              "projectPath": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj"
             }
           }
         }
@@ -2859,15 +2875,15 @@
           },
           "System.ServiceModel.Duplex": {
             "target": "Package",
-            "version": "[4.7.*, )"
+            "version": "[4.10.0, )"
           },
           "System.ServiceModel.Http": {
             "target": "Package",
-            "version": "[4.7.*, )"
+            "version": "[4.10.0, )"
           },
           "System.ServiceModel.NetTcp": {
             "target": "Package",
-            "version": "[4.7.*, )"
+            "version": "[4.10.0, )"
           },
           "System.ServiceModel.Primitives": {
             "target": "Package",
@@ -2875,7 +2891,7 @@
           },
           "System.ServiceModel.Security": {
             "target": "Package",
-            "version": "[4.7.*, )"
+            "version": "[4.10.0, )"
           }
         },
         "imports": [
