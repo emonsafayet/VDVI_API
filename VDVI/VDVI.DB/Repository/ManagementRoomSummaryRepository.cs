@@ -13,6 +13,7 @@ namespace VDVI.DB.Repository
 {
     public class ManagementRoomSummaryRepository : IManagementRoomSummaryRepository
     {
+        DateTime localDate = DateTime.Now;
         protected readonly IConfiguration _config;
 
         public ManagementRoomSummaryRepository(IConfiguration config)
@@ -34,7 +35,7 @@ namespace VDVI.DB.Repository
         {
             try
             {
-                DateTime localDate = DateTime.Now;
+                
                 foreach (var properties in ledgerBalance)
                 {
                     using (IDbConnection dbConnection = Connection)
@@ -66,7 +67,7 @@ namespace VDVI.DB.Repository
                     {
                         dbConnection.Open();
                         string query = @"INSERT INTO [hce].[RoomSummary]  (EntryDateTime ,PropertyCode ,BusinessDate,InHouse ,DayUse ,LateArrival ,EarlyDeparture 
-                                    ,Departed ,ToDepart ,StayOver ,  EarlyArrival  ,Arrived ,ToArrive ,
+                                    ,Departed ,ToDepart ,StayOver ,EarlyArrival  ,Arrived ,ToArrive ,
                                     NoShow ,Complementary ,WalkIns ,RoomReservationCreated  ,
                                     RoomReservationCancelled) VALUES
                                    (@BusinessDate,@PropertyCode,@BusinessDate,@InHouse,  @DayUse,
