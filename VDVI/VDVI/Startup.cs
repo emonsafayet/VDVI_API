@@ -34,9 +34,15 @@ namespace VDVI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            //services
             services.AddScoped<IReportManagementSummariesService,ReportManagementSummariesService>();
             services.AddScoped<IReportManagementDataInsertionService, ReportManagementDataInsertionService>();
+            services.AddScoped<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
+
+            //repositories
             services.AddScoped<IManagementRoomSummaryRepository, ManagementRoomSummaryRepository>();
+         
 
             services.AddSwaggerGen();
             services.AddSwaggerGen(c =>

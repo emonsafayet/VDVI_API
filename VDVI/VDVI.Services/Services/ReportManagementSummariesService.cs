@@ -19,25 +19,36 @@ namespace VDVI.DB.Services
          
         private readonly IReportManagementSummary _reportSummary;
         private readonly IReportManagementDataInsertionService _reportManagementDataInsertionService;
+        private readonly IApmaTaskSchedulerService _apmaTaskSchedulerService;
 
         private List<DB.Models.ApmaModels.RoomSummary> roomSummaryList=new List<DB.Models.ApmaModels.RoomSummary>();
         private List<DB.Models.ApmaModels.LedgerBalance> ledgerBalanceList = new List<DB.Models.ApmaModels.LedgerBalance>();
+
+         
+         
+        //DateTime initialDate = new DateTime(2018, 01, 01); //This initial Date comes from appsettings.
+        //DateTime StartDate = new DateTime(2018, 01, 01);
+        //DateTime Enddate = DateTime.Now;//new DateTime(2018, 01, 01);
+
+
         public ReportManagementSummariesService(IReportManagementSummary reportSummary, 
-            IReportManagementDataInsertionService reportManagementDataInsertionService)
+            IReportManagementDataInsertionService reportManagementDataInsertionService,IApmaTaskSchedulerService apmaTaskSchedulerService)
         { 
             _reportSummary = reportSummary;
             _reportManagementDataInsertionService = reportManagementDataInsertionService;
+            _apmaTaskSchedulerService = apmaTaskSchedulerService;
         }
 
        
         public void GetManagementData()
         {
-            //hangfire; Algorithm
-            string startDate = "2022/08/15";
-            string enddate = "2022/08/15";
+            //hangfire; Algorithm 
+
+            string startDate = "2019/01/01";
+            string enddate = "2019/01/15";
             DateTime StartDate = Convert.ToDateTime(startDate);
             DateTime Enddate = Convert.ToDateTime(enddate);
-           
+
             try
             {
                 List<HcsReportManagementSummaryResponse> res = _reportSummary.GetReportManagementSummaryFromApma(StartDate, Enddate);
@@ -53,7 +64,7 @@ namespace VDVI.DB.Services
                 List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList = new List<DB.Models.ApmaModels.ManagementSummary>();
 
 
-                if (managementSummaryList != null)
+                if (filterreportManagementSummaries.Count != 0)
                 {
                     managementSummaryList = GetmanagementSummaryList(filterreportManagementSummaries);
 
@@ -166,12 +177,40 @@ namespace VDVI.DB.Services
             } 
         }
 
-        public void  InsertReportManagenetRoomAndLedgerData() 
+        public void InsertReportManagenetRoomAndLedgerData()
         {
-             GetManagementData();
-            _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
-            _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);
+
+            GetManagementData();
+            if(ledgerBalanceList.Count!=0) _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
+            if(roomSummaryList.Count!=0) _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);
+
+            //Task Scheduler 
+           // RenderTaskScheduling();
+
         }
+
+        //private void RenderTaskScheduling()
+        //{            
+        //    var endDate=_apmaTaskSchedulerService.GetTaskScheduler("HcsReportManagementSummary");
+
+        //    if (endDate==null)
+        //    {
+        //        StartDate = initialDate; // it will come from appsettig initialDate
+        //        Enddate =DateTime.Now; // it will come from appsetting time difference
+
+        //        _apmaTaskSchedulerService.InsertOrUpdateTaskScheduleDatetime("HcsReportManagementSummary", StartDate, Enddate,0);
+        //    }
+        //    else
+        //    {
+        //        StartDate = Enddate.AddMilliseconds(1); // it will come from appsettig initialDate
+        //        Enddate = StartDate.AddMinutes(2); // it will come from appsetting time difference
+
+        //        _apmaTaskSchedulerService.InsertOrUpdateTaskScheduleDatetime("HcsReportManagementSummary", StartDate, Enddate, 1);
+        //    }
+
+
+        //}
+       
 
     }
 }

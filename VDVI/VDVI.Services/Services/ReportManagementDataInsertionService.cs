@@ -9,13 +9,11 @@ namespace VDVI.Services.Services
 {
     public class ReportManagementDataInsertionService : IReportManagementDataInsertionService
     {
-        public IManagementRoomSummaryRepository _managementRoomSummaryRepository;
-        public ITaskSchedulerRepository _taskScheduler;
-        public ReportManagementDataInsertionService(IManagementRoomSummaryRepository managementRoomSummaryRepository,
-            ITaskSchedulerRepository taskScheduler)
+        public IManagementRoomSummaryRepository _managementRoomSummaryRepository; 
+
+        public ReportManagementDataInsertionService(IManagementRoomSummaryRepository managementRoomSummaryRepository )
         {
-            _managementRoomSummaryRepository = managementRoomSummaryRepository;
-            _taskScheduler = taskScheduler;
+            _managementRoomSummaryRepository = managementRoomSummaryRepository; 
         }
 
         public void InsertLedgerBalance(List<LedgerBalance> ledgerBalance)
@@ -26,6 +24,6 @@ namespace VDVI.Services.Services
         public void InsertRoomSummary(List<RoomSummary> roomSummary)
         {
             _managementRoomSummaryRepository.InsertRoomSummary(roomSummary);
-        }
+        } 
     }
 }

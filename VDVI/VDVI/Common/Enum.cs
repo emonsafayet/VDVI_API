@@ -7,4 +7,12 @@
         Update=2,
         Delete=3
     }
+    public enum ApmaServiceMethodName
+    {
+        HcsReportManagementSummary,
+        HcsReportMaintenanceService,
+        HcsReportPackedLunchList,
+        HcsReportsBanquetingActivities,
+        HcsSetHousekeepingStatus
+    }
 }
