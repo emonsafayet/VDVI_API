@@ -53,7 +53,8 @@ namespace VDVI
                        config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                        .UseSimpleAssemblyNameTypeSerializer()
                        .UseDefaultTypeSerializer()
-                       .UseSqlServerStorage(Configuration.GetConnectionString("HangFireConnection")));
+                       .UseSqlServerStorage(Configuration.GetConnectionString("ApmaDb")
+                       ));
             services.AddHangfireServer();
 
             //dependency resolve:
@@ -91,21 +92,12 @@ namespace VDVI
             app.UseHangfireDashboard("/hangfire", new DashboardOptions
             {
                 DashboardTitle = "Scheduled Jobs"
-                //,
-                //Authorization = new[]
-                // {
-                //      new  HangfireAuthorizationFilter("admin")
-                // }
             });
-            //recurringJobManager.AddOrUpdate(
-            //      "InsertReportManagementRoomAndLedgerJob",
-            //      () => serviceProvider.GetService<IReportManagementSummariesService>().InsertReportManagenetRoomAndLedgerData(),
-            //      configuration["* * * *"], TimeZoneInfo.Local
-            //      //mm : hh:dd:yy
-            //      );
-
-
-
+            recurringJobManager.AddOrUpdate(
+                  "InsertReportManagementRoomAndLedgerJob",
+                  () => serviceProvider.GetService<IReportManagementSummariesService>().InsertReportManagenetRoomAndLedgerData(),
+                  configuration["ApmaHangfire:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Local
+                  );
             //recurringJobManager.AddOrUpdate(
             //    "NotifyIncidentOwnerJob",
             //    () => serviceProvider.GetService<ISystemNotificationBackgroundService>().NotifyOwnerEmailAcknowledgementAsync(),

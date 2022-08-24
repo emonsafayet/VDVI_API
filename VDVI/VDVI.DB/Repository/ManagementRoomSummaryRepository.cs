@@ -12,8 +12,7 @@ using VDVI.DB.Models.ApmaModels;
 namespace VDVI.DB.Repository
 {
     public class ManagementRoomSummaryRepository : IManagementRoomSummaryRepository
-    {
-        DateTime localDate = DateTime.Now;
+    { 
         protected readonly IConfiguration _config;
 
         public ManagementRoomSummaryRepository(IConfiguration config)
@@ -35,17 +34,26 @@ namespace VDVI.DB.Repository
         {
             try
             {
-                
+                var param = new DynamicParameters();
                 foreach (var properties in ledgerBalance)
                 {
+                
                     using (IDbConnection dbConnection = Connection)
                     {
-                        dbConnection.Open();
-                        string query = @"INSERT INTO [hce].[LedgerBalance](EntryDateTime,PropertyCode,BusinessDate,Reservations,InHouseReservations,GroupReservations,
-                                   InHouseGroupReservations,EventReservations,TotalTurnover,LodgingTurnover,PaymentsDebitor,PaymentsCash,CityLedger)  VALUES
-                                   (@BusinessDate, @PropertyCode, @BusinessDate,@Reservations, @InHouseReservations,@GroupReservations,  @InHouseGroupReservations,
-                                   @EventReservations, @TotalTurnover, @LodgingTurnover,@PaymentsDebitor, @PaymentsCash , @CityLedger )";
-                        dbConnection.Execute(query, properties);
+                        param.Add("@PropertyCode", properties.PropertyCode);
+                        param.Add("@BusinessDate", properties.BusinessDate);
+                        param.Add("@Reservations", properties.Reservations);
+                        param.Add("@InHouseReservations", properties.InHouseReservations);
+                        param.Add("@GroupReservations", properties.GroupReservations);
+                        param.Add("@InHouseGroupReservations", properties.InHouseGroupReservations);
+                        param.Add("@EventReservations", properties.EventReservations);
+                        param.Add("@TotalTurnover", properties.TotalTurnover);
+                        param.Add("@LodgingTurnover", properties.LodgingTurnover);
+                        param.Add("@PaymentsDebitor", properties.PaymentsDebitor);
+                        param.Add("@PaymentsCash", properties.PaymentsCash);
+                        param.Add("@CityLedger", properties.CityLedger);
+                        dbConnection.Open(); 
+                        dbConnection.Query("spINSERT_hce_LedgerBalance", param,commandType:CommandType.StoredProcedure);
                     }
                 }
 
@@ -61,20 +69,32 @@ namespace VDVI.DB.Repository
         {
             try
             {
-                foreach (var item in roomSummary)
+                var param = new DynamicParameters();
+                foreach (var properties in roomSummary)
                 {
                     using (IDbConnection dbConnection = Connection)
-                    {
+                    {                       
+
+                        param.Add("@PropertyCode", properties.PropertyCode);
+                        param.Add("@BusinessDate", properties.BusinessDate);
+                        param.Add("@InHouse", properties.InHouse);
+                        param.Add("@DayUse", properties.DayUse);
+                        param.Add("@LateArrival", properties.LateArrival);
+                        param.Add("@EarlyDeparture", properties.EarlyDeparture);
+                        param.Add("@Departed", properties.Departed);
+                        param.Add("@ToDepart", properties.ToDepart);
+                        param.Add("@StayOver", properties.StayOver);
+                        param.Add("@EarlyArrival", properties.EarlyArrival);
+                        param.Add("@Arrived", properties.Arrived);
+                        param.Add("@ToArrive", properties.ToArrive);
+                        param.Add("@NoShow", properties.NoShow);
+                        param.Add("@Complementary", properties.Complementary);
+                        param.Add("@WalkIns", properties.WalkIns);
+                        param.Add("@RoomReservationCreated", properties.RoomReservationCreated);
+                        param.Add("@RoomReservationCancelled", properties.RoomReservationCancelled);
+
                         dbConnection.Open();
-                        string query = @"INSERT INTO [hce].[RoomSummary]  (EntryDateTime ,PropertyCode ,BusinessDate,InHouse ,DayUse ,LateArrival ,EarlyDeparture 
-                                    ,Departed ,ToDepart ,StayOver ,EarlyArrival  ,Arrived ,ToArrive ,
-                                    NoShow ,Complementary ,WalkIns ,RoomReservationCreated  ,
-                                    RoomReservationCancelled) VALUES
-                                   (@BusinessDate,@PropertyCode,@BusinessDate,@InHouse,  @DayUse,
-                                   @LateArrival,@EarlyDeparture,@Departed, 
-                                   @ToDepart,@StayOver, @EarlyArrival,@Arrived, @ToArrive,@NoShow,@Complementary,
-                                    @WalkIns,@RoomReservationCreated,@RoomReservationCancelled)";
-                        dbConnection.Execute(query, item);
+                        dbConnection.Query("spINSERT_hce_RoomSummary", param, commandType: CommandType.StoredProcedure);                         
                     }
                 }
 

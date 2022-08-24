@@ -34,105 +34,141 @@ namespace VDVI.DB.Services
         {
             //hangfire; Algorithm
             string startDate = "2022/08/15";
-            string enddate = "2022/08/17";
+            string enddate = "2022/08/15";
             DateTime StartDate = Convert.ToDateTime(startDate);
             DateTime Enddate = Convert.ToDateTime(enddate);
+           
+            try
+            {
+                List<HcsReportManagementSummaryResponse> res = _reportSummary.GetReportManagementSummaryFromApma(StartDate, Enddate);
 
-            List<HcsReportManagementSummaryResponse> res = _reportSummary.GetReportManagementSummaryFromApma(StartDate, Enddate);
+                var jsonDatas = JsonConvert.SerializeObject(res, formatting: Newtonsoft.Json.Formatting.Indented);
 
-            var jsonDatas = JsonConvert.SerializeObject(res, formatting: Newtonsoft.Json.Formatting.Indented);
+                List<RerportManagementSummaryModel> reportManagementSummaries = JsonConvert.DeserializeObject<List<RerportManagementSummaryModel>>(jsonDatas);
 
-            List<RerportManagementSummaryModel> reportManagementSummaries = JsonConvert.DeserializeObject<List<RerportManagementSummaryModel>>(jsonDatas);
+                List<HcsReportManagementSummaryResult> filterreportManagementSummaries = new List<HcsReportManagementSummaryResult>();
 
-            List<HcsReportManagementSummaryResult> filterreportManagementSummaries = new List<HcsReportManagementSummaryResult>();
-            filterreportManagementSummaries = reportManagementSummaries.Where(r => r.HcsReportManagementSummaryResult.Success == true).ToList().Select(x => x.HcsReportManagementSummaryResult).ToList();
+                filterreportManagementSummaries = reportManagementSummaries.Where(r => r.HcsReportManagementSummaryResult.Success == true).ToList().Select(x => x.HcsReportManagementSummaryResult).ToList();
 
-            List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList = new List<DB.Models.ApmaModels.ManagementSummary>();
-            managementSummaryList = GetmanagementSummaryList(filterreportManagementSummaries);
+                List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList = new List<DB.Models.ApmaModels.ManagementSummary>();
 
-             roomSummaryList = GetRoomSummary(managementSummaryList);
 
-            ledgerBalanceList = GetLedgerSummary(managementSummaryList);
+                if (managementSummaryList != null)
+                {
+                    managementSummaryList = GetmanagementSummaryList(filterreportManagementSummaries);
 
-            InsertReportManagenetRoomAndLedgerData();
+                    roomSummaryList = GetRoomSummary(managementSummaryList);
 
+                    ledgerBalanceList = GetLedgerSummary(managementSummaryList);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }            
         }  
 
         private List<DB.Models.ApmaModels.ManagementSummary> GetmanagementSummaryList(List<VDVI.DB.Models.ApmaModels.HcsReportManagementSummaryResult> filterreportManagementSummaries)
         {
             var managementSummaryList = new List<Models.ApmaModels.ManagementSummary>();
-
-            var r = filterreportManagementSummaries.Select(x => x);
-            
-            // need to optimize
-            foreach (var item in r)
+            try
             {
-                var tempList = item.ManagementSummaries.Select(x => new DB.Models.ApmaModels.ManagementSummary()
+                var result = filterreportManagementSummaries.Select(x => x);
+
+                if (result!=null)
                 {
-                    PropertyCode = item.PropertyCode,
-                    BusinessDate = x.BusinessDate,
-                    RoomSummary = x.RoomSummary,
-                    LedgerBalance = x.LedgerBalance
-                }).ToList();
-                managementSummaryList.AddRange(tempList);
+                    // need to optimize; using linq will be better;
+                    foreach (var item in result)
+                    {
+                        var tempList = item.ManagementSummaries.Select(x => new DB.Models.ApmaModels.ManagementSummary()
+                        {
+                            PropertyCode = item.PropertyCode,
+                            BusinessDate = x.BusinessDate,
+                            RoomSummary = x.RoomSummary,
+                            LedgerBalance = x.LedgerBalance
+                        }).ToList();
+                        managementSummaryList.AddRange(tempList);
+                    }
+                }
+               
+                return managementSummaryList;
             }
-            return managementSummaryList;
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }            
         }
 
         private List<DB.Models.ApmaModels.RoomSummary> GetRoomSummary(List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList)
         {
-
-            List<DB.Models.ApmaModels.RoomSummary> roomSummaries = managementSummaryList.Select(x => new DB.Models.ApmaModels.RoomSummary()
+            try
             {
-                InHouse = x.RoomSummary.InHouse,
-                DayUse = x.RoomSummary.DayUse,
-                LateArrival = x.RoomSummary.LateArrival,
-                EarlyDeparture = x.RoomSummary.EarlyDeparture,
-                Departed = x.RoomSummary.Departed,
-                ToDepart = x.RoomSummary.ToDepart,
-                StayOver = x.RoomSummary.StayOver,
-                EarlyArrival = x.RoomSummary.EarlyArrival,
-                Arrived = x.RoomSummary.Arrived,
-                ToArrive = x.RoomSummary.ToArrive,
-                NoShow = x.RoomSummary.NoShow,
-                Complementary = x.RoomSummary.Complementary,
-                WalkIns = x.RoomSummary.WalkIns,
-                RoomReservationCreated = x.RoomSummary.RoomReservationCreated,
-                RoomReservationCancelled = x.RoomSummary.RoomReservationCancelled,
-                BusinessDate = x.BusinessDate,
-                PropertyCode = x.PropertyCode,
-            }).ToList();
-            return roomSummaries;
+                List<DB.Models.ApmaModels.RoomSummary> roomSummaries = managementSummaryList.Select(x => new DB.Models.ApmaModels.RoomSummary()
+                {
+                    InHouse = x.RoomSummary.InHouse,
+                    DayUse = x.RoomSummary.DayUse,
+                    LateArrival = x.RoomSummary.LateArrival,
+                    EarlyDeparture = x.RoomSummary.EarlyDeparture,
+                    Departed = x.RoomSummary.Departed,
+                    ToDepart = x.RoomSummary.ToDepart,
+                    StayOver = x.RoomSummary.StayOver,
+                    EarlyArrival = x.RoomSummary.EarlyArrival,
+                    Arrived = x.RoomSummary.Arrived,
+                    ToArrive = x.RoomSummary.ToArrive,
+                    NoShow = x.RoomSummary.NoShow,
+                    Complementary = x.RoomSummary.Complementary,
+                    WalkIns = x.RoomSummary.WalkIns,
+                    RoomReservationCreated = x.RoomSummary.RoomReservationCreated,
+                    RoomReservationCancelled = x.RoomSummary.RoomReservationCancelled,
+                    BusinessDate = x.BusinessDate,
+                    PropertyCode = x.PropertyCode,
+                }).ToList();
+                return roomSummaries;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }           
         }
 
         private List<DB.Models.ApmaModels.LedgerBalance> GetLedgerSummary(List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList)
         {
-
-            List<DB.Models.ApmaModels.LedgerBalance> LedgerBalances = managementSummaryList.Select(x => new DB.Models.ApmaModels.LedgerBalance()
+            try
             {
-                Reservations = x.LedgerBalance.Reservations,
-                InHouseReservations = x.LedgerBalance.InHouseReservations,
-                GroupReservations = x.LedgerBalance.GroupReservations,
-                EventReservations = x.LedgerBalance.EventReservations,
-                TotalTurnover = x.LedgerBalance.TotalTurnover,
-                LodgingTurnover = x.LedgerBalance.LodgingTurnover,
-                PaymentsDebitor = x.LedgerBalance.PaymentsDebitor,
-                PaymentsCash = x.LedgerBalance.PaymentsCash,
-                CityLedger = x.LedgerBalance.CityLedger,
-                TotalTurnoverEx = x.LedgerBalance.TotalTurnoverEx,
-                TotalTurnoverExSpecified = x.LedgerBalance.TotalTurnoverExSpecified,
-                LodgingTurnoverEx = x.LedgerBalance.LodgingTurnoverEx,
-                LodgingTurnoverExSpecified = x.LedgerBalance.LodgingTurnoverExSpecified,
-                BusinessDate = x.BusinessDate,
-                PropertyCode = x.PropertyCode
+                List<DB.Models.ApmaModels.LedgerBalance> LedgerBalances = managementSummaryList.Select(x => new DB.Models.ApmaModels.LedgerBalance()
+                {
+                    Reservations = x.LedgerBalance.Reservations,
+                    InHouseReservations = x.LedgerBalance.InHouseReservations,
+                    GroupReservations = x.LedgerBalance.GroupReservations,
+                    EventReservations = x.LedgerBalance.EventReservations,
+                    TotalTurnover = x.LedgerBalance.TotalTurnover,
+                    LodgingTurnover = x.LedgerBalance.LodgingTurnover,
+                    PaymentsDebitor = x.LedgerBalance.PaymentsDebitor,
+                    PaymentsCash = x.LedgerBalance.PaymentsCash,
+                    CityLedger = x.LedgerBalance.CityLedger,
+                    TotalTurnoverEx = x.LedgerBalance.TotalTurnoverEx,
+                    TotalTurnoverExSpecified = x.LedgerBalance.TotalTurnoverExSpecified,
+                    LodgingTurnoverEx = x.LedgerBalance.LodgingTurnoverEx,
+                    LodgingTurnoverExSpecified = x.LedgerBalance.LodgingTurnoverExSpecified,
+                    BusinessDate = x.BusinessDate,
+                    PropertyCode = x.PropertyCode
 
-            }).ToList();
-            return LedgerBalances;
+                }).ToList();
+                return LedgerBalances;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            } 
         }
 
         public void  InsertReportManagenetRoomAndLedgerData() 
         {
-
+             GetManagementData();
             _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
             _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);
         }

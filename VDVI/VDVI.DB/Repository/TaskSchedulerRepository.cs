@@ -34,8 +34,8 @@ namespace VDVI.DB.Repository
                 using (IDbConnection dbConnection = Connection)
                 {
                     dbConnection.Open();
-                    string query = @"INSERT INTO [dbo].[TaskSchedule](Id,MethodName,StartDate,EndDate)
-                                    VALUES (@Id,@MethodName	,@StartDate	,@EndDate)";
+                    string query = @"INSERT INTO [dbo].[TaskSchedule](MethodName,StartDate,EndDate)
+                                    VALUES (@MethodName	,@StartDate	,@EndDate)";
                     dbConnection.Execute(query, taskScheduler);
                 }
             }
