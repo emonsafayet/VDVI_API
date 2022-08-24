@@ -63,7 +63,8 @@ namespace VDVI.DB.Services
             var managementSummaryList = new List<Models.ApmaModels.ManagementSummary>();
 
             var r = filterreportManagementSummaries.Select(x => x);
-
+            
+            // need to optimize
             foreach (var item in r)
             {
                 var tempList = item.ManagementSummaries.Select(x => new DB.Models.ApmaModels.ManagementSummary()
