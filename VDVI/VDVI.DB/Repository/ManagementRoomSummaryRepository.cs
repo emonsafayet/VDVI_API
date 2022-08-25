@@ -30,8 +30,9 @@ namespace VDVI.DB.Repository
         }
 
 
-        public void InsertLedgerBalance(List<LedgerBalance> ledgerBalance)
+        public string InsertLedgerBalance(List<LedgerBalance> ledgerBalance)
         {
+            string result = "";
             try
             {
                 var param = new DynamicParameters();
@@ -56,17 +57,20 @@ namespace VDVI.DB.Repository
                         dbConnection.Query("spINSERT_hce_LedgerBalance", param,commandType:CommandType.StoredProcedure);
                     }
                 }
+                result = "Successfull";
 
             }
             catch (Exception ex)
             {
-
+                result = ex.Message;
                 throw ex;
             }
+            return result;
         }
 
-        public void InsertRoomSummary(List<RoomSummary> roomSummary)
+        public string InsertRoomSummary(List<RoomSummary> roomSummary)
         {
+            string result = "";
             try
             {
                 var param = new DynamicParameters();
@@ -97,13 +101,15 @@ namespace VDVI.DB.Repository
                         dbConnection.Query("spINSERT_hce_RoomSummary", param, commandType: CommandType.StoredProcedure);                         
                     }
                 }
+                result = "Successfull";
 
             }
             catch (Exception ex)
             {
-
+                result = ex.Message;
                 throw ex;
             }
+            return result;
         }
     }
 }

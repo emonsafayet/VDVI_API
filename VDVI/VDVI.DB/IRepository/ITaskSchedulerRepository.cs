@@ -8,6 +8,6 @@ namespace VDVI.DB.IRepository
     public interface ITaskSchedulerRepository
     {
         void InsertOrUpdateTaskScheduleDatetime(string methodName, DateTime startDate, DateTime endDate, int flag);
-         TaskScheduler GetTaskScheduler(string methodName);
+        TaskScheduler GetTaskScheduler(string methodName);
     }
 }

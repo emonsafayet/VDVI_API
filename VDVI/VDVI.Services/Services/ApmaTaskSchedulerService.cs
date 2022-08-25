@@ -15,7 +15,7 @@ namespace VDVI.Services.Services
             _taskScheduler = taskScheduler;
         }
 
-        public  TaskScheduler GetTaskScheduler(string methodName)
+        public TaskScheduler GetTaskScheduler(string methodName)
         {
             try
             {

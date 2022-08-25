@@ -7,7 +7,7 @@ namespace VDVI.DB.IRepository
 {
     public  interface IManagementRoomSummaryRepository
     {
-        void InsertRoomSummary(List<RoomSummary> roomSummary);
-        void InsertLedgerBalance(List<LedgerBalance> ledgerBalance);
+        string InsertRoomSummary(List<RoomSummary> roomSummary);
+        string InsertLedgerBalance(List<LedgerBalance> ledgerBalance);
     }
 }

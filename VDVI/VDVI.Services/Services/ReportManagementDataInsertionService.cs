@@ -16,14 +16,14 @@ namespace VDVI.Services.Services
             _managementRoomSummaryRepository = managementRoomSummaryRepository; 
         }
 
-        public void InsertLedgerBalance(List<LedgerBalance> ledgerBalance)
+        public string InsertLedgerBalance(List<LedgerBalance> ledgerBalance)
         {
-            _managementRoomSummaryRepository.InsertLedgerBalance(ledgerBalance);
+           return _managementRoomSummaryRepository.InsertLedgerBalance(ledgerBalance);
         }
 
-        public void InsertRoomSummary(List<RoomSummary> roomSummary)
+        public string InsertRoomSummary(List<RoomSummary> roomSummary)
         {
-            _managementRoomSummaryRepository.InsertRoomSummary(roomSummary);
-        } 
+            return _managementRoomSummaryRepository.InsertRoomSummary(roomSummary);
+        }  
     }
 }

@@ -7,7 +7,7 @@ namespace VDVI.Services.IServices
 {
     public interface IReportManagementDataInsertionService
     {
-        void InsertRoomSummary(List<RoomSummary> roomSummary);
-        void InsertLedgerBalance(List<LedgerBalance> ledgerBalance);
+        string InsertRoomSummary(List<RoomSummary> roomSummary);
+        string InsertLedgerBalance(List<LedgerBalance> ledgerBalance);
     }
 }

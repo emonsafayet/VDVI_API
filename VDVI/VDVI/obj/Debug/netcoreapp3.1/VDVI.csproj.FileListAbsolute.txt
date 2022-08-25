@@ -218,14 +218,18 @@ E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netc
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\NCrontab.Signed.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\NetTopologySuite.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Owin.dll
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Quartz.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\SoapHttpClient.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Formats.Asn1.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Private.ServiceModel.dll
@@ -234,6 +238,7 @@ E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netc
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Cng.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Xml.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
@@ -283,6 +288,7 @@ E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netc
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll

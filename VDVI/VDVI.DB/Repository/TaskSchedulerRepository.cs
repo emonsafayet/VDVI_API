@@ -29,7 +29,7 @@ namespace VDVI.DB.Repository
             
         }  
 
-        public  TaskScheduler GetTaskScheduler(string methodName)
+        public TaskScheduler GetTaskScheduler(string methodName)
         { 
          
             try
@@ -39,9 +39,8 @@ namespace VDVI.DB.Repository
                 using (IDbConnection dbConnection = Connection)
                 { 
                     dbConnection.Open();
-                    string query = @"SELECT  *FROM dbo.TaskSchedule WHERE MethodName=@methodName ";
-                    return dbConnection.QueryFirstOrDefault<TaskScheduler>(query, new { methodName = methodName });
-                     
+                    string query = @"SELECT EndDate FROM dbo.TaskSchedule WHERE MethodName=@methodName ";
+                    return dbConnection.QueryFirstOrDefault<TaskScheduler>(query, new { methodName = methodName });                     
                 } 
                 
             }

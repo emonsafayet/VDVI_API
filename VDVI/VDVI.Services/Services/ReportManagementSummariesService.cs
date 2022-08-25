@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using Hangfire;
+using Microsoft.Extensions.Configuration;
+using NCrontab;
+using Newtonsoft.Json;
+using Quartz;
 using SOAPAppCore.Interfaces.Apma;
 using SOAPService;
 using System;
@@ -7,9 +11,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using VDVI.Common;
 using VDVI.DB.IRepository;
 using VDVI.DB.IServices;
 using VDVI.DB.Models.ApmaModels;
+using VDVI.DB.Models.Common;
 using VDVI.Services.IServices;
 
 namespace VDVI.DB.Services
@@ -18,23 +24,22 @@ namespace VDVI.DB.Services
     {
          
         private readonly IReportManagementSummary _reportSummary;
+        private readonly IConfiguration _config;
         private readonly IReportManagementDataInsertionService _reportManagementDataInsertionService;
         private readonly IApmaTaskSchedulerService _apmaTaskSchedulerService;
 
         private List<DB.Models.ApmaModels.RoomSummary> roomSummaryList=new List<DB.Models.ApmaModels.RoomSummary>();
-        private List<DB.Models.ApmaModels.LedgerBalance> ledgerBalanceList = new List<DB.Models.ApmaModels.LedgerBalance>();
+        private List<DB.Models.ApmaModels.LedgerBalance> ledgerBalanceList = new List<DB.Models.ApmaModels.LedgerBalance>(); 
 
+        DateTime StartDate = new DateTime();
+        DateTime Enddate = new DateTime(); 
          
-         
-        //DateTime initialDate = new DateTime(2018, 01, 01); //This initial Date comes from appsettings.
-        //DateTime StartDate = new DateTime(2018, 01, 01);
-        //DateTime Enddate = DateTime.Now;//new DateTime(2018, 01, 01);
 
-
-        public ReportManagementSummariesService(IReportManagementSummary reportSummary, 
+        public ReportManagementSummariesService(IReportManagementSummary reportSummary, IConfiguration config,
             IReportManagementDataInsertionService reportManagementDataInsertionService,IApmaTaskSchedulerService apmaTaskSchedulerService)
         { 
             _reportSummary = reportSummary;
+            _config = config;
             _reportManagementDataInsertionService = reportManagementDataInsertionService;
             _apmaTaskSchedulerService = apmaTaskSchedulerService;
         }
@@ -43,11 +48,6 @@ namespace VDVI.DB.Services
         public void GetManagementData()
         {
             //hangfire; Algorithm 
-
-            string startDate = "2019/01/01";
-            string enddate = "2019/01/15";
-            DateTime StartDate = Convert.ToDateTime(startDate);
-            DateTime Enddate = Convert.ToDateTime(enddate);
 
             try
             {
@@ -178,50 +178,69 @@ namespace VDVI.DB.Services
         }
 
         public void InsertReportManagenetRoomAndLedgerData()
-        {
+        {           
+            var res = GetStartAndEndDate();
+
+            var LedgerSummeryResult = "";
+            var RoomSummeryResult = "";
 
             GetManagementData();
-            if(ledgerBalanceList.Count!=0) _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
-            if(roomSummaryList.Count!=0) _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);
+            if (ledgerBalanceList.Count != 0)
+                RoomSummeryResult = _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
 
-            //Task Scheduler 
-           // RenderTaskScheduling();
+            if (roomSummaryList.Count != 0)
+                LedgerSummeryResult = _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);            
+
+            if (RoomSummeryResult == "Successfull" && LedgerSummeryResult == "Successfull")
+            {
+                //Task Scheduler 
+                if (res == null)
+                    RenderTaskScheduling("Insert");
+                else
+                    RenderTaskScheduling("Update");
+            }
+        } 
+
+
+        //Scheduler Configuration from appsetting.json 
+        private TaskScheduler GetStartAndEndDate()
+        {
+            string resultDate = _config.GetSection("ApmaServiceDateConfig").GetSection("initialStartDate").Value;
+            DateTime apmaInitialDate = Convert.ToDateTime(resultDate);
+
+            var  dayDiffernce=_config.GetSection("ApmaServiceDateConfig").GetSection("DayDifferenceReportManagementRoomAndLedgerSummary").Value;
+            
+            //Check from the Database by methodName, if there have any existing value or not ;
+            TaskScheduler taskScheduleEndDate = _apmaTaskSchedulerService.GetTaskScheduler("HcsReportManagementSummary");
+
+            if (taskScheduleEndDate == null)
+            {
+                StartDate = apmaInitialDate;
+                Enddate = StartDate.AddDays(Convert.ToInt32(dayDiffernce));
+            }
+            else if (taskScheduleEndDate.EndDate != null)
+            {
+                StartDate = Convert.ToDateTime(taskScheduleEndDate.EndDate);
+                Enddate = StartDate.AddDays(Convert.ToInt32(dayDiffernce));
+            }
+            return taskScheduleEndDate;
+        } 
+
+
+        //Insert or Update data after successfully Entry on RoomSummary and LedgerSummary
+        private void RenderTaskScheduling(string actionReulst)
+        {
+            if (actionReulst == "Insert") //1 for Insert
+            {
+                _apmaTaskSchedulerService.InsertOrUpdateTaskScheduleDatetime("HcsReportManagementSummary", StartDate, Enddate, 0);
+            }
+            else
+            {
+                _apmaTaskSchedulerService.InsertOrUpdateTaskScheduleDatetime("HcsReportManagementSummary", StartDate, Enddate, 1);
+            }
 
         }
 
-        //private void RenderTaskScheduling()
-        //{            
-        //    var endDate=_apmaTaskSchedulerService.GetTaskScheduler("HcsReportManagementSummary");
-
-        //    if (endDate==null)
-        //    {
-        //        StartDate = initialDate; // it will come from appsettig initialDate
-        //        Enddate =DateTime.Now; // it will come from appsetting time difference
-
-        //        _apmaTaskSchedulerService.InsertOrUpdateTaskScheduleDatetime("HcsReportManagementSummary", StartDate, Enddate,0);
-        //    }
-        //    else
-        //    {
-        //        StartDate = Enddate.AddMilliseconds(1); // it will come from appsettig initialDate
-        //        Enddate = StartDate.AddMinutes(2); // it will come from appsetting time difference
-
-        //        _apmaTaskSchedulerService.InsertOrUpdateTaskScheduleDatetime("HcsReportManagementSummary", StartDate, Enddate, 1);
-        //    }
-
-
-        //}
-       
 
     }
-}
-
-
-
-
-//TODO : 1. API Calling,
-//If calling success :
-//2. Param ,
-//3. data format,
-//4. Save in database ,
-//5. updated next lAst executed date, 
-// Database : ExecutedDateTime
+} 
