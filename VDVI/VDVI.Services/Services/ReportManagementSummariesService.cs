@@ -44,41 +44,52 @@ namespace VDVI.DB.Services
             _apmaTaskSchedulerService = apmaTaskSchedulerService;
         }
 
-       
+        //This is working for hangfire;
         public void GetManagementData()
         {
-            //hangfire; Algorithm 
 
             try
             {
-                List<HcsReportManagementSummaryResponse> res = _reportSummary.GetReportManagementSummaryFromApma(StartDate, Enddate);
 
-                var jsonDatas = JsonConvert.SerializeObject(res, formatting: Newtonsoft.Json.Formatting.Indented);
-
-                List<RerportManagementSummaryModel> reportManagementSummaries = JsonConvert.DeserializeObject<List<RerportManagementSummaryModel>>(jsonDatas);
-
-                List<HcsReportManagementSummaryResult> filterreportManagementSummaries = new List<HcsReportManagementSummaryResult>();
-
-                filterreportManagementSummaries = reportManagementSummaries.Where(r => r.HcsReportManagementSummaryResult.Success == true).ToList().Select(x => x.HcsReportManagementSummaryResult).ToList();
-
-                List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList = new List<DB.Models.ApmaModels.ManagementSummary>();
-
-
-                if (filterreportManagementSummaries.Count != 0)
-                {
-                    managementSummaryList = GetmanagementSummaryList(filterreportManagementSummaries);
-
-                    roomSummaryList = GetRoomSummary(managementSummaryList);
-
-                    ledgerBalanceList = GetLedgerSummary(managementSummaryList);
-                }
+                GetManagementSummaryData("", "", false);
             }
             catch (Exception ex)
             {
 
                 throw ex;
-            }            
-        }  
+            }
+        }
+
+        private void GetManagementSummaryData(string _startDate,string _endDate,bool isManual=false)
+        {
+
+            if (isManual)
+            {
+                StartDate = Convert.ToDateTime(_startDate);
+                Enddate = Convert.ToDateTime(_endDate);
+            }
+
+            List<HcsReportManagementSummaryResponse> res = _reportSummary.GetReportManagementSummaryFromApma(StartDate, Enddate);
+            var jsonDatas = JsonConvert.SerializeObject(res, formatting: Newtonsoft.Json.Formatting.Indented);
+
+            List<RerportManagementSummaryModel> reportManagementSummaries = JsonConvert.DeserializeObject<List<RerportManagementSummaryModel>>(jsonDatas);
+
+            List<HcsReportManagementSummaryResult> filterreportManagementSummaries = new List<HcsReportManagementSummaryResult>();
+
+            filterreportManagementSummaries = reportManagementSummaries.Where(r => r.HcsReportManagementSummaryResult.Success == true).ToList().Select(x => x.HcsReportManagementSummaryResult).ToList();
+
+            List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList = new List<DB.Models.ApmaModels.ManagementSummary>();
+
+
+            if (filterreportManagementSummaries.Count != 0)
+            {
+                managementSummaryList = GetmanagementSummaryList(filterreportManagementSummaries);
+
+                roomSummaryList = GetRoomSummary(managementSummaryList);
+
+                ledgerBalanceList = GetLedgerSummary(managementSummaryList);
+            }
+        } 
 
         private List<DB.Models.ApmaModels.ManagementSummary> GetmanagementSummaryList(List<VDVI.DB.Models.ApmaModels.HcsReportManagementSummaryResult> filterreportManagementSummaries)
         {
@@ -177,7 +188,7 @@ namespace VDVI.DB.Services
             } 
         }
 
-        public void InsertReportManagenetRoomAndLedgerData()
+        public void InsertReportManagenetRoomAndLedgerSummary()
         {           
             var res = GetStartAndEndDate();
 
@@ -185,10 +196,10 @@ namespace VDVI.DB.Services
             var RoomSummeryResult = "";
 
             GetManagementData();
-            if (ledgerBalanceList.Count != 0)
+            if (ledgerBalanceList.Count> 0)
                 RoomSummeryResult = _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
 
-            if (roomSummaryList.Count != 0)
+            if (roomSummaryList.Count > 0)
                 LedgerSummeryResult = _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);            
 
             if (RoomSummeryResult == "Successfull" && LedgerSummeryResult == "Successfull")
@@ -201,7 +212,6 @@ namespace VDVI.DB.Services
             }
         } 
 
-
         //Scheduler Configuration from appsetting.json 
         private TaskScheduler GetStartAndEndDate()
         {
@@ -210,7 +220,7 @@ namespace VDVI.DB.Services
 
             var  dayDiffernce=_config.GetSection("ApmaServiceDateConfig").GetSection("DayDifferenceReportManagementRoomAndLedgerSummary").Value;
             
-            //Check from the Database by methodName, if there have any existing value or not ;
+            //Check from the Database by method Name, if there have any existing value or not ;
             TaskScheduler taskScheduleEndDate = _apmaTaskSchedulerService.GetTaskScheduler("HcsReportManagementSummary");
 
             if (taskScheduleEndDate == null)
@@ -226,8 +236,7 @@ namespace VDVI.DB.Services
             return taskScheduleEndDate;
         } 
 
-
-        //Insert or Update data after successfully Entry on RoomSummary and LedgerSummary
+        //Into the TaskScheduler table is Inserting or Updating data; after successfully Entry on RoomSummary and LedgerSummary table;
         private void RenderTaskScheduling(string actionReulst)
         {
             if (actionReulst == "Insert") //1 for Insert
@@ -241,6 +250,31 @@ namespace VDVI.DB.Services
 
         }
 
+        //Insert Manually ReportManagementRoomAndLedgerSummery
+        public string InsertManullyReportManagementRoomAndLedgerSummary(string _startDate, string _endDate)
+        {
+            var message = "";
+            try
+            {
+                GetManagementSummaryData(_startDate, _endDate,true);
 
+                if (roomSummaryList.Count>0 && ledgerBalanceList.Count>0)
+                {
+                    _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);
+                    _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
+                    message = "Room and Ledger Summary Inserted Successfully";
+                }
+                return message;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+             
+        }
+
+        
     }
 } 

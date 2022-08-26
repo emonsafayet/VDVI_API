@@ -27,11 +27,11 @@ namespace VDVI.Controllers
 
 
         [HttpPost("GetReportManagement")]
-        public  IActionResult GetReportManagement()
+        public  IActionResult GetReportManagement(string _startDate, string _endDate)
         {
             try
             {
-                _roomManagementSummariesService.GetManagementData();
+                 _roomManagementSummariesService.InsertManullyReportManagementRoomAndLedgerSummary(_startDate, _endDate);
                 return Ok();
             }
             catch (Exception ex)

@@ -8,7 +8,8 @@ namespace VDVI.DB.IServices
     public interface IReportManagementSummariesService
     { 
         void GetManagementData();
-        void InsertReportManagenetRoomAndLedgerData();
+        void InsertReportManagenetRoomAndLedgerSummary();
+        string InsertManullyReportManagementRoomAndLedgerSummary(string _startDate, string _endDate);
 
     }
 }

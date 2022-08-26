@@ -101,7 +101,7 @@ namespace VDVI
             });
             recurringJobManager.AddOrUpdate(
                   "InsertReportManagementRoomAndLedgerJob",
-                  () => serviceProvider.GetService<IReportManagementSummariesService>().InsertReportManagenetRoomAndLedgerData(),
+                  () => serviceProvider.GetService<IReportManagementSummariesService>().InsertReportManagenetRoomAndLedgerSummary(),
                   configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Local
                   );
             //recurringJobManager.AddOrUpdate(
