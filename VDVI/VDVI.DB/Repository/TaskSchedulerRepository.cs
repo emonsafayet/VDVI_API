@@ -28,8 +28,7 @@ namespace VDVI.DB.Repository
             }
             
         }  
-
-        public TaskScheduler GetTaskScheduler(string methodName)
+        public JobTaskScheduler GetTaskScheduler(string methodName)
         { 
          
             try
@@ -39,8 +38,8 @@ namespace VDVI.DB.Repository
                 using (IDbConnection dbConnection = Connection)
                 { 
                     dbConnection.Open();
-                    string query = @"SELECT EndDate FROM dbo.TaskSchedule WHERE MethodName=@methodName ";
-                    return dbConnection.QueryFirstOrDefault<TaskScheduler>(query, new { methodName = methodName });                     
+                    string query = @"SELECT lastExecutionDate FROM dbo.JobTaskScheduler WHERE MethodName=@methodName ";
+                    return dbConnection.QueryFirstOrDefault<JobTaskScheduler>(query, new { methodName = methodName });                     
                 } 
                 
             }
@@ -50,16 +49,14 @@ namespace VDVI.DB.Repository
                 throw ex;
             }
         }
-
-        public void InsertOrUpdateTaskScheduleDatetime(string methodName, DateTime startDate, DateTime endDate, int flag)
+        public void InsertOrUpdateTaskScheduleDatetime(string methodName, DateTime lastExecutionDatetime, int flag)
         {
             var param = new DynamicParameters();
 
             using (IDbConnection dbConnection = Connection)
             {
-                param.Add("@MethodName", methodName);
-                param.Add("@StartDate", startDate);
-                param.Add("@EndDate", endDate);
+                param.Add("@MethodName", methodName); 
+                param.Add("@lastExecutionDatetime", lastExecutionDatetime);
                 param.Add("@flag", flag);
 
                 dbConnection.Open();

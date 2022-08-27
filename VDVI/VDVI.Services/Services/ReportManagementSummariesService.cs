@@ -22,22 +22,22 @@ namespace VDVI.DB.Services
 {
     public class ReportManagementSummariesService : IReportManagementSummariesService
     {
-         
+
         private readonly IReportManagementSummary _reportSummary;
         private readonly IConfiguration _config;
         private readonly IReportManagementDataInsertionService _reportManagementDataInsertionService;
         private readonly IApmaTaskSchedulerService _apmaTaskSchedulerService;
 
-        private List<DB.Models.ApmaModels.RoomSummary> roomSummaryList=new List<DB.Models.ApmaModels.RoomSummary>();
-        private List<DB.Models.ApmaModels.LedgerBalance> ledgerBalanceList = new List<DB.Models.ApmaModels.LedgerBalance>(); 
+        private List<DB.Models.ApmaModels.RoomSummary> roomSummaryList = new List<DB.Models.ApmaModels.RoomSummary>();
+        private List<DB.Models.ApmaModels.LedgerBalance> ledgerBalanceList = new List<DB.Models.ApmaModels.LedgerBalance>();
 
         DateTime StartDate = new DateTime();
-        DateTime Enddate = new DateTime(); 
-         
+        DateTime Enddate = new DateTime();
+
 
         public ReportManagementSummariesService(IReportManagementSummary reportSummary, IConfiguration config,
-            IReportManagementDataInsertionService reportManagementDataInsertionService,IApmaTaskSchedulerService apmaTaskSchedulerService)
-        { 
+            IReportManagementDataInsertionService reportManagementDataInsertionService, IApmaTaskSchedulerService apmaTaskSchedulerService)
+        {
             _reportSummary = reportSummary;
             _config = config;
             _reportManagementDataInsertionService = reportManagementDataInsertionService;
@@ -59,8 +59,7 @@ namespace VDVI.DB.Services
                 throw ex;
             }
         }
-
-        private void GetManagementSummaryData(string _startDate,string _endDate,bool isManual=false)
+        private void GetManagementSummaryData(string _startDate, string _endDate, bool isManual = false)
         {
 
             if (isManual)
@@ -89,8 +88,7 @@ namespace VDVI.DB.Services
 
                 ledgerBalanceList = GetLedgerSummary(managementSummaryList);
             }
-        } 
-
+        }
         private List<DB.Models.ApmaModels.ManagementSummary> GetmanagementSummaryList(List<VDVI.DB.Models.ApmaModels.HcsReportManagementSummaryResult> filterreportManagementSummaries)
         {
             var managementSummaryList = new List<Models.ApmaModels.ManagementSummary>();
@@ -98,7 +96,7 @@ namespace VDVI.DB.Services
             {
                 var result = filterreportManagementSummaries.Select(x => x);
 
-                if (result!=null)
+                if (result != null)
                 {
                     // need to optimize; using linq will be better;
                     foreach (var item in result)
@@ -113,14 +111,14 @@ namespace VDVI.DB.Services
                         managementSummaryList.AddRange(tempList);
                     }
                 }
-               
+
                 return managementSummaryList;
             }
             catch (Exception ex)
             {
 
                 throw ex;
-            }            
+            }
         }
 
         private List<DB.Models.ApmaModels.RoomSummary> GetRoomSummary(List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList)
@@ -153,9 +151,8 @@ namespace VDVI.DB.Services
             {
 
                 throw ex;
-            }           
+            }
         }
-
         private List<DB.Models.ApmaModels.LedgerBalance> GetLedgerSummary(List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList)
         {
             try
@@ -185,22 +182,21 @@ namespace VDVI.DB.Services
             {
 
                 throw ex;
-            } 
+            }
         }
-
         public void InsertReportManagenetRoomAndLedgerSummary()
-        {           
+        {
             var res = GetStartAndEndDate();
 
             var LedgerSummeryResult = "";
             var RoomSummeryResult = "";
 
             GetManagementData();
-            if (ledgerBalanceList.Count> 0)
+            if (ledgerBalanceList.Count > 0)
                 RoomSummeryResult = _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
 
             if (roomSummaryList.Count > 0)
-                LedgerSummeryResult = _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);            
+                LedgerSummeryResult = _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);
 
             if (RoomSummeryResult == "Successfull" && LedgerSummeryResult == "Successfull")
             {
@@ -210,42 +206,42 @@ namespace VDVI.DB.Services
                 else
                     RenderTaskScheduling("Update");
             }
-        } 
+        }
 
         //Scheduler Configuration from appsetting.json 
-        private TaskScheduler GetStartAndEndDate()
+        private JobTaskScheduler GetStartAndEndDate()
         {
             string resultDate = _config.GetSection("ApmaServiceDateConfig").GetSection("initialStartDate").Value;
             DateTime apmaInitialDate = Convert.ToDateTime(resultDate);
 
-            var  dayDiffernce=_config.GetSection("ApmaServiceDateConfig").GetSection("DayDifferenceReportManagementRoomAndLedgerSummary").Value;
-            
+            var dayDiffernce = _config.GetSection("ApmaServiceDateConfig").GetSection("DayDifferenceReportManagementRoomAndLedgerSummary").Value;
+
             //Check from the Database by method Name, if there have any existing value or not ;
-            TaskScheduler taskScheduleEndDate = _apmaTaskSchedulerService.GetTaskScheduler("HcsReportManagementSummary");
+            JobTaskScheduler taskScheduleEndDate = _apmaTaskSchedulerService.GetTaskScheduler("HcsReportManagementSummary");
 
             if (taskScheduleEndDate == null)
             {
                 StartDate = apmaInitialDate;
                 Enddate = StartDate.AddDays(Convert.ToInt32(dayDiffernce));
             }
-            else if (taskScheduleEndDate.EndDate != null)
+            else if (taskScheduleEndDate.LastExecutionDate != null)
             {
-                StartDate = Convert.ToDateTime(taskScheduleEndDate.EndDate);
+                StartDate = Convert.ToDateTime(taskScheduleEndDate.LastExecutionDate);
                 Enddate = StartDate.AddDays(Convert.ToInt32(dayDiffernce));
             }
             return taskScheduleEndDate;
-        } 
+        }
 
-        //Into the TaskScheduler table is Inserting or Updating data; after successfully Entry on RoomSummary and LedgerSummary table;
+        //Into the JobTaskScheduler table is Inserting or Updating data; after successfully Entry on RoomSummary and LedgerSummary table;
         private void RenderTaskScheduling(string actionReulst)
         {
             if (actionReulst == "Insert") //1 for Insert
             {
-                _apmaTaskSchedulerService.InsertOrUpdateTaskScheduleDatetime("HcsReportManagementSummary", StartDate, Enddate, 0);
+                _apmaTaskSchedulerService.InsertOrUpdateTaskScheduleDatetime("HcsReportManagementSummary", Enddate, 0);
             }
             else
             {
-                _apmaTaskSchedulerService.InsertOrUpdateTaskScheduleDatetime("HcsReportManagementSummary", StartDate, Enddate, 1);
+                _apmaTaskSchedulerService.InsertOrUpdateTaskScheduleDatetime("HcsReportManagementSummary", Enddate, 1);
             }
 
         }
@@ -256,9 +252,9 @@ namespace VDVI.DB.Services
             var message = "";
             try
             {
-                GetManagementSummaryData(_startDate, _endDate,true);
+                GetManagementSummaryData(_startDate, _endDate, true);
 
-                if (roomSummaryList.Count>0 && ledgerBalanceList.Count>0)
+                if (roomSummaryList.Count > 0 && ledgerBalanceList.Count > 0)
                 {
                     _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);
                     _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
@@ -272,9 +268,9 @@ namespace VDVI.DB.Services
             {
                 throw ex;
             }
-             
+
         }
 
-        
+
     }
-} 
+}

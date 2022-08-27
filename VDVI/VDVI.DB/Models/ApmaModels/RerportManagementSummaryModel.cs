@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace VDVI.DB.Models.ApmaModels
-{ 
+{
     public class ErrorInfo
     {
         public int ErrorCode { get; set; }
@@ -23,6 +23,8 @@ namespace VDVI.DB.Models.ApmaModels
 
     public class LedgerBalance
     {
+        public string PropertyCode { get; set; }
+        public DateTime? BusinessDate { get; set; }
         public double Reservations { get; set; }
         public double InHouseReservations { get; set; }
         public double GroupReservations { get; set; }
@@ -37,8 +39,8 @@ namespace VDVI.DB.Models.ApmaModels
         public bool TotalTurnoverExSpecified { get; set; }
         public double LodgingTurnoverEx { get; set; }
         public bool LodgingTurnoverExSpecified { get; set; }
-        public DateTime? BusinessDate { get; set; }
-        public string PropertyCode { get; set; }
+       
+       
     }
 
     public class ManagementSummary
@@ -51,6 +53,8 @@ namespace VDVI.DB.Models.ApmaModels
 
     public class RoomSummary
     {
+        public string PropertyCode { get; set; }
+        public DateTime? BusinessDate { get; set; }
         public int InHouse { get; set; }
         public int DayUse { get; set; }
         public int LateArrival { get; set; }
@@ -66,8 +70,7 @@ namespace VDVI.DB.Models.ApmaModels
         public int WalkIns { get; set; }
         public int RoomReservationCreated { get; set; }
         public int RoomReservationCancelled { get; set; }
-        public DateTime? BusinessDate { get; set; }
-        public string PropertyCode { get; set; }
+
     }
 
     public class RerportManagementSummaryModel

@@ -15,7 +15,7 @@ namespace VDVI.Services.Services
             _taskScheduler = taskScheduler;
         }
 
-        public TaskScheduler GetTaskScheduler(string methodName)
+        public JobTaskScheduler GetTaskScheduler(string methodName)
         {
             try
             {
@@ -30,11 +30,11 @@ namespace VDVI.Services.Services
           
         }
 
-        public void InsertOrUpdateTaskScheduleDatetime(string methodName,DateTime startDate,DateTime endDate,int flag)
+        public void InsertOrUpdateTaskScheduleDatetime(string methodName,DateTime lastExecutionDate,int flag)
         {
             try
             {
-                _taskScheduler.InsertOrUpdateTaskScheduleDatetime( methodName,  startDate,  endDate,  flag);
+                _taskScheduler.InsertOrUpdateTaskScheduleDatetime( methodName, lastExecutionDate,  flag);
             }
             catch (Exception ex)
             {

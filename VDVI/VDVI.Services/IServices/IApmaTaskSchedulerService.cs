@@ -7,7 +7,7 @@ namespace VDVI.Services.IServices
 {
     public interface IApmaTaskSchedulerService
     {
-        void InsertOrUpdateTaskScheduleDatetime(string methodName, DateTime startDate, DateTime endDate,int flag);
-        TaskScheduler GetTaskScheduler(string methodName); 
+        void InsertOrUpdateTaskScheduleDatetime(string methodName, DateTime lastExecutionDate, int flag);
+        JobTaskScheduler GetTaskScheduler(string methodName); 
     }
 }

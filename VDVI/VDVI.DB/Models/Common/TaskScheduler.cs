@@ -4,11 +4,10 @@ using System.Text;
 
 namespace VDVI.DB.Models.Common
 {
-    public class TaskScheduler
+    public class JobTaskScheduler
     {
         public int Id { get; set; }
-        public string MethodName { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; } 
+        public string MethodName { get; set; } 
+        public DateTime? LastExecutionDate { get; set; } 
     }
 }
