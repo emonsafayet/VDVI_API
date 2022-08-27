@@ -11,16 +11,16 @@ E:\Brain Station\VDVI\MainProject\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.c
 E:\Brain Station\VDVI\MainProject\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.csproj.CopyComplete
 E:\Brain Station\VDVI\MainProject\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.dll
 E:\Brain Station\VDVI\MainProject\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.pdb
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.csproj.AssemblyReference.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.GeneratedMSBuildEditorConfig.editorconfig
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.AssemblyInfoInputs.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.AssemblyInfo.cs
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.csproj.CoreCompileInputs.cache
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\VDVI.DB.deps.json
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\VDVI.DB.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\VDVI.DB.pdb
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\SOAPAppCore.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\SOAPAppCore.pdb
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.csproj.AssemblyReference.cache
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.GeneratedMSBuildEditorConfig.editorconfig
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.AssemblyInfoInputs.cache
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.AssemblyInfo.cs
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.csproj.CoreCompileInputs.cache
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.csproj.CopyComplete
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.pdb

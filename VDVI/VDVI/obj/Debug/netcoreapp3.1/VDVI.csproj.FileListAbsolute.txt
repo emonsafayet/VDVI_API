@@ -191,12 +191,6 @@ E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.
 E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.dll
 E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.pdb
 E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.genruntimeconfig.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.AssemblyReference.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.GeneratedMSBuildEditorConfig.editorconfig
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfoInputs.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfo.cs
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.CoreCompileInputs.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cache
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\appsettings.json
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.exe
@@ -304,10 +298,16 @@ E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netc
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\SOAPAppCore.pdb
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.DB.pdb
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.Services.pdb
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.AssemblyReference.cache
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.GeneratedMSBuildEditorConfig.editorconfig
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfoInputs.cache
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfo.cs
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.CoreCompileInputs.cache
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cs
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cache
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\staticwebassets\VDVI.StaticWebAssets.Manifest.cache
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.RazorTargetAssemblyInfo.cache
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.CopyComplete
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.pdb
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.genruntimeconfig.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cs
