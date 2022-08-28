@@ -38,7 +38,7 @@ namespace VDVI.DB.Repository
                 using (IDbConnection dbConnection = Connection)
                 { 
                     dbConnection.Open();
-                    string query = @"SELECT lastExecutionDate FROM dbo.JobTaskScheduler WHERE MethodName=@methodName ";
+                    string query = @"SELECT TOP 1 lastExecutionDate FROM dbo.JobTaskScheduler WHERE MethodName=@methodName ORDER BY lastExecutionDate,EntryDate desc  ";
                     return dbConnection.QueryFirstOrDefault<JobTaskScheduler>(query, new { methodName = methodName });                     
                 } 
                 
