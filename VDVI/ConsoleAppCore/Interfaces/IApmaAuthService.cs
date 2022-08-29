@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SOAPAppCore.Interfaces
 {
-    public interface IAuthService
+    public interface IApmaAuthService
     {
         public Authentication Authentication(string pmsToken);
         public AuthenticationResponse AuthenticationResponse();

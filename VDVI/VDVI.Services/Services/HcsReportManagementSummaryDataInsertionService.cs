@@ -7,11 +7,11 @@ using VDVI.Services.IServices;
 
 namespace VDVI.Services.Services
 {
-    public class ReportManagementDataInsertionService : IReportManagementDataInsertionService
+    public class HcsReportManagementSummaryDataInsertionService : IHcsReportManagementSummaryDataInsertionService
     {
-        public IManagementRoomSummaryRepository _managementRoomSummaryRepository; 
+        public IHcsReportManagementSummaryRepository _managementRoomSummaryRepository; 
 
-        public ReportManagementDataInsertionService(IManagementRoomSummaryRepository managementRoomSummaryRepository )
+        public HcsReportManagementSummaryDataInsertionService(IHcsReportManagementSummaryRepository managementRoomSummaryRepository )
         {
             _managementRoomSummaryRepository = managementRoomSummaryRepository; 
         }

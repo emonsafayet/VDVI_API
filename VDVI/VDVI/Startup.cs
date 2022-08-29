@@ -1,13 +1,12 @@
 using Hangfire.MemoryStorage;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting; 
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting; 
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using SOAPAppCore.Interfaces;
-using SOAPAppCore.Interfaces.Apma;
+using SOAPAppCore.Interfaces; 
 using SOAPAppCore.Services;
 using SOAPAppCore.Services.Apma;
 using System;
@@ -36,12 +35,12 @@ namespace VDVI
             services.AddControllers();
 
             //services
-            services.AddScoped<IReportManagementSummariesService,ReportManagementSummariesService>();
-            services.AddScoped<IReportManagementDataInsertionService, ReportManagementDataInsertionService>();
+            services.AddScoped<IHcsReportManagementSummaryService,HcsReportManagementSummaryService>();
+            services.AddScoped<IHcsReportManagementSummaryDataInsertionService, HcsReportManagementSummaryDataInsertionService>();
             services.AddScoped<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
 
             //repositories
-            services.AddScoped<IManagementRoomSummaryRepository, ManagementRoomSummaryRepository>();
+            services.AddScoped<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
          
 
             services.AddSwaggerGen();
@@ -64,10 +63,9 @@ namespace VDVI
             services.AddHangfireServer();
 
             //dependency resolve:
-            services.AddTransient<IAuthService, AuthService>();
-            services.AddTransient<IApmaService, ApmaService>();
-            services.AddTransient<IReportManagementSummary, ReportManagementSummary>();
-            services.AddTransient<IManagementRoomSummaryRepository, ManagementRoomSummaryRepository>();
+            services.AddTransient<IApmaAuthService, ApmaAuthService>();
+            services.AddTransient<IReportManagementSummaryService, ReportManagementSummaryService>(); 
+            services.AddTransient<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
             services.AddTransient<ITaskSchedulerRepository, TaskSchedulerRepository>(); 
         }
 
@@ -101,8 +99,8 @@ namespace VDVI
             });
             recurringJobManager.AddOrUpdate(
                   "InsertReportManagementRoomAndLedgerJob",
-                  () => serviceProvider.GetService<IReportManagementSummariesService>().InsertReportManagenetRoomAndLedgerSummary(),
-                  configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Local
+                  () => serviceProvider.GetService<IHcsReportManagementSummaryService>().ManagementSummaryInsertRoomAndLedger(),
+                  configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
                   );
             //recurringJobManager.AddOrUpdate(
             //    "NotifyIncidentOwnerJob",

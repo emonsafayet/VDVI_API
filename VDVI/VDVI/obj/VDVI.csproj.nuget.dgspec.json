@@ -296,7 +296,7 @@
             },
             "Hangfire.Dashboard.Authorization": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.0.1, )"
             },
             "Hangfire.MemoryStorage": {
               "target": "Package",

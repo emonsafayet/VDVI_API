@@ -82,7 +82,7 @@
           }
         }
       },
-      "Hangfire.Dashboard.Authorization/3.0.0": {
+      "Hangfire.Dashboard.Authorization/3.0.1": {
         "type": "package",
         "dependencies": {
           "Hangfire.Core": "1.6.0",
@@ -1135,14 +1135,14 @@
         "lib/netstandard2.0/zh/Hangfire.Core.resources.dll"
       ]
     },
-    "Hangfire.Dashboard.Authorization/3.0.0": {
-      "sha512": "H/ngumrBNsQ1U1BndcFKNL9O9D/OlKiUhBGC46Wds6Jzz0ScwRtuumPLE8mjf+3YxUvjRHHErQYflnY/o10qhA==",
+    "Hangfire.Dashboard.Authorization/3.0.1": {
+      "sha512": "lH/u0EluKsFy6QvMmi4OYW5ajqEV9EKtWaGI2UCkiaLSW10q7j8EnSIyHCViGllDqdrt9NHwsSuNlcmuBiydOA==",
       "type": "package",
-      "path": "hangfire.dashboard.authorization/3.0.0",
+      "path": "hangfire.dashboard.authorization/3.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "hangfire.dashboard.authorization.3.0.0.nupkg.sha512",
+        "hangfire.dashboard.authorization.3.0.1.nupkg.sha512",
         "hangfire.dashboard.authorization.nuspec",
         "lib/net45/Hangfire.Dashboard.Authorization.XML",
         "lib/net45/Hangfire.Dashboard.Authorization.dll"
@@ -3076,7 +3076,7 @@
     ".NETCoreApp,Version=v3.1": [
       "Hangfire.AspNetCore >= 1.7.31",
       "Hangfire.Core >= 1.7.31",
-      "Hangfire.Dashboard.Authorization >= 3.0.0",
+      "Hangfire.Dashboard.Authorization >= 3.0.1",
       "Hangfire.MemoryStorage >= 1.7.0",
       "Hangfire.SqlServer >= 1.7.31",
       "Microsoft.Extensions.Configuration >= 6.0.1",
@@ -3162,7 +3162,7 @@
           },
           "Hangfire.Dashboard.Authorization": {
             "target": "Package",
-            "version": "[3.0.0, )"
+            "version": "[3.0.1, )"
           },
           "Hangfire.MemoryStorage": {
             "target": "Package",
@@ -3256,7 +3256,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Hangfire.Dashboard.Authorization 3.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'Hangfire.Dashboard.Authorization 3.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
       "libraryId": "Hangfire.Dashboard.Authorization",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.1"

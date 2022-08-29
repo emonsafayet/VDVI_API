@@ -1,8 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using SOAPAppCore.Interfaces.Apma;
+using Newtonsoft.Json; 
 using SOAPService;
 using System;
 using System.Collections.Generic;
@@ -17,12 +16,13 @@ namespace VDVI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ApmaController : ControllerBase
+    public class HcsReportManagementSummaryController : ControllerBase
     {
-        public IReportManagementSummariesService _roomManagementSummariesService { get; }
-        public ApmaController(IReportManagementSummariesService roomManagementSummariesService)
+
+        public IHcsReportManagementSummaryService _hcsReportManagementSummaryService { get; }
+        public HcsReportManagementSummaryController(IHcsReportManagementSummaryService hcsReportManagementSummaryService)
         {
-            _roomManagementSummariesService = roomManagementSummariesService;
+            _hcsReportManagementSummaryService = hcsReportManagementSummaryService;
         }
 
 
@@ -31,7 +31,7 @@ namespace VDVI.Controllers
         {
             try
             {
-                _roomManagementSummariesService.InsertManullyReportManagementRoomAndLedgerSummary(_startDate, _endDate);
+                _hcsReportManagementSummaryService.ManagementSummaryInsertManullyRoomAndLedger(_startDate, _endDate);
                 return Ok();
             }
             catch (Exception ex)

@@ -13,11 +13,11 @@ using VDVI.DB.Models.ApmaModels;
 
 namespace VDVI.DB.Repository
 {
-    public class ManagementRoomSummaryRepository : IManagementRoomSummaryRepository
+    public class HcsReportManagementSummaryRepository : IHcsReportManagementSummaryRepository
     {
         protected readonly IConfiguration _config;
 
-        public ManagementRoomSummaryRepository(IConfiguration config)
+        public HcsReportManagementSummaryRepository(IConfiguration config)
         {
             _config = config;
         }

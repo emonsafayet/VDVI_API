@@ -5,7 +5,7 @@ using VDVI.DB.Models.ApmaModels;
 
 namespace VDVI.DB.IRepository
 {
-    public  interface IManagementRoomSummaryRepository
+    public  interface IHcsReportManagementSummaryRepository
     {
         string InsertRoomSummary(List<RoomSummary> roomSummary);
         string InsertLedgerBalance(List<LedgerBalance> ledgerBalance);

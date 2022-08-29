@@ -73,7 +73,7 @@ namespace VDVI.DB.Models.ApmaModels
 
     }
 
-    public class RerportManagementSummaryModel
+    public class HcsReportManagementSummaryModel
     {
         public HcsReportManagementSummaryResult HcsReportManagementSummaryResult { get; set; }
     }

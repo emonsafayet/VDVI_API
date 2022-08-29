@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using NCrontab;
 using Newtonsoft.Json;
 using Quartz;
-using SOAPAppCore.Interfaces.Apma;
+using SOAPAppCore.Interfaces; 
 using SOAPService;
 using System;
 using System.Collections.Generic;
@@ -20,12 +20,12 @@ using VDVI.Services.IServices;
 
 namespace VDVI.DB.Services
 {
-    public class ReportManagementSummariesService : IReportManagementSummariesService
+    public class HcsReportManagementSummaryService : IHcsReportManagementSummaryService
     {
 
-        private readonly IReportManagementSummary _reportSummary;
+        private readonly IReportManagementSummaryService _reportSummary;
         private readonly IConfiguration _config;
-        private readonly IReportManagementDataInsertionService _reportManagementDataInsertionService;
+        private readonly IHcsReportManagementSummaryDataInsertionService _reportManagementDataInsertionService;
         private readonly IApmaTaskSchedulerService _apmaTaskSchedulerService;
 
         private List<DB.Models.ApmaModels.RoomSummary> roomSummaryList = new List<DB.Models.ApmaModels.RoomSummary>();
@@ -35,8 +35,8 @@ namespace VDVI.DB.Services
         DateTime Enddate = new DateTime();
 
 
-        public ReportManagementSummariesService(IReportManagementSummary reportSummary, IConfiguration config,
-            IReportManagementDataInsertionService reportManagementDataInsertionService, IApmaTaskSchedulerService apmaTaskSchedulerService)
+        public HcsReportManagementSummaryService(IReportManagementSummaryService reportSummary , IConfiguration config,
+            IHcsReportManagementSummaryDataInsertionService reportManagementDataInsertionService, IApmaTaskSchedulerService apmaTaskSchedulerService)
         {
             _reportSummary = reportSummary;
             _config = config;
@@ -44,8 +44,9 @@ namespace VDVI.DB.Services
             _apmaTaskSchedulerService = apmaTaskSchedulerService;
         }
 
-        //This is working for hangfire;
-        public void GetManagementData()
+        //This is working for hangfire;     
+        
+        public void GetManagementSummary()
         {
 
             try
@@ -61,17 +62,15 @@ namespace VDVI.DB.Services
         }
         private void GetManagementSummaryData(string _startDate, string _endDate, bool isManual = false)
         {
-
             if (isManual)
             {
                 StartDate = Convert.ToDateTime(_startDate);
                 Enddate = Convert.ToDateTime(_endDate);
-            }
-
-            List<HcsReportManagementSummaryResponse> res = _reportSummary.GetReportManagementSummaryFromApma(StartDate, Enddate);
+            }             
+            List<HcsReportManagementSummaryResponse> res = _reportSummary.GetReportManagementSummary(StartDate, Enddate);
             var jsonDatas = JsonConvert.SerializeObject(res, formatting: Newtonsoft.Json.Formatting.Indented);
 
-            List<RerportManagementSummaryModel> reportManagementSummaries = JsonConvert.DeserializeObject<List<RerportManagementSummaryModel>>(jsonDatas);
+            List<HcsReportManagementSummaryModel> reportManagementSummaries = JsonConvert.DeserializeObject<List<HcsReportManagementSummaryModel>>(jsonDatas);
 
             List<HcsReportManagementSummaryResult> filterreportManagementSummaries = new List<HcsReportManagementSummaryResult>();
 
@@ -184,14 +183,14 @@ namespace VDVI.DB.Services
                 throw ex;
             }
         }
-        public void InsertReportManagenetRoomAndLedgerSummary()
+        public void ManagementSummaryInsertRoomAndLedger()
         {
             var res = GetStartAndEndDate();
 
             var LedgerSummeryResult = "";
             var RoomSummeryResult = "";
 
-            GetManagementData();
+            GetManagementSummary();
             if (ledgerBalanceList.Count > 0)
                 RoomSummeryResult = _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
 
@@ -207,7 +206,7 @@ namespace VDVI.DB.Services
                     RenderTaskScheduling("Update");
             }
         }
-
+        
         //Scheduler Configuration from appsetting.json 
         private JobTaskScheduler GetStartAndEndDate()
         {
@@ -247,7 +246,7 @@ namespace VDVI.DB.Services
         }
 
         //Insert Manually ReportManagementRoomAndLedgerSummery
-        public string InsertManullyReportManagementRoomAndLedgerSummary(string _startDate, string _endDate)
+        public string ManagementSummaryInsertManullyRoomAndLedger(string _startDate, string _endDate)
         {
             var message = "";
             try
@@ -271,6 +270,6 @@ namespace VDVI.DB.Services
 
         }
 
-
+       
     }
 }

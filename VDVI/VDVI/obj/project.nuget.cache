@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "sbGgXF0ohmBpWKC8rGkNpJGmroajg5RTE81f307/+nD17Zje5bdaKojy30Ja3YKg69o+kCOFW/dbAgCl2K9pSg==",
+  "dgSpecHash": "cQhMdHUKhHk3OEM/zq/EvFclvOfp9RlhdLcjRA/82jkB6NcAehBGo7r4J9DWC04hZFJmy2uzqVnkJStymj7DFA==",
   "success": true,
   "projectFilePath": "E:\\Brain Station\\VDVI\\MainProject\\Core Project\\VDVI_API\\VDVI\\VDVI\\VDVI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BS523\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\BS523\\.nuget\\packages\\hangfire.aspnetcore\\1.7.31\\hangfire.aspnetcore.1.7.31.nupkg.sha512",
     "C:\\Users\\BS523\\.nuget\\packages\\hangfire.core\\1.7.31\\hangfire.core.1.7.31.nupkg.sha512",
-    "C:\\Users\\BS523\\.nuget\\packages\\hangfire.dashboard.authorization\\3.0.0\\hangfire.dashboard.authorization.3.0.0.nupkg.sha512",
+    "C:\\Users\\BS523\\.nuget\\packages\\hangfire.dashboard.authorization\\3.0.1\\hangfire.dashboard.authorization.3.0.1.nupkg.sha512",
     "C:\\Users\\BS523\\.nuget\\packages\\hangfire.memorystorage\\1.7.0\\hangfire.memorystorage.1.7.0.nupkg.sha512",
     "C:\\Users\\BS523\\.nuget\\packages\\hangfire.sqlserver\\1.7.31\\hangfire.sqlserver.1.7.31.nupkg.sha512",
     "C:\\Users\\BS523\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
@@ -77,7 +77,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Hangfire.Dashboard.Authorization 3.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'Hangfire.Dashboard.Authorization 3.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
       "libraryId": "Hangfire.Dashboard.Authorization",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.1"
