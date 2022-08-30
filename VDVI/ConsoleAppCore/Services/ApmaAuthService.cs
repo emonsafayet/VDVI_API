@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SOAPAppCore.Services
 {
-    public class AuthService: IAuthService
+    public class ApmaAuthService: IApmaAuthService
     {
        SOAPService.HybridCloudEngineSoapClient client = new SOAPService.HybridCloudEngineSoapClient(SOAPService.HybridCloudEngineSoapClient.EndpointConfiguration.HybridCloudEngineSoap);
 
@@ -16,8 +16,6 @@ namespace SOAPAppCore.Services
         string pmsPassword = "O86n9JPr8jFG";
         string pmsVendorId = "0013200001Dj3LD";
         string pmsCrsProperty = "VALKINT";
-
-
 
         public Authentication Authentication(string pmsToken)
         {
