@@ -19,7 +19,7 @@ namespace VDVI.Controllers
     public class HcsReportManagementSummaryController : ControllerBase
     {
 
-        public IHcsReportManagementSummaryService _hcsReportManagementSummaryService { get; }
+        public IHcsReportManagementSummaryService _hcsReportManagementSummaryService;
         public HcsReportManagementSummaryController(IHcsReportManagementSummaryService hcsReportManagementSummaryService)
         {
             _hcsReportManagementSummaryService = hcsReportManagementSummaryService;
