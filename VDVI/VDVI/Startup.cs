@@ -83,7 +83,10 @@ namespace VDVI
                 app.UseSwaggerUI(c => {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Showing API V1");
                 });
-            }
+            } 
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseRouting();
 

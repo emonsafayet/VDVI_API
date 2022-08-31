@@ -32,5 +32,9 @@
 		<ProjectReference Include="..\VDVI.Services\VDVI.Services.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Include="wwwroot\index.html" />
+	</ItemGroup>
+
 
 </Project>
