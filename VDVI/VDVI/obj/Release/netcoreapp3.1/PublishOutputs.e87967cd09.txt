@@ -1,4 +1,5 @@
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Release\netcoreapp3.1\PubTmp\Out\VDVI.exe
+E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\index.html
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Release\netcoreapp3.1\PubTmp\Out\VDVI.dll
