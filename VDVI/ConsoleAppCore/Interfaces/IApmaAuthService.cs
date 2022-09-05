@@ -9,5 +9,6 @@ namespace SOAPAppCore.Interfaces
     {
         public Authentication Authentication(string pmsToken);
         public AuthenticationResponse AuthenticationResponse();
+        public string[] ReportManagementSummaryGetProperties(Authentication pmsAuthentication);
     }
 }

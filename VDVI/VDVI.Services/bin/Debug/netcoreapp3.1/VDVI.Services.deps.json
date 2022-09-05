@@ -458,6 +458,7 @@
       },
       "SOAPAppCore/1.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.1",
           "Newtonsoft.Json": "13.0.1",
           "System.ServiceModel.Duplex": "4.7.0",
           "System.ServiceModel.Http": "4.7.0",
