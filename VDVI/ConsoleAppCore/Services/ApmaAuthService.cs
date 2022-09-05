@@ -13,11 +13,6 @@ namespace SOAPAppCore.Services
     {
        SOAPService.HybridCloudEngineSoapClient client = new SOAPService.HybridCloudEngineSoapClient(SOAPService.HybridCloudEngineSoapClient.EndpointConfiguration.HybridCloudEngineSoap);
 
-        string pmsUser = "Valk_ETL_22";
-        string pmsPassword = "O86n9JPr8jFG";
-        string pmsVendorId = "0013200001Dj3LD";
-        string pmsCrsProperty = "VALKINT";
-
         public IConfiguration _config;
         public ApmaAuthService(IConfiguration config)
         {
@@ -30,10 +25,10 @@ namespace SOAPAppCore.Services
 
            var authentication = new SOAPService.Authentication
            {
-                User = pmsUser,
-                Password = pmsPassword,
-                VendorId = pmsVendorId,
-                CrsProperty = pmsCrsProperty,
+                User = _config.GetSection("AuthenticationCredential").GetSection("pmsUser").Value,
+                Password = _config.GetSection("AuthenticationCredential").GetSection("pmsPassword").Value,
+                VendorId = _config.GetSection("AuthenticationCredential").GetSection("pmsVendorId").Value,
+                CrsProperty = _config.GetSection("AuthenticationCredential").GetSection("pmsCrsProperty").Value,
                 Token = pmsToken
             };
             return authentication;
@@ -45,9 +40,9 @@ namespace SOAPAppCore.Services
             //request
             SOAPService.AuthenticationRequest authenticationRequest = new SOAPService.AuthenticationRequest
             {
-                User = pmsUser,
-                Password = pmsPassword,
-                VendorId = pmsVendorId
+                User = _config.GetSection("AuthenticationCredential").GetSection("pmsUser").Value,
+                Password = _config.GetSection("AuthenticationCredential").GetSection("pmsPassword").Value,
+                VendorId = _config.GetSection("AuthenticationCredential").GetSection("pmsVendorId").Value
             };
 
             //response

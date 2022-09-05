@@ -15,7 +15,7 @@ namespace SOAPAppCore.Services.Apma
 
         HybridCloudEngineSoapClient client = new HybridCloudEngineSoapClient(HybridCloudEngineSoapClient.EndpointConfiguration.HybridCloudEngineSoap);
 
-        ApmaAuthService authObj = new ApmaAuthService();
+        //ApmaAuthService authObj = new ApmaAuthService();
 
         public IConfiguration _config;
         private IApmaAuthService _apmaAuthService;
@@ -47,10 +47,10 @@ namespace SOAPAppCore.Services.Apma
         public List<HcsReportManagementSummaryResponse> GetReportManagementSummary(DateTime StartDate, DateTime EndDate)
         {
             var hcsReportManagementSummaryResponse = new List<HcsReportManagementSummaryResponse>();
-            var existingToken = _config.GetSection("AuthenticationToken").GetSection("Token").Value;
+            var existingToken = _config.GetSection("AuthenticationCredential").GetSection("Token").Value;
 
             string pmsToken = existingToken;
-            Authentication pmsAuthentication = authObj.Authentication(pmsToken);
+            Authentication pmsAuthentication = _apmaAuthService.Authentication(pmsToken);
 
             try
             {
@@ -59,10 +59,10 @@ namespace SOAPAppCore.Services.Apma
                 // if token is invalid
                 if (properties.Length <= 0 || existingToken == null)
                 {
-                    pmsToken = authObj.AuthenticationResponse().Token;
-                    pmsAuthentication = authObj.Authentication(pmsToken);
+                    pmsToken = _apmaAuthService.AuthenticationResponse().Token;
+                    pmsAuthentication = _apmaAuthService.Authentication(pmsToken);
                     properties = _apmaAuthService.ReportManagementSummaryGetProperties(pmsAuthentication);
-                    _config.GetSection("AuthenticationToken").GetSection("Token").Value = pmsToken;
+                    _config.GetSection("AuthenticationCredential").GetSection("Token").Value = pmsToken;
                 }
 
                 if (properties.Length > 0)

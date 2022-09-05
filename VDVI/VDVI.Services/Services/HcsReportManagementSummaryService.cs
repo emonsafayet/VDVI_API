@@ -35,7 +35,7 @@ namespace VDVI.DB.Services
         DateTime Enddate = new DateTime();
 
 
-        public HcsReportManagementSummaryService(IReportManagementSummaryService reportSummary , IConfiguration config,
+        public HcsReportManagementSummaryService(IReportManagementSummaryService reportSummary , IConfiguration config, 
             IHcsReportManagementSummaryDataInsertionService reportManagementDataInsertionService, IApmaTaskSchedulerService apmaTaskSchedulerService)
         {
             _reportSummary = reportSummary;
@@ -119,7 +119,6 @@ namespace VDVI.DB.Services
                 throw ex;
             }
         }
-
         private List<DB.Models.ApmaModels.RoomSummary> GetRoomSummary(List<VDVI.DB.Models.ApmaModels.ManagementSummary> managementSummaryList)
         {
             try
