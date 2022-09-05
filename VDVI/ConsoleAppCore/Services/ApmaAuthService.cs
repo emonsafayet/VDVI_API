@@ -1,4 +1,5 @@
-﻿using SOAPAppCore.Interfaces;
+﻿using Microsoft.Extensions.Configuration;
+using SOAPAppCore.Interfaces;
 using SOAPService;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,12 @@ namespace SOAPAppCore.Services
         string pmsPassword = "O86n9JPr8jFG";
         string pmsVendorId = "0013200001Dj3LD";
         string pmsCrsProperty = "VALKINT";
+
+        public IConfiguration _config;
+        public ApmaAuthService(IConfiguration config)
+        {
+            _config = config;
+        }  
 
         public Authentication Authentication(string pmsToken)
         {
@@ -46,6 +53,30 @@ namespace SOAPAppCore.Services
             //response
             SOAPService.AuthenticationResponse authenticationResponse = client.HceAuthenticateAsync(authenticationRequest).Result;
             return authenticationResponse;
+        }
+
+        public string[] ReportManagementSummaryGetProperties(Authentication pmsAuthentication)
+        {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            try
+            {
+                var ListProperties = client.HcsListPropertiesAsync(pmsAuthentication, "", "").Result.HcsListPropertiesResult.Properties;
+
+                List<string> propertylist = new List<string>();
+                foreach (var item in ListProperties)
+                {
+                    propertylist.Add(item.PropertyCode);
+                }
+                string[] properties = propertylist.ToArray();
+                return properties;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
     }
 }

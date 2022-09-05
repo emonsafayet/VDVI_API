@@ -9,7 +9,7 @@ namespace SOAPAppCore.Interfaces
     public interface IReportManagementSummaryService
     {
          Task<HcsReportManagementSummaryResponse> ReportManagementSummary(Authentication pmsAuthentication, string pmsProperty, DateTime StartDate, DateTime EndDate);
-         public string[] ReportManagementSummaryGetProperties(Authentication pmsAuthentication);
+        
 
          public List<HcsReportManagementSummaryResponse> GetReportManagementSummary(DateTime StartDate, DateTime EndDate);
     }

@@ -18,10 +18,12 @@ namespace SOAPAppCore.Services.Apma
         ApmaAuthService authObj = new ApmaAuthService();
 
         public IConfiguration _config;
+        private IApmaAuthService _apmaAuthService;
 
-        public ReportManagementSummaryService(IConfiguration config)
+        public ReportManagementSummaryService(IConfiguration config, IApmaAuthService apmaAuthService)
         {
             _config = config;
+            _apmaAuthService = apmaAuthService;
         }
         public Task<HcsReportManagementSummaryResponse> ReportManagementSummary(Authentication pmsAuthentication, string pmsProperty, DateTime StartDate, DateTime EndDate)
         {
@@ -40,31 +42,7 @@ namespace SOAPAppCore.Services.Apma
 
                 throw ex;
             }
-        }
-
-        public string[] ReportManagementSummaryGetProperties(Authentication pmsAuthentication)
-        {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-            try
-            {
-                var ListProperties = client.HcsListPropertiesAsync(pmsAuthentication, "", "").Result.HcsListPropertiesResult.Properties;
-
-                List<string> propertylist = new List<string>();
-                foreach (var item in ListProperties)
-                {
-                    propertylist.Add(item.PropertyCode);
-                }
-                string[] properties = propertylist.ToArray();
-                return properties;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
-        }
+        }      
 
         public List<HcsReportManagementSummaryResponse> GetReportManagementSummary(DateTime StartDate, DateTime EndDate)
         {
@@ -76,14 +54,14 @@ namespace SOAPAppCore.Services.Apma
 
             try
             {
-                var properties = ReportManagementSummaryGetProperties(pmsAuthentication);
+                var properties = _apmaAuthService.ReportManagementSummaryGetProperties(pmsAuthentication);
 
                 // if token is invalid
                 if (properties.Length <= 0 || existingToken == null)
                 {
                     pmsToken = authObj.AuthenticationResponse().Token;
                     pmsAuthentication = authObj.Authentication(pmsToken);
-                    properties = ReportManagementSummaryGetProperties(pmsAuthentication);
+                    properties = _apmaAuthService.ReportManagementSummaryGetProperties(pmsAuthentication);
                     _config.GetSection("AuthenticationToken").GetSection("Token").Value = pmsToken;
                 }
 
