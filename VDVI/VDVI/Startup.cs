@@ -1,12 +1,9 @@
-using Hangfire.MemoryStorage;
-using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
- 
+using Microsoft.OpenApi.Models; 
 using System;
 using VDVI.Services.Interfaces;
 using VDVI.DB.Services;
@@ -16,6 +13,7 @@ using VDVI.DB.Repository;
 using SOAPAppCore.Interfaces;
 using SOAPAppCore.Services;
 using SOAPAppCore.Services.Apma;
+using Hangfire;
 
 namespace VDVI
 {
@@ -52,13 +50,13 @@ namespace VDVI
                 });
             });
             //Hangfire
-            //services.AddHangfire(config =>
-            //           config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-            //           .UseSimpleAssemblyNameTypeSerializer()
-            //           .UseDefaultTypeSerializer()
-            //           .UseSqlServerStorage(Configuration.GetConnectionString("ApmaDb")
-            //           ));
-            //services.AddHangfireServer();
+            services.AddHangfire(config =>
+                       config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                       .UseSimpleAssemblyNameTypeSerializer()
+                       .UseDefaultTypeSerializer()
+                       .UseSqlServerStorage(Configuration.GetConnectionString("ApmaDb")
+                       ));
+            services.AddHangfireServer();
 
             //dependency resolve:
             services.AddTransient<IApmaAuthService, ApmaAuthService>();
@@ -94,10 +92,10 @@ namespace VDVI
             {
                 endpoints.MapControllers();
             });
-            //app.UseHangfireDashboard("/hangfire", new DashboardOptions
-            //{
-            //    DashboardTitle = "Scheduled Jobs"
-            //});
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                DashboardTitle = "Scheduled Jobs"
+            });
             recurringJobManager.AddOrUpdate(
                   "InsertReportManagementRoomAndLedgerJob",
                   () => serviceProvider.GetService<IHcsReportManagementSummaryService>().ManagementSummaryInsertRoomAndLedger(),

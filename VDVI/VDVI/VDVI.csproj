@@ -5,6 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Hangfire" Version="1.7.31" />
 		<PackageReference Include="Hangfire.Core" Version="1.7.31" />
 		<PackageReference Include="Hangfire.Dashboard.Authorization" Version="3.0.1" />
 		<PackageReference Include="Hangfire.MemoryStorage" Version="1.7.0" />
