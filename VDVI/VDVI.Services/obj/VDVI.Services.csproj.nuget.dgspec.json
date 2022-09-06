@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj": {}
+    "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj": {}
   },
   "projects": {
-    "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj": {
+    "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj",
+        "projectUniqueName": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj",
         "projectName": "SOAPAppCore",
-        "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj",
-        "packagesPath": "C:\\Users\\BS347\\.nuget\\packages\\",
-        "outputPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\obj\\",
+        "projectPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\BS347\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,16 +22,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "G:\\Practise\\Rabbitmq\\rabbitMQSagaMicroservices\\localsysnuget": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {
-              "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\Framework.Core.csproj": {
-                "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\Framework.Core.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -79,7 +73,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -88,25 +83,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.108\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj": {
+    "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj",
+        "projectUniqueName": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj",
         "projectName": "Framework.Constants",
-        "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj",
-        "packagesPath": "C:\\Users\\BS347\\.nuget\\packages\\",
-        "outputPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\obj\\",
+        "projectPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\BS347\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -114,7 +105,9 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "G:\\Practise\\Rabbitmq\\rabbitMQSagaMicroservices\\localsysnuget": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -137,7 +130,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -146,25 +140,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.108\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\Framework.Core.csproj": {
+    "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\Framework.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\Framework.Core.csproj",
+        "projectUniqueName": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\Framework.Core.csproj",
         "projectName": "Framework.Core",
-        "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\Framework.Core.csproj",
-        "packagesPath": "C:\\Users\\BS347\\.nuget\\packages\\",
-        "outputPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\obj\\",
+        "projectPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\Framework.Core.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\BS347\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -172,17 +162,16 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "G:\\Practise\\Rabbitmq\\rabbitMQSagaMicroservices\\localsysnuget": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ClassLibraries\\Shared.DTO\\Shared.DTO.csproj": {
-                "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ClassLibraries\\Shared.DTO\\Shared.DTO.csproj"
-              },
-              "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj": {
-                "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj"
+              "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj": {
+                "projectPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj"
               }
             }
           }
@@ -268,7 +257,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -277,25 +267,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.108\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj": {
+    "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj",
+        "projectUniqueName": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj",
         "projectName": "VDVI.DB",
-        "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj",
-        "packagesPath": "C:\\Users\\BS347\\.nuget\\packages\\",
-        "outputPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\obj\\",
+        "projectPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\BS347\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -303,14 +289,16 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "G:\\Practise\\Rabbitmq\\rabbitMQSagaMicroservices\\localsysnuget": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj": {
-                "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj"
+              "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj": {
+                "projectPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\ConsoleAppCore\\SOAPAppCore.csproj"
               }
             }
           }
@@ -333,6 +321,10 @@
               "target": "Package",
               "version": "[6.0.1, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.3, )"
@@ -344,7 +336,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -353,25 +346,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.108\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj": {
+    "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj",
+        "projectUniqueName": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj",
         "projectName": "VDVI.Services",
-        "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj",
-        "packagesPath": "C:\\Users\\BS347\\.nuget\\packages\\",
-        "outputPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI.Services\\obj\\",
+        "projectPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.Services\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\BS347\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -379,14 +368,19 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "G:\\Practise\\Rabbitmq\\rabbitMQSagaMicroservices\\localsysnuget": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj": {
-                "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj"
+              "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\Framework.Core.csproj": {
+                "projectPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Core\\Framework.Core.csproj"
+              },
+              "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj": {
+                "projectPath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.DB\\VDVI.DB.csproj"
               }
             }
           }
@@ -405,13 +399,37 @@
               "target": "Package",
               "version": "[1.7.31, )"
             },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "NCrontab.Signed": {
               "target": "Package",
               "version": "[3.3.2, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Quartz": {
               "target": "Package",
               "version": "[3.4.0, )"
+            },
+            "System.ServiceModel.Duplex": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
+            "System.ServiceModel.Http": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
+            "System.ServiceModel.NetTcp": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
+            "System.ServiceModel.Security": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -420,7 +438,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -429,7 +448,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.108\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

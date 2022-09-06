@@ -1,15 +1,19 @@
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\VDVI.Services.deps.json
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\VDVI.Services.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\VDVI.Services.pdb
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\SOAPAppCore.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\VDVI.DB.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\VDVI.DB.pdb
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\SOAPAppCore.pdb
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.csproj.AssemblyReference.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.GeneratedMSBuildEditorConfig.editorconfig
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.AssemblyInfoInputs.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.AssemblyInfo.cs
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.csproj.CoreCompileInputs.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.csproj.CopyComplete
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\VDVI.Services.deps.json
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\VDVI.Services.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\VDVI.Services.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\Framework.Constants.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\Framework.Core.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\SOAPAppCore.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\VDVI.DB.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\Framework.Core.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\VDVI.DB.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\Framework.Constants.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\bin\Debug\netcoreapp3.1\SOAPAppCore.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.csproj.AssemblyReference.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.GeneratedMSBuildEditorConfig.editorconfig
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.AssemblyInfoInputs.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.AssemblyInfo.cs
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.csproj.CoreCompileInputs.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.csproj.CopyComplete
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI.Services\obj\Debug\netcoreapp3.1\VDVI.Services.pdb

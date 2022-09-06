@@ -27,5 +27,16 @@ C:\Working\Prometheus\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework
 C:\Working\Prometheus\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework.Core.csproj.CopyComplete
 C:\Working\Prometheus\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework.Core.dll
 C:\Working\Prometheus\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework.Core.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\bin\Debug\netcoreapp3.1\Framework.Core.deps.json
+G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\bin\Debug\netcoreapp3.1\Framework.Core.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\bin\Debug\netcoreapp3.1\Framework.Core.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\bin\Debug\netcoreapp3.1\Framework.Constants.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\bin\Debug\netcoreapp3.1\Framework.Constants.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework.Core.csproj.AssemblyReference.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework.Core.GeneratedMSBuildEditorConfig.editorconfig
+G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework.Core.AssemblyInfoInputs.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework.Core.AssemblyInfo.cs
+G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework.Core.csproj.CoreCompileInputs.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework.Core.csproj.CopyComplete
 G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework.Core.dll
 G:\Brain Station\VDVI\VDVI_API\VDVI\Framework\Framework.Core\obj\Debug\netcoreapp3.1\Framework.Core.pdb

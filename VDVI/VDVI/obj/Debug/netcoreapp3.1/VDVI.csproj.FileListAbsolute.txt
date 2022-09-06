@@ -1,313 +1,182 @@
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\appsettings.Development.json
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\appsettings.json
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\VDVI.exe
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\VDVI.deps.json
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\VDVI.runtimeconfig.json
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\VDVI.runtimeconfig.dev.json
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\VDVI.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\VDVI.pdb
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.ObjectPool.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\SoapHttpClient.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Formats.Asn1.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Private.ServiceModel.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Reflection.DispatchProxy.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Cng.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Xml.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Duplex.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Http.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.NetTcp.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Primitives.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Security.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Text.Json.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\cs\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\de\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\es\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\fr\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\it\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\ja\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\ko\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\pl\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\pt-BR\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\ru\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\tr\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\zh-Hans\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\zh-Hant\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\SOAPAppCore.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\bin\Debug\netcoreapp3.1\SOAPAppCore.pdb
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.AssemblyReference.cache
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.GeneratedMSBuildEditorConfig.editorconfig
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfoInputs.cache
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfo.cs
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.CoreCompileInputs.cache
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cs
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cache
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\staticwebassets\VDVI.StaticWebAssets.Manifest.cache
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.RazorTargetAssemblyInfo.cache
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.CopyComplete
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.dll
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.pdb
-E:\Brain Station\VDVI\ProjectSkeleton\VDVI_NEW\VDVI\obj\Debug\netcoreapp3.1\VDVI.genruntimeconfig.cache
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\appsettings.Development.json
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\appsettings.json
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.exe
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.deps.json
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.runtimeconfig.json
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.runtimeconfig.dev.json
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.pdb
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.AspNetCore.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.Core.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.Dashboard.Authorization.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.MemoryStorage.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.SqlServer.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.ObjectPool.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Owin.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\SoapHttpClient.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Formats.Asn1.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Private.ServiceModel.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Reflection.DispatchProxy.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Cng.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Xml.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Duplex.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Http.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.NetTcp.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Primitives.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Security.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Text.Json.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\ca\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\de\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\es\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\fa\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\fr\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\nb\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\nl\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt-BR\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt-PT\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\tr-TR\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh-TW\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\cs\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\de\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\es\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\fr\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\it\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\ja\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\ko\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\pl\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt-BR\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\ru\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\tr\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh-Hans\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh-Hant\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard2.0\System.Data.SqlClient.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Data.SqlClient.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\SOAPAppCore.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.DB.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\SOAPAppCore.pdb
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.DB.pdb
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.AssemblyReference.cache
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.GeneratedMSBuildEditorConfig.editorconfig
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfoInputs.cache
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfo.cs
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.CoreCompileInputs.cache
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cs
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cache
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\staticwebassets\VDVI.StaticWebAssets.Manifest.cache
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.RazorTargetAssemblyInfo.cache
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.CopyComplete
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.dll
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.pdb
-E:\Brain Station\VDVI\MainProject\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.genruntimeconfig.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\appsettings.Development.json
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\appsettings.json
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.exe
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.deps.json
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.runtimeconfig.json
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.runtimeconfig.dev.json
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.pdb
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Dapper.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.AspNetCore.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.Core.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.Dashboard.Authorization.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.MemoryStorage.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.SqlServer.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.ObjectPool.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\NCrontab.Signed.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\NetTopologySuite.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Owin.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Quartz.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\SoapHttpClient.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Formats.Asn1.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Private.ServiceModel.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Reflection.DispatchProxy.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Cng.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Xml.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Duplex.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Http.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.NetTcp.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Primitives.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Security.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Text.Json.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\ca\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\de\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\es\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\fa\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\fr\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\nb\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\nl\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt-BR\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt-PT\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\tr-TR\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh-TW\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh\Hangfire.Core.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\cs\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\de\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\es\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\fr\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\it\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\ja\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\ko\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\pl\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt-BR\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\ru\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\tr\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh-Hans\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh-Hant\System.Private.ServiceModel.resources.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\SOAPAppCore.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.DB.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.Services.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\SOAPAppCore.pdb
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.DB.pdb
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.Services.pdb
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.AssemblyReference.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.GeneratedMSBuildEditorConfig.editorconfig
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfoInputs.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfo.cs
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.CoreCompileInputs.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cs
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\staticwebassets\VDVI.StaticWebAssets.Manifest.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.RazorTargetAssemblyInfo.cache
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.CopyComplete
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.dll
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.pdb
-E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.genruntimeconfig.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\appsettings.Development.json
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\appsettings.json
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.exe
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.deps.json
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.runtimeconfig.json
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.runtimeconfig.dev.json
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\CacheManager.Core.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\CacheManager.Microsoft.Extensions.Configuration.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\CacheManager.Microsoft.Extensions.Logging.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\CSharpFunctionalExtensions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Dapper.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\EPPlus.Core.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\FluentValidation.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Flurl.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Flurl.Http.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.Core.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.Dashboard.Authorization.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.MemoryStorage.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Hangfire.SqlServer.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\JsonNet.ContractResolvers.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\MicroOrm.Dapper.Repositories.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Versioning.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.SqlServer.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DiagnosticAdapter.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.ObjectPool.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\NCrontab.Signed.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\NetTopologySuite.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Ocelot.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Ocelot.Cache.CacheManager.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Owin.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Quartz.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Serilog.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Serilog.AspNetCore.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Serilog.Extensions.Hosting.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Serilog.Formatting.Compact.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Serilog.Settings.Configuration.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Serilog.Sinks.Console.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Serilog.Sinks.Debug.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\SoapHttpClient.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Formats.Asn1.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Private.ServiceModel.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Reflection.DispatchProxy.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Cng.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Xml.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Duplex.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Http.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.NetTcp.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Primitives.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.ServiceModel.Security.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\TinyMapper.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Unity.Abstractions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Unity.Container.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Unity.Microsoft.DependencyInjection.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\ca\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\de\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\es\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\fa\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\fr\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\nb\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\nl\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt-BR\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt-PT\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\tr-TR\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh-TW\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh\Hangfire.Core.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\cs\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\de\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\es\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\fr\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\it\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\ja\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\ko\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\pl\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\pt-BR\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\ru\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\tr\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh-Hans\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\zh-Hant\System.Private.ServiceModel.resources.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Framework.Constants.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Framework.Core.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\SOAPAppCore.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.DB.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.Services.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.Services.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Framework.Constants.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\Framework.Core.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\SOAPAppCore.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\bin\Debug\netcoreapp3.1\VDVI.DB.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.AssemblyReference.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.GeneratedMSBuildEditorConfig.editorconfig
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfoInputs.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.AssemblyInfo.cs
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.CoreCompileInputs.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cs
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.MvcApplicationPartsAssemblyInfo.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\staticwebassets\VDVI.StaticWebAssets.Manifest.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.RazorTargetAssemblyInfo.cache
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.csproj.CopyComplete
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.dll
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.pdb
+G:\Brain Station\VDVI\VDVI_API\VDVI\VDVI\obj\Debug\netcoreapp3.1\VDVI.genruntimeconfig.cache
