@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text; 
+using System.Text;
 using VDVI.DB.Models.Common;
 
-namespace VDVI.Services.IServices
+namespace VDVI.Services.Interfaces
 {
     public interface IApmaTaskSchedulerService
     {
         void InsertOrUpdateTaskScheduleDatetime(string methodName, DateTime lastExecutionDate, int flag);
-        JobTaskScheduler GetTaskScheduler(string methodName); 
+        JobTaskScheduler GetTaskScheduler(string methodName);
     }
 }

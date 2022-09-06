@@ -32,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ClassLibraries\Shared.DTO\Shared.DTO.csproj" />
     <ProjectReference Include="..\Framework.Constants\Framework.Constants.csproj" />
   </ItemGroup>
 

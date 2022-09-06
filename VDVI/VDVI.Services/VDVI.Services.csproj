@@ -6,11 +6,18 @@
 
   <ItemGroup>
     <PackageReference Include="Hangfire.Core" Version="1.7.31" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
     <PackageReference Include="NCrontab.Signed" Version="3.3.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Quartz" Version="3.4.0" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.10.0" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.10.0" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.10.0" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.10.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj" />
     <ProjectReference Include="..\VDVI.DB\VDVI.DB.csproj" />
   </ItemGroup>
 

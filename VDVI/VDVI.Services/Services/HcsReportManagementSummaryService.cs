@@ -1,9 +1,6 @@
-﻿using Hangfire;
-using Microsoft.Extensions.Configuration;
-using NCrontab;
+﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using Quartz;
-using SOAPAppCore.Interfaces; 
+using SOAPAppCore.Interfaces;
 using SOAPService;
 using System;
 using System.Collections.Generic;
@@ -13,10 +10,9 @@ using System.Linq;
 using System.Text;
 using VDVI.Common;
 using VDVI.DB.IRepository;
-using VDVI.DB.IServices;
 using VDVI.DB.Models.ApmaModels;
 using VDVI.DB.Models.Common;
-using VDVI.Services.IServices;
+using VDVI.Services.Interfaces;
 
 namespace VDVI.DB.Services
 {
@@ -25,7 +21,7 @@ namespace VDVI.DB.Services
 
         private readonly IReportManagementSummaryService _reportSummary;
         private readonly IConfiguration _config;
-        private readonly IHcsReportManagementSummaryDataInsertionService _reportManagementDataInsertionService;
+        private readonly IHcsReportManagementSummaryRepository _hcsReportManagementSummaryRepository;
         private readonly IApmaTaskSchedulerService _apmaTaskSchedulerService;
 
         private List<DB.Models.ApmaModels.RoomSummary> roomSummaryList = new List<DB.Models.ApmaModels.RoomSummary>();
@@ -35,12 +31,12 @@ namespace VDVI.DB.Services
         DateTime Enddate = new DateTime();
 
 
-        public HcsReportManagementSummaryService(IReportManagementSummaryService reportSummary , IConfiguration config, 
-            IHcsReportManagementSummaryDataInsertionService reportManagementDataInsertionService, IApmaTaskSchedulerService apmaTaskSchedulerService)
+        public HcsReportManagementSummaryService(IReportManagementSummaryService reportSummary ,IConfiguration config,
+            IHcsReportManagementSummaryRepository hcsReportManagementSummaryRepository, IApmaTaskSchedulerService apmaTaskSchedulerService)
         {
             _reportSummary = reportSummary;
-            _config = config;
-            _reportManagementDataInsertionService = reportManagementDataInsertionService;
+             _config = config;
+            _hcsReportManagementSummaryRepository = hcsReportManagementSummaryRepository;
             _apmaTaskSchedulerService = apmaTaskSchedulerService;
         }
 
@@ -191,10 +187,10 @@ namespace VDVI.DB.Services
 
             GetManagementSummary();
             if (ledgerBalanceList.Count > 0)
-                RoomSummeryResult = _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
+                RoomSummeryResult = _hcsReportManagementSummaryRepository.InsertLedgerBalance(ledgerBalanceList);
 
             if (roomSummaryList.Count > 0)
-                LedgerSummeryResult = _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);
+                LedgerSummeryResult = _hcsReportManagementSummaryRepository.InsertRoomSummary(roomSummaryList);
 
             if (RoomSummeryResult == "Successfull" && LedgerSummeryResult == "Successfull")
             {
@@ -212,7 +208,7 @@ namespace VDVI.DB.Services
             string resultDate = _config.GetSection("ApmaServiceDateConfig").GetSection("initialStartDate").Value;
             DateTime apmaInitialDate = Convert.ToDateTime(resultDate);
 
-            var dayDiffernce = _config.GetSection("ApmaServiceDateConfig").GetSection("DayDifferenceReportManagementRoomAndLedgerSummary").Value;
+            var dayDiffernce =   _config.GetSection("ApmaServiceDateConfig").GetSection("DayDifferenceReportManagementRoomAndLedgerSummary").Value;
 
             //Check from the Database by method Name, if there have any existing value or not ;
             JobTaskScheduler taskScheduleEndDate = _apmaTaskSchedulerService.GetTaskScheduler("HcsReportManagementSummary");
@@ -254,8 +250,8 @@ namespace VDVI.DB.Services
 
                 if (roomSummaryList.Count > 0 && ledgerBalanceList.Count > 0)
                 {
-                    _reportManagementDataInsertionService.InsertRoomSummary(roomSummaryList);
-                    _reportManagementDataInsertionService.InsertLedgerBalance(ledgerBalanceList);
+                    _hcsReportManagementSummaryRepository.InsertRoomSummary(roomSummaryList);
+                    _hcsReportManagementSummaryRepository.InsertLedgerBalance(ledgerBalanceList);
                     message = "Room and Ledger Summary Inserted Successfully";
                 }
                 return message;

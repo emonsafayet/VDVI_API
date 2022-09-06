@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using Flurl.Http;
 using Flurl.Http.Content;
+using Framework.Constants;
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Models.Config;
 using Microsoft.Extensions.Options;

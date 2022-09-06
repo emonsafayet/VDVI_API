@@ -22,7 +22,7 @@ namespace Framework.Core.Middleware
             if (context.User.Identity.Name != null)
             {
                 var companyId = context.User.Identity.GetCompanyId().Value;
-                var userRole = context.User.Identity.GetUserRole().Value;
+                var userRole = "";// context.User.Identity.GetUserRole().Value;
                 int userId = context.User.Identity.GetUserId().Value;
 
                 LoggedUser loggedUser = new LoggedUser()
