@@ -47,14 +47,19 @@ namespace SOAPAppCore.Services.Apma
             }
         }
 
-        public async Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(Authentication pmsAuthentication, string pmsProperty, DateTime StartDate, DateTime EndDate)
+        public async Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(string pmsProperty, DateTime StartDate, DateTime EndDate)
         {
             // TODO 
             return await TryCatchExtension.ExecuteWithTransactionAndHandleErrorAsync(
                 async () =>
                 {
+                    Authentication pmsAuthentication = new Authentication();
                     var reportManagementSummary = client.HcsReportManagementSummaryAsync(pmsAuthentication, PropertyCode: pmsProperty, StartDate: StartDate, EndDate: EndDate, "");
 
+                    //TODO add the service for the bussiness
+
+
+                    // Call to the Repository
                     return PrometheusResponse.Success(reportManagementSummary, "Data retrieval is successful");
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
