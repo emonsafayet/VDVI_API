@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "y6lDnM38nQvnhfcikukZxbw5H3O1/4k4CU1i9rCtJ6QVd9RCJxIFWasHTMxUbWMSH6roN2WDCiNzJiYuc1GONg==",
-  "success": false,
+  "dgSpecHash": "7R+LvtGomYAgjFe4MGTG7wOX5RMvSKA1p4w6uSt2jTMcInN67qrLAbeu6m1IKWO2tPc87MfImE94gyh18oP5oA==",
+  "success": true,
   "projectFilePath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\VDVI\\VDVI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BS347\\.nuget\\packages\\cachemanager.core\\2.0.0-beta-1629\\cachemanager.core.2.0.0-beta-1629.nupkg.sha512",
@@ -213,15 +213,6 @@
     "C:\\Users\\BS347\\.nuget\\packages\\unity.microsoft.dependencyinjection\\5.11.5\\unity.microsoft.dependencyinjection.5.11.5.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ClassLibraries\\Shared.DTO\\Shared.DTO.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ClassLibraries\\Shared.DTO\\Shared.DTO.csproj",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
     {
       "code": "NU1701",
       "level": "Warning",

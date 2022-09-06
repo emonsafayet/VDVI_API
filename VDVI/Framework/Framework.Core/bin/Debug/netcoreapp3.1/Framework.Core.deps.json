@@ -21,7 +21,6 @@
           "Ocelot": "16.0.1",
           "Ocelot.Cache.CacheManager": "16.0.1",
           "Serilog.AspNetCore": "3.4.0",
-          "Shared.DTO": "1.0.0",
           "Swashbuckle.AspNetCore": "6.2.3",
           "TinyMapper": "3.0.3",
           "Unity": "5.11.7",
@@ -1771,11 +1770,6 @@
         "runtime": {
           "Framework.Constants.dll": {}
         }
-      },
-      "Shared.DTO/1.0.0": {
-        "runtime": {
-          "Shared.DTO.dll": {}
-        }
       }
     }
   },
@@ -3018,11 +3012,6 @@
       "hashPath": "unity.microsoft.dependencyinjection.5.11.5.nupkg.sha512"
     },
     "Framework.Constants/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Shared.DTO/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

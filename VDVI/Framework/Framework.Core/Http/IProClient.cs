@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using CSharpFunctionalExtensions;
+﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
+using System.Threading.Tasks;
 
 namespace Framework.Core.Http
 {

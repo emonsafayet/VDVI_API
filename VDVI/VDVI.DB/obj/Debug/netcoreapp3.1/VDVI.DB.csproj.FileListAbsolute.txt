@@ -24,3 +24,20 @@ E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\n
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.csproj.CopyComplete
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.dll
 E:\Brain Station\VDVI\MainProject\Core Project\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.pdb
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\VDVI.DB.deps.json
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\VDVI.DB.dll
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\VDVI.DB.pdb
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\Framework.Constants.dll
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\Framework.Core.dll
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\SOAPAppCore.dll
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\SOAPAppCore.pdb
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\Framework.Constants.pdb
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\bin\Debug\netcoreapp3.1\Framework.Core.pdb
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.csproj.AssemblyReference.cache
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.AssemblyInfoInputs.cache
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.AssemblyInfo.cs
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.csproj.CoreCompileInputs.cache
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.csproj.CopyComplete
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.dll
+C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI.DB\obj\Debug\netcoreapp3.1\VDVI.DB.pdb

@@ -16,3 +16,12 @@ C:\Working\Prometheus\Framework\Framework.Constants\obj\Debug\netcoreapp3.1\Fram
 C:\Working\Prometheus\Framework\Framework.Constants\obj\Debug\netcoreapp3.1\Framework.Constants.csproj.CoreCompileInputs.cache
 C:\Working\Prometheus\Framework\Framework.Constants\obj\Debug\netcoreapp3.1\Framework.Constants.dll
 C:\Working\Prometheus\Framework\Framework.Constants\obj\Debug\netcoreapp3.1\Framework.Constants.pdb
+C:\Working\Projects\VDVI\VDVI_API\VDVI\Framework\Framework.Constants\bin\Debug\netcoreapp3.1\Framework.Constants.deps.json
+C:\Working\Projects\VDVI\VDVI_API\VDVI\Framework\Framework.Constants\bin\Debug\netcoreapp3.1\Framework.Constants.dll
+C:\Working\Projects\VDVI\VDVI_API\VDVI\Framework\Framework.Constants\bin\Debug\netcoreapp3.1\Framework.Constants.pdb
+C:\Working\Projects\VDVI\VDVI_API\VDVI\Framework\Framework.Constants\obj\Debug\netcoreapp3.1\Framework.Constants.GeneratedMSBuildEditorConfig.editorconfig
+C:\Working\Projects\VDVI\VDVI_API\VDVI\Framework\Framework.Constants\obj\Debug\netcoreapp3.1\Framework.Constants.AssemblyInfoInputs.cache
+C:\Working\Projects\VDVI\VDVI_API\VDVI\Framework\Framework.Constants\obj\Debug\netcoreapp3.1\Framework.Constants.AssemblyInfo.cs
+C:\Working\Projects\VDVI\VDVI_API\VDVI\Framework\Framework.Constants\obj\Debug\netcoreapp3.1\Framework.Constants.csproj.CoreCompileInputs.cache
+C:\Working\Projects\VDVI\VDVI_API\VDVI\Framework\Framework.Constants\obj\Debug\netcoreapp3.1\Framework.Constants.dll
+C:\Working\Projects\VDVI\VDVI_API\VDVI\Framework\Framework.Constants\obj\Debug\netcoreapp3.1\Framework.Constants.pdb

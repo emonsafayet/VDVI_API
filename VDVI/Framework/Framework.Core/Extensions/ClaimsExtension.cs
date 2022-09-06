@@ -1,9 +1,8 @@
+using CSharpFunctionalExtensions;
+using Microsoft.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
-using CSharpFunctionalExtensions;
-using Microsoft.IdentityModel.Tokens;
-using Shared.DTO.Enum;
 
 namespace Framework.Core.Extensions
 {
@@ -31,17 +30,17 @@ namespace Framework.Core.Extensions
             return Result.Success(int.Parse(claim.Value));
         }
 
-        public static Result<RoleEnum> GetUserRole(this IIdentity identity)
-        {
-            Claim claim = GetClaim(identity, ClaimTypes.Role);
+        //public static Result<RoleEnum> GetUserRole(this IIdentity identity)
+        //{
+        //    Claim claim = GetClaim(identity, ClaimTypes.Role);
 
-            if (claim == null)
-            {
-                return Result.Failure<RoleEnum>("User role not found");
-            }
+        //    if (claim == null)
+        //    {
+        //        return Result.Failure<RoleEnum>("User role not found");
+        //    }
 
-            return Result.Success(claim.Value.ToEnum<RoleEnum>());
-        }
+        //    return Result.Success(claim.Value.ToEnum<RoleEnum>());
+        //}
 
         public static Claim GetClaim(IIdentity identity, string claimType)
         {

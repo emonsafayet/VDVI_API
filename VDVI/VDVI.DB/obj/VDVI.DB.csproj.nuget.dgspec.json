@@ -178,9 +178,6 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ClassLibraries\\Shared.DTO\\Shared.DTO.csproj": {
-                "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\ClassLibraries\\Shared.DTO\\Shared.DTO.csproj"
-              },
               "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj": {
                 "projectPath": "C:\\Working\\Projects\\VDVI\\VDVI_API\\VDVI\\Framework\\Framework.Constants\\Framework.Constants.csproj"
               }
