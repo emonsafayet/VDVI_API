@@ -1,0 +1,29 @@
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Framework.Core.deps.json
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Framework.Core.dll
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Framework.Core.pdb
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Framework.Constants.dll
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Shared.DTO.dll
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Shared.DTO.pdb
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Framework.Constants.pdb
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.csprojAssemblyReference.cache
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.AssemblyInfoInputs.cache
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.AssemblyInfo.cs
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.csproj.CoreCompileInputs.cache
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.csproj.CopyComplete
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.dll
+C:\Working Directory\Projects\C-sharp Projects\FileActionApplication\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.pdb
+C:\Working\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Framework.Core.deps.json
+C:\Working\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Framework.Core.dll
+C:\Working\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Framework.Core.pdb
+C:\Working\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Framework.Constants.dll
+C:\Working\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Shared.DTO.dll
+C:\Working\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Shared.DTO.pdb
+C:\Working\Prometheus\Framework\Framework.Core\bin\Release\netcoreapp3.1\Framework.Constants.pdb
+C:\Working\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.csproj.AssemblyReference.cache
+C:\Working\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Working\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.AssemblyInfoInputs.cache
+C:\Working\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.AssemblyInfo.cs
+C:\Working\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.csproj.CoreCompileInputs.cache
+C:\Working\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.csproj.CopyComplete
+C:\Working\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.dll
+C:\Working\Prometheus\Framework\Framework.Core\obj\Release\netcoreapp3.1\Framework.Core.pdb

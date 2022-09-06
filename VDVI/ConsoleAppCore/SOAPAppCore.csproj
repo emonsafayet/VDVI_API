@@ -14,4 +14,8 @@
     <PackageReference Include="System.ServiceModel.Security" Version="4.7.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj" />
+  </ItemGroup>
+
 </Project>

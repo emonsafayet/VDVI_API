@@ -1,11 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CSharpFunctionalExtensions;
+using Framework.Core.Base.ModelEntity;
+using Framework.Core.Exceptions;
+using Framework.Core.Utility;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using SOAPAppCore.Interfaces;
 using SOAPService;
 using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SOAPAppCore.Services.Apma
@@ -42,7 +45,30 @@ namespace SOAPAppCore.Services.Apma
 
                 throw ex;
             }
-        }      
+        }
+
+        public async Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(Authentication pmsAuthentication, string pmsProperty, DateTime StartDate, DateTime EndDate)
+        {
+            // TODO 
+            return await TryCatchExtension.ExecuteWithTransactionAndHandleErrorAsync(
+                async () =>
+                {
+                    var reportManagementSummary = client.HcsReportManagementSummaryAsync(pmsAuthentication, PropertyCode: pmsProperty, StartDate: StartDate, EndDate: EndDate, "");
+
+                    return PrometheusResponse.Success(reportManagementSummary, "Data retrieval is successful");
+                },
+                exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
+                {
+                    //AdditionalAction = () =>
+                    //{
+                    //    _accountingManagementRepository.RollBackTransaction();
+                    //},
+                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                    RethrowException = false
+                });
+        }
+
+
 
         public List<HcsReportManagementSummaryResponse> GetReportManagementSummary(DateTime StartDate, DateTime EndDate)
         {
