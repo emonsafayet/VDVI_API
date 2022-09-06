@@ -160,6 +160,33 @@
           }
         }
       },
+      "Hangfire/1.7.31": {
+        "type": "package",
+        "dependencies": {
+          "Hangfire.AspNetCore": "[1.7.31]",
+          "Hangfire.Core": "[1.7.31]",
+          "Hangfire.SqlServer": "[1.7.31]"
+        }
+      },
+      "Hangfire.AspNetCore/1.7.31": {
+        "type": "package",
+        "dependencies": {
+          "Hangfire.Core": "[1.7.31]"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/Hangfire.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Hangfire.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Hangfire.Core/1.7.31": {
         "type": "package",
         "dependencies": {
@@ -3659,24 +3686,6 @@
           "bin/placeholder/Framework.Core.dll": {}
         }
       },
-      "SOAPAppCore/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration": "6.0.1",
-          "Newtonsoft.Json": "13.0.1",
-          "System.ServiceModel.Duplex": "4.7.0",
-          "System.ServiceModel.Http": "4.7.0",
-          "System.ServiceModel.NetTcp": "4.7.0",
-          "System.ServiceModel.Security": "4.7.0"
-        },
-        "compile": {
-          "bin/placeholder/SOAPAppCore.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SOAPAppCore.dll": {}
-        }
-      },
       "VDVI.DB/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -3684,7 +3693,6 @@
           "Dapper": "2.0.123",
           "Microsoft.Extensions.Configuration": "6.0.1",
           "Newtonsoft.Json": "13.0.1",
-          "SOAPAppCore": "1.0.0",
           "System.Data.SqlClient": "4.8.3"
         },
         "compile": {
@@ -3699,7 +3707,6 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Framework.Core": "1.0.0",
-          "Hangfire.Core": "1.7.31",
           "Microsoft.Extensions.Configuration.FileExtensions": "6.0.0",
           "NCrontab.Signed": "3.3.2",
           "Newtonsoft.Json": "13.0.1",
@@ -3881,6 +3888,45 @@
         "lib/netstandard2.0/Flurl.Http.dll",
         "lib/netstandard2.0/Flurl.Http.pdb",
         "lib/netstandard2.0/Flurl.Http.xml"
+      ]
+    },
+    "Hangfire/1.7.31": {
+      "sha512": "GBo12vgoB6RyNABZ2iVlR9KFCmIODuAUk3PwQiRNxVGqvrBefSe5HXFp0WmbVkPP3PIAUdWWTRHh5PTEWqfetA==",
+      "type": "package",
+      "path": "hangfire/1.7.31",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "hangfire.1.7.31.nupkg.sha512",
+        "hangfire.nuspec",
+        "readme.txt"
+      ]
+    },
+    "Hangfire.AspNetCore/1.7.31": {
+      "sha512": "voUzcElj8IAuxRBM9W1wU9Kh5o7d4GOsl2DYJYNMQ1qdRrMpkNcxqCF7m2amFtmFd8uHfkyqsUbkqdchEswVgA==",
+      "type": "package",
+      "path": "hangfire.aspnetcore/1.7.31",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "COPYING",
+        "COPYING.LESSER",
+        "LICENSE.md",
+        "LICENSE_ROYALTYFREE",
+        "LICENSE_STANDARD",
+        "NOTICES",
+        "hangfire.aspnetcore.1.7.31.nupkg.sha512",
+        "hangfire.aspnetcore.nuspec",
+        "lib/net451/Hangfire.AspNetCore.dll",
+        "lib/net451/Hangfire.AspNetCore.xml",
+        "lib/net461/Hangfire.AspNetCore.dll",
+        "lib/net461/Hangfire.AspNetCore.xml",
+        "lib/netcoreapp3.0/Hangfire.AspNetCore.dll",
+        "lib/netcoreapp3.0/Hangfire.AspNetCore.xml",
+        "lib/netstandard1.3/Hangfire.AspNetCore.dll",
+        "lib/netstandard1.3/Hangfire.AspNetCore.xml",
+        "lib/netstandard2.0/Hangfire.AspNetCore.dll",
+        "lib/netstandard2.0/Hangfire.AspNetCore.xml"
       ]
     },
     "Hangfire.Core/1.7.31": {
@@ -10810,11 +10856,6 @@
       "path": "../Framework/Framework.Core/Framework.Core.csproj",
       "msbuildProject": "../Framework/Framework.Core/Framework.Core.csproj"
     },
-    "SOAPAppCore/1.0.0": {
-      "type": "project",
-      "path": "../ConsoleAppCore/SOAPAppCore.csproj",
-      "msbuildProject": "../ConsoleAppCore/SOAPAppCore.csproj"
-    },
     "VDVI.DB/1.0.0": {
       "type": "project",
       "path": "../VDVI.DB/VDVI.DB.csproj",
@@ -10828,6 +10869,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Hangfire >= 1.7.31",
       "Hangfire.Core >= 1.7.31",
       "Hangfire.Dashboard.Authorization >= 3.0.1",
       "Hangfire.MemoryStorage >= 1.7.0",
@@ -10894,6 +10936,10 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "Hangfire": {
+            "target": "Package",
+            "version": "[1.7.31, )"
+          },
           "Hangfire.Core": {
             "target": "Package",
             "version": "[1.7.31, )"

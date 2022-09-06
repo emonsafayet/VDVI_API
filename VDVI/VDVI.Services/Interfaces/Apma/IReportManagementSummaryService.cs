@@ -14,7 +14,7 @@ namespace SOAPAppCore.Interfaces
         
 
         List<HcsReportManagementSummaryResponse> GetReportManagementSummary(DateTime StartDate, DateTime EndDate);
-        //Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(string pmsProperty, DateTime StartDate, DateTime EndDate);
+        Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(string pmsProperty, DateTime StartDate, DateTime EndDate);
         //List<HcsReportManagementSummaryResponse> GetReportManagementSummary(DateTime StartDate, DateTime EndDate);
         //Task<HcsReportManagementSummaryResponse> ReportManagementSummary(Authentication pmsAuthentication, string pmsProperty, DateTime StartDate, DateTime EndDate);
     }

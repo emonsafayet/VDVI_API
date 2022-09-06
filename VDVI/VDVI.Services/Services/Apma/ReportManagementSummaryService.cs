@@ -49,6 +49,7 @@ namespace SOAPAppCore.Services.Apma
 
         public async Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(string pmsProperty, DateTime StartDate, DateTime EndDate)
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             // TODO 
             return await TryCatchExtension.ExecuteWithTransactionAndHandleErrorAsync(
                 async () =>
@@ -57,8 +58,7 @@ namespace SOAPAppCore.Services.Apma
                     var reportManagementSummary = client.HcsReportManagementSummaryAsync(pmsAuthentication, PropertyCode: pmsProperty, StartDate: StartDate, EndDate: EndDate, "");
 
                     //TODO add the service for the bussiness
-
-
+                    
                     // Call to the Repository
                     return PrometheusResponse.Success(reportManagementSummary, "Data retrieval is successful");
                 },

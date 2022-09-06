@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zJNxNIY0yKsHhgjQCv6XTe2vwGSF1WCy3BvFAn/8GPmNKMBFt7J8eiYh82lB3ejamobih3AMZUzRgKbiF3ibMw==",
+  "dgSpecHash": "ppPn9cjT9IjuWRCZWHyJMqZmK/6dxPYwSut24I9S2uD3/bY+g2vdDJFiUgWBFZEuP0TVoTDFVKvJnS8x0wOG2A==",
   "success": true,
   "projectFilePath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI\\VDVI.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,8 @@
     "C:\\Users\\User\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\flurl\\3.0.4\\flurl.3.0.4.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\flurl.http\\3.2.2\\flurl.http.3.2.2.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\hangfire\\1.7.31\\hangfire.1.7.31.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\hangfire.aspnetcore\\1.7.31\\hangfire.aspnetcore.1.7.31.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\hangfire.core\\1.7.31\\hangfire.core.1.7.31.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\hangfire.dashboard.authorization\\3.0.1\\hangfire.dashboard.authorization.3.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\hangfire.memorystorage\\1.7.0\\hangfire.memorystorage.1.7.0.nupkg.sha512",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jJkdrgHzs858Q+bp1t8VBmmz+Ast08ay+RMt3A45YvAInX7DK8kX/yiGGqJ43juw/Ake8gA855z/IczWlolCZw==",
+  "dgSpecHash": "Tu4dGu6Z28Mvipw+fypHE6XHXMaURBGPc0Q1gs22tlz/rgcJZa8Z5TVeudw4t18A/oAorhKXVbte7PXoh0X+Kw==",
   "success": true,
   "projectFilePath": "G:\\Brain Station\\VDVI\\VDVI_API\\VDVI\\VDVI.Services\\VDVI.Services.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,6 @@
     "C:\\Users\\User\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\flurl\\3.0.4\\flurl.3.0.4.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\flurl.http\\3.2.2\\flurl.http.3.2.2.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\hangfire.core\\1.7.31\\hangfire.core.1.7.31.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\jsonnet.contractresolvers\\2.0.0\\jsonnet.contractresolvers.2.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microorm.dapper.repositories\\1.21.0\\microorm.dapper.repositories.1.21.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.10\\microsoft.aspnetcore.authentication.jwtbearer.3.1.10.nupkg.sha512",
