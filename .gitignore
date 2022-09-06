@@ -40,10 +40,8 @@ VDVI/VDVI.DB/obj/Debug/netcoreapp3.1/VDVI.Repositories.dll
 VDVI/VDVI.DB/obj/Debug/netcoreapp3.1/VDVI.Repositories.pdb
 VDVI/VDVI.DB/obj/project.assets.json
 VDVI/VDVI.DB/obj/project.nuget.cache
-VDVI/VDVI.DB/obj/VDVI.Repositories.csproj.nuget.dgspec.json
-VDVI/VDVI.DB/Repository/HcsReportManagementSummaryRepository.cs
-VDVI/VDVI.DB/VDVI.DB.csproj
-VDVI/VDVI.Services/Interfaces/Apma/IReportManagementSummaryService.cs
+VDVI/VDVI.DB/obj/VDVI.Repositories.csproj.nuget.dgspec.json 
+VDVI/VDVI.DB/VDVI.DB.csproj 
 VDVI/VDVI.Services/obj/Debug/netcoreapp3.1/VDVI.Services.csproj.AssemblyReference.cache
 VDVI/VDVI.Services/obj/Debug/netcoreapp3.1/VDVI.Services.csproj.CoreCompileInputs.cache
 VDVI/VDVI.Services/obj/Debug/netcoreapp3.1/VDVI.Services.csproj.FileListAbsolute.txt
@@ -485,4 +483,4 @@ VDVI/VDVI/obj/Release/netcoreapp3.1/VDVI.RazorTargetAssemblyInfo.cache
 VDVI/VDVI/obj/VDVI.csproj.EntityFrameworkCore.targets
 VDVI/VDVI/obj/VDVI.csproj.nuget.dgspec.json
 VDVI/VDVI/obj/VDVI.csproj.nuget.g.props
-VDVI/VDVI/obj/VDVI.csproj.nuget.g.targets
+VDVI/VDVI/obj/VDVI.csproj.nuget.g.targets 
