@@ -1,2 +1,0 @@
-# VDVI
- Initial Commit
