@@ -103,11 +103,11 @@ namespace VDVI
                   () => serviceProvider.GetService<IHcsReportManagementSummaryService>().ManagementSummaryInsertRoomAndLedger(),
                   configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
                   );
-            recurringJobManager.AddOrUpdate(
-                "HcsBISourceStatisticsHistory",
-                () => serviceProvider.GetService<IHcsBISourceStatisticsService>().GetHcsBISourceStatistics(),
-                configuration["* * * * *"], TimeZoneInfo.Utc
-                );
+            //recurringJobManager.AddOrUpdate(
+            //    "HcsBISourceStatisticsHistory",
+            //    () => serviceProvider.GetService<IHcsBISourceStatisticsService>().GetHcsBISourceStatistics(),
+            //    configuration["* * * * *"], TimeZoneInfo.Utc
+            //    );
         }
     }
 }
