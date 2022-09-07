@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models; 
+using Microsoft.OpenApi.Models;
 using System;
 using VDVI.Services.Interfaces;
 using VDVI.DB.Services;
@@ -25,19 +25,24 @@ namespace VDVI
         }
 
         public IConfiguration Configuration { get; }
-      
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
             //services
-            services.AddScoped<IHcsReportManagementSummaryService,HcsReportManagementSummaryService>(); 
+            services.AddScoped<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
             services.AddScoped<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
+            services.AddScoped<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
 
-            //repositories
-            services.AddScoped<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
-         
+
+            //dependency resolve:
+            services.AddTransient<IApmaAuthService, ApmaAuthService>();
+            services.AddTransient<IReportManagementSummaryService, ReportManagementSummaryService>();
+            services.AddTransient<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
+            services.AddTransient<IHcsBISourceStatisticsRepository, HcsBISourceStatisticsRepository>();
+            services.AddTransient<ITaskSchedulerRepository, TaskSchedulerRepository>();
 
             services.AddSwaggerGen();
             services.AddSwaggerGen(c =>
@@ -58,16 +63,12 @@ namespace VDVI
                        ));
             services.AddHangfireServer();
 
-            //dependency resolve:
-            services.AddTransient<IApmaAuthService, ApmaAuthService>();
-            services.AddTransient<IReportManagementSummaryService, ReportManagementSummaryService>(); 
-            services.AddTransient<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
-            services.AddTransient<ITaskSchedulerRepository, TaskSchedulerRepository>(); 
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env
-                        ,IConfiguration configuration,
+                        , IConfiguration configuration,
                         IBackgroundJobClient backgroundJobClient,
                         IRecurringJobManager recurringJobManager,
                         IServiceProvider serviceProvider)
@@ -76,10 +77,11 @@ namespace VDVI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => {
+                app.UseSwaggerUI(c =>
+                {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Showing API V1");
                 });
-            } 
+            }
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -101,11 +103,11 @@ namespace VDVI
                   () => serviceProvider.GetService<IHcsReportManagementSummaryService>().ManagementSummaryInsertRoomAndLedger(),
                   configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
                   );
-            //recurringJobManager.AddOrUpdate(
-            //    "NotifyIncidentOwnerJob",
-            //    () => serviceProvider.GetService<ISystemNotificationBackgroundService>().NotifyOwnerEmailAcknowledgementAsync(),
-            //    configuration["* * * *"], TimeZoneInfo.Local
-            //    );
+            recurringJobManager.AddOrUpdate(
+                "HcsBISourceStatisticsHistory",
+                () => serviceProvider.GetService<IHcsBISourceStatisticsService>().GetHcsBISourceStatistics(),
+                configuration["* * * * *"], TimeZoneInfo.Utc
+                );
         }
     }
 }

@@ -4,8 +4,7 @@ using System.Text;
 
 namespace VDVI.DB.Models.ApmaModels
 {
-    public class HcsBISourceStatisticsModel
-    {
+   
         public class HcsBISourceStatisticsResult
         {
             public HcsBISourceStatistics hcsBISourceStatistics;
@@ -41,7 +40,5 @@ namespace VDVI.DB.Models.ApmaModels
             public double RevenueStatCodeFExcl { get; set; }
             public double RevenueStatCodeUndefined { get; set; }
             public double RevenueStatCodeUndefinedExcl { get; set; }
-        }
-
-    }
+        } 
 }

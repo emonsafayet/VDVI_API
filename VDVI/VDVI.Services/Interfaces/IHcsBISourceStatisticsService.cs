@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VDVI.Services.Interfaces
 {
-    public interface IHcsBISourceStatistics
+    public interface IHcsBISourceStatisticsService
     {
         void GetHcsBISourceStatistics();
     }
