@@ -2,4 +2,12 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/VDVI/.vs/VDVI/FileContentIndex
+VDVI/.vs/
+VDVI/ConsoleAppCore/bin/
+VDVI/ConsoleAppCore/obj/
+VDVI/VDVI.DB/bin/
+VDVI/VDVI.DB/obj/
+VDVI/VDVI.Services/bin/
+VDVI/VDVI.Services/obj/
+VDVI/VDVI/bin/
+VDVI/VDVI/obj/
