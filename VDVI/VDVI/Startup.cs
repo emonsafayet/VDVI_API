@@ -1,22 +1,19 @@
-using Hangfire.MemoryStorage;
-using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using SOAPAppCore.Interfaces; 
+using Microsoft.OpenApi.Models; 
+using System;
+using VDVI.Services.Interfaces;
+using VDVI.DB.Services;
+using VDVI.Services.Services;
+using VDVI.DB.IRepository;
+using VDVI.DB.Repository;
+using SOAPAppCore.Interfaces;
 using SOAPAppCore.Services;
 using SOAPAppCore.Services.Apma;
-using System;
-using VDVI.Common;
-using VDVI.DB.IServices;
-using VDVI.DB.Services;
-using VDVI.DB.Repository;
-using VDVI.DB.IRepository;
-using VDVI.Services.IServices;
-using VDVI.Services.Services;
+using Hangfire;
 
 namespace VDVI
 {
@@ -35,8 +32,7 @@ namespace VDVI
             services.AddControllers();
 
             //services
-            services.AddScoped<IHcsReportManagementSummaryService,HcsReportManagementSummaryService>();
-            services.AddScoped<IHcsReportManagementSummaryDataInsertionService, HcsReportManagementSummaryDataInsertionService>();
+            services.AddScoped<IHcsReportManagementSummaryService,HcsReportManagementSummaryService>(); 
             services.AddScoped<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
 
             //repositories

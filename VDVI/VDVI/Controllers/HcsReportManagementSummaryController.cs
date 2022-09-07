@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json; 
+using Newtonsoft.Json;
 using SOAPService;
 using System;
 using System.Collections.Generic;
@@ -9,8 +9,8 @@ using System.Configuration;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using VDVI.DB.IServices;
 using VDVI.DB.Models.ApmaModels;
+using VDVI.Services.Interfaces;
 
 namespace VDVI.Controllers
 {

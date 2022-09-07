@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Hangfire.AspNetCore" Version="1.7.31" />
+		<PackageReference Include="Hangfire" Version="1.7.31" />
 		<PackageReference Include="Hangfire.Core" Version="1.7.31" />
 		<PackageReference Include="Hangfire.Dashboard.Authorization" Version="3.0.1" />
 		<PackageReference Include="Hangfire.MemoryStorage" Version="1.7.0" />
@@ -27,13 +27,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\ConsoleAppCore\SOAPAppCore.csproj" />
-		<ProjectReference Include="..\VDVI.DB\VDVI.DB.csproj" />
-		<ProjectReference Include="..\VDVI.Services\VDVI.Services.csproj" />
+	  <None Include="wwwroot\index.html" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="wwwroot\index.html" />
+	  <ProjectReference Include="..\VDVI.Services\VDVI.Services.csproj" />
 	</ItemGroup>
 
 

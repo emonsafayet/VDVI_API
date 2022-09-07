@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text; 
+using System.Text;
 using VDVI.DB.IRepository;
 using VDVI.DB.Models.Common;
-using VDVI.Services.IServices;
+using VDVI.Services.Interfaces;
 
 namespace VDVI.Services.Services
 {

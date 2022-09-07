@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +38,7 @@ namespace VDVI.DB.Repository
             try
             {
                 DataTable dt =
-                Newtonsoft.Json.JsonConvert.DeserializeObject<DataTable>(Newtonsoft.Json.JsonConvert.SerializeObject(ledgerBalance));
+                JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(ledgerBalance));
                  
                 if (dt.Rows.Count > 0)
                 {
