@@ -10,17 +10,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos.Accounts;
 using VDVI.DB.Dtos.RoomSummary;
-using VDVI.DB.IRepository;
+using VDVI.Repository.Repository;
 
 namespace SOAPAppCore.Services.Apma
 {
     public class ReportManagementSummaryService : ApmaBaseService, IReportManagementSummaryService
     {
-        private readonly IHcsReportManagementSummaryRepository _roomSummaryRepository;
+        private readonly IScheduleManagementRepository _scheduleManagementRepository;
 
-        public ReportManagementSummaryService(IHcsReportManagementSummaryRepository roomSummaryRepository)
+        public ReportManagementSummaryService(IScheduleManagementRepository scheduleManagementRepository)
         {
-            _roomSummaryRepository = roomSummaryRepository;
+            _scheduleManagementRepository = scheduleManagementRepository;
         }
 
         public async Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(DateTime StartDate, DateTime EndDate)
@@ -45,8 +45,8 @@ namespace SOAPAppCore.Services.Apma
 
 
                     // DB operation
-                    var dbroomSummariesRes = _roomSummaryRepository.InsertRoomSummary(roomSummaries);
-                    var dbledgerBalancesRes = _roomSummaryRepository.InsertLedgerBalance(ledgerBalances);
+                    var dbroomSummariesRes = _scheduleManagementRepository.RoomSummaryRepository.BulkInsertAsync(roomSummaries);
+                    //var dbledgerBalancesRes = _roomSummaryRepository.InsertLedgerBalance(ledgerBalances);
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },

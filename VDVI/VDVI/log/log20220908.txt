@@ -1,0 +1,9 @@
+2022-09-08 20:12:17.392 +06:00 [INF] User profile is available. Using 'C:\Users\BS347\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-08 20:12:17.907 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/  
+2022-09-08 20:12:17.982 +06:00 [INF] Sending file. Request path: '/index.html'. Physical path: 'C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI\wwwroot\index.html'
+2022-09-08 20:12:17.984 +06:00 [INF] Request finished in 79.7083ms 200 text/html
+2022-09-08 20:12:18.032 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/favicon.ico  
+2022-09-08 20:12:18.040 +06:00 [WRN] Failed to determine the https port for redirect.
+2022-09-08 20:12:25.946 +06:00 [INF] HTTP GET /favicon.ico responded 404 in 184.4804 ms
+2022-09-08 20:12:25.950 +06:00 [INF] HTTP GET /favicon.ico responded 404 in 192.4200 ms
+2022-09-08 20:12:25.952 +06:00 [INF] Request finished in 7920.4036ms 0 

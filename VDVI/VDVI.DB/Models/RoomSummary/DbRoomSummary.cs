@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VDVI.DB.DbModels.RoomSummary
 {
+    [Table("DbRoomSummary")]
     public class DbRoomSummary
     {
         public string PropertyCode { get; set; }

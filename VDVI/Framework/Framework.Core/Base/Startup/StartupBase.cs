@@ -1,15 +1,8 @@
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.IO.Compression;
-using System.Net;
-using Framework.Core.Base.ModelEntity;
 using Framework.Core.Extensions;
 using Framework.Core.IoC;
 using Framework.Core.Jwt;
 using Framework.Core.Logger;
 using Framework.Core.Middleware;
-using Framework.Core.Models.Config;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -26,6 +19,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
 using Unity;
 using Unity.Lifetime;
 using Log = Serilog.Log;
@@ -55,31 +52,31 @@ namespace Framework.Core.Base.Startup
         public virtual void ConfigureServices(IServiceCollection services)
         {
             // Add CORS policy
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll",
-                    policyBuilder =>
-                    {
-                        policyBuilder
-                            .SetIsOriginAllowed(host => true)
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader();
-                    });
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowAll",
+            //        policyBuilder =>
+            //        {
+            //            policyBuilder
+            //                .SetIsOriginAllowed(host => true)
+            //                .AllowAnyOrigin()
+            //                .AllowAnyMethod()
+            //                .AllowAnyHeader();
+            //        });
+            //});
 
             // jwt wire up
             // Get options from app settings
-            var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
-            services.Configure<AppConfigs>(Configuration.GetSection(nameof(AppConfigs)));
+            //var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
+            //services.Configure<AppConfigs>(Configuration.GetSection(nameof(AppConfigs)));
 
             // Configure JwtIssuerOptions
-            services.Configure<JwtIssuerOptions>(options =>
-            {
-                options.Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
-                options.Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)];
-                options.SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256);
-            });
+            //services.Configure<JwtIssuerOptions>(options =>
+            //{
+            //    options.Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
+            //    options.Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)];
+            //    options.SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256);
+            //});
 
             // api user claim policy
             services.AddAuthorization(options =>
@@ -102,57 +99,57 @@ namespace Framework.Core.Base.Startup
 
             }).AddJwtBearer(configureOptions =>
             {
-                configureOptions.ClaimsIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
-                configureOptions.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)],
+                //configureOptions.ClaimsIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
+                //configureOptions.TokenValidationParameters = new TokenValidationParameters
+                //{
+                //    ValidateIssuer = true,
+                //    ValidIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)],
 
-                    ValidateAudience = true,
-                    ValidAudience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)],
+                //    ValidateAudience = true,
+                //    ValidAudience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)],
 
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = _signingKey,
+                //    ValidateIssuerSigningKey = true,
+                //    IssuerSigningKey = _signingKey,
 
-                    //RequireExpirationTime = true,
-                    //ValidateLifetime = true,
+                //    //RequireExpirationTime = true,
+                //    //ValidateLifetime = true,
 
-                    // set clockSkew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
-                    ClockSkew = TimeSpan.Zero
-                };
+                //    // set clockSkew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
+                //    ClockSkew = TimeSpan.Zero
+                //};
 
                 configureOptions.SaveToken = true;
 
-                configureOptions.Events = new JwtBearerEvents
-                {
-                    OnAuthenticationFailed = async context =>
-                    {
-                        if (context.Exception.GetType() == typeof(SecurityTokenInvalidSignatureException)
-                            || context.Exception.GetType() == typeof(SecurityTokenInvalidLifetimeException)
-                            || context.Exception.GetType() == typeof(SecurityTokenExpiredException))
-                        {
-                            context.Response.Headers.Add("Token-Expired", "true");
-                            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                //configureOptions.Events = new JwtBearerEvents
+                //{
+                //    OnAuthenticationFailed = async context =>
+                //    {
+                //        if (context.Exception.GetType() == typeof(SecurityTokenInvalidSignatureException)
+                //            || context.Exception.GetType() == typeof(SecurityTokenInvalidLifetimeException)
+                //            || context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+                //        {
+                //            context.Response.Headers.Add("Token-Expired", "true");
+                //            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
 
-                            await context.Response.WriteAsync(PrometheusResponse.Failure("Token has expired. User need to logout and login again.").Error);
-                        }
-                    },
-                    OnChallenge = async context =>
-                    {
-                        context.HandleResponse();
-                        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                        context.Response.ContentType = "application/json";
+                //            await context.Response.WriteAsync(PrometheusResponse.Failure("Token has expired. User need to logout and login again.").Error);
+                //        }
+                //    },
+                //    OnChallenge = async context =>
+                //    {
+                //        context.HandleResponse();
+                //        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                //        context.Response.ContentType = "application/json";
 
-                        await context.Response.WriteAsync(PrometheusResponse.Failure("You are not Authorized. User need to logout and login again.").Error);
-                    },
-                    OnForbidden = async context =>
-                    {
-                        context.Response.StatusCode = StatusCodes.Status403Forbidden;
-                        context.Response.ContentType = "application/json";
+                //        await context.Response.WriteAsync(PrometheusResponse.Failure("You are not Authorized. User need to logout and login again.").Error);
+                //    },
+                //    OnForbidden = async context =>
+                //    {
+                //        context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                //        context.Response.ContentType = "application/json";
 
-                        await context.Response.WriteAsync(PrometheusResponse.Failure("You are not authorized to access this resource. User need to logout and login again.").Error);
-                    },
-                };
+                //        await context.Response.WriteAsync(PrometheusResponse.Failure("You are not authorized to access this resource. User need to logout and login again.").Error);
+                //    },
+                //};
             });
 
             // add identity
@@ -171,7 +168,7 @@ namespace Framework.Core.Base.Startup
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddControllers().AddNewtonsoftJson();           
+            services.AddControllers().AddNewtonsoftJson();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
