@@ -16,6 +16,7 @@ namespace VDVI.Services.Services
         public ITaskSchedulerRepository _taskScheduler;
         private readonly IHcsReportManagementSummaryService _reportSummary;
         private readonly IHcsBIReservationDashboardService _hcsBIReservationDashboardService;
+        private readonly IHcsBIRatePlanStatisticsService _hcsBIRatePlanStatisticsService;
         private readonly IConfiguration _config;
 
         private DateTime _startDate = new DateTime();
@@ -25,13 +26,15 @@ namespace VDVI.Services.Services
             ITaskSchedulerRepository taskScheduler,
             IConfiguration config,
             IHcsReportManagementSummaryService reportSummary,
-            IHcsBIReservationDashboardService hcsBIReservationDashboardService
+            IHcsBIReservationDashboardService hcsBIReservationDashboardService,
+             IHcsBIRatePlanStatisticsService hcsBIRatePlanStatisticsService
             )
         {
             _taskScheduler = taskScheduler;
             _config = config;
             _reportSummary = reportSummary;
             _hcsBIReservationDashboardService = hcsBIReservationDashboardService;
+            _hcsBIRatePlanStatisticsService = hcsBIRatePlanStatisticsService;
         }
 
 
@@ -49,6 +52,10 @@ namespace VDVI.Services.Services
                     break;
                 case "HcsBIReservationDashboard":
                     response = await _hcsBIReservationDashboardService.HcsBIReservationDashboardRepositoryAsyc(_startDate, _endDate);
+                    flag = response.IsSuccess;
+                    break;
+                case "HcsBIRatePlanStatistics":
+                    response = await _hcsBIRatePlanStatisticsService.HcsBIRatePlanStatisticsRepositoryAsyc(_startDate, _endDate);
                     flag = response.IsSuccess;
                     break;
 

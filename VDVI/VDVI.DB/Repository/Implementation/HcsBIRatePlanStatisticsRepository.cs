@@ -5,6 +5,9 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Text;
 using VDVI.Repository.Repository.Interfaces;
+using Newtonsoft.Json;
+using VDVI.Repository.Dtos.RoomSummary;
+using VDVI.Repository.Dtos.Accounts;
 
 namespace VDVI.Repository.Repository.Implementation
 {
@@ -24,6 +27,44 @@ namespace VDVI.Repository.Repository.Implementation
             {
                 return new SqlConnection(_config.GetConnectionString("ApmaDb"));
             }
+        }
+        public string InsertRatePlanStatisticHistory(List<RatePlanStatisticDto> ratePlanStatisticDto)
+        {
+            string result = "";
+            try
+            {
+                DataTable dt =
+                JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(ratePlanStatisticDto));
+
+                if (dt.Rows.Count > 0)
+                {
+                    using (IDbConnection dbConnection = Connection)
+                    {
+                        using (SqlConnection con = new SqlConnection(dbConnection.ConnectionString))
+                        {
+                            using (SqlCommand cmd = new SqlCommand("spINSERT_hce_RatePlanStatistics_History"))
+                            {
+                                cmd.CommandType = CommandType.StoredProcedure;
+                                cmd.Connection = con;
+                                cmd.Parameters.AddWithValue("@RatePlanStatistics_History_UDT", dt);
+                                con.Open();
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+                            }
+
+                        }
+                    }
+
+                }
+                result = "Successfull";
+
+            }
+            catch (Exception ex)
+            {
+                result = ex.Message;
+                throw ex;
+            }
+            return result;
         }
     }
 }
