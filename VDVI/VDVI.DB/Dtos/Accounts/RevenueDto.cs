@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VDVI.Repository.Dtos.Accounts
 {
-    public class Revenue
+    public class RevenueDto
     {
         public double TypeA { get; set; }
         public double TypeB { get; set; }
