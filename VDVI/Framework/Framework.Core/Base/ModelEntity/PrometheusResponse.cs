@@ -1,8 +1,8 @@
-﻿using System;
-using System.Net;
-using CSharpFunctionalExtensions;
+﻿using CSharpFunctionalExtensions;
 using Framework.Core.Exceptions;
 using Newtonsoft.Json;
+using System;
+using System.Net;
 
 namespace Framework.Core.Base.ModelEntity
 {

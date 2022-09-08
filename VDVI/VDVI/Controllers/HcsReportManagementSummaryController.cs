@@ -1,16 +1,5 @@
-﻿
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using SOAPService;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
-using VDVI.DB.Models.ApmaModels;
-using VDVI.Services.Interfaces;
 
 namespace VDVI.Controllers
 {
@@ -19,10 +8,8 @@ namespace VDVI.Controllers
     public class HcsReportManagementSummaryController : ControllerBase
     {
 
-        public IHcsReportManagementSummaryService _hcsReportManagementSummaryService;
-        public HcsReportManagementSummaryController(IHcsReportManagementSummaryService hcsReportManagementSummaryService)
+        public HcsReportManagementSummaryController()
         {
-            _hcsReportManagementSummaryService = hcsReportManagementSummaryService;
         }
 
 
@@ -31,7 +18,7 @@ namespace VDVI.Controllers
         {
             try
             {
-                _hcsReportManagementSummaryService.ManagementSummaryInsertManullyRoomAndLedger(_startDate, _endDate);
+                //_hcsReportManagementSummaryService.ManagementSummaryInsertManullyRoomAndLedger(_startDate, _endDate);
                 return Ok();
             }
             catch (Exception ex)

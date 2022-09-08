@@ -1,14 +1,10 @@
-﻿using Dapper;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using VDVI.DB.Dtos.RoomSummary;
 using VDVI.DB.IRepository;
 using VDVI.DB.Models.ApmaModels;
 
@@ -39,7 +35,7 @@ namespace VDVI.DB.Repository
             {
                 DataTable dt =
                 JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(ledgerBalance));
-                 
+
                 if (dt.Rows.Count > 0)
                 {
                     using (IDbConnection dbConnection = Connection)
@@ -71,14 +67,14 @@ namespace VDVI.DB.Repository
             return result;
         }
 
-        public string InsertRoomSummary(List<RoomSummary> roomSummary)
+        public string InsertRoomSummary(List<RoomSummaryDto> roomSummary)
         {
             string result = "";
             try
             {
                 DataTable dt =
                     Newtonsoft.Json.JsonConvert.DeserializeObject<DataTable>(Newtonsoft.Json.JsonConvert.SerializeObject(roomSummary));
-                 
+
                 if (dt.Rows.Count > 0)
                 {
                     using (IDbConnection dbConnection = Connection)
@@ -97,7 +93,7 @@ namespace VDVI.DB.Repository
                         }
                     }
                 }
-                result = "Successfull"; 
+                result = "Successfull";
 
             }
             catch (Exception ex)

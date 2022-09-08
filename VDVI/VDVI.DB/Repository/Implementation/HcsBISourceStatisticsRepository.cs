@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Text;
+using System.Data.SqlClient;
 using VDVI.DB.IRepository;
 using VDVI.DB.Models.ApmaModels;
-using Newtonsoft.Json;
 
 namespace VDVI.DB.Repository
 {
@@ -33,8 +32,8 @@ namespace VDVI.DB.Repository
             {
                 DataTable dt = new DataTable();
 
-                if (sourceStatistics.Count>0)
-                dt =  JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(sourceStatistics));
+                if (sourceStatistics.Count > 0)
+                    dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(sourceStatistics));
 
                 if (dt.Rows.Count > 0)
                 {

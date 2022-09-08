@@ -2,117 +2,112 @@
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
 using Framework.Core.Utility;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using SOAPAppCore.Interfaces;
 using SOAPService;
 using System;
 using System.Collections.Generic;
-using System.Net;
+using System.Linq;
 using System.Threading.Tasks;
+using VDVI.DB.Dtos.Accounts;
+using VDVI.DB.Dtos.RoomSummary;
+using VDVI.DB.IRepository;
 
 namespace SOAPAppCore.Services.Apma
 {
-    public class ReportManagementSummaryService : IReportManagementSummaryService
+    public class ReportManagementSummaryService : ApmaBaseService, IReportManagementSummaryService
     {
+        private readonly IHcsReportManagementSummaryRepository _roomSummaryRepository;
 
-        HybridCloudEngineSoapClient client = new HybridCloudEngineSoapClient(HybridCloudEngineSoapClient.EndpointConfiguration.HybridCloudEngineSoap);
-
-        //ApmaAuthService authObj = new ApmaAuthService();
-
-        public IConfiguration _config;
-        private IApmaAuthService _apmaAuthService;
-
-        public ReportManagementSummaryService(IConfiguration config, IApmaAuthService apmaAuthService)
+        public ReportManagementSummaryService(IHcsReportManagementSummaryRepository roomSummaryRepository)
         {
-            _config = config;
-            _apmaAuthService = apmaAuthService;
-        }
-        public Task<HcsReportManagementSummaryResponse> ReportManagementSummary(Authentication pmsAuthentication, string pmsProperty, DateTime StartDate, DateTime EndDate)
-        {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-            try
-            {
-                var reportManagementSummary = client.HcsReportManagementSummaryAsync(pmsAuthentication, PropertyCode: pmsProperty, StartDate: StartDate, EndDate: EndDate, "");
-
-                //convert xml into json
-                var trimDate = JsonConvert.SerializeObject(reportManagementSummary, formatting: Formatting.Indented);
-                return reportManagementSummary;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            _roomSummaryRepository = roomSummaryRepository;
         }
 
-        public async Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(string pmsProperty, DateTime StartDate, DateTime EndDate)
+        public async Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(DateTime StartDate, DateTime EndDate)
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            // TODO 
-            return await TryCatchExtension.ExecuteWithTransactionAndHandleErrorAsync(
+
+            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    Authentication pmsAuthentication = new Authentication();
-                    var reportManagementSummary = client.HcsReportManagementSummaryAsync(pmsAuthentication, PropertyCode: pmsProperty, StartDate: StartDate, EndDate: EndDate, "");
+                    Authentication pmsAuthentication = GetApmaAuthCredential();
 
-                    //TODO add the service for the bussiness
-                    
-                    // Call to the Repository
-                    return PrometheusResponse.Success(reportManagementSummary, "Data retrieval is successful");
+                    List<RoomSummaryDto> roomSummaries = new List<RoomSummaryDto>();
+                    List<LedgerBalanceDto> ledgerBalances = new List<LedgerBalanceDto>();
+
+                    foreach (string property in ApmaProperties)
+                    {
+                        var res = await client.HcsReportManagementSummaryAsync(pmsAuthentication, PropertyCode: property, StartDate: StartDate, EndDate: EndDate, "");
+
+                        List<ManagementSummary> managementSummary = res.HcsReportManagementSummaryResult.ManagementSummaries.ToList();
+
+                        FormatSummaryObject(roomSummaries, ledgerBalances, managementSummary, property);
+                    }
+
+
+                    // DB operation
+                    var dbRes = _roomSummaryRepository.InsertRoomSummary(roomSummaries);
+
+                    return PrometheusResponse.Success("", "Data retrieval is successful");
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                 {
-                    //AdditionalAction = () =>
-                    //{
-                    //    _accountingManagementRepository.RollBackTransaction();
-                    //},
                     DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
                     RethrowException = false
                 });
         }
 
 
-
-        public List<HcsReportManagementSummaryResponse> GetReportManagementSummary(DateTime StartDate, DateTime EndDate)
+        private void FormatSummaryObject(List<RoomSummaryDto> roomSummaries, List<LedgerBalanceDto> ledgerBalances, List<ManagementSummary> managementSummary, string propertyCode)
         {
-            var hcsReportManagementSummaryResponse = new List<HcsReportManagementSummaryResponse>();
-            var existingToken = _config.GetSection("AuthenticationCredential").GetSection("Token").Value;
 
-            string pmsToken = existingToken;
-            Authentication pmsAuthentication = _apmaAuthService.Authentication(pmsToken);
 
-            try
+            List<RoomSummaryDto> rooms = managementSummary.Select(x => new RoomSummaryDto()
             {
-                var properties = _apmaAuthService.ReportManagementSummaryGetProperties(pmsAuthentication);
+                InHouse = x.RoomSummary.InHouse,
+                DayUse = x.RoomSummary.DayUse,
+                LateArrival = x.RoomSummary.LateArrival,
+                EarlyDeparture = x.RoomSummary.EarlyDeparture,
+                Departed = x.RoomSummary.Departed,
+                ToDepart = x.RoomSummary.ToDepart,
+                StayOver = x.RoomSummary.StayOver,
+                EarlyArrival = x.RoomSummary.EarlyArrival,
+                Arrived = x.RoomSummary.Arrived,
+                ToArrive = x.RoomSummary.ToArrive,
+                NoShow = x.RoomSummary.NoShow,
+                Complementary = x.RoomSummary.Complementary,
+                WalkIns = x.RoomSummary.WalkIns,
+                RoomReservationCreated = x.RoomSummary.RoomReservationCreated,
+                RoomReservationCancelled = x.RoomSummary.RoomReservationCancelled,
+                BusinessDate = x.BusinessDate,
+                PropertyCode = propertyCode,
+            }).ToList();
+            roomSummaries.AddRange(rooms);
 
-                // if token is invalid
-                if (properties.Length <= 0 || existingToken == null)
-                {
-                    pmsToken = _apmaAuthService.AuthenticationResponse().Token;
-                    pmsAuthentication = _apmaAuthService.Authentication(pmsToken);
-                    properties = _apmaAuthService.ReportManagementSummaryGetProperties(pmsAuthentication);
-                    _config.GetSection("AuthenticationCredential").GetSection("Token").Value = pmsToken;
-                }
 
-                if (properties.Length > 0)
-                {
-                    foreach (string pmsProperty in properties)
-                    {
-                        var res = ReportManagementSummary(pmsAuthentication, pmsProperty, StartDate, EndDate).Result;
-                        hcsReportManagementSummaryResponse.Add(res);
-                    }
-                }
-
-                return hcsReportManagementSummaryResponse;
-            }
-            catch (Exception ex)
+            List<LedgerBalanceDto> ledgerList = managementSummary.Select(x => new LedgerBalanceDto()
             {
+                Reservations = x.LedgerBalance.Reservations,
+                InHouseReservations = x.LedgerBalance.InHouseReservations,
+                GroupReservations = x.LedgerBalance.GroupReservations,
+                EventReservations = x.LedgerBalance.EventReservations,
+                TotalTurnover = x.LedgerBalance.TotalTurnover,
+                LodgingTurnover = x.LedgerBalance.LodgingTurnover,
+                PaymentsDebitor = x.LedgerBalance.PaymentsDebitor,
+                PaymentsCash = x.LedgerBalance.PaymentsCash,
+                CityLedger = x.LedgerBalance.CityLedger,
+                TotalTurnoverEx = x.LedgerBalance.TotalTurnoverEx,
+                TotalTurnoverExSpecified = x.LedgerBalance.TotalTurnoverExSpecified,
+                LodgingTurnoverEx = x.LedgerBalance.LodgingTurnoverEx,
+                LodgingTurnoverExSpecified = x.LedgerBalance.LodgingTurnoverExSpecified,
+                BusinessDate = x.BusinessDate,
+                PropertyCode = propertyCode
 
-                throw ex;
-            }
+            }).ToList();
+
+            ledgerBalances.AddRange(ledgerList);
 
         }
+
+
     }
 }

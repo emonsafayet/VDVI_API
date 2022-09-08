@@ -1,19 +1,18 @@
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System;
-using VDVI.Services.Interfaces;
-using VDVI.DB.Services;
-using VDVI.Services.Services;
-using VDVI.DB.IRepository;
-using VDVI.DB.Repository;
 using SOAPAppCore.Interfaces;
 using SOAPAppCore.Services;
 using SOAPAppCore.Services.Apma;
-using Hangfire;
+using System;
+using VDVI.DB.IRepository;
+using VDVI.DB.Repository;
+using VDVI.Services.Interfaces;
+using VDVI.Services.Services;
 
 namespace VDVI
 {
@@ -32,7 +31,7 @@ namespace VDVI
             services.AddControllers();
 
             //services
-            services.AddScoped<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
+
             services.AddScoped<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
             services.AddScoped<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
 
@@ -98,11 +97,13 @@ namespace VDVI
             {
                 DashboardTitle = "Scheduled Jobs"
             });
+
             recurringJobManager.AddOrUpdate(
                   "InsertReportManagementRoomAndLedgerJob",
-                  () => serviceProvider.GetService<IHcsReportManagementSummaryService>().ManagementSummaryInsertRoomAndLedger(),
+                  () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler(),
                   configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
                   );
+
             //recurringJobManager.AddOrUpdate(
             //    "HcsBISourceStatisticsHistory",
             //    () => serviceProvider.GetService<IHcsBISourceStatisticsService>().GetHcsBISourceStatistics(),

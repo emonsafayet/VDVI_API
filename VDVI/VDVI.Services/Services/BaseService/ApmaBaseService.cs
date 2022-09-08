@@ -1,39 +1,64 @@
 ﻿using Microsoft.Extensions.Configuration;
-using SOAPAppCore.Interfaces;
 using SOAPService;
 using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SOAPAppCore.Services
 {
-    public class ApmaAuthService: IApmaAuthService
+    public class ApmaBaseService
     {
-       SOAPService.HybridCloudEngineSoapClient client = new SOAPService.HybridCloudEngineSoapClient(SOAPService.HybridCloudEngineSoapClient.EndpointConfiguration.HybridCloudEngineSoap);
+        public SOAPService.HybridCloudEngineSoapClient client = new SOAPService.HybridCloudEngineSoapClient(SOAPService.HybridCloudEngineSoapClient.EndpointConfiguration.HybridCloudEngineSoap);
+        public static string ApmaAuthToken = null;
+        public static string[] ApmaProperties;
+        public static Authentication ApmaAuthCredential;
+
+
+        IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+        // Duplicate here any configuration sources you use.        
+
 
         public IConfiguration _config;
-        public ApmaAuthService(IConfiguration config)
+        public ApmaBaseService()
         {
-            _config = config;
-        }  
 
-        public Authentication Authentication(string pmsToken)
+
+            configurationBuilder.AddJsonFile("AppSettings.json");
+            _config = configurationBuilder.Build();
+        }
+
+        public Authentication GetApmaAuthCredential()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-           var authentication = new SOAPService.Authentication
-           {
+            if (ApmaAuthCredential != null)
+
+                return ApmaAuthCredential;
+
+
+            if (string.IsNullOrEmpty(ApmaAuthToken))
+                GetApmaApplicationToken();
+
+            var authCredential = new SOAPService.Authentication
+            {
                 User = _config.GetSection("AuthenticationCredential").GetSection("pmsUser").Value,
                 Password = _config.GetSection("AuthenticationCredential").GetSection("pmsPassword").Value,
                 VendorId = _config.GetSection("AuthenticationCredential").GetSection("pmsVendorId").Value,
                 CrsProperty = _config.GetSection("AuthenticationCredential").GetSection("pmsCrsProperty").Value,
-                Token = pmsToken
+                Token = ApmaAuthToken
             };
-            return authentication;
+
+
+            // get ast properties
+            ApmaProperties = GetApmaProperties(authCredential);
+
+            // Set Auth
+            ApmaAuthCredential = authCredential;
+
+            return authCredential;
         }
-        public AuthenticationResponse AuthenticationResponse()
+
+        public string GetApmaApplicationToken()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
@@ -45,17 +70,19 @@ namespace SOAPAppCore.Services
                 VendorId = _config.GetSection("AuthenticationCredential").GetSection("pmsVendorId").Value
             };
 
-            //response
             SOAPService.AuthenticationResponse authenticationResponse = client.HceAuthenticateAsync(authenticationRequest).Result;
-            return authenticationResponse;
+
+            ApmaAuthToken = authenticationResponse.Token;
+            return authenticationResponse.Token;
         }
 
-        public string[] ReportManagementSummaryGetProperties(Authentication pmsAuthentication)
+        public string[] GetApmaProperties(Authentication pmsAuthentication)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             try
             {
+
                 var ListProperties = client.HcsListPropertiesAsync(pmsAuthentication, "", "").Result.HcsListPropertiesResult.Properties;
 
                 List<string> propertylist = new List<string>();

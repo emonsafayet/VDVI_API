@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj" />
-    <ProjectReference Include="..\VDVI.DB\VDVI.DB.csproj" />
+    <ProjectReference Include="..\VDVI.DB\VDVI.Repository.csproj" />
   </ItemGroup>
 
 </Project>
