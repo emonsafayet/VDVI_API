@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using VDVI.DB.Dtos.Accounts;
 using VDVI.DB.Dtos.RoomSummary;
 using VDVI.DB.IRepository;
 using VDVI.DB.Models.ApmaModels;
@@ -28,7 +29,7 @@ namespace VDVI.DB.Repository
             }
         }
 
-        public string InsertLedgerBalance(List<LedgerBalance> ledgerBalance)
+        public string InsertLedgerBalance(List<LedgerBalanceDto> ledgerBalance)
         {
             string result = "";
             try

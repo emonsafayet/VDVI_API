@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CSharpFunctionalExtensions;
+using Framework.Core.Base.ModelEntity;
+using Microsoft.Extensions.Configuration;
 using SOAPAppCore.Interfaces;
 using System;
 using System.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace VDVI.Services.Services
 
         private DateTime _startDate = new DateTime();
         private DateTime _endDate = new DateTime();
-
+        int actionflag = 0;
         public ApmaTaskSchedulerService(
             ITaskSchedulerRepository taskScheduler,
             IConfiguration config,
@@ -29,22 +31,29 @@ namespace VDVI.Services.Services
         }
 
 
-        public async Task SummaryScheduler()
+        public async Task SummaryScheduler(string methodName)
         {
-            GetStartAndEndDate();
+            bool flag = false;
+            Result<PrometheusResponse> response;
+            GetStartAndEndDate(methodName);
 
-            var methodName = "HcsReportManagementSummary";
-            int flag = 1;
+            switch (methodName)
+            {
+                case "HcsReportManagementSummary":
+                    response = await _reportSummary.ReportManagementSummaryAsync(_startDate, _endDate);
+                    flag = response.IsSuccess;
+                    break;
 
-            var response = await _reportSummary.ReportManagementSummaryAsync(_startDate, _endDate);
-
-            if (response.IsSuccess)
-                _taskScheduler.InsertOrUpdateTaskScheduleDatetime(methodName, _endDate, flag);
+                default:
+                    break;
+            }
+            if (flag)
+            _taskScheduler.InsertOrUpdateTaskScheduleDatetime(methodName, _endDate, actionflag);
 
         }
 
 
-        private JobTaskScheduler GetStartAndEndDate()
+        private JobTaskScheduler GetStartAndEndDate(string methodName)
         {
             string resultDate = _config.GetSection("ApmaServiceDateConfig").GetSection("initialStartDate").Value;
             DateTime apmaInitialDate = Convert.ToDateTime(resultDate);
@@ -52,10 +61,11 @@ namespace VDVI.Services.Services
             var dayDiffernce = _config.GetSection("ApmaServiceDateConfig").GetSection("DayDifferenceReportManagementRoomAndLedgerSummary").Value;
 
             //Check from the Database by method Name, if there have any existing value or not ;
-            JobTaskScheduler taskScheduleEndDate = _taskScheduler.GetTaskScheduler("HcsReportManagementSummary");
+            JobTaskScheduler taskScheduleEndDate = _taskScheduler.GetTaskScheduler(methodName);
 
             if (taskScheduleEndDate == null)
             {
+                actionflag = 0;
                 _startDate = apmaInitialDate;
                 _endDate = _startDate.AddDays(Convert.ToInt32(dayDiffernce));
             }
@@ -63,6 +73,7 @@ namespace VDVI.Services.Services
             {
                 _startDate = Convert.ToDateTime(taskScheduleEndDate.LastExecutionDate);
                 _endDate = _startDate.AddDays(Convert.ToInt32(dayDiffernce));
+                actionflag = 1;
             }
             return taskScheduleEndDate;
         }

@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using VDVI.DB.IRepository;
 using VDVI.DB.Models.ApmaModels;
+using VDVI.Repository.Dtos.SourceStatistics;
 
 namespace VDVI.DB.Repository
 {
@@ -25,7 +26,7 @@ namespace VDVI.DB.Repository
                 return new SqlConnection(_config.GetConnectionString("ApmaDb"));
             }
         }
-        public string InsertHcsBISourceStatisticsHistory(List<SourceStatistic> sourceStatistics)
+        public string InsertHcsBISourceStatisticsHistory(List<SourceStatisticDto> sourceStatistics)
         {
             string result = "";
             try

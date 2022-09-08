@@ -7,6 +7,7 @@ using System.Threading;
 using VDVI.DB.IRepository;
 using VDVI.DB.Models.ApmaModels;
 using VDVI.DB.Repository;
+using VDVI.Repository.Dtos.SourceStatistics;
 using VDVI.Services.Interfaces; 
 
 namespace VDVI.Services.Services
@@ -16,7 +17,7 @@ namespace VDVI.Services.Services
         private readonly IConfiguration _config; 
         private readonly IApmaTaskSchedulerService _apmaTaskSchedulerService;
         private readonly IHcsBISourceStatisticsRepository _hcsBISourceStatisticsRepository;
-        List<SourceStatistic> list = new List<SourceStatistic>();
+        List<SourceStatisticDto> list = new List<SourceStatisticDto>();
 
         public HcsBISourceStatisticsService(IConfiguration config,  IApmaTaskSchedulerService apmaTaskSchedulerService, 
             IHcsBISourceStatisticsRepository hcsBISourceStatisticsRepository)
