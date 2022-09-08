@@ -37,8 +37,8 @@ namespace VDVI
             //services
 
             services.AddScoped<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
-            services.AddTransient<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
-            services.AddScoped<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
+            services.AddScoped<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
+        //    services.AddScoped<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
             services.AddScoped<IHcsBIRatePlanStatisticsService, HcsBIRatePlanStatisticsService>(); 
             services.AddScoped<IHcsBIReservationDashboardService, HcsBIReservationDashboardService>(); 
 
@@ -46,7 +46,7 @@ namespace VDVI
             //dependency resolve: 
     
             services.AddTransient<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
-            services.AddTransient<IHcsBISourceStatisticsRepository, HcsBISourceStatisticsRepository>();
+           // services.AddTransient<IHcsBISourceStatisticsRepository, HcsBISourceStatisticsRepository>();
             services.AddTransient<IHcsBIRatePlanStatisticsRepository, HcsBIRatePlanStatisticsRepository>();
             services.AddTransient<IHcsBIReservationDashboardRepository, HcsBIReservationDashboardRepository>();
 
@@ -107,27 +107,26 @@ namespace VDVI
                 DashboardTitle = "Scheduled Jobs"
             });
 
-            //recurringJobManager.AddOrUpdate(
-            //      "HcsReportManagementSummaryJob",
-            //      () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
-            //      configuration["ApmaHangfireJobSchedulerTime:HcsReportManagementSummary"], TimeZoneInfo.Utc
-            //      );
-            //recurringJobManager.AddOrUpdate(
-            //      "HcsBIReservationDashboardJob",
-            //      () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsBIReservationDashboard"),
-            //      configuration["ApmaHangfireJobSchedulerTime:HcsBIReservationDashboard"], TimeZoneInfo.Utc
-            //      ); 
+            recurringJobManager.AddOrUpdate(
+                  "HcsReportManagementSummaryJob",
+                  () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
+                  configuration["ApmaHangfireJobSchedulerTime:HcsReportManagementSummary"], TimeZoneInfo.Utc
+                  );
+            recurringJobManager.AddOrUpdate(
+                  "HcsBIReservationDashboardJob",
+                  () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsBIReservationDashboard"),
+                  configuration["ApmaHangfireJobSchedulerTime:HcsBIReservationDashboard"], TimeZoneInfo.Utc
+                  );
             recurringJobManager.AddOrUpdate(
                   "HcsBIRatePlanStatisticsJob",
                   () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsBIRatePlanStatistics"),
                   configuration["ApmaHangfireJobSchedulerTime:HcsBIRatePlanStatistics"], TimeZoneInfo.Utc
                   );
-
             //recurringJobManager.AddOrUpdate(
-            //    "HcsBISourceStatisticsHistory",
-            //    () => serviceProvider.GetService<IHcsBISourceStatisticsService>().GetHcsBISourceStatistics(),
-            //    configuration["* * * * *"], TimeZoneInfo.Utc
-            //    );
+            //      "HcsBISourceStatisticsServiceJob",
+            //      () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsBISourceStatisticsService"),
+            //      configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsService"], TimeZoneInfo.Utc
+            //      );
         }
     }
 }
