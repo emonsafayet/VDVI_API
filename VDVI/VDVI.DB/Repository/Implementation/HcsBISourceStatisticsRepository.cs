@@ -26,6 +26,7 @@ namespace VDVI.DB.Repository
                 return new SqlConnection(_config.GetConnectionString("ApmaDb"));
             }
         }
+
         public string InsertHcsBISourceStatisticsHistory(List<SourceStatisticDto> sourceStatistics)
         {
             string result = "";
@@ -51,7 +52,6 @@ namespace VDVI.DB.Repository
                                 cmd.ExecuteNonQuery();
                                 con.Close();
                             }
-
                         }
                     }
 
