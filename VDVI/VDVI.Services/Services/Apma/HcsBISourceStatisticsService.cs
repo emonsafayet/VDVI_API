@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using SOAPAppCore.Interfaces;
+using SOAPAppCore.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,24 +13,8 @@ using VDVI.Services.Interfaces;
 
 namespace VDVI.Services.Services
 {
-    public class HcsBISourceStatisticsService : IHcsBISourceStatisticsService
-    {  
-        private readonly IConfiguration _config; 
-        private readonly IApmaTaskSchedulerService _apmaTaskSchedulerService;
-        private readonly IHcsBISourceStatisticsRepository _hcsBISourceStatisticsRepository;
-        List<SourceStatisticDto> list = new List<SourceStatisticDto>();
-
-        public HcsBISourceStatisticsService(IConfiguration config,  IApmaTaskSchedulerService apmaTaskSchedulerService, 
-            IHcsBISourceStatisticsRepository hcsBISourceStatisticsRepository)
-        {
-            _config = config; 
-            _apmaTaskSchedulerService = apmaTaskSchedulerService;
-            _hcsBISourceStatisticsRepository = hcsBISourceStatisticsRepository;
-        }
-        public void GetHcsBISourceStatistics()
-        {
-            
-            _hcsBISourceStatisticsRepository.InsertHcsBISourceStatisticsHistory(list);
-        }
+    public class HcsBISourceStatisticsService : ApmaBaseService, IHcsBISourceStatisticsService
+    {
+         
     }
 }

@@ -6,6 +6,6 @@ namespace VDVI.Services.Interfaces
 {
     public interface IHcsBISourceStatisticsService
     {
-        void GetHcsBISourceStatistics();
+         
     }
 }

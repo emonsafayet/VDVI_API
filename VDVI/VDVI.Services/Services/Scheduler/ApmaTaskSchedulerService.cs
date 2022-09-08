@@ -13,7 +13,7 @@ namespace VDVI.Services.Services
     public class ApmaTaskSchedulerService : IApmaTaskSchedulerService
     {
         public ITaskSchedulerRepository _taskScheduler;
-        private readonly IReportManagementSummaryService _reportSummary;
+        private readonly IHcsReportManagementSummaryService _reportSummary;
         private readonly IConfiguration _config;
 
         private DateTime _startDate = new DateTime();
@@ -22,7 +22,7 @@ namespace VDVI.Services.Services
         public ApmaTaskSchedulerService(
             ITaskSchedulerRepository taskScheduler,
             IConfiguration config,
-            IReportManagementSummaryService reportSummary
+            IHcsReportManagementSummaryService reportSummary
             )
         {
             _taskScheduler = taskScheduler;

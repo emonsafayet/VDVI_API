@@ -11,8 +11,12 @@ using SOAPAppCore.Services.Apma;
 using System;
 using VDVI.DB.IRepository;
 using VDVI.DB.Repository;
+using VDVI.Repository.Repository.Implementation;
+using VDVI.Repository.Repository.Interfaces;
 using VDVI.Services.Interfaces;
+using VDVI.Services.Interfaces.Apma;
 using VDVI.Services.Services;
+using VDVI.Services.Services.Apma;
 
 namespace VDVI
 {
@@ -33,13 +37,19 @@ namespace VDVI
             //services
 
             services.AddScoped<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
+            services.AddTransient<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
             services.AddScoped<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
+            services.AddScoped<IHcsBIRatePlanStatisticsService, HcsBIRatePlanStatisticsService>(); 
+            services.AddScoped<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>(); 
 
 
             //dependency resolve: 
-            services.AddTransient<IReportManagementSummaryService, ReportManagementSummaryService>();
+    
             services.AddTransient<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
             services.AddTransient<IHcsBISourceStatisticsRepository, HcsBISourceStatisticsRepository>();
+            services.AddTransient<IHcsBIRatePlanStatisticsRepository, HcsBIRatePlanStatisticsRepository>();
+            services.AddTransient<IHcsBIReservationDashboardRepository, HcsBIReservationDashboardRepository>();
+
             services.AddTransient<ITaskSchedulerRepository, TaskSchedulerRepository>();
 
             services.AddSwaggerGen();

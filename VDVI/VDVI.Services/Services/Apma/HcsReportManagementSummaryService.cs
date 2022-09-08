@@ -14,11 +14,11 @@ using VDVI.DB.IRepository;
 
 namespace SOAPAppCore.Services.Apma
 {
-    public class ReportManagementSummaryService : ApmaBaseService, IReportManagementSummaryService
+    public class HcsReportManagementSummaryService : ApmaBaseService, IHcsReportManagementSummaryService
     {
         private readonly IHcsReportManagementSummaryRepository _roomSummaryRepository;
 
-        public ReportManagementSummaryService(IHcsReportManagementSummaryRepository roomSummaryRepository)
+        public HcsReportManagementSummaryService(IHcsReportManagementSummaryRepository roomSummaryRepository)
         {
             _roomSummaryRepository = roomSummaryRepository;
         }

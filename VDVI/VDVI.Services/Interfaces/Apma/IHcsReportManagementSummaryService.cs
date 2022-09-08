@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SOAPAppCore.Interfaces
 {
-    public interface IReportManagementSummaryService
+    public interface IHcsReportManagementSummaryService
     {
         Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(DateTime StartDate, DateTime EndDate);
     }
