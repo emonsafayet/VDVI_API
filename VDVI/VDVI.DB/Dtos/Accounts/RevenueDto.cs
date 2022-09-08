@@ -6,16 +6,18 @@ namespace VDVI.Repository.Dtos.Accounts
 {
     public class RevenueDto
     {
-        public double TypeA { get; set; }
-        public double TypeB { get; set; }
-        public double TypeC { get; set; }
-        public double TypeD { get; set; }
-        public double TypeE { get; set; }
-        public double TypeF { get; set; }
-        public double Undefined { get; set; }
-        public double AverageDailyRate { get; set; }
-        public double RevenuePerAvailableRoom { get; set; }
-        public double SpentPerAvailableRoom { get; set; }
-        public double TotalRevenue { get; set; }
+        public string PropertyCode { get; set; }
+        public DateTime? DashboardDate { get; set; }
+        public decimal TypeA { get; set; }
+        public decimal TypeB { get; set; }
+        public decimal TypeC { get; set; }
+        public decimal TypeD { get; set; }
+        public decimal TypeE { get; set; }
+        public decimal TypeF { get; set; }
+        public decimal Undefined { get; set; }
+        public decimal AverageDailyRate { get; set; }
+        public decimal RevenuePerAvailableRoom { get; set; }
+        public decimal SpentPerAvailableRoom { get; set; }
+        public decimal TotalRevenue { get; set; }
     }
 }

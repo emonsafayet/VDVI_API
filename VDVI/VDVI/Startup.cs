@@ -40,7 +40,7 @@ namespace VDVI
             services.AddTransient<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
             services.AddScoped<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
             services.AddScoped<IHcsBIRatePlanStatisticsService, HcsBIRatePlanStatisticsService>(); 
-            services.AddScoped<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>(); 
+            services.AddScoped<IHcsBIReservationDashboardService, HcsBIReservationDashboardService>(); 
 
 
             //dependency resolve: 
@@ -108,9 +108,14 @@ namespace VDVI
             });
 
             recurringJobManager.AddOrUpdate(
-                  "InsertReportManagementRoomAndLedgerJob",
+                  "InsertHcsReportManagementSummaryJob",
                   () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
-                  configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
+                  configuration["ApmaHangfireJobSchedulerTime:HcsReportManagementSummary"], TimeZoneInfo.Utc
+                  );
+            recurringJobManager.AddOrUpdate(
+                  "InsertHcsBIReservationDashboardJob",
+                  () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsBIReservationDashboard"),
+                  configuration["ApmaHangfireJobSchedulerTime:HcsBIReservationDashboard"], TimeZoneInfo.Utc
                   );
 
             //recurringJobManager.AddOrUpdate(

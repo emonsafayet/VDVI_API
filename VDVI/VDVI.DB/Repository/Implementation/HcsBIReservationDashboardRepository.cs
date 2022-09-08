@@ -24,7 +24,7 @@ namespace VDVI.Repository.Repository.Implementation
                 return new SqlConnection(_config.GetConnectionString("ApmaDb"));
             }
         }
-        public string InsertReservationDto(List<ReservationDto> reservationDto)
+        public string InsertReservation(List<ReservationDto> reservationDto)
         {
             string result = "";
             try
@@ -63,7 +63,7 @@ namespace VDVI.Repository.Repository.Implementation
             return result;
         }
 
-        public string InsertRoomsDto(List<RoomsDto> reservationDto)
+        public string InsertRooms(List<RoomsDto> reservationDto)
         {
             string result = "";
             try
@@ -102,7 +102,7 @@ namespace VDVI.Repository.Repository.Implementation
             return result;
         }
 
-        public string InsertRevenueDto(List<RevenueDto> revenueDto)
+        public string InsertRevenue(List<RevenueDto> revenueDto)
         {
             string result = "";
             try
@@ -140,7 +140,7 @@ namespace VDVI.Repository.Repository.Implementation
             }
             return result;
         }
-        public string InsertOccupancyDto(List<OccupancyDto> occupancyDto)
+        public string InsertOccupancy(List<OccupancyDto> occupancyDto)
         {
             string result = "";
             try

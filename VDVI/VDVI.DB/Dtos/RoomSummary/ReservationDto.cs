@@ -6,6 +6,8 @@ namespace VDVI.Repository.Dtos.RoomSummary
 {
     public class ReservationDto
     {
+        public string PropertyCode { get; set; }
+        public DateTime? DashboardDate { get; set; }
         public int CreatedReservations { get; set; }
         public int CreatedRoomNights { get; set; }
         public int StayOvers { get; set; }
@@ -17,8 +19,8 @@ namespace VDVI.Repository.Dtos.RoomSummary
         public int CheckedOut { get; set; }
         public int DayUseCheckIns { get; set; }
         public int DayUseCheckOuts { get; set; }
-        public double AverageLengthOfStay { get; set; }
-        public double AverageLeadTime { get; set; }
+        public decimal AverageLengthOfStay { get; set; }
+        public decimal AverageLeadTime { get; set; }
         public int NoShowProcessed { get; set; }
         public int NoShowUnprocessed { get; set; }
     }

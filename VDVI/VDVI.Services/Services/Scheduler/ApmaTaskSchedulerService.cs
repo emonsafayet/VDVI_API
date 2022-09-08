@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using VDVI.DB.IRepository;
 using VDVI.DB.Models.Common;
 using VDVI.Services.Interfaces;
+using VDVI.Services.Interfaces.Apma;
 
 namespace VDVI.Services.Services
 {
@@ -14,6 +15,7 @@ namespace VDVI.Services.Services
     {
         public ITaskSchedulerRepository _taskScheduler;
         private readonly IHcsReportManagementSummaryService _reportSummary;
+        private readonly IHcsBIReservationDashboardService _hcsBIReservationDashboardService;
         private readonly IConfiguration _config;
 
         private DateTime _startDate = new DateTime();
@@ -22,12 +24,14 @@ namespace VDVI.Services.Services
         public ApmaTaskSchedulerService(
             ITaskSchedulerRepository taskScheduler,
             IConfiguration config,
-            IHcsReportManagementSummaryService reportSummary
+            IHcsReportManagementSummaryService reportSummary,
+            IHcsBIReservationDashboardService hcsBIReservationDashboardService
             )
         {
             _taskScheduler = taskScheduler;
             _config = config;
             _reportSummary = reportSummary;
+            _hcsBIReservationDashboardService = hcsBIReservationDashboardService;
         }
 
 
@@ -41,6 +45,10 @@ namespace VDVI.Services.Services
             {
                 case "HcsReportManagementSummary":
                     response = await _reportSummary.ReportManagementSummaryAsync(_startDate, _endDate);
+                    flag = response.IsSuccess;
+                    break;
+                case "HcsBIReservationDashboard":
+                    response = await _hcsBIReservationDashboardService.HcsBIReservationDashboardRepositoryAsyc(_startDate, _endDate);
                     flag = response.IsSuccess;
                     break;
 
