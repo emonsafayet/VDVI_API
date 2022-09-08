@@ -45,7 +45,8 @@ namespace SOAPAppCore.Services.Apma
 
 
                     // DB operation
-                    var dbRes = _roomSummaryRepository.InsertRoomSummary(roomSummaries);
+                    var dbroomSummariesRes = _roomSummaryRepository.InsertRoomSummary(roomSummaries);
+                    var dbledgerBalancesRes = _roomSummaryRepository.InsertLedgerBalance(ledgerBalances);
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },
