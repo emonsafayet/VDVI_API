@@ -8,19 +8,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VDVI.DB.Dtos.Accounts;
-using VDVI.DB.Dtos.RoomSummary;
-using VDVI.Repository.Repository;
+using VDVI.DB.Dtos;
+using VDVI.Services.Interfaces;
 
 namespace SOAPAppCore.Services.Apma
 {
     public class ReportManagementSummaryService : ApmaBaseService, IReportManagementSummaryService
     {
-        private readonly IScheduleManagementRepository _scheduleManagementRepository;
 
-        public ReportManagementSummaryService(IScheduleManagementRepository scheduleManagementRepository)
+        private readonly IRoomSummaryService _roomSummaryService;
+
+        public ReportManagementSummaryService(
+            IRoomSummaryService roomSummaryService)
         {
-            _scheduleManagementRepository = scheduleManagementRepository;
+            _roomSummaryService = roomSummaryService;
         }
 
         public async Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(DateTime StartDate, DateTime EndDate)
@@ -44,8 +45,7 @@ namespace SOAPAppCore.Services.Apma
                     }
 
 
-                    // DB operation
-                    var dbroomSummariesRes = _scheduleManagementRepository.RoomSummaryRepository.BulkInsertAsync(roomSummaries);
+                    var dbroomSummariesRes = _roomSummaryService.BulkInsertAsync(roomSummaries);
                     //var dbledgerBalancesRes = _roomSummaryRepository.InsertLedgerBalance(ledgerBalances);
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
@@ -64,9 +64,8 @@ namespace SOAPAppCore.Services.Apma
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                   
-                    
-                    var dbroomSummariesRes = _scheduleManagementRepository.RoomSummaryRepository.InsertAsync(dto);
+
+                    var dbroomSummariesRes = _roomSummaryService.InsertAsync(dto);
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },
@@ -125,9 +124,5 @@ namespace SOAPAppCore.Services.Apma
             ledgerBalances.AddRange(ledgerList);
         }
 
-        public Task<Result<PrometheusResponse>> BulkInsertAsync(RoomSummaryDto dto)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

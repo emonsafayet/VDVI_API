@@ -2,7 +2,7 @@
 using Framework.Core.Base.ModelEntity;
 using System;
 using System.Threading.Tasks;
-using VDVI.DB.Dtos.RoomSummary;
+using VDVI.DB.Dtos;
 
 namespace SOAPAppCore.Interfaces
 {
@@ -10,6 +10,5 @@ namespace SOAPAppCore.Interfaces
     {
         Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(DateTime StartDate, DateTime EndDate);
         Task<Result<PrometheusResponse>> InsertAsync(RoomSummaryDto dto);
-        Task<Result<PrometheusResponse>> BulkInsertAsync(RoomSummaryDto dto);
     }
 }

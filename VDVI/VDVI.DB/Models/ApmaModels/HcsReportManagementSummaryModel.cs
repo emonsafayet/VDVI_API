@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using VDVI.DB.Dtos.Accounts;
-using VDVI.DB.Dtos.RoomSummary;
+using VDVI.DB.Dtos;
 
 namespace VDVI.DB.Models.ApmaModels
 {
@@ -20,7 +19,7 @@ namespace VDVI.DB.Models.ApmaModels
         public bool Success { get; set; }
         public ErrorInfo ErrorInfo { get; set; }
         public object WarningInfo { get; set; }
-    } 
+    }
 
     public class ManagementSummary
     {

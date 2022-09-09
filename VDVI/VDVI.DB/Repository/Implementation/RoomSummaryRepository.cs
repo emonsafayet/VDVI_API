@@ -1,10 +1,13 @@
-﻿using MicroOrm.Dapper.Repositories;
+﻿using Dapper;
+using MicroOrm.Dapper.Repositories;
 using MicroOrm.Dapper.Repositories.SqlGenerator.Filters;
 using Nelibur.ObjectMapper;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
 using VDVI.DB.DbModels.RoomSummary;
-using VDVI.DB.Dtos.RoomSummary;
+using VDVI.DB.Dtos;
 using VDVI.Repository.DbContext;
 using VDVI.Repository.Repository.Interfaces;
 
@@ -44,6 +47,19 @@ namespace VDVI.Repository.Repository.Implementation
             return dto;
         }
 
+
+        public async Task<string> BulkInsertWithProcAsync(List<RoomSummaryDto> dto)
+        {
+
+            DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
+
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_LedgerBalance", new { ManagementSummary_LedgerBalance_UDT = dt },
+                                commandType: CommandType.StoredProcedure);
+
+            return queryResult.ToString();
+        }
+
+
         public async Task<RoomSummaryDto> UpdateAsync(RoomSummaryDto dto)
         {
             var dbCustomerEntity = TinyMapper.Map<DbRoomSummary>(dto);
@@ -55,7 +71,7 @@ namespace VDVI.Repository.Repository.Implementation
             return dto;
         }
 
-        public async Task<List<RoomSummaryDto>> FindAllByPropertyCodeAsync(string propertyCode)
+        public async Task<List<RoomSummaryDto>> GetByPropertyCodeAsync(string propertyCode)
         {
             IEnumerable<DbRoomSummary> dbEntities = await _dbContext
                 .RoomSummary
@@ -83,5 +99,15 @@ namespace VDVI.Repository.Repository.Implementation
 
             return dto;
         }
+
+        public async Task<bool> DeleteByPropertyCodeAsync(string propertyCode)
+        {
+            var dbEntity = await _dbContext.RoomSummary.DeleteAsync(x => x.PropertyCode == propertyCode);
+
+            return true;
+        }
+
+
+
     }
 }

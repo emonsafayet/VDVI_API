@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VDVI.DB.Dtos.Accounts
+namespace VDVI.DB.Dtos
 {
     public class LedgerBalanceDto
     {

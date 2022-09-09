@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using VDVI.DB.Dtos.Accounts;
-using VDVI.DB.Dtos.RoomSummary;
-using VDVI.DB.Models.ApmaModels;
+using VDVI.DB.Dtos;
 
 namespace VDVI.DB.IRepository
 {

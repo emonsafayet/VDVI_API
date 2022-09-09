@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VDVI.DB.Dtos.RoomSummary
+namespace VDVI.DB.Dtos
 {
     public class RoomSummaryDto
     {

@@ -5,7 +5,7 @@ using Nelibur.ObjectMapper;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using VDVI.DB.DbModels.RoomSummary;
-using VDVI.DB.Dtos.RoomSummary;
+using VDVI.DB.Dtos;
 
 namespace VDVI.Repository.DbContext
 {
