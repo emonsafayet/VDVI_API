@@ -23,7 +23,6 @@ namespace VDVI.Repository.Repository.Implementation
             _dbContext = dbContext;
         }
 
-
         public async Task<RoomSummaryDto> InsertAsync(RoomSummaryDto dto)
         {
             var dbEntity = TinyMapper.Map<DbRoomSummary>(dto);
@@ -34,7 +33,6 @@ namespace VDVI.Repository.Repository.Implementation
 
             return TinyMapper.Map<RoomSummaryDto>(dbEntity);
         }
-
 
         public async Task<List<RoomSummaryDto>> BulkInsertAsync(List<RoomSummaryDto> dto)
         {
@@ -47,18 +45,13 @@ namespace VDVI.Repository.Repository.Implementation
             return dto;
         }
 
-
         public async Task<string> BulkInsertWithProcAsync(List<RoomSummaryDto> dto)
         {
-
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
-
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_LedgerBalance", new { ManagementSummary_LedgerBalance_UDT = dt },
-                                commandType: CommandType.StoredProcedure);
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_LedgerBalance", new { ManagementSummary_LedgerBalance_UDT = dt },                                 commandType: CommandType.StoredProcedure);
 
             return queryResult.ToString();
         }
-
 
         public async Task<RoomSummaryDto> UpdateAsync(RoomSummaryDto dto)
         {
@@ -77,7 +70,6 @@ namespace VDVI.Repository.Repository.Implementation
                 .RoomSummary
                 .SetOrderBy(OrderInfo.SortDirection.DESC, x => x.PropertyCode)
                 .FindAllAsync(x => x.PropertyCode == propertyCode);
-
 
             var entities = TinyMapper.Map<List<RoomSummaryDto>>(dbEntities);
 
@@ -106,8 +98,5 @@ namespace VDVI.Repository.Repository.Implementation
 
             return true;
         }
-
-
-
     }
 }

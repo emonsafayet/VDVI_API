@@ -123,6 +123,5 @@ namespace SOAPAppCore.Services.Apma
 
             ledgerBalances.AddRange(ledgerList);
         }
-
     }
 }

@@ -130,8 +130,6 @@ namespace VDVI
             //      () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
             //      configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
             //      );
-
-
         }
     }
 }

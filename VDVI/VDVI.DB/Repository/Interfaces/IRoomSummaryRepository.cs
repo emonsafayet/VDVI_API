@@ -7,10 +7,10 @@ namespace VDVI.Repository.Repository.Interfaces
     public interface IRoomSummaryRepository
     {
         Task<RoomSummaryDto> InsertAsync(RoomSummaryDto dto);
-        Task<List<RoomSummaryDto>> BulkInsertAsync(List<RoomSummaryDto> dto);
-        Task<string> BulkInsertWithProcAsync(List<RoomSummaryDto> dto);
+        Task<IEnumerable<RoomSummaryDto>> BulkInsertAsync(IEnumerable<RoomSummaryDto> dto);
+        Task<string> BulkInsertWithProcAsync(IEnumerable<RoomSummaryDto> dto);
         Task<RoomSummaryDto> UpdateAsync(RoomSummaryDto dto);
-        Task<List<RoomSummaryDto>> GetByPropertyCodeAsync(string propertyCode);
+        Task<IEnumerable<RoomSummaryDto>> GetAllByPropertyCodeAsync(string propertyCode);
         Task<RoomSummaryDto> FindByIdAsync(int id);
         Task<bool> DeleteByPropertyCodeAsync(string propertyCode);
     }
