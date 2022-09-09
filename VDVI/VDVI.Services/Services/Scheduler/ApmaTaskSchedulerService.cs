@@ -7,13 +7,17 @@ using System.Threading.Tasks;
 using VDVI.DB.IRepository;
 using VDVI.DB.Models.Common;
 using VDVI.Services.Interfaces;
+using VDVI.Services.Interfaces.Apma;
 
 namespace VDVI.Services.Services
 {
     public class ApmaTaskSchedulerService : IApmaTaskSchedulerService
     {
         public ITaskSchedulerRepository _taskScheduler;
-        private readonly IReportManagementSummaryService _reportSummary;
+        private readonly IHcsReportManagementSummaryService _reportSummary;
+        private readonly IHcsBIReservationDashboardService _hcsBIReservationDashboardService;
+        private readonly IHcsBIRatePlanStatisticsService _hcsBIRatePlanStatisticsService;
+        //private readonly IHcsBISourceStatisticsService _hcsBISourceStatisticsService;
         private readonly IConfiguration _config;
 
         private DateTime _startDate = new DateTime();
@@ -22,12 +26,18 @@ namespace VDVI.Services.Services
         public ApmaTaskSchedulerService(
             ITaskSchedulerRepository taskScheduler,
             IConfiguration config,
-            IReportManagementSummaryService reportSummary
+            IHcsReportManagementSummaryService reportSummary,
+            IHcsBIReservationDashboardService hcsBIReservationDashboardService,
+            IHcsBIRatePlanStatisticsService hcsBIRatePlanStatisticsService
+            //IHcsBISourceStatisticsService hcsBISourceStatisticsService
             )
         {
             _taskScheduler = taskScheduler;
             _config = config;
             _reportSummary = reportSummary;
+            _hcsBIReservationDashboardService = hcsBIReservationDashboardService;
+            _hcsBIRatePlanStatisticsService = hcsBIRatePlanStatisticsService;
+           // _hcsBISourceStatisticsService = hcsBISourceStatisticsService;
         }
 
 
@@ -43,6 +53,18 @@ namespace VDVI.Services.Services
                     response = await _reportSummary.ReportManagementSummaryAsync(_startDate, _endDate);
                     flag = response.IsSuccess;
                     break;
+                case "HcsBIReservationDashboard":
+                    response = await _hcsBIReservationDashboardService.HcsBIReservationDashboardRepositoryAsyc(_startDate, _endDate);
+                    flag = response.IsSuccess;
+                    break;
+                case "HcsBIRatePlanStatistics":
+                    response = await _hcsBIRatePlanStatisticsService.HcsBIRatePlanStatisticsRepositoryAsyc(_startDate, _endDate);
+                    flag = response.IsSuccess;
+                    break;
+                //case "HcsBISourceStatisticsService":
+                //    response = await _hcsBISourceStatisticsService.HcsBIHcsBISourceStatisticsRepositoryAsyc(_startDate, _endDate);
+                //    flag = response.IsSuccess;
+                //    break;
 
                 default:
                     break;

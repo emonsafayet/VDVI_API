@@ -6,6 +6,7 @@ namespace VDVI.Repository.Dtos.SourceStatistics
 {
     public class SourceStatisticDto
     {
+        public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }
         public string SourceCode { get; set; }
         public int NumberOfRooms { get; set; }

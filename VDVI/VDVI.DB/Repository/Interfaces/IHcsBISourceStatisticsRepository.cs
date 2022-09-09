@@ -6,7 +6,7 @@ using VDVI.Repository.Dtos.SourceStatistics;
 
 namespace VDVI.DB.IRepository
 {
-    public  interface IHcsBISourceStatisticsRepository
+    public interface IHcsBISourceStatisticsRepository
     {
         string InsertHcsBISourceStatisticsHistory(List<SourceStatisticDto> sourceStatistics);
     }

@@ -7,9 +7,21 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using SOAPAppCore.Interfaces;
+using SOAPAppCore.Services;
+using SOAPAppCore.Services.Apma;
+using System;
+using VDVI.DB.IRepository;
+using VDVI.DB.Repository;
+using VDVI.Repository.Repository.Implementation;
+using VDVI.Repository.Repository.Interfaces;
+using VDVI.Services.Interfaces;
+using VDVI.Services.Interfaces.Apma;
+using VDVI.Services.Services;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using VDVI.Client.IoC;
 using StartupBase = Framework.Core.Base.Startup.StartupBase;
+using VDVI.Services.Services.Apma;
 
 namespace VDVI
 {
@@ -30,17 +42,40 @@ namespace VDVI
 
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
+            services.AddScoped<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
+            services.AddScoped<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
+        //    services.AddScoped<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
+            services.AddScoped<IHcsBIRatePlanStatisticsService, HcsBIRatePlanStatisticsService>(); 
+            services.AddScoped<IHcsBIReservationDashboardService, HcsBIReservationDashboardService>(); 
+
             services.AddSwaggerGen(options =>
             {
                 options.OperationFilter<ApiVersionFilter>();
 
+            //dependency resolve: 
+    
+            services.AddTransient<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
+           // services.AddTransient<IHcsBISourceStatisticsRepository, HcsBISourceStatisticsRepository>();
+            services.AddTransient<IHcsBIRatePlanStatisticsRepository, HcsBIRatePlanStatisticsRepository>();
+            services.AddTransient<IHcsBIReservationDashboardRepository, HcsBIReservationDashboardRepository>();
+
+            services.AddTransient<ITaskSchedulerRepository, TaskSchedulerRepository>();
+
+            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Implement Swagger UI",
+                    Description = "A simple example to Implement Swagger UI",
+                });
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
                     Type = SecuritySchemeType.Http,
                     BearerFormat = "JWT",
                     In = ParameterLocation.Header,
                     Scheme = "Bearer"
-                });
             });
 
             //services.AddControllers();
@@ -108,28 +143,26 @@ namespace VDVI
                     }
                 });
 
-
-            //app.UseDefaultFiles();
-            //app.UseStaticFiles();
-
-            //app.UseRouting();
-
-            //app.UseAuthorization();
-
-            //app.UseEndpoints(async endpoints =>
-            //{
-            //    endpoints.MapControllers();
-            //});
-            //app.UseHangfireDashboard("/hangfire", new DashboardOptions
-            //{
-            //    DashboardTitle = "Scheduled Jobs"
-            //});
-
+            recurringJobManager.AddOrUpdate(
+                  "HcsReportManagementSummaryJob",
+                  () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
+                  configuration["ApmaHangfireJobSchedulerTime:HcsReportManagementSummary"], TimeZoneInfo.Utc
+                  );
+            recurringJobManager.AddOrUpdate(
+                  "HcsBIReservationDashboardJob",
+                  () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsBIReservationDashboard"),
+                  configuration["ApmaHangfireJobSchedulerTime:HcsBIReservationDashboard"], TimeZoneInfo.Utc
+                  );
+            recurringJobManager.AddOrUpdate(
+                  "HcsBIRatePlanStatisticsJob",
+                  () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsBIRatePlanStatistics"),
+                  configuration["ApmaHangfireJobSchedulerTime:HcsBIRatePlanStatistics"], TimeZoneInfo.Utc
+                  );
             //recurringJobManager.AddOrUpdate(
+            //    "HcsBISourceStatisticsHistory",
             //      "InsertReportManagementRoomAndLedgerJob",
             //      () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
             //      configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
             //      );
-        }
     }
 }

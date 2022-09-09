@@ -13,13 +13,14 @@ using VDVI.Services.Interfaces;
 
 namespace SOAPAppCore.Services.Apma
 {
-    public class ReportManagementSummaryService : ApmaBaseService, IReportManagementSummaryService
+    public class HcsReportManagementSummaryService : ApmaBaseService, IHcsReportManagementSummaryService
     {
 
         private readonly IRoomSummaryService _roomSummaryService;
 
         public ReportManagementSummaryService(
             IRoomSummaryService roomSummaryService)
+        public HcsReportManagementSummaryService(IHcsReportManagementSummaryRepository roomSummaryRepository)
         {
             _roomSummaryService = roomSummaryService;
         }
