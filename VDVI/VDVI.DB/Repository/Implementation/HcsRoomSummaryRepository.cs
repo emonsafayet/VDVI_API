@@ -3,6 +3,7 @@ using MicroOrm.Dapper.Repositories;
 using MicroOrm.Dapper.Repositories.SqlGenerator.Filters;
 using Nelibur.ObjectMapper;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
@@ -13,42 +14,40 @@ using VDVI.Repository.Repository.Interfaces;
 
 namespace VDVI.Repository.Repository.Implementation
 {
-    public class RoomSummaryRepository : DapperRepository<DbRoomSummary>, IRoomSummaryRepository
+    public class HcsRoomSummaryRepository : DapperRepository<DbRoomSummary>, IRoomSummaryRepository
     {
-
         private readonly VDVISchedulerDbContext _dbContext;
+        private readonly IDapperRepository<DbRoomSummary> _roomSummary;
 
-        public RoomSummaryRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
+        public HcsRoomSummaryRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
             _dbContext = dbContext;
+            _roomSummary = _dbContext.RoomSummary;
         }
 
         public async Task<RoomSummaryDto> InsertAsync(RoomSummaryDto dto)
         {
             var dbEntity = TinyMapper.Map<DbRoomSummary>(dto);
 
-            //dbEntity.CreateDate = DateTime.UtcNow;
-
-            await _dbContext.RoomSummary.InsertAsync(dbEntity);
+            await _roomSummary.InsertAsync(dbEntity);
 
             return TinyMapper.Map<RoomSummaryDto>(dbEntity);
         }
 
-        public async Task<List<RoomSummaryDto>> BulkInsertAsync(List<RoomSummaryDto> dto)
+        public async Task<IEnumerable<RoomSummaryDto>> BulkInsertAsync(IEnumerable<RoomSummaryDto> dto)
         {
             var dbEntity = TinyMapper.Map<List<DbRoomSummary>>(dto);
 
-            //dbEntity.CreateDate = DateTime.UtcNow;
-
-            await _dbContext.RoomSummary.BulkInsertAsync(dbEntity);
+            await _roomSummary.BulkInsertAsync(dbEntity);
 
             return dto;
         }
 
-        public async Task<string> BulkInsertWithProcAsync(List<RoomSummaryDto> dto)
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<RoomSummaryDto> dto)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_LedgerBalance", new { ManagementSummary_LedgerBalance_UDT = dt },                                 commandType: CommandType.StoredProcedure);
+
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_RoomSummary", new { ManagementSummary_RoomSummary_UDT = dt },                                 commandType: CommandType.StoredProcedure);
 
             return queryResult.ToString();
         }
@@ -57,14 +56,12 @@ namespace VDVI.Repository.Repository.Implementation
         {
             var dbCustomerEntity = TinyMapper.Map<DbRoomSummary>(dto);
 
-            //dbCustomerEntity.ModifiedDate = DateTime.UtcNow;
-
-            await _dbContext.RoomSummary.UpdateAsync(dbCustomerEntity);
+            await _roomSummary.UpdateAsync(dbCustomerEntity);
 
             return dto;
         }
 
-        public async Task<List<RoomSummaryDto>> GetByPropertyCodeAsync(string propertyCode)
+        public async Task<IEnumerable<RoomSummaryDto>> GetAllByPropertyCodeAsync(string propertyCode)
         {
             IEnumerable<DbRoomSummary> dbEntities = await _dbContext
                 .RoomSummary
@@ -78,25 +75,15 @@ namespace VDVI.Repository.Repository.Implementation
 
         public async Task<RoomSummaryDto> FindByIdAsync(int id)
         {
-            var dbEntity = await _dbContext.RoomSummary.FindAsync(x => x.PropertyCode == "");
+            var dbEntity = await _roomSummary.FindAsync(x => x.PropertyCode == "");
 
             var dto = TinyMapper.Map<RoomSummaryDto>(dbEntity);
-            //dto.CreatedByName = dbEntity.EmployeeCreatedBy.Name;
-
-            //if (dbEntity.ModifiedBy.HasValue)
-            //{
-            // var modifiedEmployee = await _dbContext.Employee.FindAsync(x => x.Id == dbEntity.ModifiedBy);
-            //dto.ModifiedByName = modifiedEmployee.Name;
-            //}
 
             return dto;
         }
 
-        public async Task<bool> DeleteByPropertyCodeAsync(string propertyCode)
-        {
-            var dbEntity = await _dbContext.RoomSummary.DeleteAsync(x => x.PropertyCode == propertyCode);
+        public async Task<bool> DeleteByPropertyCodeAsync(string propertyCode) => await _roomSummary.DeleteAsync(x => x.PropertyCode == propertyCode);
 
-            return true;
-        }
+        public async Task<bool> DeleteByBusinessDateAsync(DateTime businessDate) => await _roomSummary.DeleteAsync(x => x.BusinessDate == businessDate);
     }
 }

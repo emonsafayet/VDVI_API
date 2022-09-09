@@ -2,6 +2,7 @@
 using MicroOrm.Dapper.Repositories;
 using Microsoft.Extensions.Configuration;
 using Nelibur.ObjectMapper;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using VDVI.DB.DbModels.RoomSummary;

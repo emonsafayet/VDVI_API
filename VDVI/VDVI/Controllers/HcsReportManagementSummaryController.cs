@@ -10,8 +10,8 @@ namespace VDVI.Controllers
     [ApiController]
     public class HcsReportManagementSummaryController : ControllerBase
     {
-        private readonly IReportManagementSummaryService _hcsBISourceStatisticsService;
-        public HcsReportManagementSummaryController(IReportManagementSummaryService hcsBISourceStatisticsService)
+        private readonly IHcsReportManagementSummaryService _hcsBISourceStatisticsService;
+        public HcsReportManagementSummaryController(IHcsReportManagementSummaryService hcsBISourceStatisticsService)
         {
             _hcsBISourceStatisticsService = hcsBISourceStatisticsService;
         }

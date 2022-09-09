@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 
@@ -13,5 +14,6 @@ namespace VDVI.Repository.Repository.Interfaces
         Task<IEnumerable<RoomSummaryDto>> GetAllByPropertyCodeAsync(string propertyCode);
         Task<RoomSummaryDto> FindByIdAsync(int id);
         Task<bool> DeleteByPropertyCodeAsync(string propertyCode);
+        Task<bool> DeleteByBusinessDateAsync(DateTime businessDate);
     }
 }

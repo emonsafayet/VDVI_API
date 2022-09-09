@@ -16,11 +16,9 @@ namespace SOAPAppCore.Services.Apma
     public class HcsReportManagementSummaryService : ApmaBaseService, IHcsReportManagementSummaryService
     {
 
-        private readonly IRoomSummaryService _roomSummaryService;
+        private readonly IHcsReportManagementRoomSummaryService _roomSummaryService;
 
-        public ReportManagementSummaryService(
-            IRoomSummaryService roomSummaryService)
-        public HcsReportManagementSummaryService(IHcsReportManagementSummaryRepository roomSummaryRepository)
+        public HcsReportManagementSummaryService(IHcsReportManagementRoomSummaryService roomSummaryService)
         {
             _roomSummaryService = roomSummaryService;
         }
@@ -66,7 +64,7 @@ namespace SOAPAppCore.Services.Apma
                 async () =>
                 {
 
-                    var dbroomSummariesRes = _roomSummaryService.InsertAsync(dto);
+                    var dbroomSummariesRes = await _roomSummaryService.InsertAsync(dto);
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },

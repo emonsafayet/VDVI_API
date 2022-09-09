@@ -17,6 +17,6 @@ namespace VDVI.Repository.Repository
             _dbContext = dbContext;
         }
 
-        public IRoomSummaryRepository RoomSummaryRepository => _roomSummaryRepository ??= new RoomSummaryRepository(_dbContext);
+        public IRoomSummaryRepository RoomSummaryRepository => _roomSummaryRepository ??= new HcsRoomSummaryRepository(_dbContext);
     }
 }

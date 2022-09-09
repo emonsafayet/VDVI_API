@@ -2,17 +2,12 @@
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
 using Framework.Core.Utility;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 using SOAPAppCore.Services;
 using SOAPService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using VDVI.DB.Dtos.Accounts;
-using VDVI.DB.Dtos.RoomSummary;
-using VDVI.DB.IRepository;
 using VDVI.Repository.Dtos.Accounts;
 using VDVI.Repository.Dtos.RoomSummary;
 using VDVI.Repository.Repository.Interfaces;
@@ -130,7 +125,5 @@ namespace VDVI.Services.Services.Apma
             }).ToList();
             rooms.AddRange(room);
         }
-
-
     }
 }

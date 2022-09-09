@@ -22,17 +22,17 @@ namespace VDVI.Client.IoC
             container.RegisterType<IScheduleManagementRepository, ScheduleManagementRepository>();
 
             container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
-            container.RegisterType<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
+            //container.RegisterType<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
 
 
             //dependency resolve: 
-            container.RegisterType<IReportManagementSummaryService, ReportManagementSummaryService>();
+            container.RegisterType<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
             container.RegisterType<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
             container.RegisterType<IHcsBISourceStatisticsRepository, HcsBISourceStatisticsRepository>();
             container.RegisterType<ITaskSchedulerRepository, TaskSchedulerRepository>();
 
 
-            container.RegisterType<IReportManagementSummaryService, ReportManagementSummaryService>();
+            //container.RegisterType<IReportManagementSummaryService, ReportManagementSummaryService>();
 
 
         }

@@ -22,6 +22,8 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using VDVI.Client.IoC;
 using StartupBase = Framework.Core.Base.Startup.StartupBase;
 using VDVI.Services.Services.Apma;
+using Hangfire;
+using Unity.Microsoft.DependencyInjection;
 
 namespace VDVI
 {
@@ -39,78 +41,49 @@ namespace VDVI
         public override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
-
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
-
-            services.AddScoped<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
-            services.AddScoped<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
-        //    services.AddScoped<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
-            services.AddScoped<IHcsBIRatePlanStatisticsService, HcsBIRatePlanStatisticsService>(); 
-            services.AddScoped<IHcsBIReservationDashboardService, HcsBIReservationDashboardService>(); 
-
-            services.AddSwaggerGen(options =>
-            {
-                options.OperationFilter<ApiVersionFilter>();
-
-            //dependency resolve: 
-    
-            services.AddTransient<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
-           // services.AddTransient<IHcsBISourceStatisticsRepository, HcsBISourceStatisticsRepository>();
-            services.AddTransient<IHcsBIRatePlanStatisticsRepository, HcsBIRatePlanStatisticsRepository>();
-            services.AddTransient<IHcsBIReservationDashboardRepository, HcsBIReservationDashboardRepository>();
-
-            services.AddTransient<ITaskSchedulerRepository, TaskSchedulerRepository>();
-
-            services.AddSwaggerGen();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "Implement Swagger UI",
-                    Description = "A simple example to Implement Swagger UI",
-                });
-                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-                {
-                    Type = SecuritySchemeType.Http,
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Scheme = "Bearer"
-            });
-
-            //services.AddControllers();
-
-            //services
-
-            //services.AddSwaggerGen();
-            //services.AddSwaggerGen(c =>
+            //services.AddSwaggerGen(options =>
             //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo
+            //    options.OperationFilter<ApiVersionFilter>();
+            //    options.SwaggerDoc("v1", new OpenApiInfo
             //    {
             //        Version = "v1",
             //        Title = "Implement Swagger UI",
             //        Description = "A simple example to Implement Swagger UI",
             //    });
+            //    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+            //    {
+            //        Type = SecuritySchemeType.Http,
+            //        BearerFormat = "JWT",
+            //        In = ParameterLocation.Header,
+            //        Scheme = "Bearer"
+            //    });
             //});
+
+            //services.AddControllers();
+
             ////Hangfire
-            //services.AddHangfire(config =>
-            //           config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-            //           .UseSimpleAssemblyNameTypeSerializer()
-            //           .UseDefaultTypeSerializer()
-            //           .UseSqlServerStorage(Configuration.GetConnectionString("ApmaDb")
-            //           ));
-            //services.AddHangfireServer();
+            services.AddHangfire(config =>
+                           config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                           .UseSimpleAssemblyNameTypeSerializer()
+                           .UseDefaultTypeSerializer()
+                           .UseSqlServerStorage(Configuration.GetConnectionString("ApmaDb")
+                           ));
+            services.AddHangfireServer();
         }
 
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public override void Configure(IApplicationBuilder app, IWebHostEnvironment env,
-                        //IConfiguration configuration,
-                        //IBackgroundJobClient backgroundJobClient,
-                        //IRecurringJobManager recurringJobManager,
-                        //IServiceProvider serviceProvider,
-                        IApiVersionDescriptionProvider apiVersionDescriptionProvider)
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public override void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            //IConfiguration configuration,
+            //IServiceProvider serviceProvider,
+            //IRecurringJobManager recurringJobManager,
+        IApiVersionDescriptionProvider apiVersionDescriptionProvider
+        )
         {
+            //IBackgroundJobClient backgroundJobClient,
 
             base.Configure(app, env, apiVersionDescriptionProvider);
 
@@ -126,43 +99,43 @@ namespace VDVI
 
             app.UseSwagger();
 
-            app.UseSwaggerUI(
-                options =>
+            app.UseSwaggerUI(options =>
+            {
+                options.RoutePrefix = string.Empty;
+
+                //INFO: Removes Schemas from Swagger API Documentation
+                options.DefaultModelsExpandDepth(-1);
+
+                options.InjectStylesheet("/swagger-ui/SwaggerDark.css");
+
+                // build a swagger endpoint for each discovered API version  
+                foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
                 {
-                    options.RoutePrefix = string.Empty;
+                    options.SwaggerEndpoint($"../swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+                }
+            });
 
-                    //INFO: Removes Schemas from Swagger API Documentation
-                    options.DefaultModelsExpandDepth(-1);
-
-                    options.InjectStylesheet("/swagger-ui/SwaggerDark.css");
-
-                    // build a swagger endpoint for each discovered API version  
-                    foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
-                    {
-                        options.SwaggerEndpoint($"../swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
-                    }
-                });
-
-            recurringJobManager.AddOrUpdate(
-                  "HcsReportManagementSummaryJob",
-                  () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
-                  configuration["ApmaHangfireJobSchedulerTime:HcsReportManagementSummary"], TimeZoneInfo.Utc
-                  );
-            recurringJobManager.AddOrUpdate(
-                  "HcsBIReservationDashboardJob",
-                  () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsBIReservationDashboard"),
-                  configuration["ApmaHangfireJobSchedulerTime:HcsBIReservationDashboard"], TimeZoneInfo.Utc
-                  );
-            recurringJobManager.AddOrUpdate(
-                  "HcsBIRatePlanStatisticsJob",
-                  () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsBIRatePlanStatistics"),
-                  configuration["ApmaHangfireJobSchedulerTime:HcsBIRatePlanStatistics"], TimeZoneInfo.Utc
-                  );
+            //recurringJobManager.AddOrUpdate(
+            //      "HcsReportManagementSummaryJob",
+            //      () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
+            //      configuration["ApmaHangfireJobSchedulerTime:HcsReportManagementSummary"], TimeZoneInfo.Utc
+            //      );
+            //recurringJobManager.AddOrUpdate(
+            //      "HcsBIReservationDashboardJob",
+            //      () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsBIReservationDashboard"),
+            //      configuration["ApmaHangfireJobSchedulerTime:HcsBIReservationDashboard"], TimeZoneInfo.Utc
+            //      );
+            //recurringJobManager.AddOrUpdate(
+            //      "HcsBIRatePlanStatisticsJob",
+            //      () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsBIRatePlanStatistics"),
+            //      configuration["ApmaHangfireJobSchedulerTime:HcsBIRatePlanStatistics"], TimeZoneInfo.Utc
+            //      );
             //recurringJobManager.AddOrUpdate(
             //    "HcsBISourceStatisticsHistory",
             //      "InsertReportManagementRoomAndLedgerJob",
             //      () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
             //      configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
             //      );
+        }
     }
 }
