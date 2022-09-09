@@ -21,7 +21,6 @@ namespace VDVI.Repository.DbContext
             TinyMapper.Bind<List<RoomSummaryDto>, List<DbRoomSummary>>();
             TinyMapper.Bind<DbRoomSummary, RoomSummaryDto>();
             TinyMapper.Bind<List<DbRoomSummary>, List<RoomSummaryDto>>();
-
         }
 
         public IDapperRepository<DbRoomSummary> RoomSummary => _roomSummary ??= new DapperRepository<DbRoomSummary>(Connection);

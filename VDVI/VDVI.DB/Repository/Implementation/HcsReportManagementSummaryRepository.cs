@@ -7,7 +7,6 @@ using System.Data.SqlClient;
 using VDVI.DB.Dtos.Accounts;
 using VDVI.DB.Dtos.RoomSummary;
 using VDVI.DB.IRepository;
-using VDVI.DB.Models.ApmaModels;
 
 namespace VDVI.DB.Repository
 {
@@ -52,13 +51,10 @@ namespace VDVI.DB.Repository
                                 cmd.ExecuteNonQuery();
                                 con.Close();
                             }
-
                         }
                     }
-
                 }
                 result = "Successfull";
-
             }
             catch (Exception ex)
             {
@@ -74,7 +70,7 @@ namespace VDVI.DB.Repository
             try
             {
                 DataTable dt =
-                    Newtonsoft.Json.JsonConvert.DeserializeObject<DataTable>(Newtonsoft.Json.JsonConvert.SerializeObject(roomSummary));
+                    JsonConvert.DeserializeObject<DataTable>(Newtonsoft.Json.JsonConvert.SerializeObject(roomSummary));
 
                 if (dt.Rows.Count > 0)
                 {
@@ -95,7 +91,6 @@ namespace VDVI.DB.Repository
                     }
                 }
                 result = "Successfull";
-
             }
             catch (Exception ex)
             {

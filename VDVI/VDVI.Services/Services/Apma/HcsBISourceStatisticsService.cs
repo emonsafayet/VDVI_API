@@ -28,7 +28,6 @@ namespace VDVI.Services.Services
         }
         public void GetHcsBISourceStatistics()
         {
-            
             _hcsBISourceStatisticsRepository.InsertHcsBISourceStatisticsHistory(list);
         }
     }

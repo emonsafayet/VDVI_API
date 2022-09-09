@@ -1,10 +1,8 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text; 
 using VDVI.DB.IRepository;
 using VDVI.DB.Models.Common;
 
@@ -29,8 +27,7 @@ namespace VDVI.DB.Repository
             
         }  
         public JobTaskScheduler GetTaskScheduler(string methodName)
-        { 
-         
+        {
             try
             {
                 var param = new DynamicParameters();
@@ -45,7 +42,6 @@ namespace VDVI.DB.Repository
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

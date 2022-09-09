@@ -47,8 +47,6 @@ namespace VDVI
 
             //services
 
-
-
             //services.AddSwaggerGen();
             //services.AddSwaggerGen(c =>
             //{
@@ -67,8 +65,6 @@ namespace VDVI
             //           .UseSqlServerStorage(Configuration.GetConnectionString("ApmaDb")
             //           ));
             //services.AddHangfireServer();
-
-
         }
 
 

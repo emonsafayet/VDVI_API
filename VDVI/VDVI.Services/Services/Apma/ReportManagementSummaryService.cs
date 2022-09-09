@@ -58,10 +58,27 @@ namespace SOAPAppCore.Services.Apma
         }
 
 
-        private void FormatSummaryObject(List<RoomSummaryDto> roomSummaries, List<LedgerBalanceDto> ledgerBalances, List<ManagementSummary> managementSummary, string propertyCode)
+        public async Task<Result<PrometheusResponse>> InsertAsync(RoomSummaryDto dto)
         {
 
+            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
+                async () =>
+                {
+                   
+                    
+                    var dbroomSummariesRes = _scheduleManagementRepository.RoomSummaryRepository.InsertAsync(dto);
 
+                    return PrometheusResponse.Success("", "Data retrieval is successful");
+                },
+                exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
+                {
+                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                    RethrowException = false
+                });
+        }
+
+        private void FormatSummaryObject(List<RoomSummaryDto> roomSummaries, List<LedgerBalanceDto> ledgerBalances, List<ManagementSummary> managementSummary, string propertyCode)
+        {
             List<RoomSummaryDto> rooms = managementSummary.Select(x => new RoomSummaryDto()
             {
                 InHouse = x.RoomSummary.InHouse,
@@ -106,9 +123,11 @@ namespace SOAPAppCore.Services.Apma
             }).ToList();
 
             ledgerBalances.AddRange(ledgerList);
-
         }
 
-
+        public Task<Result<PrometheusResponse>> BulkInsertAsync(RoomSummaryDto dto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

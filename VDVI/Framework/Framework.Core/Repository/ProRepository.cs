@@ -27,7 +27,6 @@ namespace Framework.Core.Repository
             catch
             {
                 RollBackTransaction();
-
             }
         }
 

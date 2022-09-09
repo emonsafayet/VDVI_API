@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using VDVI.DB.IRepository;
-using VDVI.DB.Models.ApmaModels;
 using VDVI.Repository.Dtos.SourceStatistics;
 
 namespace VDVI.DB.Repository
@@ -51,13 +50,10 @@ namespace VDVI.DB.Repository
                                 cmd.ExecuteNonQuery();
                                 con.Close();
                             }
-
                         }
                     }
-
                 }
                 result = "Successfull";
-
             }
             catch (Exception ex)
             {
