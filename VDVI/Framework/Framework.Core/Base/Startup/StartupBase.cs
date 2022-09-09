@@ -266,9 +266,9 @@ namespace Framework.Core.Base.Startup
             app.UseSerilogRequestLogging();
 
             // global error handler
-            app.UseMiddleware<ApplicationAccessMiddleware>();
+            //app.UseMiddleware<ApplicationAccessMiddleware>();
 
-            app.UseMiddleware<ErrorHandlerMiddleware>();
+            //app.UseMiddleware<ErrorHandlerMiddleware>();
 
             // Enable compression
             app.UseResponseCompression();

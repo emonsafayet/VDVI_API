@@ -11,7 +11,7 @@ using VDVI.Services.Interfaces.Apma.Accounts;
 
 namespace VDVI.Services.Services.Apma.Accounts
 {
-    internal class HcsReportManagementLedgerBalanceService : IHcsReportManagementLedgerBalanceService
+    public class HcsReportManagementLedgerBalanceService : IHcsReportManagementLedgerBalanceService
     {
         private readonly ILedgerBalanceRepo _ledgerBalanceRepo;
         public HcsReportManagementLedgerBalanceService(ILedgerBalanceRepo ledgerBalanceRepo)

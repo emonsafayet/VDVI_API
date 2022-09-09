@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using VDVI.Repository.Models.Common;
 
 namespace VDVI.DB.Models.Accounts
 {
-    [Table("LedgerBalance")]
-    public class DbLedgerBalance
+    [Table("[hce].[ManagementSummary_LedgerBalance]")]
+    public class DbLedgerBalance: Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }
@@ -22,8 +23,5 @@ namespace VDVI.DB.Models.Accounts
         public bool TotalTurnoverExSpecified { get; set; }
         public double LodgingTurnoverEx { get; set; }
         public bool LodgingTurnoverExSpecified { get; set; }
-
-
     }
-
 }

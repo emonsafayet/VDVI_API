@@ -1,8 +1,9 @@
 ﻿using System;
+using VDVI.Repository.Models.Common;
 
 namespace VDVI.DB.Dtos
 {
-    public class RoomSummaryDto
+    public class RoomSummaryDto : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }

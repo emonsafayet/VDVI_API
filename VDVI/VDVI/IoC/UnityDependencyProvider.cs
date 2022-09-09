@@ -8,8 +8,12 @@ using VDVI.DB.IRepository;
 using VDVI.DB.Repository;
 using VDVI.Repository.DbContext;
 using VDVI.Repository.Repository;
+using VDVI.Repository.Repository.Implementation;
+using VDVI.Repository.Repository.Interfaces;
 using VDVI.Services.Interfaces;
+using VDVI.Services.Interfaces.Apma.Accounts;
 using VDVI.Services.Services;
+using VDVI.Services.Services.Apma.Accounts;
 
 namespace VDVI.Client.IoC
 {
@@ -19,22 +23,17 @@ namespace VDVI.Client.IoC
         {
             container.RegisterType<IVDVISchedulerDbContext, VDVISchedulerDbContext>(new SingletonLifetimeManager());
             container.RegisterType<IProRepository, ProRepository>();
+            container.RegisterType<IHcsReportManagementLedgerBalanceService, HcsReportManagementLedgerBalanceService>();
             container.RegisterType<IScheduleManagementRepository, ScheduleManagementRepository>();
-
             container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
-            //container.RegisterType<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
-
 
             //dependency resolve: 
             container.RegisterType<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
+            container.RegisterType<IHcsReportManagementRoomSummaryService, HcsReportManagementRoomSummaryService>();
+            container.RegisterType<IRoomSummaryRepository, HcsRoomSummaryRepository>();
             container.RegisterType<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
             container.RegisterType<IHcsBISourceStatisticsRepository, HcsBISourceStatisticsRepository>();
             container.RegisterType<ITaskSchedulerRepository, TaskSchedulerRepository>();
-
-
-            //container.RegisterType<IReportManagementSummaryService, ReportManagementSummaryService>();
-
-
         }
     }
 }

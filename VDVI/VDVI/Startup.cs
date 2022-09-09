@@ -1,29 +1,15 @@
 using Framework.Core.Swagger;
-using Framework.Core.Swagger.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
-using SOAPAppCore.Interfaces;
-using SOAPAppCore.Services;
-using SOAPAppCore.Services.Apma;
-using System;
-using VDVI.DB.IRepository;
-using VDVI.DB.Repository;
-using VDVI.Repository.Repository.Implementation;
-using VDVI.Repository.Repository.Interfaces;
-using VDVI.Services.Interfaces;
-using VDVI.Services.Interfaces.Apma;
-using VDVI.Services.Services;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using VDVI.Client.IoC;
 using StartupBase = Framework.Core.Base.Startup.StartupBase;
-using VDVI.Services.Services.Apma;
 using Hangfire;
-using Unity.Microsoft.DependencyInjection;
+using System;
 
 namespace VDVI
 {

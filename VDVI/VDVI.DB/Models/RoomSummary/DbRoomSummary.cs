@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using VDVI.Repository.Models.Common;
 
 namespace VDVI.DB.DbModels.RoomSummary
 {
-    [Table("DbRoomSummary")]
-    public class DbRoomSummary
+    [Table("[hce].[ManagementSummary_RoomSummary]")]
+    public class DbRoomSummary : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }

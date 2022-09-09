@@ -1,8 +1,9 @@
 ﻿using System;
+using VDVI.Repository.Models.Common;
 
 namespace VDVI.DB.Dtos
 {
-    public class LedgerBalanceDto
+    public class LedgerBalanceDto : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }
