@@ -8,6 +8,8 @@ using VDVI.DB.IRepository;
 using VDVI.DB.Repository;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using VDVI.Repository.Repository.ApmaRepository;
+using VDVI.Repository.Repository.Implementation;
+using VDVI.Repository.Repository.Interfaces;
 using VDVI.Services.Interfaces;
 using VDVI.Services.Services;
   
@@ -23,6 +25,7 @@ namespace VDVI.Client.IoC
 
             container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
             container.RegisterType<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
+            container.RegisterType<IHcsReportManagementRoomSummaryService, HcsReportManagementRoomSummaryService>();
             //container.RegisterType<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
 
 
@@ -30,8 +33,7 @@ namespace VDVI.Client.IoC
             container.RegisterType<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
             container.RegisterType<IHcsBISourceStatisticsRepository, HcsBISourceStatisticsRepository>();
             container.RegisterType<ITaskSchedulerRepository, TaskSchedulerRepository>();  
-
-
+            container.RegisterType<IHcsRoomSummaryRepository, HcsRoomSummaryRepository>();
         }
     }
 }

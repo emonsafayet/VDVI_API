@@ -17,7 +17,7 @@ namespace VDVI.Client.Controllers.ApmaControllers
         }
 
 
-        [HttpPost("PostReportManagement")]
+        [HttpGet("PostReportManagement")]
         public async Task<IActionResult> PostReportManagement()
         {
             var response = await _hcsBISourceStatisticsService.ReportManagementSummaryAsync(Convert.ToDateTime("2018/01/01"), Convert.ToDateTime("2018/06/01"));
