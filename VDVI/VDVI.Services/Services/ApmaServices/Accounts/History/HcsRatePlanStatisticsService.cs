@@ -4,46 +4,30 @@ using Framework.Core.Exceptions;
 using Framework.Core.Utility;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Repository.ApmaRepository;
-using VDVI.Repository.Dtos.SourceStatistics;
-using VDVI.Services.Interfaces.ApmaInterfaces;
+using VDVI.Repository.ApmaRepository.Interfaces;
+using VDVI.Repository.Dtos.Accounts;
+using VDVI.Services.Interfaces.ApmaInterfaces.Accounts.History;
 
-namespace VDVI.Services.Services.ApmaServices.SourceStatistics.History
+namespace VDVI.Services.Services.ApmaServices.Accounts.History
 {
-    public class HcsSourceStasticsHistoryService : IHcsSourceStasticsHistoryService
+    public class HcsRatePlanStatisticsService : IHcsRatePlanStatisticsService
     {
-        private readonly IMasterRepository _managementRepository;
 
-        public HcsSourceStasticsHistoryService(IMasterRepository managementRepository)
+        private readonly IMasterRepository _masterRepository;
+        public HcsRatePlanStatisticsService(IMasterRepository masterRepository)
         {
-            _managementRepository = managementRepository;
+            _masterRepository = masterRepository;
         }
-
-        public async Task<Result<PrometheusResponse>> InsertAsync(SourceStatisticHistoryDto dto)
+        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<RatePlanStatisticHistoryDto> dtos)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    dto = await _managementRepository.HcsBISourceStatisticsHistoryRepository.InsertAsync(dto);
-
-                    return PrometheusResponse.Success(dto, "Data saved successful");
-                },
-                exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
-                {
-                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
-                    RethrowException = false
-                });
-        }
-
-        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<SourceStatisticHistoryDto> dtos)
-        {
-
-            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
-                async () =>
-                {
-                    var resp = await _managementRepository.HcsBISourceStatisticsHistoryRepository.BulkInsertAsync(dtos);
+                    var resp = await _masterRepository.HcsBIRatePlanStatisticsHistoryRepository.BulkInsertAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -54,30 +38,14 @@ namespace VDVI.Services.Services.ApmaServices.SourceStatistics.History
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<SourceStatisticHistoryDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<RatePlanStatisticHistoryDto> dtos)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _managementRepository.HcsBISourceStatisticsHistoryRepository.BulkInsertWithProcAsync(dtos);
+                    var resp = await _masterRepository.HcsBIRatePlanStatisticsHistoryRepository.BulkInsertWithProcAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
-                },
-                exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
-                {
-                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
-                    RethrowException = false
-                });
-        }
-
-        public async Task<Result<PrometheusResponse>> GetByPropertCodeAsync(string propertyCode)
-        {
-            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
-                async () =>
-                {
-                    var dtos = await _managementRepository.HcsRoomSummaryRepository.GetAllByPropertyCodeAsync(propertyCode);
-
-                    return PrometheusResponse.Success(dtos, "Data saved successful");
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                 {
@@ -91,9 +59,41 @@ namespace VDVI.Services.Services.ApmaServices.SourceStatistics.History
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _managementRepository.HcsRoomSummaryRepository.DeleteByPropertyCodeAsync(propertyCode);
+                    var dbroomSummariesRes = await _masterRepository.HcsBIRatePlanStatisticsHistoryRepository.DeleteByPropertyCodeAsync(propertyCode);
 
-                    return PrometheusResponse.Success("", "Data removal is successful");
+                    return PrometheusResponse.Success("", "Data delete is successful");
+                },
+                exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
+                {
+                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                    RethrowException = false
+                });
+        }
+
+        public async Task<Result<PrometheusResponse>> GetByPropertCodeAsync(string propertyCode)
+        {
+            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
+                async () =>
+                {
+                    var dtos = await _masterRepository.HcsBIRatePlanStatisticsHistoryRepository.GetAllByPropertyCodeAsync(propertyCode);
+
+                    return PrometheusResponse.Success(dtos, "Data retrival successful");
+                },
+                exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
+                {
+                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                    RethrowException = false
+                });
+        }
+
+        public async Task<Result<PrometheusResponse>> InsertAsync(RatePlanStatisticHistoryDto dto)
+        {
+            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
+                async () =>
+                {
+                    dto = await _masterRepository.HcsBIRatePlanStatisticsHistoryRepository.InsertAsync(dto);
+
+                    return PrometheusResponse.Success(dto, "Data saved successful");
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                 {
@@ -107,7 +107,7 @@ namespace VDVI.Services.Services.ApmaServices.SourceStatistics.History
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _managementRepository.HcsRoomSummaryRepository.DeleteByBusinessDateAsync(businessDate);
+                    var dbroomSummariesRes = await _masterRepository.HcsBIRatePlanStatisticsHistoryRepository.DeleteByBusinessDateAsync(businessDate);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },

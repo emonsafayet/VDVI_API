@@ -11,21 +11,21 @@ namespace VDVI.Repository.Dtos.SourceStatistics
         public DateTime? BusinessDate { get; set; }
         public string SourceCode { get; set; }
         public int NumberOfRooms { get; set; }
-        public double TotalRevenue { get; set; }
-        public double TotalRevenueExcl { get; set; }
-        public double RevenueStatCodeA { get; set; }
-        public double RevenueStatCodeAExcl { get; set; }
-        public double RevenueStatCodeB { get; set; }
-        public double RevenueStatCodeBExcl { get; set; }
-        public double RevenueStatCodeC { get; set; }
-        public double RevenueStatCodeCExcl { get; set; }
-        public double RevenueStatCodeD { get; set; }
-        public double RevenueStatCodeDExcl { get; set; }
-        public double RevenueStatCodeE { get; set; }
-        public double RevenueStatCodeEExcl { get; set; }
-        public double RevenueStatCodeF { get; set; }
-        public double RevenueStatCodeFExcl { get; set; }
-        public double RevenueStatCodeUndefined { get; set; }
-        public double RevenueStatCodeUndefinedExcl { get; set; }
+        public decimal TotalRevenue { get; set; }
+        public decimal TotalRevenueExcl { get; set; }
+        public decimal RevenueStatCodeA { get; set; }
+        public decimal RevenueStatCodeAExcl { get; set; }
+        public decimal RevenueStatCodeB { get; set; }
+        public decimal RevenueStatCodeBExcl { get; set; }
+        public decimal RevenueStatCodeC { get; set; }
+        public decimal RevenueStatCodeCExcl { get; set; }
+        public decimal RevenueStatCodeD { get; set; }
+        public decimal RevenueStatCodeDExcl { get; set; }
+        public decimal RevenueStatCodeE { get; set; }
+        public decimal RevenueStatCodeEExcl { get; set; }
+        public decimal RevenueStatCodeF { get; set; }
+        public decimal RevenueStatCodeFExcl { get; set; }
+        public decimal RevenueStatCodeUndefined { get; set; }
+        public decimal RevenueStatCodeUndefinedExcl { get; set; }
     }
 }

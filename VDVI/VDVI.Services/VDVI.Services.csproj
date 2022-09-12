@@ -22,13 +22,10 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\ApmaInterfaces\Accounts\Future\" />
-    <Folder Include="Interfaces\ApmaInterfaces\Accounts\History\" />
     <Folder Include="Interfaces\ApmaInterfaces\RoomSummary\History\" />
     <Folder Include="Interfaces\ApmaInterfaces\RoomSummary\Future\" />
     <Folder Include="Interfaces\ApmaInterfaces\SourceStatistics\Future\" />
-    <Folder Include="Interfaces\ApmaInterfaces\SourceStatistics\History\" />
     <Folder Include="Services\ApmaServices\Accounts\Future\" />
-    <Folder Include="Services\ApmaServices\Accounts\History\" />
     <Folder Include="Services\ApmaServices\RoomSummary\Future\" />
     <Folder Include="Services\ApmaServices\RoomSummary\History\" />
     <Folder Include="Services\ApmaServices\SourceStatistics\Future\" />

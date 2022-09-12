@@ -9,16 +9,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VDVI.Repository.Dtos.Accounts;
+using VDVI.Repository.Dtos.SourceStatistics;
 using VDVI.Services.Interfaces.Apma;
+using VDVI.Services.Interfaces.ApmaInterfaces;
+using VDVI.Services.Interfaces.ApmaInterfaces.Accounts.History;
 
 namespace VDVI.Services.Services.Apma
 {
     public class HcsBIRatePlanStatisticsService : ApmaBaseService, IHcsBIRatePlanStatisticsService
     {
-        private readonly IHcsBIRatePlanStatisticsRepository _hcsBIRatePlanStatisticsRepository;
-        public HcsBIRatePlanStatisticsService(IHcsBIRatePlanStatisticsRepository hcsBIRatePlanStatisticsRepository)
+        private readonly IHcsRatePlanStatisticsService _hcsRatePlanStatisticsService;
+        public HcsBIRatePlanStatisticsService(IHcsRatePlanStatisticsService hcsRatePlanStatisticsService)
         {
-            _hcsBIRatePlanStatisticsRepository = hcsBIRatePlanStatisticsRepository;
+            _hcsRatePlanStatisticsService = hcsRatePlanStatisticsService;
         }
 
         public async Task<Result<PrometheusResponse>> HcsBIRatePlanStatisticsRepositoryAsyc(DateTime StartDate, DateTime EndDate)
@@ -27,20 +30,20 @@ namespace VDVI.Services.Services.Apma
                           async () =>
                           {
                               Authentication pmsAuthentication = GetApmaAuthCredential();
-
-                              List<DbRatePlanStatisticHistory> ratePlanStatistics = new List<DbRatePlanStatisticHistory>();
+                              
+                              List<RatePlanStatisticHistoryDto> dto = new List<RatePlanStatisticHistoryDto>();
 
                               foreach (string property in ApmaProperties)
                               {
                                   var res = await client.HcsBIRatePlanStatisticsAsync(pmsAuthentication, PropertyCode: property, StartDate: StartDate, EndDate: EndDate, "", "");
 
-                                  List<BIRatePlanStatistic> bIRatePlanStatistic = res.HcsBIRatePlanStatisticsResult.RatePlanStatistics.ToList();
+                                 var sourceStats = res.HcsBIRatePlanStatisticsResult.RatePlanStatistics.ToList();
 
-                                  FormatSummaryObject(ratePlanStatistics, bIRatePlanStatistic, property);
+                                  FormatSummaryObject(dto, sourceStats, property);
                               }
 
                               // DB operation
-                              var dboccupanciesRes = _hcsBIRatePlanStatisticsRepository.InsertRatePlanStatisticHistory(ratePlanStatistics);
+                              var dboccupanciesRes = _hcsRatePlanStatisticsService.BulkInsertWithProcAsync(dto);
 
                               return PrometheusResponse.Success("", "Data retrieval is successful");
                           },
@@ -51,9 +54,9 @@ namespace VDVI.Services.Services.Apma
                           });
         }
 
-        private void FormatSummaryObject(List<DbRatePlanStatisticHistory> ratePlanStatistics, List<BIRatePlanStatistic> dashboard, string propertyCode)
+        private void FormatSummaryObject(List<RatePlanStatisticHistoryDto> ratePlanStatistics, List<BIRatePlanStatistic> dashboard, string propertyCode)
         {
-            List<DbRatePlanStatisticHistory> ratePlanStatistic = dashboard.Select(x => new DbRatePlanStatisticHistory()
+            List<RatePlanStatisticHistoryDto> ratePlanStatistic = dashboard.Select(x => new RatePlanStatisticHistoryDto()
             {
                 PropertyCode = propertyCode,
                 BusinessDate = x.BusinessDate,

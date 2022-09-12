@@ -13,10 +13,10 @@ namespace VDVI.Services.Services.Apma.Accounts
 {
     public class HcsLedgerBalanceService : IHcsLedgerBalanceService
     {
-        private readonly IMasterRepository _managementRepository;
-        public HcsLedgerBalanceService(IMasterRepository managementRepository)
+        private readonly IMasterRepository _masterRepository;
+        public HcsLedgerBalanceService(IMasterRepository masterRepository)
         {
-            _managementRepository = managementRepository;
+            _masterRepository = masterRepository;
         }
 
         public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<LedgerBalanceDto> dtos)
@@ -24,7 +24,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _managementRepository.HcsLedgerBalanceRepository.BulkInsertAsync(dtos);
+                    var resp = await _masterRepository.HcsLedgerBalanceRepository.BulkInsertAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -40,7 +40,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _managementRepository.HcsLedgerBalanceRepository.BulkInsertWithProcAsync(dtos);
+                    var resp = await _masterRepository.HcsLedgerBalanceRepository.BulkInsertWithProcAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -56,7 +56,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _managementRepository.HcsLedgerBalanceRepository.DeleteByPropertyCodeAsync(propertyCode);
+                    var dbroomSummariesRes = await _masterRepository.HcsLedgerBalanceRepository.DeleteByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success("", "Data delete is successful");
                 },
@@ -72,7 +72,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dtos = await _managementRepository.HcsLedgerBalanceRepository.GetAllByPropertyCodeAsync(propertyCode);
+                    var dtos = await _masterRepository.HcsLedgerBalanceRepository.GetAllByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success(dtos, "Data retrival successful");
                 },
@@ -88,7 +88,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    dto = await _managementRepository.HcsLedgerBalanceRepository.InsertAsync(dto);
+                    dto = await _masterRepository.HcsLedgerBalanceRepository.InsertAsync(dto);
 
                     return PrometheusResponse.Success(dto, "Data saved successful");
                 },
@@ -104,7 +104,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _managementRepository.HcsLedgerBalanceRepository.DeleteByBusinessDateAsync(businessDate);
+                    var dbroomSummariesRes = await _masterRepository.HcsLedgerBalanceRepository.DeleteByBusinessDateAsync(businessDate);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },
