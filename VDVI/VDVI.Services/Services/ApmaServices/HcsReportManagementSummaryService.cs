@@ -10,17 +10,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
+using VDVI.Services.Interfaces.Apma.Accounts;
 
 namespace SOAPAppCore.Services.Apma
 {
     public class HcsReportManagementSummaryService : ApmaBaseService, IHcsReportManagementSummaryService
     {
 
-        private readonly IHcsReportManagementRoomSummaryService _roomSummaryService;
+        private readonly IHcsRoomSummaryService _roomSummaryService;
+        private readonly IHcsLedgerBalanceService _hcsLedgerBalanceService;
 
-        public HcsReportManagementSummaryService(IHcsReportManagementRoomSummaryService roomSummaryService)
+        public HcsReportManagementSummaryService(
+            IHcsRoomSummaryService roomSummaryService,
+            IHcsLedgerBalanceService hcsLedgerBalanceService)
         {
             _roomSummaryService = roomSummaryService;
+            _hcsLedgerBalanceService = hcsLedgerBalanceService;
         }
 
         public async Task<Result<PrometheusResponse>> ReportManagementSummaryAsync(DateTime StartDate, DateTime EndDate)
@@ -45,26 +50,7 @@ namespace SOAPAppCore.Services.Apma
 
 
                     var dbroomSummariesRes = _roomSummaryService.BulkInsertAsync(roomSummaries);
-                    //var dbledgerBalancesRes = _roomSummaryRepository.InsertLedgerBalance(ledgerBalances);
-
-                    return PrometheusResponse.Success("", "Data retrieval is successful");
-                },
-                exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
-                {
-                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
-                    RethrowException = false
-                });
-        }
-
-
-        public async Task<Result<PrometheusResponse>> InsertAsync(RoomSummaryDto dto)
-        {
-
-            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
-                async () =>
-                {
-
-                    var dbroomSummariesRes = await _roomSummaryService.InsertAsync(dto);
+                    var dbledgerBalancesRes = _hcsLedgerBalanceService.BulkInsertWithProcAsync(ledgerBalances);
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },

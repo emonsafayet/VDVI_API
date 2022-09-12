@@ -11,8 +11,12 @@ using VDVI.Repository.Repository.ApmaRepository;
 using VDVI.Repository.Repository.Implementation;
 using VDVI.Repository.Repository.Interfaces;
 using VDVI.Services.Interfaces;
+using VDVI.Services.Interfaces.Apma;
+using VDVI.Services.Interfaces.Apma.Accounts;
 using VDVI.Services.Services;
-  
+using VDVI.Services.Services.Apma;
+using VDVI.Services.Services.Apma.Accounts;
+
 namespace VDVI.Client.IoC
 {
     public class UnityDependencyProvider : IDependencyProvider
@@ -21,19 +25,30 @@ namespace VDVI.Client.IoC
         {
             container.RegisterType<IVDVISchedulerDbContext, VDVISchedulerDbContext>(new SingletonLifetimeManager());
             container.RegisterType<IProRepository, ProRepository>();
-            container.RegisterType<IScheduleManagementRepository, ScheduleManagementRepository>();
 
             container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
+
+            container.RegisterType<ITaskSchedulerRepository, TaskSchedulerRepository>();
+
+            container.RegisterType<IScheduleManagementRepository, ScheduleManagementRepository>();
+
             container.RegisterType<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
-            container.RegisterType<IHcsReportManagementRoomSummaryService, HcsReportManagementRoomSummaryService>();
-            //container.RegisterType<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
+
+            container.RegisterType<IHcsRoomSummaryService, HcsRoomSummaryService>();
+
+            container.RegisterType<IHcsBIReservationDashboardService, HcsBIReservationDashboardService>();
+
+            container.RegisterType<IHcsLedgerBalanceService, HcsLedgerBalanceService>();
 
 
-            //dependency resolve:            
+            //dependency resolve: 
+
             container.RegisterType<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
             container.RegisterType<IHcsBISourceStatisticsRepository, HcsBISourceStatisticsRepository>();
-            container.RegisterType<ITaskSchedulerRepository, TaskSchedulerRepository>();  
+            container.RegisterType<ITaskSchedulerRepository, TaskSchedulerRepository>();
             container.RegisterType<IHcsRoomSummaryRepository, HcsRoomSummaryRepository>();
+
+
         }
     }
 }
