@@ -6,8 +6,8 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.Dtos.RoomSummary
 {
-    [Table("")]
-    public class DbOccupancy : Audit
+    [Table("[hce].[ReservationDashboard_Occupancy_History]")]
+    public class DbOccupancyHistory : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? DashboardDate { get; set; }

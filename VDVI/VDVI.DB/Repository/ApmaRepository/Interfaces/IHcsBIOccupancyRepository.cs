@@ -9,12 +9,12 @@ namespace VDVI.Repository.Interfaces
 {
     public interface IHcsBIOccupancyRepository
     {
-        Task<OccupancyDto> InsertAsync(OccupancyDto dto);
-        Task<IEnumerable<OccupancyDto>> BulkInsertAsync(IEnumerable<OccupancyDto> dto);
-        Task<string> BulkInsertWithProcAsync(IEnumerable<OccupancyDto> dto);
-        Task<OccupancyDto> UpdateAsync(OccupancyDto dto);
-        Task<IEnumerable<OccupancyDto>> GetAllByPropertyCodeAsync(string propertyCode);
-        Task<OccupancyDto> FindByIdAsync(int id);
+        Task<OccupancyHistoryDto> InsertAsync(OccupancyHistoryDto dto);
+        Task<IEnumerable<OccupancyHistoryDto>> BulkInsertAsync(IEnumerable<OccupancyHistoryDto> dto);
+        Task<string> BulkInsertWithProcAsync(IEnumerable<OccupancyHistoryDto> dto);
+        Task<OccupancyHistoryDto> UpdateAsync(OccupancyHistoryDto dto);
+        Task<IEnumerable<OccupancyHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode);
+        Task<OccupancyHistoryDto> FindByIdAsync(int id);
         Task<bool> DeleteByPropertyCodeAsync(string propertyCode);
         Task<bool> DeleteByDashboardDateAsync(DateTime DashboardDate);
     }

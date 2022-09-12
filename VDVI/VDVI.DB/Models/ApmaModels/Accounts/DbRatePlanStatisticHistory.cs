@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.Dtos.Accounts
 {
-    public class RatePlanStatisticDto : Audit
+    [Table("[hce].[RatePlanStatistics_History]")]
+    public class DbRatePlanStatisticHistory : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }

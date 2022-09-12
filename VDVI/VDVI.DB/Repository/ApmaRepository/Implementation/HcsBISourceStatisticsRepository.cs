@@ -13,17 +13,17 @@ using VDVI.Repository.Dtos.SourceStatistics;
 
 namespace VDVI.DB.Repository
 {
-    public class HcsBISourceStatisticsRepository : DapperRepository<SourceStatisticDto>, IHcsBISourceStatisticsRepository
+    public class HcsBISourceStatisticsRepository : DapperRepository<SourceStatisticHistoryDto>, IHcsBISourceStatisticsRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
-        private readonly IDapperRepository<DbSourceStatistic> _tblRepository;
+        private readonly IDapperRepository<DbSourceStatisticHistory> _tblRepository;
 
         public HcsBISourceStatisticsRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
             _dbContext = dbContext;
             _tblRepository = _dbContext.SourceStatistic;
         }
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<SourceStatisticDto> dto)
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<SourceStatisticHistoryDto> dto)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
@@ -32,9 +32,9 @@ namespace VDVI.DB.Repository
             return queryResult.ToString();
         }
 
-        public async Task<IEnumerable<SourceStatisticDto>> BulkInsertAsync(IEnumerable<SourceStatisticDto> dto)
+        public async Task<IEnumerable<SourceStatisticHistoryDto>> BulkInsertAsync(IEnumerable<SourceStatisticHistoryDto> dto)
         {
-            var dbEntity = TinyMapper.Map<List<DbSourceStatistic>>(dto);
+            var dbEntity = TinyMapper.Map<List<DbSourceStatisticHistory>>(dto);
 
             await _tblRepository.BulkInsertAsync(dbEntity);
 
@@ -45,39 +45,39 @@ namespace VDVI.DB.Repository
 
         public async Task<bool> DeleteByPropertyCodeAsync(string propertyCode) => await _tblRepository.DeleteAsync(x => x.PropertyCode == propertyCode);
 
-        public async Task<SourceStatisticDto> FindByIdAsync(int id)
+        public async Task<SourceStatisticHistoryDto> FindByIdAsync(int id)
         {
             var dbEntity = await _tblRepository.FindAsync(x => x.PropertyCode == "");
 
-            var dto = TinyMapper.Map<SourceStatisticDto>(dbEntity);
+            var dto = TinyMapper.Map<SourceStatisticHistoryDto>(dbEntity);
 
             return dto;
         }
 
-        public async Task<IEnumerable<SourceStatisticDto>> GetAllByPropertyCodeAsync(string propertyCode)
+        public async Task<IEnumerable<SourceStatisticHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode)
         {
-            IEnumerable<DbSourceStatistic> dbEntities = await _dbContext
+            IEnumerable<DbSourceStatisticHistory> dbEntities = await _dbContext
                 .SourceStatistic
                 .SetOrderBy(OrderInfo.SortDirection.DESC, x => x.PropertyCode)
                 .FindAllAsync(x => x.PropertyCode == propertyCode);
 
-            var entities = TinyMapper.Map<List<SourceStatisticDto>>(dbEntities);
+            var entities = TinyMapper.Map<List<SourceStatisticHistoryDto>>(dbEntities);
 
             return entities;
         }
 
-        public async Task<SourceStatisticDto> InsertAsync(SourceStatisticDto dto)
+        public async Task<SourceStatisticHistoryDto> InsertAsync(SourceStatisticHistoryDto dto)
         {
-            var dbEntity = TinyMapper.Map<DbSourceStatistic>(dto);
+            var dbEntity = TinyMapper.Map<DbSourceStatisticHistory>(dto);
 
             await _tblRepository.InsertAsync(dbEntity);
 
-            return TinyMapper.Map<SourceStatisticDto>(dbEntity);
+            return TinyMapper.Map<SourceStatisticHistoryDto>(dbEntity);
         }
 
-        public async Task<SourceStatisticDto> UpdateAsync(SourceStatisticDto dto)
+        public async Task<SourceStatisticHistoryDto> UpdateAsync(SourceStatisticHistoryDto dto)
         {
-            var dbCustomerEntity = TinyMapper.Map<DbSourceStatistic>(dto);
+            var dbCustomerEntity = TinyMapper.Map<DbSourceStatisticHistory>(dto);
 
             await _tblRepository.UpdateAsync(dbCustomerEntity);
 

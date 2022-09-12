@@ -5,7 +5,7 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.Dtos.SourceStatistics
 {
-    public class SourceStatisticDto :Audit
+    public class SourceStatisticHistoryDto :Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }

@@ -8,12 +8,12 @@ namespace VDVI.Repository.Interfaces
 {
     public interface IHcsBIRatePlanStatisticsRepository
     {
-        Task<RatePlanStatisticDto> InsertAsync(RatePlanStatisticDto dto);
-        Task<IEnumerable<RatePlanStatisticDto>> BulkInsertAsync(IEnumerable<RatePlanStatisticDto> dto);
-        Task<string> BulkInsertWithProcAsync(IEnumerable<RatePlanStatisticDto> dto);
-        Task<RatePlanStatisticDto> UpdateAsync(RatePlanStatisticDto dto);
-        Task<IEnumerable<RatePlanStatisticDto>> GetAllByPropertyCodeAsync(string propertyCode);
-        Task<RatePlanStatisticDto> FindByIdAsync(int id);
+        Task<RatePlanStatisticHistoryDto> InsertAsync(RatePlanStatisticHistoryDto dto);
+        Task<IEnumerable<RatePlanStatisticHistoryDto>> BulkInsertAsync(IEnumerable<RatePlanStatisticHistoryDto> dto);
+        Task<string> BulkInsertWithProcAsync(IEnumerable<RatePlanStatisticHistoryDto> dto);
+        Task<RatePlanStatisticHistoryDto> UpdateAsync(RatePlanStatisticHistoryDto dto);
+        Task<IEnumerable<RatePlanStatisticHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode);
+        Task<RatePlanStatisticHistoryDto> FindByIdAsync(int id);
         Task<bool> DeleteByPropertyCodeAsync(string propertyCode);
         Task<bool> DeleteByBusinessDateAsync(DateTime businessDate);
     }

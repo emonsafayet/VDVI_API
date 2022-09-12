@@ -13,10 +13,10 @@ using VDVI.Repository.Interfaces;
 
 namespace VDVI.Repository.Implementation
 {
-    public class HcsBIRevenueRepository: DapperRepository<DbRevenue>, IHcsBIRevenueRepository
+    public class HcsBIRevenueRepository: DapperRepository<DbRevenueHistory>, IHcsBIRevenueRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
-        private readonly IDapperRepository<DbRevenue> _tblRepository;
+        private readonly IDapperRepository<DbRevenueHistory> _tblRepository;
 
         public HcsBIRevenueRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
@@ -25,7 +25,7 @@ namespace VDVI.Repository.Implementation
         }
 
 
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<RevenueDto> dto)
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<RevenueHistoryDto> dto)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
@@ -34,9 +34,9 @@ namespace VDVI.Repository.Implementation
             return queryResult.ToString();
         }
 
-        public async Task<IEnumerable<RevenueDto>> BulkInsertAsync(IEnumerable<RevenueDto> dto)
+        public async Task<IEnumerable<RevenueHistoryDto>> BulkInsertAsync(IEnumerable<RevenueHistoryDto> dto)
         {
-            var dbEntity = TinyMapper.Map<List<DbRevenue>>(dto);
+            var dbEntity = TinyMapper.Map<List<DbRevenueHistory>>(dto);
 
             await _tblRepository.BulkInsertAsync(dbEntity);
 
@@ -47,39 +47,39 @@ namespace VDVI.Repository.Implementation
 
         public async Task<bool> DeleteByPropertyCodeAsync(string propertyCode) => await _tblRepository.DeleteAsync(x => x.PropertyCode == propertyCode);
 
-        public async Task<RevenueDto> FindByIdAsync(int id)
+        public async Task<RevenueHistoryDto> FindByIdAsync(int id)
         {
             var dbEntity = await _tblRepository.FindAsync(x => x.PropertyCode == "");
 
-            var dto = TinyMapper.Map<RevenueDto>(dbEntity);
+            var dto = TinyMapper.Map<RevenueHistoryDto>(dbEntity);
 
             return dto;
         }
 
-        public async Task<IEnumerable<RevenueDto>> GetAllByPropertyCodeAsync(string propertyCode)
+        public async Task<IEnumerable<RevenueHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode)
         {
-            IEnumerable<DbRevenue> dbEntities = await _dbContext
+            IEnumerable<DbRevenueHistory> dbEntities = await _dbContext
                 .Revenue
                 .SetOrderBy(OrderInfo.SortDirection.DESC, x => x.PropertyCode)
                 .FindAllAsync(x => x.PropertyCode == propertyCode);
 
-            var entities = TinyMapper.Map<List<RevenueDto>>(dbEntities);
+            var entities = TinyMapper.Map<List<RevenueHistoryDto>>(dbEntities);
 
             return entities;
         }
 
-        public async Task<RevenueDto> InsertAsync(RevenueDto dto)
+        public async Task<RevenueHistoryDto> InsertAsync(RevenueHistoryDto dto)
         {
-            var dbEntity = TinyMapper.Map<DbRevenue>(dto);
+            var dbEntity = TinyMapper.Map<DbRevenueHistory>(dto);
 
             await _tblRepository.InsertAsync(dbEntity);
 
-            return TinyMapper.Map<RevenueDto>(dbEntity);
+            return TinyMapper.Map<RevenueHistoryDto>(dbEntity);
         }
 
-        public async Task<RevenueDto> UpdateAsync(RevenueDto dto)
+        public async Task<RevenueHistoryDto> UpdateAsync(RevenueHistoryDto dto)
         {
-            var dbCustomerEntity = TinyMapper.Map<DbRevenue>(dto);
+            var dbCustomerEntity = TinyMapper.Map<DbRevenueHistory>(dto);
 
             await _tblRepository.UpdateAsync(dbCustomerEntity);
 

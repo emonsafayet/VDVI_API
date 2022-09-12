@@ -13,10 +13,10 @@ using VDVI.Repository.Interfaces;
 
 namespace VDVI.Repository.Implementation
 {
-    public class HcsBIOccupancyRepository : DapperRepository<DbOccupancy>, IHcsBIOccupancyRepository
+    public class HcsBIOccupancyRepository : DapperRepository<DbOccupancyHistory>, IHcsBIOccupancyRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
-        private readonly IDapperRepository<DbOccupancy> _tblRepository;
+        private readonly IDapperRepository<DbOccupancyHistory> _tblRepository;
 
         public HcsBIOccupancyRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
@@ -24,7 +24,7 @@ namespace VDVI.Repository.Implementation
             _tblRepository = _dbContext.Occupancy;
         }
 
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<OccupancyDto> dto)
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<OccupancyHistoryDto> dto)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
@@ -33,9 +33,9 @@ namespace VDVI.Repository.Implementation
             return queryResult.ToString();
         }
 
-        public async Task<IEnumerable<OccupancyDto>> BulkInsertAsync(IEnumerable<OccupancyDto> dto)
+        public async Task<IEnumerable<OccupancyHistoryDto>> BulkInsertAsync(IEnumerable<OccupancyHistoryDto> dto)
         {
-            var dbEntity = TinyMapper.Map<List<DbOccupancy>>(dto);
+            var dbEntity = TinyMapper.Map<List<DbOccupancyHistory>>(dto);
 
             await _tblRepository.BulkInsertAsync(dbEntity);
 
@@ -46,39 +46,39 @@ namespace VDVI.Repository.Implementation
 
         public async Task<bool> DeleteByPropertyCodeAsync(string propertyCode) => await _tblRepository.DeleteAsync(x => x.PropertyCode == propertyCode);
 
-        public async Task<OccupancyDto> FindByIdAsync(int id)
+        public async Task<OccupancyHistoryDto> FindByIdAsync(int id)
         {
             var dbEntity = await _tblRepository.FindAsync(x => x.PropertyCode == "");
 
-            var dto = TinyMapper.Map<OccupancyDto>(dbEntity);
+            var dto = TinyMapper.Map<OccupancyHistoryDto>(dbEntity);
 
             return dto;
         }
 
-        public async Task<IEnumerable<OccupancyDto>> GetAllByPropertyCodeAsync(string propertyCode)
+        public async Task<IEnumerable<OccupancyHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode)
         {
-            IEnumerable<DbOccupancy> dbEntities = await _dbContext
+            IEnumerable<DbOccupancyHistory> dbEntities = await _dbContext
                 .Occupancy
                 .SetOrderBy(OrderInfo.SortDirection.DESC, x => x.PropertyCode)
                 .FindAllAsync(x => x.PropertyCode == propertyCode);
 
-            var entities = TinyMapper.Map<List<OccupancyDto>>(dbEntities);
+            var entities = TinyMapper.Map<List<OccupancyHistoryDto>>(dbEntities);
 
             return entities;
         }
 
-        public async Task<OccupancyDto> InsertAsync(OccupancyDto dto)
+        public async Task<OccupancyHistoryDto> InsertAsync(OccupancyHistoryDto dto)
         {
-            var dbEntity = TinyMapper.Map<DbOccupancy>(dto);
+            var dbEntity = TinyMapper.Map<DbOccupancyHistory>(dto);
 
             await _tblRepository.InsertAsync(dbEntity);
 
-            return TinyMapper.Map<OccupancyDto>(dbEntity);
+            return TinyMapper.Map<OccupancyHistoryDto>(dbEntity);
         }
 
-        public async Task<OccupancyDto> UpdateAsync(OccupancyDto dto)
+        public async Task<OccupancyHistoryDto> UpdateAsync(OccupancyHistoryDto dto)
         {
-            var dbCustomerEntity = TinyMapper.Map<DbOccupancy>(dto);
+            var dbCustomerEntity = TinyMapper.Map<DbOccupancyHistory>(dto);
 
             await _tblRepository.UpdateAsync(dbCustomerEntity);
 

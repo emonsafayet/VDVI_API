@@ -21,12 +21,12 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         private IDapperRepository<DbJobTaskScheduler> _taskScheduler;
         private IDapperRepository<DbRoomSummary> _roomSummary;
         private IDapperRepository<DbLedgerBalance> _ledgerBalance;
-        private IDapperRepository<DbRatePlanStatistic> _ratePlanStatistic;
-        private IDapperRepository<DbSourceStatistic> _sourceStatistic;
-        private IDapperRepository<DbOccupancy> _occupancy;
-        private IDapperRepository<DbReservation> _reservation;
-        private IDapperRepository<DbRooms> _rooms;
-        private IDapperRepository<DbRevenue> _revenue;
+        private IDapperRepository<DbRatePlanStatisticHistory> _ratePlanStatistic;
+        private IDapperRepository<DbSourceStatisticHistory> _sourceStatistic;
+        private IDapperRepository<DbOccupancyHistory> _occupancy;
+        private IDapperRepository<DbReservationHistory> _reservation;
+        private IDapperRepository<DbRoomsHistory> _rooms;
+        private IDapperRepository<DbRevenueHistory> _revenue;
 
 
         public VDVISchedulerDbContext(IConfiguration configuration) : base(new SqlConnection(configuration["ConnectionStrings:ApmaDb"]))
@@ -35,33 +35,33 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
             TinyMapper.Bind<JobTaskSchedulerDto, DbJobTaskScheduler>();
             TinyMapper.Bind<RoomSummaryDto, DbRoomSummary>();
             TinyMapper.Bind<LedgerBalanceDto, DbLedgerBalance>();
-            TinyMapper.Bind<RatePlanStatisticDto, DbRatePlanStatistic>();
-            TinyMapper.Bind<SourceStatisticDto, DbSourceStatistic>();
-            TinyMapper.Bind<OccupancyDto, DbOccupancy>();
-            TinyMapper.Bind<ReservationDto, DbReservation>();
-            TinyMapper.Bind<RoomsDto, DbRooms>();
-            TinyMapper.Bind<RevenueDto, DbRevenue>();
+            TinyMapper.Bind<RatePlanStatisticHistoryDto, DbRatePlanStatisticHistory>();
+            TinyMapper.Bind<SourceStatisticHistoryDto, DbSourceStatisticHistory>();
+            TinyMapper.Bind<OccupancyHistoryDto, DbOccupancyHistory>();
+            TinyMapper.Bind<ReservationHistoryDto, DbReservationHistory>();
+            TinyMapper.Bind<RoomsHistoryDto, DbRoomsHistory>();
+            TinyMapper.Bind<RevenueHistoryDto, DbRevenueHistory>();
 
             // Dto to Db List
             TinyMapper.Bind<List<JobTaskSchedulerDto>, List<DbJobTaskScheduler>>();
             TinyMapper.Bind<List<RoomSummaryDto>, List<DbRoomSummary>>();
             TinyMapper.Bind<List<LedgerBalanceDto>, List<DbLedgerBalance>>();
-            TinyMapper.Bind<List<RatePlanStatisticDto>, List<DbRatePlanStatistic>>();
-            TinyMapper.Bind<List<SourceStatisticDto>, List<DbSourceStatistic>>();
-            TinyMapper.Bind<List<OccupancyDto>, List<DbOccupancy>>();
-            TinyMapper.Bind<List<ReservationDto>, List<DbReservation>>();
-            TinyMapper.Bind<List<RoomsDto>, List<DbRooms>>();
-            TinyMapper.Bind<List<RevenueDto>, List<DbRevenue>>();
+            TinyMapper.Bind<List<RatePlanStatisticHistoryDto>, List<DbRatePlanStatisticHistory>>();
+            TinyMapper.Bind<List<SourceStatisticHistoryDto>, List<DbSourceStatisticHistory>>();
+            TinyMapper.Bind<List<OccupancyHistoryDto>, List<DbOccupancyHistory>>();
+            TinyMapper.Bind<List<ReservationHistoryDto>, List<DbReservationHistory>>();
+            TinyMapper.Bind<List<RoomsHistoryDto>, List<DbRoomsHistory>>();
+            TinyMapper.Bind<List<RevenueHistoryDto>, List<DbRevenueHistory>>();
         }
 
         public IDapperRepository<DbJobTaskScheduler> JobTaskScheduler => _taskScheduler ??= new DapperRepository<DbJobTaskScheduler>(Connection);
         public IDapperRepository<DbRoomSummary> RoomSummary => _roomSummary ??= new DapperRepository<DbRoomSummary>(Connection);
         public IDapperRepository<DbLedgerBalance> LedgerBalance => _ledgerBalance ??= new DapperRepository<DbLedgerBalance>(Connection);
-        public IDapperRepository<DbRatePlanStatistic> RatePlanStatistic => _ratePlanStatistic ??= new DapperRepository<DbRatePlanStatistic>(Connection);
-        public IDapperRepository<DbSourceStatistic> SourceStatistic => _sourceStatistic ??= new DapperRepository<DbSourceStatistic>(Connection);
-        public IDapperRepository<DbOccupancy> Occupancy => _occupancy ??= new DapperRepository<DbOccupancy>(Connection);
-        public IDapperRepository<DbReservation> Reservation => _reservation ??= new DapperRepository<DbReservation>(Connection);
-        public IDapperRepository<DbRooms> Rooms => _rooms ??= new DapperRepository<DbRooms>(Connection);
-        public IDapperRepository<DbRevenue> Revenue => _revenue ??= new DapperRepository<DbRevenue>(Connection);
+        public IDapperRepository<DbRatePlanStatisticHistory> RatePlanStatistic => _ratePlanStatistic ??= new DapperRepository<DbRatePlanStatisticHistory>(Connection);
+        public IDapperRepository<DbSourceStatisticHistory> SourceStatistic => _sourceStatistic ??= new DapperRepository<DbSourceStatisticHistory>(Connection);
+        public IDapperRepository<DbOccupancyHistory> Occupancy => _occupancy ??= new DapperRepository<DbOccupancyHistory>(Connection);
+        public IDapperRepository<DbReservationHistory> Reservation => _reservation ??= new DapperRepository<DbReservationHistory>(Connection);
+        public IDapperRepository<DbRoomsHistory> Rooms => _rooms ??= new DapperRepository<DbRoomsHistory>(Connection);
+        public IDapperRepository<DbRevenueHistory> Revenue => _revenue ??= new DapperRepository<DbRevenueHistory>(Connection);
     }
 }

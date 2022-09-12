@@ -32,7 +32,7 @@ namespace VDVI.Services.Services.Apma
                           {
                               Authentication pmsAuthentication = GetApmaAuthCredential();
 
-                              List<DbRatePlanStatistic> ratePlanStatistics = new List<DbRatePlanStatistic>();
+                              List<DbRatePlanStatisticHistory> ratePlanStatistics = new List<DbRatePlanStatisticHistory>();
 
                               foreach (string property in ApmaProperties)
                               {
@@ -55,9 +55,9 @@ namespace VDVI.Services.Services.Apma
                           });
         }
 
-        private void FormatSummaryObject(List<DbRatePlanStatistic> ratePlanStatistics, List<BIRatePlanStatistic> dashboard, string propertyCode)
+        private void FormatSummaryObject(List<DbRatePlanStatisticHistory> ratePlanStatistics, List<BIRatePlanStatistic> dashboard, string propertyCode)
         {
-            List<DbRatePlanStatistic> ratePlanStatistic = dashboard.Select(x => new DbRatePlanStatistic()
+            List<DbRatePlanStatisticHistory> ratePlanStatistic = dashboard.Select(x => new DbRatePlanStatisticHistory()
             {
                 PropertyCode = propertyCode,
                 BusinessDate = x.BusinessDate,

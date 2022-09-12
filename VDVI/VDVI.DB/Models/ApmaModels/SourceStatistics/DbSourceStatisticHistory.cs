@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.Dtos.SourceStatistics
 {
-    public class DbSourceStatistic :Audit
+    [Table("[hce].[SourceStatistics_History]")]
+    public class DbSourceStatisticHistory :Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }

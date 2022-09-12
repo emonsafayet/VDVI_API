@@ -9,12 +9,12 @@ namespace VDVI.DB.IRepository
 {
     public interface IHcsBISourceStatisticsRepository
     {
-        Task<SourceStatisticDto> InsertAsync(SourceStatisticDto dto);
-        Task<IEnumerable<SourceStatisticDto>> BulkInsertAsync(IEnumerable<SourceStatisticDto> dto);
-        Task<string> BulkInsertWithProcAsync(IEnumerable<SourceStatisticDto> dto);
-        Task<SourceStatisticDto> UpdateAsync(SourceStatisticDto dto);
-        Task<IEnumerable<SourceStatisticDto>> GetAllByPropertyCodeAsync(string propertyCode);
-        Task<SourceStatisticDto> FindByIdAsync(int id);
+        Task<SourceStatisticHistoryDto> InsertAsync(SourceStatisticHistoryDto dto);
+        Task<IEnumerable<SourceStatisticHistoryDto>> BulkInsertAsync(IEnumerable<SourceStatisticHistoryDto> dto);
+        Task<string> BulkInsertWithProcAsync(IEnumerable<SourceStatisticHistoryDto> dto);
+        Task<SourceStatisticHistoryDto> UpdateAsync(SourceStatisticHistoryDto dto);
+        Task<IEnumerable<SourceStatisticHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode);
+        Task<SourceStatisticHistoryDto> FindByIdAsync(int id);
         Task<bool> DeleteByPropertyCodeAsync(string propertyCode);
         Task<bool> DeleteByBusinessDateAsync(DateTime businessDate);
     }

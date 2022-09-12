@@ -9,12 +9,12 @@ namespace VDVI.Repository.Interfaces
 {
     public interface IHcsBIRevenueRepository
     {
-        Task<RevenueDto> InsertAsync(RevenueDto dto);
-        Task<IEnumerable<RevenueDto>> BulkInsertAsync(IEnumerable<RevenueDto> dto);
-        Task<string> BulkInsertWithProcAsync(IEnumerable<RevenueDto> dto);
-        Task<RevenueDto> UpdateAsync(RevenueDto dto);
-        Task<IEnumerable<RevenueDto>> GetAllByPropertyCodeAsync(string propertyCode);
-        Task<RevenueDto> FindByIdAsync(int id);
+        Task<RevenueHistoryDto> InsertAsync(RevenueHistoryDto dto);
+        Task<IEnumerable<RevenueHistoryDto>> BulkInsertAsync(IEnumerable<RevenueHistoryDto> dto);
+        Task<string> BulkInsertWithProcAsync(IEnumerable<RevenueHistoryDto> dto);
+        Task<RevenueHistoryDto> UpdateAsync(RevenueHistoryDto dto);
+        Task<IEnumerable<RevenueHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode);
+        Task<RevenueHistoryDto> FindByIdAsync(int id);
         Task<bool> DeleteByPropertyCodeAsync(string propertyCode);
         Task<bool> DeleteByDashboardDateAsync(DateTime DashboardDate);
     }

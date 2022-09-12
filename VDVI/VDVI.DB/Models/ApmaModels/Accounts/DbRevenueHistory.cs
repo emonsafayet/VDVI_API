@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.Dtos.Accounts
 {
-    public class RevenueDto : Audit
+    [Table("[hce].[ReservationDashboard_Revenue_History]")]
+    public class DbRevenueHistory : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? DashboardDate { get; set; }

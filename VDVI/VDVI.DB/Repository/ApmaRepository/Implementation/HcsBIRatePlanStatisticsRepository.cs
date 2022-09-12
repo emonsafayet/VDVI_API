@@ -13,10 +13,10 @@ using MicroOrm.Dapper.Repositories.SqlGenerator.Filters;
 
 namespace VDVI.Repository.Implementation
 {
-    public class HcsBIRatePlanStatisticsRepository : DapperRepository<DbRatePlanStatistic>, IHcsBIRatePlanStatisticsRepository
+    public class HcsBIRatePlanStatisticsRepository : DapperRepository<DbRatePlanStatisticHistory>, IHcsBIRatePlanStatisticsRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
-        private readonly IDapperRepository<DbRatePlanStatistic> _tblRepository;
+        private readonly IDapperRepository<DbRatePlanStatisticHistory> _tblRepository;
 
         public HcsBIRatePlanStatisticsRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
@@ -25,7 +25,7 @@ namespace VDVI.Repository.Implementation
         }
 
 
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<RatePlanStatisticDto> dto)
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<RatePlanStatisticHistoryDto> dto)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
@@ -34,9 +34,9 @@ namespace VDVI.Repository.Implementation
             return queryResult.ToString();
         }
 
-        public async Task<IEnumerable<RatePlanStatisticDto>> BulkInsertAsync(IEnumerable<RatePlanStatisticDto> dto)
+        public async Task<IEnumerable<RatePlanStatisticHistoryDto>> BulkInsertAsync(IEnumerable<RatePlanStatisticHistoryDto> dto)
         {
-            var dbEntity = TinyMapper.Map<List<DbRatePlanStatistic>>(dto);
+            var dbEntity = TinyMapper.Map<List<DbRatePlanStatisticHistory>>(dto);
 
             await _tblRepository.BulkInsertAsync(dbEntity);
 
@@ -47,39 +47,39 @@ namespace VDVI.Repository.Implementation
 
         public async Task<bool> DeleteByPropertyCodeAsync(string propertyCode) => await _tblRepository.DeleteAsync(x => x.PropertyCode == propertyCode);
 
-        public async Task<RatePlanStatisticDto> FindByIdAsync(int id)
+        public async Task<RatePlanStatisticHistoryDto> FindByIdAsync(int id)
         {
             var dbEntity = await _tblRepository.FindAsync(x => x.PropertyCode == "");
 
-            var dto = TinyMapper.Map<RatePlanStatisticDto>(dbEntity);
+            var dto = TinyMapper.Map<RatePlanStatisticHistoryDto>(dbEntity);
 
             return dto;
         }
 
-        public async Task<IEnumerable<RatePlanStatisticDto>> GetAllByPropertyCodeAsync(string propertyCode)
+        public async Task<IEnumerable<RatePlanStatisticHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode)
         {
-            IEnumerable<DbRatePlanStatistic> dbEntities = await _dbContext
+            IEnumerable<DbRatePlanStatisticHistory> dbEntities = await _dbContext
                 .RatePlanStatistic
                 .SetOrderBy(OrderInfo.SortDirection.DESC, x => x.PropertyCode)
                 .FindAllAsync(x => x.PropertyCode == propertyCode);
 
-            var entities = TinyMapper.Map<List<RatePlanStatisticDto>>(dbEntities);
+            var entities = TinyMapper.Map<List<RatePlanStatisticHistoryDto>>(dbEntities);
 
             return entities;
         }
 
-        public async Task<RatePlanStatisticDto> InsertAsync(RatePlanStatisticDto dto)
+        public async Task<RatePlanStatisticHistoryDto> InsertAsync(RatePlanStatisticHistoryDto dto)
         {
-            var dbEntity = TinyMapper.Map<DbRatePlanStatistic>(dto);
+            var dbEntity = TinyMapper.Map<DbRatePlanStatisticHistory>(dto);
 
             await _tblRepository.InsertAsync(dbEntity);
 
-            return TinyMapper.Map<RatePlanStatisticDto>(dbEntity);
+            return TinyMapper.Map<RatePlanStatisticHistoryDto>(dbEntity);
         }
 
-        public async Task<RatePlanStatisticDto> UpdateAsync(RatePlanStatisticDto dto)
+        public async Task<RatePlanStatisticHistoryDto> UpdateAsync(RatePlanStatisticHistoryDto dto)
         {
-            var dbCustomerEntity = TinyMapper.Map<DbRatePlanStatistic>(dto);
+            var dbCustomerEntity = TinyMapper.Map<DbRatePlanStatisticHistory>(dto);
 
             await _tblRepository.UpdateAsync(dbCustomerEntity);
 
