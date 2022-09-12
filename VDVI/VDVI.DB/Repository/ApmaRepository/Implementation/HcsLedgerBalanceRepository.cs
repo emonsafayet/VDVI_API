@@ -14,12 +14,12 @@ using VDVI.Repository.Repository.Interfaces;
 
 namespace VDVI.Repository.Repository.Implementation
 {
-    public class HcsLedgerBalanceRepo : ILedgerBalanceRepo
+    public class HcsLedgerBalanceRepository : IHcsLedgerBalanceRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
         private readonly IDapperRepository<DbLedgerBalance> _ledgerBalance;
 
-        public HcsLedgerBalanceRepo(VDVISchedulerDbContext dbContext)
+        public HcsLedgerBalanceRepository(VDVISchedulerDbContext dbContext)
         {
             _dbContext = dbContext;
             _ledgerBalance = _dbContext.LedgerBalance;

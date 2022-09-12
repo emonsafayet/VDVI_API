@@ -6,17 +6,17 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
-using VDVI.Repository.Repository.Interfaces;
+using VDVI.Repository.Repository.ApmaRepository;
 using VDVI.Services.Interfaces.Apma.Accounts;
 
 namespace VDVI.Services.Services.Apma.Accounts
 {
-    public class HcsReportManagementLedgerBalanceService : IHcsReportManagementLedgerBalanceService
+    public class HcsLedgerBalanceService : IHcsLedgerBalanceService
     {
-        private readonly ILedgerBalanceRepo _ledgerBalanceRepo;
-        public HcsReportManagementLedgerBalanceService(ILedgerBalanceRepo ledgerBalanceRepo)
+        private readonly IScheduleManagementRepository _managementRepository;
+        public HcsLedgerBalanceService(IScheduleManagementRepository managementRepository)
         {
-            _ledgerBalanceRepo = ledgerBalanceRepo;
+            _managementRepository = managementRepository;
         }
 
         public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<LedgerBalanceDto> dtos)
@@ -24,7 +24,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _ledgerBalanceRepo.BulkInsertAsync(dtos);
+                    var resp = await _managementRepository.HcsLedgerBalanceRepository.BulkInsertAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -40,7 +40,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _ledgerBalanceRepo.BulkInsertWithProcAsync(dtos);
+                    var resp = await _managementRepository.HcsLedgerBalanceRepository.BulkInsertWithProcAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -56,7 +56,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _ledgerBalanceRepo.DeleteByPropertyCodeAsync(propertyCode);
+                    var dbroomSummariesRes = await _managementRepository.HcsLedgerBalanceRepository.DeleteByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success("", "Data delete is successful");
                 },
@@ -72,7 +72,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dtos = await _ledgerBalanceRepo.GetAllByPropertyCodeAsync(propertyCode);
+                    var dtos = await _managementRepository.HcsLedgerBalanceRepository.GetAllByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success(dtos, "Data retrival successful");
                 },
@@ -88,7 +88,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    dto = await _ledgerBalanceRepo.InsertAsync(dto);
+                    dto = await _managementRepository.HcsLedgerBalanceRepository.InsertAsync(dto);
 
                     return PrometheusResponse.Success(dto, "Data saved successful");
                 },
@@ -104,7 +104,7 @@ namespace VDVI.Services.Services.Apma.Accounts
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _ledgerBalanceRepo.DeleteByBusinessDateAsync(businessDate);
+                    var dbroomSummariesRes = await _managementRepository.HcsLedgerBalanceRepository.DeleteByBusinessDateAsync(businessDate);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },

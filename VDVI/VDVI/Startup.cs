@@ -1,4 +1,3 @@
-using Framework.Core.Swagger.Filters;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,7 +5,6 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using Serilog;
 using System;
 using Unity;
@@ -31,26 +29,20 @@ namespace VDVI
         {
             base.ConfigureServices(services);
 
-            //services.AddSingleton<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
-            //services.AddScoped<ITaskSchedulerRepository, TaskSchedulerRepository>();
-
-            //services.AddScoped<IReportManagementSummaryService, ReportManagementSummaryService>();
 
 
-            //services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+            //services.AddSwaggerGen(options =>
+            //{
+            //    options.OperationFilter<ApiVersionFilter>();
 
-            services.AddSwaggerGen(options =>
-            {
-                options.OperationFilter<ApiVersionFilter>();
-
-                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-                {
-                    Type = SecuritySchemeType.Http,
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Scheme = "Bearer"
-                });
-            });
+            //    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+            //    {
+            //        Type = SecuritySchemeType.Http,
+            //        BearerFormat = "JWT",
+            //        In = ParameterLocation.Header,
+            //        Scheme = "Bearer"
+            //    });
+            //});
 
             //services.AddControllers();
 
@@ -77,6 +69,7 @@ namespace VDVI
                        ));
 
             services.AddHangfireServer();
+            services.AddMvc();
         }
 
 
@@ -221,15 +214,12 @@ namespace VDVI
             });
 
 
-            //var y = serviceProvider.GetRequiredService<IApmaTaskSchedulerService>();
-
             var service = container.Resolve<IApmaTaskSchedulerService>();
-            //var service = container.Resolve<ITestService>();
 
             recurringJobManager.AddOrUpdate(
                   "InsertReportManagementRoomAndLedgerJob",
-                  () => service.SummaryScheduler(""),
-                  configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
+                  () => service.SummaryScheduler("HcsReportManagementSummary"),
+                  configuration["ApmaHangfireJobSchedulerTime:HcsReportManagementSummary"], TimeZoneInfo.Utc
                   );
 
             app.UseEndpoints(endpoints =>

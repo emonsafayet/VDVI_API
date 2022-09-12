@@ -6,7 +6,7 @@ using VDVI.DB.Models.Accounts;
 
 namespace VDVI.Repository.Repository.Interfaces
 {
-    public interface ILedgerBalanceRepo
+    public interface IHcsLedgerBalanceRepository
     {
         Task<LedgerBalanceDto> InsertAsync(LedgerBalanceDto dto);
         Task<IEnumerable<LedgerBalanceDto>> BulkInsertAsync(IEnumerable<LedgerBalanceDto> dto);

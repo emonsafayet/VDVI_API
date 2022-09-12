@@ -6,5 +6,9 @@ namespace VDVI.Repository.Repository.ApmaRepository
     public interface IScheduleManagementRepository : IProRepository
     {
         IHcsRoomSummaryRepository HcsRoomSummaryRepository { get; }
+        IHcsLedgerBalanceRepository HcsLedgerBalanceRepository { get; }
+        //IHcsLedgerBalanceRepository HcsLedgerBalanceRepository { get; }
+        //IHcsLedgerBalanceRepository HcsLedgerBalanceRepository { get; }
+        //IHcsLedgerBalanceRepository HcsLedgerBalanceRepository { get; }
     }
 }

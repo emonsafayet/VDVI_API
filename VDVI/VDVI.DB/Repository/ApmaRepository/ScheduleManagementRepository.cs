@@ -11,6 +11,8 @@ namespace VDVI.Repository.Repository.ApmaRepository
         private readonly VDVISchedulerDbContext _dbContext;
 
         private IHcsRoomSummaryRepository _hcsRoomSummaryRepository;
+        private IHcsLedgerBalanceRepository _hcsLedgerBalanceRepository;
+
 
         public ScheduleManagementRepository(VDVISchedulerDbContext dbContext) : base(dbContext)
         {
@@ -18,6 +20,7 @@ namespace VDVI.Repository.Repository.ApmaRepository
         }
 
         public IHcsRoomSummaryRepository HcsRoomSummaryRepository => _hcsRoomSummaryRepository ??= new HcsRoomSummaryRepository(_dbContext);
-         
+        public IHcsLedgerBalanceRepository HcsLedgerBalanceRepository => _hcsLedgerBalanceRepository ??= new HcsLedgerBalanceRepository(_dbContext);
+
     }
 }

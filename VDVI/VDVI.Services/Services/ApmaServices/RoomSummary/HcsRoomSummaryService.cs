@@ -6,20 +6,18 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
-using VDVI.Repository.Repository;
-using VDVI.Repository.Repository.Implementation;
-using VDVI.Repository.Repository.Interfaces;
+using VDVI.Repository.Repository.ApmaRepository;
 using VDVI.Services.Interfaces;
 
 namespace SOAPAppCore.Services.Apma
 {
-    public class HcsReportManagementRoomSummaryService : IHcsReportManagementRoomSummaryService
+    public class HcsRoomSummaryService : IHcsRoomSummaryService
     {
-        private readonly IHcsRoomSummaryRepository _roomSummaryRepo;
+        private readonly IScheduleManagementRepository _managementRepository;
 
-        public HcsReportManagementRoomSummaryService(IHcsRoomSummaryRepository roomSummaryRepo)
+        public HcsRoomSummaryService(IScheduleManagementRepository managementRepository)
         {
-            _roomSummaryRepo = roomSummaryRepo;
+            _managementRepository = managementRepository;
         }
 
         public async Task<Result<PrometheusResponse>> InsertAsync(RoomSummaryDto dto)
@@ -27,7 +25,7 @@ namespace SOAPAppCore.Services.Apma
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    dto = await _roomSummaryRepo.InsertAsync(dto);
+                    dto = await _managementRepository.HcsRoomSummaryRepository.InsertAsync(dto);
 
                     return PrometheusResponse.Success(dto, "Data saved successful");
                 },
@@ -44,7 +42,7 @@ namespace SOAPAppCore.Services.Apma
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _roomSummaryRepo.BulkInsertAsync(dtos);
+                    var resp = await _managementRepository.HcsRoomSummaryRepository.BulkInsertAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -60,7 +58,7 @@ namespace SOAPAppCore.Services.Apma
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _roomSummaryRepo.BulkInsertWithProcAsync(dtos);
+                    var resp = await _managementRepository.HcsRoomSummaryRepository.BulkInsertWithProcAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -76,7 +74,7 @@ namespace SOAPAppCore.Services.Apma
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dtos = await _roomSummaryRepo.GetAllByPropertyCodeAsync(propertyCode);
+                    var dtos = await _managementRepository.HcsRoomSummaryRepository.GetAllByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success(dtos, "Data saved successful");
                 },
@@ -92,7 +90,7 @@ namespace SOAPAppCore.Services.Apma
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _roomSummaryRepo.DeleteByPropertyCodeAsync(propertyCode);
+                    var dbroomSummariesRes = await _managementRepository.HcsRoomSummaryRepository.DeleteByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },
@@ -108,7 +106,7 @@ namespace SOAPAppCore.Services.Apma
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _roomSummaryRepo.DeleteByBusinessDateAsync(businessDate);
+                    var dbroomSummariesRes = await _managementRepository.HcsRoomSummaryRepository.DeleteByBusinessDateAsync(businessDate);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },
