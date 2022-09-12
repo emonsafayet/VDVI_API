@@ -21,7 +21,7 @@ namespace VDVI.Repository.ApmaRepository.Implementation
         public HcsBIRatePlanStatisticsHistoryRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
             _dbContext = dbContext;
-            _tblRepository = _dbContext.RatePlanStatistic;
+            _tblRepository = _dbContext.RatePlanStatisticHistory;
         }
 
 
@@ -59,7 +59,7 @@ namespace VDVI.Repository.ApmaRepository.Implementation
         public async Task<IEnumerable<RatePlanStatisticHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode)
         {
             IEnumerable<DbRatePlanStatisticHistory> dbEntities = await _dbContext
-                .RatePlanStatistic
+                .RatePlanStatisticHistory
                 .SetOrderBy(OrderInfo.SortDirection.DESC, x => x.PropertyCode)
                 .FindAllAsync(x => x.PropertyCode == propertyCode);
 

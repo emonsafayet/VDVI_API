@@ -2,17 +2,13 @@
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
 using Framework.Core.Utility;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using SOAPAppCore.Services;
 using SOAPService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using VDVI.Repository.Dtos.Accounts;
-using VDVI.Repository.Dtos.RoomSummary;
-using VDVI.Repository.Repository.ApmaRepository.Interfaces.Accounts.History;
 using VDVI.Services.Interfaces.Apma;
 
 namespace VDVI.Services.Services.Apma
