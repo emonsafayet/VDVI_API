@@ -1,14 +1,17 @@
-using Framework.Core.Swagger;
 using Framework.Core.Swagger.Filters;
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
+using Serilog;
+using System;
+using Unity;
 using VDVI.Client.IoC;
+using VDVI.Services.Interfaces;
 using StartupBase = Framework.Core.Base.Startup.StartupBase;
 
 namespace VDVI
@@ -28,7 +31,13 @@ namespace VDVI
         {
             base.ConfigureServices(services);
 
-            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+            //services.AddSingleton<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
+            //services.AddScoped<ITaskSchedulerRepository, TaskSchedulerRepository>();
+
+            //services.AddScoped<IReportManagementSummaryService, ReportManagementSummaryService>();
+
+
+            //services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
             services.AddSwaggerGen(options =>
             {
@@ -57,81 +66,186 @@ namespace VDVI
             //        Description = "A simple example to Implement Swagger UI",
             //    });
             //});
-            ////Hangfire
-            //services.AddHangfire(config =>
-            //           config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-            //           .UseSimpleAssemblyNameTypeSerializer()
-            //           .UseDefaultTypeSerializer()
-            //           .UseSqlServerStorage(Configuration.GetConnectionString("ApmaDb")
-            //           ));
-            //services.AddHangfireServer();
+
+
+            //Hangfire
+            services.AddHangfire(config =>
+                       config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                       .UseSimpleAssemblyNameTypeSerializer()
+                       .UseDefaultTypeSerializer()
+                       .UseSqlServerStorage(Configuration.GetConnectionString("ApmaDb")
+                       ));
+
+            services.AddHangfireServer();
         }
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public override void Configure(IApplicationBuilder app, IWebHostEnvironment env,
-                        //IConfiguration configuration,
-                        //IBackgroundJobClient backgroundJobClient,
-                        //IRecurringJobManager recurringJobManager,
-                        //IServiceProvider serviceProvider,
-                        IApiVersionDescriptionProvider apiVersionDescriptionProvider)
+        //public void Configure(
+        //            IApplicationBuilder app,
+        //            IWebHostEnvironment env,
+        //            IApiVersionDescriptionProvider apiVersionDescriptionProvider,
+        //            IConfiguration configuration,
+        //            IBackgroundJobClient backgroundJobClient,
+        //            IRecurringJobManager recurringJobManager,
+        //            IServiceProvider serviceProvider)
+        //{
+
+        //    //base.Configure(app, env, apiVersionDescriptionProvider);
+
+        //    if (env.IsDevelopment())
+        //    {
+        //        app.UseDeveloperExceptionPage();
+        //    }
+
+
+
+        //    app.UseDefaultFiles()
+        //       .UseStaticFiles();
+
+        //    // Use the CORS policy
+        //    app.UseCors("AllowAll");
+
+        //    app.UseHttpsRedirection();
+
+        //    app.UseRouting();
+
+        //    app.UseAuthentication();
+
+        //    app.UseAuthorization();
+
+
+
+        //    // Enable compression
+        //    app.UseResponseCompression();
+
+        //    app.UseEndpoints(endpoints =>
+        //    {
+        //        endpoints.MapControllers();
+        //    });
+
+        //    app.UseSwagger();
+
+        //    app.UseSwaggerUI(
+        //        options =>
+        //        {
+        //            options.RoutePrefix = string.Empty;
+
+        //            //INFO: Removes Schemas from Swagger API Documentation
+        //            options.DefaultModelsExpandDepth(-1);
+
+        //            options.InjectStylesheet("/swagger-ui/SwaggerDark.css");
+
+        //            // build a swagger endpoint for each discovered API version  
+        //            foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
+        //            {
+        //                options.SwaggerEndpoint($"../swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+        //            }
+        //        });
+
+
+        //    //app.UseDefaultFiles();
+        //    //app.UseStaticFiles();
+
+        //    //app.UseRouting();
+
+        //    //app.UseAuthorization();
+
+        //    //app.UseEndpoints(async endpoints =>
+        //    //{
+        //    //    endpoints.MapControllers();
+        //    //});
+        //    //app.UseHangfireDashboard("/hangfire", new DashboardOptions
+        //    //{
+        //    //    DashboardTitle = "Scheduled Jobs"
+        //    //});
+
+        //    //recurringJobManager.AddOrUpdate(
+        //    //      "InsertReportManagementRoomAndLedgerJob",
+        //    //      () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
+        //    //      configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
+        //    //      );
+
+
+        //}
+
+
+        public void Configure(IApplicationBuilder app,
+                              IWebHostEnvironment env,
+                              IApiVersionDescriptionProvider apiVersionDescriptionProvider,
+                              IConfiguration configuration,
+                                IBackgroundJobClient backgroundJobClient,
+                   IRecurringJobManager recurringJobManager,
+                 IServiceProvider serviceProvider,
+                 IUnityContainer container)
         {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
-            base.Configure(app, env, apiVersionDescriptionProvider);
-
-            //if (env.IsDevelopment())
+            //app.UseForwardedHeaders(new ForwardedHeadersOptions
             //{
-            //    app.UseDeveloperExceptionPage();
-            //    app.UseSwagger();
-            //    app.UseSwaggerUI(c =>
-            //    {
-            //        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Showing API V1");
-            //    });
-            //}
+            //    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            //});
 
-            app.UseSwagger();
+            app.UseDefaultFiles()
+               .UseStaticFiles();
 
-            app.UseSwaggerUI(
-                options =>
-                {
-                    options.RoutePrefix = string.Empty;
+            // Use the CORS policy
+            app.UseCors("AllowAll");
 
-                    //INFO: Removes Schemas from Swagger API Documentation
-                    options.DefaultModelsExpandDepth(-1);
+            app.UseHttpsRedirection();
 
-                    options.InjectStylesheet("/swagger-ui/SwaggerDark.css");
+            app.UseRouting();
 
-                    // build a swagger endpoint for each discovered API version  
-                    foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
-                    {
-                        options.SwaggerEndpoint($"../swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
-                    }
-                });
-
-
-            //app.UseDefaultFiles();
-            //app.UseStaticFiles();
-
-            //app.UseRouting();
+            //app.UseAuthentication();
 
             //app.UseAuthorization();
 
-            //app.UseEndpoints(async endpoints =>
-            //{
-            //    endpoints.MapControllers();
-            //});
-            //app.UseHangfireDashboard("/hangfire", new DashboardOptions
-            //{
-            //    DashboardTitle = "Scheduled Jobs"
-            //});
+            app.UseSerilogRequestLogging();
 
-            //recurringJobManager.AddOrUpdate(
-            //      "InsertReportManagementRoomAndLedgerJob",
-            //      () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
-            //      configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
-            //      );
+            // global error handler
+            //app.UseMiddleware<ApplicationAccessMiddleware>();
+
+            //app.UseMiddleware<ErrorHandlerMiddleware>();
+
+            // Enable compression
+            app.UseResponseCompression();
 
 
+
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                DashboardTitle = "Scheduled Jobs"
+            });
+
+
+            //var y = serviceProvider.GetRequiredService<IApmaTaskSchedulerService>();
+
+            var service = container.Resolve<IApmaTaskSchedulerService>();
+            //var service = container.Resolve<ITestService>();
+
+            recurringJobManager.AddOrUpdate(
+                  "InsertReportManagementRoomAndLedgerJob",
+                  () => service.SummaryScheduler(""),
+                  configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
+                  );
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+            //var service = container.Resolve<IApmaTaskSchedulerService>();
+
+
+            //        RecurringJob.AddOrUpdate(
+            //"InsertReportManagementRoomAndLedgerJob",
+            //     () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
+            //       configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
+            //);
         }
+
     }
 }

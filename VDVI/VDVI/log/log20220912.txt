@@ -1,0 +1,673 @@
+2022-09-12 12:00:20.979 +06:00 [INF] Start installing Hangfire SQL objects...
+2022-09-12 12:00:21.834 +06:00 [WRN] An exception occurred while trying to perform the migration. Retrying...
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:df4c3a83-90dc-4f79-827d-165bb7a9c678
+Error Number:2714,State:6,Class:16
+2022-09-12 12:00:21.968 +06:00 [WRN] An exception occurred while trying to perform the migration. Retrying...
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:df4c3a83-90dc-4f79-827d-165bb7a9c678
+Error Number:2714,State:6,Class:16
+2022-09-12 12:00:21.973 +06:00 [WRN] An exception occurred while trying to perform the migration.
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:df4c3a83-90dc-4f79-827d-165bb7a9c678
+Error Number:2714,State:6,Class:16
+2022-09-12 12:00:21.973 +06:00 [WRN] Was unable to perform the Hangfire schema migration due to an exception. Ignore this message unless you've just installed or upgraded Hangfire.
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:df4c3a83-90dc-4f79-827d-165bb7a9c678
+Error Number:2714,State:6,Class:16
+2022-09-12 12:00:48.558 +06:00 [INF] User profile is available. Using 'C:\Users\BS347\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-12 12:00:48.735 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 172.16.229.134@APMA'
+2022-09-12 12:00:48.736 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2022-09-12 12:00:48.736 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2022-09-12 12:00:48.781 +06:00 [INF] Server bs-347:47924:a87c66a3 successfully announced in 14.1946 ms
+2022-09-12 12:00:48.788 +06:00 [INF] Server bs-347:47924:a87c66a3 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2022-09-12 12:00:48.813 +06:00 [INF] 2 servers were removed due to timeout
+2022-09-12 12:00:48.891 +06:00 [INF] Server bs-347:47924:a87c66a3 all the dispatchers started
+2022-09-12 12:00:48.911 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/  
+2022-09-12 12:00:49.203 +06:00 [INF] Sending file. Request path: '/index.html'. Physical path: 'C:\Working\Projects\VDVI\VDVI_API\VDVI\VDVI\wwwroot\index.html'
+2022-09-12 12:00:49.255 +06:00 [INF] Request finished in 345.9632ms 200 text/html
+2022-09-12 12:00:49.263 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/_framework/aspnetcore-browser-refresh.js  
+2022-09-12 12:00:49.267 +06:00 [INF] Request finished in 3.4312ms 200 application/javascript; charset=utf-8
+2022-09-12 12:00:49.365 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/favicon.ico  
+2022-09-12 12:00:49.373 +06:00 [WRN] Failed to determine the https port for redirect.
+2022-09-12 12:00:49.464 +06:00 [INF] HTTP GET /favicon.ico responded 404 in 2.3130 ms
+2022-09-12 12:00:49.469 +06:00 [INF] Request finished in 104.3318ms 404 
+2022-09-12 12:01:25.361 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:01:25.497 +06:00 [INF] HTTP GET /hangfire responded 200 in 132.8449 ms
+2022-09-12 12:01:25.504 +06:00 [INF] Request finished in 143.2961ms 200 text/html
+2022-09-12 12:01:30.456 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:01:30.479 +06:00 [INF] HTTP GET /hangfire responded 200 in 19.3512 ms
+2022-09-12 12:01:30.480 +06:00 [INF] Request finished in 24.6858ms 200 text/html
+2022-09-12 12:01:52.694 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:01:52.720 +06:00 [INF] HTTP GET /hangfire responded 200 in 23.9770 ms
+2022-09-12 12:01:52.722 +06:00 [INF] Request finished in 28.3525ms 200 text/html
+2022-09-12 12:02:00.912 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:02:00.935 +06:00 [INF] HTTP GET /hangfire responded 200 in 20.1771 ms
+2022-09-12 12:02:00.937 +06:00 [INF] Request finished in 25.6149ms 200 text/html
+2022-09-12 12:02:05.887 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/_framework/aspnetcore-browser-refresh.js  
+2022-09-12 12:02:05.889 +06:00 [INF] Request finished in 1.5122ms 200 application/javascript; charset=utf-8
+2022-09-12 12:02:11.391 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:02:11.408 +06:00 [INF] HTTP GET /hangfire responded 200 in 15.5096 ms
+2022-09-12 12:02:11.410 +06:00 [INF] Request finished in 19.073ms 200 text/html
+2022-09-12 12:02:19.414 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:02:19.429 +06:00 [INF] HTTP GET /hangfire responded 200 in 13.6766 ms
+2022-09-12 12:02:19.430 +06:00 [INF] Request finished in 16.4202ms 200 text/html
+2022-09-12 12:02:54.893 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:02:54.931 +06:00 [INF] HTTP GET /hangfire responded 200 in 35.9983 ms
+2022-09-12 12:02:54.942 +06:00 [INF] Request finished in 48.99ms 200 text/html
+2022-09-12 12:03:11.129 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:03:11.155 +06:00 [INF] HTTP GET /hangfire responded 200 in 22.7832 ms
+2022-09-12 12:03:11.156 +06:00 [INF] Request finished in 27.1846ms 200 text/html
+2022-09-12 12:03:47.019 +06:00 [INF] Start installing Hangfire SQL objects...
+2022-09-12 12:03:47.283 +06:00 [WRN] An exception occurred while trying to perform the migration. Retrying...
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:2ad8a152-2237-4a72-be63-2649e52f29aa
+Error Number:2714,State:6,Class:16
+2022-09-12 12:03:47.319 +06:00 [WRN] An exception occurred while trying to perform the migration. Retrying...
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:2ad8a152-2237-4a72-be63-2649e52f29aa
+Error Number:2714,State:6,Class:16
+2022-09-12 12:03:47.324 +06:00 [WRN] An exception occurred while trying to perform the migration.
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:2ad8a152-2237-4a72-be63-2649e52f29aa
+Error Number:2714,State:6,Class:16
+2022-09-12 12:03:47.324 +06:00 [WRN] Was unable to perform the Hangfire schema migration due to an exception. Ignore this message unless you've just installed or upgraded Hangfire.
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:2ad8a152-2237-4a72-be63-2649e52f29aa
+Error Number:2714,State:6,Class:16
+2022-09-12 12:03:59.233 +06:00 [INF] User profile is available. Using 'C:\Users\BS347\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-12 12:03:59.298 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 172.16.229.134@APMA'
+2022-09-12 12:03:59.298 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2022-09-12 12:03:59.298 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2022-09-12 12:03:59.419 +06:00 [INF] Server bs-347:19656:24c4712d successfully announced in 101.8161 ms
+2022-09-12 12:03:59.424 +06:00 [INF] Server bs-347:19656:24c4712d is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2022-09-12 12:03:59.515 +06:00 [INF] Server bs-347:19656:24c4712d all the dispatchers started
+2022-09-12 12:03:59.491 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/_framework/aspnetcore-browser-refresh.js  
+2022-09-12 12:03:59.543 +06:00 [INF] Request finished in 84.4549ms 200 application/javascript; charset=utf-8
+2022-09-12 12:04:24.946 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/  
+2022-09-12 12:04:24.980 +06:00 [INF] The file /index.html was not modified
+2022-09-12 12:04:24.986 +06:00 [INF] Request finished in 40.4503ms 304 text/html
+2022-09-12 12:04:24.995 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/_framework/aspnetcore-browser-refresh.js  
+2022-09-12 12:04:24.995 +06:00 [INF] Request finished in 0.7125ms 200 application/javascript; charset=utf-8
+2022-09-12 12:04:31.457 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:04:31.467 +06:00 [WRN] Failed to determine the https port for redirect.
+2022-09-12 12:04:31.739 +06:00 [INF] HTTP GET /hangfire responded 200 in 240.9325 ms
+2022-09-12 12:04:31.747 +06:00 [INF] Request finished in 290.2622ms 200 text/html
+2022-09-12 12:04:34.465 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:04:34.487 +06:00 [INF] HTTP GET /hangfire responded 200 in 16.8027 ms
+2022-09-12 12:04:34.489 +06:00 [INF] Request finished in 23.6467ms 200 text/html
+2022-09-12 12:04:35.625 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:04:35.648 +06:00 [INF] HTTP GET /hangfire responded 200 in 18.9597 ms
+2022-09-12 12:04:35.649 +06:00 [INF] Request finished in 24.1917ms 200 text/html
+2022-09-12 12:04:36.793 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:04:36.814 +06:00 [INF] HTTP GET /hangfire responded 200 in 17.4582 ms
+2022-09-12 12:04:36.816 +06:00 [INF] Request finished in 23.3494ms 200 text/html
+2022-09-12 12:08:59.463 +06:00 [INF] 1 servers were removed due to timeout
+2022-09-12 12:14:44.546 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:14:44.574 +06:00 [INF] HTTP GET /hangfire responded 200 in 25.2714 ms
+2022-09-12 12:14:44.576 +06:00 [INF] Request finished in 29.3456ms 200 text/html
+2022-09-12 12:14:51.769 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/_framework/aspnetcore-browser-refresh.js  
+2022-09-12 12:14:51.770 +06:00 [INF] Request finished in 1.4535ms 200 application/javascript; charset=utf-8
+2022-09-12 12:15:46.405 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:15:46.423 +06:00 [INF] HTTP GET /hangfire responded 200 in 14.3650 ms
+2022-09-12 12:15:46.424 +06:00 [INF] Request finished in 19.1053ms 200 text/html
+2022-09-12 12:15:48.375 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:15:48.400 +06:00 [INF] HTTP GET /hangfire responded 200 in 22.2132 ms
+2022-09-12 12:15:48.401 +06:00 [INF] Request finished in 25.8754ms 200 text/html
+2022-09-12 12:15:50.374 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:15:50.391 +06:00 [INF] HTTP GET /hangfire responded 200 in 16.3068 ms
+2022-09-12 12:15:50.393 +06:00 [INF] Request finished in 18.9372ms 200 text/html
+2022-09-12 12:16:50.058 +06:00 [INF] Start installing Hangfire SQL objects...
+2022-09-12 12:16:50.316 +06:00 [WRN] An exception occurred while trying to perform the migration. Retrying...
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:5c41a37d-e1db-4ba2-af89-dd41cece884e
+Error Number:2714,State:6,Class:16
+2022-09-12 12:16:50.352 +06:00 [WRN] An exception occurred while trying to perform the migration. Retrying...
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:5c41a37d-e1db-4ba2-af89-dd41cece884e
+Error Number:2714,State:6,Class:16
+2022-09-12 12:16:50.357 +06:00 [WRN] An exception occurred while trying to perform the migration.
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:5c41a37d-e1db-4ba2-af89-dd41cece884e
+Error Number:2714,State:6,Class:16
+2022-09-12 12:16:50.358 +06:00 [WRN] Was unable to perform the Hangfire schema migration due to an exception. Ignore this message unless you've just installed or upgraded Hangfire.
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:5c41a37d-e1db-4ba2-af89-dd41cece884e
+Error Number:2714,State:6,Class:16
+2022-09-12 12:16:57.437 +06:00 [INF] User profile is available. Using 'C:\Users\BS347\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-12 12:16:57.496 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 172.16.229.134@APMA'
+2022-09-12 12:16:57.496 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2022-09-12 12:16:57.496 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2022-09-12 12:16:57.536 +06:00 [INF] Server bs-347:47804:20189aa9 successfully announced in 21.0638 ms
+2022-09-12 12:16:57.541 +06:00 [INF] Server bs-347:47804:20189aa9 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2022-09-12 12:16:57.632 +06:00 [INF] Server bs-347:47804:20189aa9 all the dispatchers started
+2022-09-12 12:16:57.614 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/_framework/aspnetcore-browser-refresh.js  
+2022-09-12 12:16:57.657 +06:00 [INF] Request finished in 76.1459ms 200 application/javascript; charset=utf-8
+2022-09-12 12:17:18.033 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:17:18.076 +06:00 [WRN] Failed to determine the https port for redirect.
+2022-09-12 12:17:18.342 +06:00 [INF] HTTP GET /hangfire responded 200 in 236.8695 ms
+2022-09-12 12:17:18.352 +06:00 [INF] Request finished in 319.6929ms 200 text/html
+2022-09-12 12:17:18.400 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:17:18.420 +06:00 [INF] HTTP GET /hangfire responded 200 in 18.6692 ms
+2022-09-12 12:17:18.421 +06:00 [INF] Request finished in 21.7405ms 200 text/html
+2022-09-12 12:17:20.600 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:17:20.622 +06:00 [INF] HTTP GET /hangfire responded 200 in 16.7288 ms
+2022-09-12 12:17:20.623 +06:00 [INF] Request finished in 23.5006ms 200 text/html
+2022-09-12 12:17:31.197 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:17:31.221 +06:00 [INF] HTTP GET /hangfire responded 200 in 21.1421 ms
+2022-09-12 12:17:31.223 +06:00 [INF] Request finished in 26.8215ms 200 text/html
+2022-09-12 12:17:33.424 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/hangfire  
+2022-09-12 12:17:33.447 +06:00 [INF] HTTP GET /hangfire responded 200 in 19.4267 ms
+2022-09-12 12:17:33.449 +06:00 [INF] Request finished in 25.0704ms 200 text/html
+2022-09-12 12:18:25.933 +06:00 [INF] Start installing Hangfire SQL objects...
+2022-09-12 12:18:26.186 +06:00 [WRN] An exception occurred while trying to perform the migration. Retrying...
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:0370a027-0d53-4ed4-8f57-3663c6ac58c4
+Error Number:2714,State:6,Class:16
+2022-09-12 12:18:26.218 +06:00 [WRN] An exception occurred while trying to perform the migration. Retrying...
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:0370a027-0d53-4ed4-8f57-3663c6ac58c4
+Error Number:2714,State:6,Class:16
+2022-09-12 12:18:26.223 +06:00 [WRN] An exception occurred while trying to perform the migration.
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:0370a027-0d53-4ed4-8f57-3663c6ac58c4
+Error Number:2714,State:6,Class:16
+2022-09-12 12:18:26.223 +06:00 [WRN] Was unable to perform the Hangfire schema migration due to an exception. Ignore this message unless you've just installed or upgraded Hangfire.
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:0370a027-0d53-4ed4-8f57-3663c6ac58c4
+Error Number:2714,State:6,Class:16
+2022-09-12 12:18:38.022 +06:00 [INF] User profile is available. Using 'C:\Users\BS347\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-12 12:18:38.082 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 172.16.229.134@APMA'
+2022-09-12 12:18:38.083 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2022-09-12 12:18:38.083 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2022-09-12 12:18:38.123 +06:00 [INF] Server bs-347:7372:8f04490c successfully announced in 21.9355 ms
+2022-09-12 12:18:38.128 +06:00 [INF] Server bs-347:7372:8f04490c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2022-09-12 12:18:38.250 +06:00 [INF] Server bs-347:7372:8f04490c all the dispatchers started
+2022-09-12 12:18:38.254 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/_framework/aspnetcore-browser-refresh.js  
+2022-09-12 12:18:38.284 +06:00 [INF] Request finished in 82.2205ms 200 application/javascript; charset=utf-8
+2022-09-12 12:20:17.793 +06:00 [INF] Start installing Hangfire SQL objects...
+2022-09-12 12:20:18.025 +06:00 [WRN] An exception occurred while trying to perform the migration. Retrying...
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:08ffe4d4-eef0-4fbd-8e97-267b312ae816
+Error Number:2714,State:6,Class:16
+2022-09-12 12:20:18.056 +06:00 [WRN] An exception occurred while trying to perform the migration. Retrying...
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:08ffe4d4-eef0-4fbd-8e97-267b312ae816
+Error Number:2714,State:6,Class:16
+2022-09-12 12:20:18.061 +06:00 [WRN] An exception occurred while trying to perform the migration.
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:08ffe4d4-eef0-4fbd-8e97-267b312ae816
+Error Number:2714,State:6,Class:16
+2022-09-12 12:20:18.061 +06:00 [WRN] Was unable to perform the Hangfire schema migration due to an exception. Ignore this message unless you've just installed or upgraded Hangfire.
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'Job' in the database.
+Installing Hangfire SQL objects...
+Database schema [HangFire] already exists
+Table [HangFire].[Schema] already exists
+Current Hangfire schema version: none
+Enabling HEAVY_MIGRATIONS, because we are installing objects from scratch
+Installing schema version 1
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)
+   at Hangfire.SqlServer.SqlServerStorage.<Initialize>b__43_0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass35_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerStorage.Initialize()
+ClientConnectionId:08ffe4d4-eef0-4fbd-8e97-267b312ae816
+Error Number:2714,State:6,Class:16
+2022-09-12 12:20:25.692 +06:00 [INF] User profile is available. Using 'C:\Users\BS347\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-12 12:20:25.751 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 172.16.229.134@APMA'
+2022-09-12 12:20:25.752 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2022-09-12 12:20:25.752 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2022-09-12 12:20:25.792 +06:00 [INF] Server bs-347:41584:eabac6fa successfully announced in 22.6491 ms
+2022-09-12 12:20:25.797 +06:00 [INF] Server bs-347:41584:eabac6fa is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2022-09-12 12:20:25.890 +06:00 [INF] Server bs-347:41584:eabac6fa all the dispatchers started
+2022-09-12 12:20:25.886 +06:00 [INF] Request starting HTTP/1.1 GET http://localhost:40644/_framework/aspnetcore-browser-refresh.js  
+2022-09-12 12:20:25.917 +06:00 [INF] Request finished in 74.5738ms 200 application/javascript; charset=utf-8

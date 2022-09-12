@@ -2,21 +2,16 @@ using Framework.Core.Extensions;
 using Framework.Core.IoC;
 using Framework.Core.Jwt;
 using Framework.Core.Logger;
-using Framework.Core.Middleware;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System;
@@ -237,47 +232,47 @@ namespace Framework.Core.Base.Startup
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public virtual void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider apiVersionDescriptionProvider)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+        //public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider apiVersionDescriptionProvider)
+        //{
+        //    if (env.IsDevelopment())
+        //    {
+        //        app.UseDeveloperExceptionPage();
+        //    }
 
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
+        //    app.UseForwardedHeaders(new ForwardedHeadersOptions
+        //    {
+        //        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+        //    });
 
-            app.UseDefaultFiles()
-               .UseStaticFiles();
+        //    app.UseDefaultFiles()
+        //       .UseStaticFiles();
 
-            // Use the CORS policy
-            app.UseCors("AllowAll");
+        //    // Use the CORS policy
+        //    app.UseCors("AllowAll");
 
-            app.UseHttpsRedirection();
+        //    app.UseHttpsRedirection();
 
-            app.UseRouting();
+        //    app.UseRouting();
 
-            app.UseAuthentication();
+        //    app.UseAuthentication();
 
-            app.UseAuthorization();
+        //    app.UseAuthorization();
 
-            app.UseSerilogRequestLogging();
+        //    app.UseSerilogRequestLogging();
 
-            // global error handler
-            app.UseMiddleware<ApplicationAccessMiddleware>();
+        //    // global error handler
+        //    app.UseMiddleware<ApplicationAccessMiddleware>();
 
-            app.UseMiddleware<ErrorHandlerMiddleware>();
+        //    app.UseMiddleware<ErrorHandlerMiddleware>();
 
-            // Enable compression
-            app.UseResponseCompression();
+        //    // Enable compression
+        //    app.UseResponseCompression();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-        }
+        //    app.UseEndpoints(endpoints =>
+        //    {
+        //        endpoints.MapControllers();
+        //    });
+        //}
 
         // ReSharper disable once UnusedMember.Global
         // Called on run time
