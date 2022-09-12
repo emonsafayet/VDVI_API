@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using VDVI.Repository.Dtos.Accounts;
 using VDVI.Repository.Dtos.RoomSummary;
 
-namespace VDVI.Repository.Interfaces
+namespace VDVI.Repository.ApmaRepository.Interfaces
 {
-    public interface IHcsBIRevenueRepository
+    public interface IHcsBIRevenueHistoryRepository
     {
         Task<RevenueHistoryDto> InsertAsync(RevenueHistoryDto dto);
         Task<IEnumerable<RevenueHistoryDto>> BulkInsertAsync(IEnumerable<RevenueHistoryDto> dto);

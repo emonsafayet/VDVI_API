@@ -7,18 +7,18 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
-using VDVI.DB.IRepository;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using VDVI.Repository.Dtos.SourceStatistics;
+using VDVI.Repository.ApmaRepository.Interfaces;
 
-namespace VDVI.DB.Repository
+namespace VDVI.Repository.ApmaRepository.Implementation
 {
-    public class HcsBISourceStatisticsRepository : DapperRepository<SourceStatisticHistoryDto>, IHcsBISourceStatisticsRepository
+    public class HcsBISourceStatisticsHistoryRepository : DapperRepository<SourceStatisticHistoryDto>, IHcsBISourceStatisticsHistoryRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
         private readonly IDapperRepository<DbSourceStatisticHistory> _tblRepository;
 
-        public HcsBISourceStatisticsRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
+        public HcsBISourceStatisticsHistoryRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
             _dbContext = dbContext;
             _tblRepository = _dbContext.SourceStatistic;

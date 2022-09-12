@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using VDVI.DB.Models.Common;
 using VDVI.Repository.Dtos.Accounts;
 
-namespace VDVI.DB.IRepository
+namespace VDVI.Repository.ApmaRepository.Interfaces
 {
     public interface IJobTaskSchedulerRepository
     {

@@ -2,23 +2,23 @@
 using System.Data;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using VDVI.Repository.Interfaces;
 using VDVI.Repository.Dtos.Accounts;
 using System.Threading.Tasks;
 using MicroOrm.Dapper.Repositories;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using Dapper;
 using Nelibur.ObjectMapper;
-using MicroOrm.Dapper.Repositories.SqlGenerator.Filters;
+using MicroOrm.Dapper.Repositories.SqlGenerator.Filters; 
+using VDVI.Repository.ApmaRepository.Interfaces;
 
-namespace VDVI.Repository.Implementation
+namespace VDVI.Repository.ApmaRepository.Implementation
 {
-    public class HcsBIRatePlanStatisticsRepository : DapperRepository<DbRatePlanStatisticHistory>, IHcsBIRatePlanStatisticsRepository
+    public class HcsBIRatePlanStatisticsHistoryRepository : DapperRepository<DbRatePlanStatisticHistory>, IHcsBIRatePlanStatisticsHistoryRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
         private readonly IDapperRepository<DbRatePlanStatisticHistory> _tblRepository;
 
-        public HcsBIRatePlanStatisticsRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
+        public HcsBIRatePlanStatisticsHistoryRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
             _dbContext = dbContext;
             _tblRepository = _dbContext.RatePlanStatistic;

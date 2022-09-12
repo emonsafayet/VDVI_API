@@ -4,8 +4,8 @@ using Microsoft.Extensions.Configuration;
 using SOAPAppCore.Interfaces;
 using System;
 using System.Threading.Tasks;
-using VDVI.DB.IRepository;
 using VDVI.DB.Models.Common;
+using VDVI.Repository.Repository.ApmaRepository.Interfaces.Common;
 using VDVI.Services.Interfaces;
 
 namespace VDVI.Services.Services

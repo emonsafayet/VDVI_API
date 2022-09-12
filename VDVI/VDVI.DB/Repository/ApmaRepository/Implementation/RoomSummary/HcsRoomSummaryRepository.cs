@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 using VDVI.DB.DbModels.RoomSummary;
 using VDVI.DB.Dtos;
 using VDVI.Repository.DbContext.ApmaDbContext;
-using VDVI.Repository.Interfaces;
+using VDVI.Repository.ApmaRepository.Interfaces;
 
-namespace VDVI.Repository.Implementation
+namespace VDVI.Repository.ApmaRepository.Implementation
 {
     public class HcsRoomSummaryRepository : DapperRepository<DbRoomSummary>, IHcsRoomSummaryRepository
     {
@@ -47,7 +47,7 @@ namespace VDVI.Repository.Implementation
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_RoomSummary", new { ManagementSummary_RoomSummary_UDT = dt },                                 commandType: CommandType.StoredProcedure);
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_RoomSummary", new { ManagementSummary_RoomSummary_UDT = dt }, commandType: CommandType.StoredProcedure);
 
             return queryResult.ToString();
         }

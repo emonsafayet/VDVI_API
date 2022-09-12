@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using VDVI.DB.Dtos;
 using VDVI.Repository.Dtos.Accounts;
 
-namespace VDVI.Repository.Interfaces
+namespace VDVI.Repository.ApmaRepository.Interfaces
 {
-    public interface IHcsBIRatePlanStatisticRepository
+    public interface IHcsBIRatePlanStatisticsHistoryRepository
     {
         Task<RatePlanStatisticHistoryDto> InsertAsync(RatePlanStatisticHistoryDto dto);
         Task<IEnumerable<RatePlanStatisticHistoryDto>> BulkInsertAsync(IEnumerable<RatePlanStatisticHistoryDto> dto);

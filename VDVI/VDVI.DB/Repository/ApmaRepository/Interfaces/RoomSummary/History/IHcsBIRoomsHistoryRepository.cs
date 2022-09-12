@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.Repository.Dtos.RoomSummary;
 
-namespace VDVI.Repository.Interfaces
+namespace VDVI.Repository.ApmaRepository.Interfaces
 {
-    public interface IHcsBIRoomsRepository
+    public interface IHcsBIRoomsHistoryRepository
     {
         Task<RoomsHistoryDto> InsertAsync(RoomsHistoryDto dto);
         Task<IEnumerable<RoomsHistoryDto>> BulkInsertAsync(IEnumerable<RoomsHistoryDto> dto);

@@ -9,10 +9,10 @@ using System.Data;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.DB.Models.Accounts;
-using VDVI.Repository.DbContext.ApmaDbContext;
-using VDVI.Repository.Interfaces;
+using VDVI.Repository.ApmaRepository.Interfaces;
+using VDVI.Repository.DbContext.ApmaDbContext; 
 
-namespace VDVI.Repository.Repository.Implementation
+namespace VDVI.Repository.ApmaRepository.Implementation
 {
     public class HcsLedgerBalanceRepository : IHcsLedgerBalanceRepository
     {

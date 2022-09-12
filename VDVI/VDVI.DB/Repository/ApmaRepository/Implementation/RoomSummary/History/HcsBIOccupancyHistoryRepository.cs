@@ -7,18 +7,18 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using VDVI.Repository.ApmaRepository.Interfaces;
 using VDVI.Repository.DbContext.ApmaDbContext;
-using VDVI.Repository.Dtos.RoomSummary;
-using VDVI.Repository.Interfaces;
+using VDVI.Repository.Dtos.RoomSummary; 
 
-namespace VDVI.Repository.Implementation
+namespace VDVI.Repository.ApmaRepository.Implementation
 {
-    public class HcsBIOccupancyRepository : DapperRepository<DbOccupancyHistory>, IHcsBIOccupancyRepository
+    public class HcsBIOccupancyHistoryRepository : DapperRepository<DbOccupancyHistory>, IHcsBIOccupancyHistoryRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
         private readonly IDapperRepository<DbOccupancyHistory> _tblRepository;
 
-        public HcsBIOccupancyRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
+        public HcsBIOccupancyHistoryRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
             _dbContext = dbContext;
             _tblRepository = _dbContext.Occupancy;

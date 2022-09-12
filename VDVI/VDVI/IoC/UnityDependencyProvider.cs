@@ -1,7 +1,6 @@
 ﻿using Unity;
 using Unity.Lifetime;
 using VDVI.DB.Repository;
-using VDVI.DB.IRepository;
 using SOAPAppCore.Interfaces;
 using Framework.Core.Repository;
 using SOAPAppCore.Services.Apma;
@@ -16,6 +15,7 @@ using VDVI.Services.Services;
 using VDVI.Services.Services.Apma;
 using VDVI.Services.Services.Apma.Accounts;
 using Framework.Core.IoC;
+using VDVI.Repository.Repository.ApmaRepository.Interfaces.Common;
 
 namespace VDVI.Client.IoC
 {

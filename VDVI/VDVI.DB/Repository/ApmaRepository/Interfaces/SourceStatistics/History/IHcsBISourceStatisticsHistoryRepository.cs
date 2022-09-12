@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using VDVI.DB.Dtos;
+using VDVI.Repository.Dtos.Accounts;
 using VDVI.Repository.Dtos.SourceStatistics;
 
-namespace VDVI.Repository.Interfaces
+namespace VDVI.Repository.ApmaRepository.Interfaces
 {
-    public interface IHcsBISourceStatisticRepository
+    public interface IHcsBISourceStatisticsHistoryRepository
     {
         Task<SourceStatisticHistoryDto> InsertAsync(SourceStatisticHistoryDto dto);
         Task<IEnumerable<SourceStatisticHistoryDto>> BulkInsertAsync(IEnumerable<SourceStatisticHistoryDto> dto);

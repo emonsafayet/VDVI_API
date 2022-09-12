@@ -1,10 +1,7 @@
 ﻿using Framework.Core.Repository;
 using VDVI.Repository.DbContext.ApmaDbContext;
-using VDVI.Repository.Repository.Implementation;
-using VDVI.Repository.Interfaces;
-using VDVI.Repository.Implementation;
-using VDVI.DB.IRepository;
-using VDVI.DB.Repository;
+using VDVI.Repository.ApmaRepository.Implementation;
+using VDVI.Repository.ApmaRepository.Interfaces;
 
 namespace VDVI.Repository.ApmaRepository
 {
@@ -18,22 +15,26 @@ namespace VDVI.Repository.ApmaRepository
             _dbContext = dbContext;
         }
 
+        // Common
         public IJobTaskSchedulerRepository JobTaskSchedulerRepository => new JobTaskSchedulerRepository(_dbContext);
 
+        
+        // Accounts
+        public IHcsLedgerBalanceRepository HcsLedgerBalanceRepository => new HcsLedgerBalanceRepository(_dbContext);
+        public IHcsBIRevenueHistoryRepository HcsBIRevenueHistoryRepository => new HcsBIRevenueHistoryRepository(_dbContext);   
+        public IHcsBIRatePlanStatisticsHistoryRepository HcsBIRatePlanStatisticsHistoryRepository => new HcsBIRatePlanStatisticsHistoryRepository(_dbContext);
+        
+        // RoomSummary
         public IHcsRoomSummaryRepository HcsRoomSummaryRepository => new HcsRoomSummaryRepository(_dbContext);
 
-        public IHcsLedgerBalanceRepository HcsLedgerBalanceRepository => new HcsLedgerBalanceRepository(_dbContext);
+        public IHcsBIOccupancyHistoryRepository HcsBIOccupancyHistoryRepository => new HcsBIOccupancyHistoryRepository(_dbContext);
 
-        public IHcsBIRatePlanStatisticsRepository HcsBIRatePlanStatisticsRepository => new HcsBIRatePlanStatisticsRepository(_dbContext);
+        public IHcsBIRoomsHistoryRepository HcsBIRoomsHistoryRepository => new HcsBIRoomsHistoryRepository(_dbContext);
+     
+        public IHcsBIReservationHistoryRepository HcsBIReservationHistoryRepository => new HcsBIReservationHistoryRepository(_dbContext);
 
-        public IHcsBIRevenueRepository HcsBIRevenueRepository => new HcsBIRevenueRepository(_dbContext);
-
-        public IHcsBIOccupancyRepository HcsBIOccupancyRepository => new HcsBIOccupancyRepository(_dbContext);
-
-        public IHcsBIRoomsRepository HcsBIRoomsRepository => new HcsBIRoomsRepository(_dbContext);
-
-        public IHcsBISourceStatisticsRepository HcsBISourceStatisticsRepository => new HcsBISourceStatisticsRepository(_dbContext);
-
-        public IHcsBIReservationRepository HcsBIReservationRepository => new HcsBIReservationRepository(_dbContext);
+        // SourceStatistics
+        public IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository => new HcsBISourceStatisticsHistoryRepository(_dbContext);
+         
     }
 }

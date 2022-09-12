@@ -8,19 +8,19 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
+using VDVI.Repository.ApmaRepository.Interfaces;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using VDVI.Repository.Dtos.Accounts;
-using VDVI.Repository.Dtos.RoomSummary;
-using VDVI.Repository.Interfaces;
+using VDVI.Repository.Dtos.RoomSummary; 
 
-namespace VDVI.Repository.Implementation
+namespace VDVI.Repository.ApmaRepository.Implementation
 {
-    public class HcsBIReservationRepository: DapperRepository<DbReservationHistory>, IHcsBIReservationRepository
+    public class HcsBIReservationHistoryRepository : DapperRepository<DbReservationHistory>, IHcsBIReservationHistoryRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
         private readonly IDapperRepository<DbReservationHistory> _tblRepository;
 
-        public HcsBIReservationRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
+        public HcsBIReservationHistoryRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
             _dbContext = dbContext;
             _tblRepository = _dbContext.Reservation;

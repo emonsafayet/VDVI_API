@@ -9,16 +9,16 @@ using System.Data;
 using System.Threading.Tasks;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using VDVI.Repository.Dtos.RoomSummary;
-using VDVI.Repository.Interfaces;
+using VDVI.Repository.ApmaRepository.Interfaces;
 
-namespace VDVI.Repository.Implementation
+namespace VDVI.Repository.ApmaRepository.Implementation
 {
-    public class HcsBIRoomsRepository: DapperRepository<DbRoomsHistory>, IHcsBIRoomsRepository
+    public class HcsBIRoomsHistoryRepository : DapperRepository<DbRoomsHistory>, IHcsBIRoomsHistoryRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
         private readonly IDapperRepository<DbRoomsHistory> _tblRepository;
 
-        public HcsBIRoomsRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
+        public HcsBIRoomsHistoryRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
             _dbContext = dbContext;
             _tblRepository = _dbContext.Rooms;

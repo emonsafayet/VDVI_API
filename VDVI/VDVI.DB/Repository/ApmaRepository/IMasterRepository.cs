@@ -1,6 +1,5 @@
-﻿using Framework.Core.Repository;
-using VDVI.DB.IRepository;
-using VDVI.Repository.Interfaces;
+﻿using Framework.Core.Repository;  
+using VDVI.Repository.ApmaRepository.Interfaces;
 
 namespace VDVI.Repository.ApmaRepository
 {
@@ -11,16 +10,16 @@ namespace VDVI.Repository.ApmaRepository
 
         // Accounts
         IHcsLedgerBalanceRepository HcsLedgerBalanceRepository { get; }
-        IHcsBIRatePlanStatisticsRepository HcsBIRatePlanStatisticsRepository { get; }
-        IHcsBIRevenueRepository HcsBIRevenueRepository { get; }
+        IHcsBIRatePlanStatisticsHistoryRepository HcsBIRatePlanStatisticsHistoryRepository { get; }
+        IHcsBIRevenueHistoryRepository HcsBIRevenueHistoryRepository { get; }
 
         // RoomSummary
         IHcsRoomSummaryRepository HcsRoomSummaryRepository { get; }
-        IHcsBIOccupancyRepository HcsBIOccupancyRepository { get; }
-        IHcsBIRoomsRepository HcsBIRoomsRepository { get; }
-        IHcsBIReservationRepository HcsBIReservationRepository { get; }
+        IHcsBIOccupancyHistoryRepository HcsBIOccupancyHistoryRepository { get; }
+        IHcsBIRoomsHistoryRepository HcsBIRoomsHistoryRepository { get; }
+        IHcsBIReservationHistoryRepository HcsBIReservationHistoryRepository { get; }
 
         // SourceStatistics
-        IHcsBISourceStatisticsRepository HcsBISourceStatisticsRepository { get; }
+        IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository { get; }
     }
 }

@@ -7,18 +7,18 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using VDVI.Repository.ApmaRepository.Interfaces;
 using VDVI.Repository.DbContext.ApmaDbContext;
-using VDVI.Repository.Dtos.Accounts;
-using VDVI.Repository.Interfaces;
+using VDVI.Repository.Dtos.Accounts; 
 
-namespace VDVI.Repository.Implementation
+namespace VDVI.Repository.ApmaRepository.Implementation
 {
-    public class HcsBIRevenueRepository: DapperRepository<DbRevenueHistory>, IHcsBIRevenueRepository
+    public class HcsBIRevenueHistoryRepository : DapperRepository<DbRevenueHistory>, IHcsBIRevenueHistoryRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
         private readonly IDapperRepository<DbRevenueHistory> _tblRepository;
 
-        public HcsBIRevenueRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
+        public HcsBIRevenueHistoryRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
             _dbContext = dbContext;
             _tblRepository = _dbContext.Revenue;

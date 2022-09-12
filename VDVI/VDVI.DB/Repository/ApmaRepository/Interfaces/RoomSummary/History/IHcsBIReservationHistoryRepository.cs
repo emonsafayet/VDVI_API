@@ -4,9 +4,9 @@ using System.Text;
 using System.Threading.Tasks;
 using VDVI.Repository.Dtos.RoomSummary;
 
-namespace VDVI.Repository.Interfaces
+namespace VDVI.Repository.ApmaRepository.Interfaces
 {
-    public interface IHcsBIReservationRepository
+    public interface IHcsBIReservationHistoryRepository
     {
         Task<ReservationHistoryDto> InsertAsync(ReservationHistoryDto dto);
         Task<IEnumerable<ReservationHistoryDto>> BulkInsertAsync(IEnumerable<ReservationHistoryDto> dto);
