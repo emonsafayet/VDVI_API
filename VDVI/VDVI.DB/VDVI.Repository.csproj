@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -16,12 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\ApmaRepository\Implementation\Accounts\" />
-    <Folder Include="Repository\ApmaRepository\Implementation\SourceStatistics\" />
-    <Folder Include="Repository\ApmaRepository\Implementation\RoomSummary\" />
-    <Folder Include="Repository\ApmaRepository\Interfaces\Accounts\" />
-    <Folder Include="Repository\ApmaRepository\Interfaces\RoomSummary\" />
-    <Folder Include="Repository\ApmaRepository\Interfaces\SourceStatistics\" />
+	  <Folder Include="Repository\ApmaRepository\Implementation\Accounts\" />
+	  <Folder Include="Repository\ApmaRepository\Implementation\RoomSummary\" />
   </ItemGroup>
 
 </Project>
