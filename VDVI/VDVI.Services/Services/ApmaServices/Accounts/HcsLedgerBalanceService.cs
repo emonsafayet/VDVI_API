@@ -6,15 +6,15 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
-using VDVI.Repository.Repository.ApmaRepository;
+using VDVI.Repository.ApmaRepository;
 using VDVI.Services.Interfaces.Apma.Accounts;
 
 namespace VDVI.Services.Services.Apma.Accounts
 {
     public class HcsLedgerBalanceService : IHcsLedgerBalanceService
     {
-        private readonly IScheduleManagementRepository _managementRepository;
-        public HcsLedgerBalanceService(IScheduleManagementRepository managementRepository)
+        private readonly IMasterRepository _managementRepository;
+        public HcsLedgerBalanceService(IMasterRepository managementRepository)
         {
             _managementRepository = managementRepository;
         }

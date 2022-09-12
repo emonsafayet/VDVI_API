@@ -6,16 +6,16 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
-using VDVI.Repository.Repository.ApmaRepository;
+using VDVI.Repository.ApmaRepository;
 using VDVI.Services.Interfaces;
 
 namespace SOAPAppCore.Services.Apma
 {
     public class HcsRoomSummaryService : IHcsRoomSummaryService
     {
-        private readonly IScheduleManagementRepository _managementRepository;
+        private readonly IMasterRepository _managementRepository;
 
-        public HcsRoomSummaryService(IScheduleManagementRepository managementRepository)
+        public HcsRoomSummaryService(IMasterRepository managementRepository)
         {
             _managementRepository = managementRepository;
         }

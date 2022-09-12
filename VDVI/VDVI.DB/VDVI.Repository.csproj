@@ -15,9 +15,4 @@
     <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-	  <Folder Include="Repository\ApmaRepository\Implementation\Accounts\" />
-	  <Folder Include="Repository\ApmaRepository\Implementation\RoomSummary\" />
-  </ItemGroup>
-
 </Project>

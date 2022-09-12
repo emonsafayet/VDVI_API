@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VDVI.Repository.Dtos.Accounts;
 using VDVI.Repository.Dtos.RoomSummary;
-using VDVI.Repository.Repository.Interfaces;
+using VDVI.Repository.Interfaces;
 using VDVI.Services.Interfaces.Apma;
 
 namespace VDVI.Services.Services.Apma

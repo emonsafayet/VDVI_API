@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.DB.Models.Accounts;
 using VDVI.Repository.DbContext.ApmaDbContext;
-using VDVI.Repository.Repository.Interfaces;
+using VDVI.Repository.Interfaces;
 
 namespace VDVI.Repository.Repository.Implementation
 {

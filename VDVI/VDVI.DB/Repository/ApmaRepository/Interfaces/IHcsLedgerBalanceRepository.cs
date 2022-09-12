@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
-using VDVI.DB.Models.Accounts;
+using VDVI.Repository.Dtos.Accounts;
 
-namespace VDVI.Repository.Repository.Interfaces
+namespace VDVI.Repository.Interfaces
 {
     public interface IHcsLedgerBalanceRepository
     {

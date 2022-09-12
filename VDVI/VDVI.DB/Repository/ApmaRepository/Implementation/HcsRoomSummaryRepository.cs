@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 using VDVI.DB.DbModels.RoomSummary;
 using VDVI.DB.Dtos;
 using VDVI.Repository.DbContext.ApmaDbContext;
-using VDVI.Repository.Repository.Interfaces;
+using VDVI.Repository.Interfaces;
 
-namespace VDVI.Repository.Repository.Implementation
+namespace VDVI.Repository.Implementation
 {
     public class HcsRoomSummaryRepository : DapperRepository<DbRoomSummary>, IHcsRoomSummaryRepository
     {

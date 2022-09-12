@@ -1,70 +1,89 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System;
 using System.Data;
-using System.Text;
-using VDVI.Repository.Repository.Interfaces;
 using Newtonsoft.Json;
-using VDVI.Repository.Dtos.RoomSummary;
+using System.Collections.Generic;
+using VDVI.Repository.Interfaces;
 using VDVI.Repository.Dtos.Accounts;
+using System.Threading.Tasks;
+using MicroOrm.Dapper.Repositories;
+using VDVI.Repository.DbContext.ApmaDbContext;
+using Dapper;
+using Nelibur.ObjectMapper;
+using MicroOrm.Dapper.Repositories.SqlGenerator.Filters;
 
-namespace VDVI.Repository.Repository.Implementation
+namespace VDVI.Repository.Implementation
 {
-    public class HcsBIRatePlanStatisticsRepository : IHcsBIRatePlanStatisticsRepository
+    public class HcsBIRatePlanStatisticsRepository : DapperRepository<DbRatePlanStatistic>, IHcsBIRatePlanStatisticsRepository
     {
-        protected readonly IConfiguration _config;
+        private readonly VDVISchedulerDbContext _dbContext;
+        private readonly IDapperRepository<DbRatePlanStatistic> _tblRepository;
 
-        public HcsBIRatePlanStatisticsRepository(IConfiguration config)
+        public HcsBIRatePlanStatisticsRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
-            _config = config;
+            _dbContext = dbContext;
+            _tblRepository = _dbContext.RatePlanStatistic;
         }
 
-        //create an IDbConnection object called Connection to inito database connection
-        public IDbConnection Connection
+
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<RatePlanStatisticDto> dto)
         {
-            get
-            {
-                return new SqlConnection(_config.GetConnectionString("ApmaDb"));
-            }
+            DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
+
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_RatePlanStatistics_History", new { RatePlanStatistics_History_UDT = dt }, commandType: CommandType.StoredProcedure);
+
+            return queryResult.ToString();
         }
-        public string InsertRatePlanStatisticHistory(List<DbRatePlanStatistic> ratePlanStatisticDto)
+
+        public async Task<IEnumerable<RatePlanStatisticDto>> BulkInsertAsync(IEnumerable<RatePlanStatisticDto> dto)
         {
-            string result = "";
-            try
-            {
-                DataTable dt =
-                JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(ratePlanStatisticDto));
+            var dbEntity = TinyMapper.Map<List<DbRatePlanStatistic>>(dto);
 
-                if (dt.Rows.Count > 0)
-                {
-                    using (IDbConnection dbConnection = Connection)
-                    {
-                        using (SqlConnection con = new SqlConnection(dbConnection.ConnectionString))
-                        {
-                            using (SqlCommand cmd = new SqlCommand("spINSERT_hce_RatePlanStatistics_History"))
-                            {
-                                cmd.CommandType = CommandType.StoredProcedure;
-                                cmd.Connection = con;
-                                cmd.Parameters.AddWithValue("@RatePlanStatistics_History_UDT", dt);
-                                con.Open();
-                                cmd.ExecuteNonQuery();
-                                con.Close();
-                            }
+            await _tblRepository.BulkInsertAsync(dbEntity);
 
-                        }
-                    }
+            return dto;
+        }
 
-                }
-                result = "Successfull";
+        public async Task<bool> DeleteByBusinessDateAsync(DateTime businessDate) => await _tblRepository.DeleteAsync(x => x.BusinessDate == businessDate);
 
-            }
-            catch (Exception ex)
-            {
-                result = ex.Message;
-                throw ex;
-            }
-            return result;
+        public async Task<bool> DeleteByPropertyCodeAsync(string propertyCode) => await _tblRepository.DeleteAsync(x => x.PropertyCode == propertyCode);
+
+        public async Task<RatePlanStatisticDto> FindByIdAsync(int id)
+        {
+            var dbEntity = await _tblRepository.FindAsync(x => x.PropertyCode == "");
+
+            var dto = TinyMapper.Map<RatePlanStatisticDto>(dbEntity);
+
+            return dto;
+        }
+
+        public async Task<IEnumerable<RatePlanStatisticDto>> GetAllByPropertyCodeAsync(string propertyCode)
+        {
+            IEnumerable<DbRatePlanStatistic> dbEntities = await _dbContext
+                .RatePlanStatistic
+                .SetOrderBy(OrderInfo.SortDirection.DESC, x => x.PropertyCode)
+                .FindAllAsync(x => x.PropertyCode == propertyCode);
+
+            var entities = TinyMapper.Map<List<RatePlanStatisticDto>>(dbEntities);
+
+            return entities;
+        }
+
+        public async Task<RatePlanStatisticDto> InsertAsync(RatePlanStatisticDto dto)
+        {
+            var dbEntity = TinyMapper.Map<DbRatePlanStatistic>(dto);
+
+            await _tblRepository.InsertAsync(dbEntity);
+
+            return TinyMapper.Map<RatePlanStatisticDto>(dbEntity);
+        }
+
+        public async Task<RatePlanStatisticDto> UpdateAsync(RatePlanStatisticDto dto)
+        {
+            var dbCustomerEntity = TinyMapper.Map<DbRatePlanStatistic>(dto);
+
+            await _tblRepository.UpdateAsync(dbCustomerEntity);
+
+            return dto;
         }
     }
 }

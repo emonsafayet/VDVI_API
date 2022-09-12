@@ -5,19 +5,9 @@ using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Repository.Dtos.SourceStatistics;
 
-namespace VDVI.Repository.Repository.ApmaRepository.Interfaces.SourceStatistics
+namespace VDVI.Repository.Interfaces
 {
-    01322666501
-
-    
-    
-    
-
-    
-    
-    
-    IHcsRoomSummaryRepository
-    public interface IHcsSourceStatisticRepository
+    public interface IHcsBISourceStatisticRepository
     {
         Task<SourceStatisticDto> InsertAsync(SourceStatisticDto dto);
         Task<IEnumerable<SourceStatisticDto>> BulkInsertAsync(IEnumerable<SourceStatisticDto> dto);

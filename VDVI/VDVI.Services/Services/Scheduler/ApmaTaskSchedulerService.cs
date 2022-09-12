@@ -12,7 +12,7 @@ namespace VDVI.Services.Services
 {
     public class ApmaTaskSchedulerService : IApmaTaskSchedulerService
     {
-        public ITaskSchedulerRepository _taskScheduler;
+        public IJobTaskSchedulerRepository _taskScheduler;
         private readonly IHcsReportManagementSummaryService _reportSummary;
         //private readonly IHcsBIReservationDashboardService _hcsBIReservationDashboardService;
         //private readonly IHcsBIRatePlanStatisticsService _hcsBIRatePlanStatisticsService;
@@ -23,7 +23,7 @@ namespace VDVI.Services.Services
         private DateTime _endDate = new DateTime();
         int actionflag = 0;
         public ApmaTaskSchedulerService(
-            ITaskSchedulerRepository taskScheduler,
+            IJobTaskSchedulerRepository taskScheduler,
             IConfiguration config,
             IHcsReportManagementSummaryService reportSummary
             //IHcsBIReservationDashboardService hcsBIReservationDashboardService,
@@ -74,7 +74,7 @@ namespace VDVI.Services.Services
         }
 
 
-        private JobTaskScheduler GetStartAndEndDate(string methodName)
+        private JobTaskSchedulerDto GetStartAndEndDate(string methodName)
         {
             string resultDate = _config.GetSection("ApmaServiceDateConfig").GetSection("initialStartDate").Value;
             DateTime apmaInitialDate = Convert.ToDateTime(resultDate);
@@ -82,7 +82,7 @@ namespace VDVI.Services.Services
             var dayDiffernce = _config.GetSection("ApmaServiceDateConfig").GetSection("DayDifferenceReportManagementRoomAndLedgerSummary").Value;
 
             //Check from the Database by method Name, if there have any existing value or not ;
-            JobTaskScheduler taskScheduleEndDate = _taskScheduler.GetTaskScheduler(methodName);
+            JobTaskSchedulerDto taskScheduleEndDate = _taskScheduler.GetTaskScheduler(methodName);
 
             if (taskScheduleEndDate == null)
             {
