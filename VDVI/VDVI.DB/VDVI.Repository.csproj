@@ -15,4 +15,13 @@
     <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repository\ApmaRepository\Implementation\Accounts\" />
+    <Folder Include="Repository\ApmaRepository\Implementation\SourceStatistics\" />
+    <Folder Include="Repository\ApmaRepository\Implementation\RoomSummary\" />
+    <Folder Include="Repository\ApmaRepository\Interfaces\Accounts\" />
+    <Folder Include="Repository\ApmaRepository\Interfaces\RoomSummary\" />
+    <Folder Include="Repository\ApmaRepository\Interfaces\SourceStatistics\" />
+  </ItemGroup>
+
 </Project>

@@ -46,7 +46,7 @@ namespace Framework.Core.Utility
         }
 
 
-        public async Task<FileContentResult> ExportAsCSVReport(object dynamicData)
+        public Task<FileContentResult> ExportAsCSVReport(object dynamicData)
         {
             var _csvContentType = "texst/csv";
             byte[] reportBytes;
@@ -77,7 +77,7 @@ namespace Framework.Core.Utility
 
             var csvFileContent = new FileContentResult(reportBytes, _csvContentType);
 
-            return csvFileContent;
+            return Task.FromResult(csvFileContent);
         }
 
         private DataTable ToBindDataTable(dynamic dynamicData)

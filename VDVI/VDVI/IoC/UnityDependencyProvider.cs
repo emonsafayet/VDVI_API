@@ -6,8 +6,10 @@ using Unity;
 using Unity.Lifetime;
 using VDVI.DB.IRepository;
 using VDVI.DB.Repository;
-using VDVI.Repository.DbContext;
-using VDVI.Repository.Repository;
+using VDVI.Repository.DbContext.ApmaDbContext;
+using VDVI.Repository.Repository.ApmaRepository;
+using VDVI.Repository.Repository.Implementation;
+using VDVI.Repository.Repository.Interfaces;
 using VDVI.Services.Interfaces;
 using VDVI.Services.Interfaces.Scheduler;
 using VDVI.Services.Services;
@@ -34,14 +36,19 @@ namespace VDVI.Client.IoC
 
             container.RegisterType<IScheduleManagementRepository, ScheduleManagementRepository>();
 
+            container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
+            container.RegisterType<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
+            container.RegisterType<IHcsReportManagementRoomSummaryService, HcsReportManagementRoomSummaryService>();
+            //container.RegisterType<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
 
-            container.RegisterType<IHcsBISourceStatisticsService, HcsBISourceStatisticsService>();
 
-
+            //dependency resolve:            
             //dependency resolve: 
 
             container.RegisterType<IHcsReportManagementSummaryRepository, HcsReportManagementSummaryRepository>();
             container.RegisterType<IHcsBISourceStatisticsRepository, HcsBISourceStatisticsRepository>();
+            container.RegisterType<ITaskSchedulerRepository, TaskSchedulerRepository>();  
+            container.RegisterType<IHcsRoomSummaryRepository, HcsRoomSummaryRepository>();
 
 
         }
