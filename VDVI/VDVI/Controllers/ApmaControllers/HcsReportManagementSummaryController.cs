@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SOAPAppCore.Interfaces;
 using System;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
+using VDVI.Services.Interfaces;
 
 namespace VDVI.Client.Controllers.ApmaControllers
 {

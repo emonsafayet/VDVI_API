@@ -1,8 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
-using Framework.Core.Utility;
-using SOAPAppCore.Services;
+using Framework.Core.Utility; 
 using SOAPService;
 using System;
 using System.Collections.Generic;
@@ -10,11 +9,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using VDVI.Repository.Dtos.Accounts;
 using VDVI.Repository.Dtos.SourceStatistics;
-using VDVI.Services.Interfaces.Apma;
-using VDVI.Services.Interfaces.ApmaInterfaces;
-using VDVI.Services.Interfaces.ApmaInterfaces.Accounts.History;
+using VDVI.Services.Interfaces; 
 
-namespace VDVI.Services.Services.Apma
+namespace VDVI.Services
 {
     public class HcsBIRatePlanStatisticsService : ApmaBaseService, IHcsBIRatePlanStatisticsService
     {
@@ -24,7 +21,7 @@ namespace VDVI.Services.Services.Apma
             _hcsRatePlanStatisticsService = hcsRatePlanStatisticsService;
         }
 
-        public async Task<Result<PrometheusResponse>> HcsBIRatePlanStatisticsRepositoryAsyc(DateTime StartDate, DateTime EndDate)
+        public async Task<Result<PrometheusResponse>> HcsBIRatePlanStatisticsRepositoryHistoryAsyc(DateTime StartDate, DateTime EndDate)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                           async () =>

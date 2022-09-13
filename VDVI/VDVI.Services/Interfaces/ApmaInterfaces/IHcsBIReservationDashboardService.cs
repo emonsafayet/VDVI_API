@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VDVI.Services.Interfaces.Apma
+namespace VDVI.Services.Interfaces
 {
     public interface IHcsBIReservationDashboardService
     {

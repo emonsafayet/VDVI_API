@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Repository.Dtos.Accounts;
 
-namespace VDVI.Services.Interfaces.ApmaInterfaces.Accounts.History
+namespace VDVI.Services.Interfaces
 {
     public interface IHcsRatePlanStatisticsService
     {

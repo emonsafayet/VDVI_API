@@ -3,7 +3,7 @@ using Framework.Core.Base.ModelEntity;
 using System;
 using System.Threading.Tasks;
 
-namespace SOAPAppCore.Interfaces
+namespace VDVI.Services.Interfaces
 {
     public interface IHcsReportManagementSummaryService
     {

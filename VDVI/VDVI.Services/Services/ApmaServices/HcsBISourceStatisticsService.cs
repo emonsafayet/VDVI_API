@@ -2,8 +2,7 @@
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
 using Framework.Core.Utility;
-using Microsoft.Extensions.Configuration;
-using SOAPAppCore.Services;
+using Microsoft.Extensions.Configuration; 
 using SOAPService;
 using System;
 using System.Collections.Generic;
@@ -11,11 +10,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Repository.Dtos.SourceStatistics;
-using VDVI.Services.Interfaces;
-using VDVI.Services.Interfaces.ApmaInterfaces;
-using VDVI.Services.Services.ApmaServices.SourceStatistics.History;
+using VDVI.Services.Interfaces; 
 
-namespace VDVI.Services.Services
+namespace VDVI.Services
 {
     public class HcsBISourceStatisticsService : ApmaBaseService, IHcsBISourceStatisticsService
     {
@@ -26,7 +23,7 @@ namespace VDVI.Services.Services
             _hcsSourceStasticsHistoryService = hcsSourceStasticsHistoryService;
         } 
        
-        public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryAsyc(DateTime StartDate, DateTime EndDate)
+        public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryHistoryAsyc(DateTime StartDate, DateTime EndDate)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                  async () =>

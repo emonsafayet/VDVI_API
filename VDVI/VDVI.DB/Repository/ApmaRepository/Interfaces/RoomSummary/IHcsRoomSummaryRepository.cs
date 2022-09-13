@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 
-namespace VDVI.Repository.ApmaRepository.Interfaces
+namespace VDVI.ApmaRepository.Interfaces
 {
     public interface IHcsRoomSummaryRepository
     {

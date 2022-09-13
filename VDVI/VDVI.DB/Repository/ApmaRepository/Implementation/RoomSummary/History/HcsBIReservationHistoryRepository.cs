@@ -1,4 +1,6 @@
-﻿using Dapper;
+﻿using CSharpFunctionalExtensions;
+using Dapper;
+using Framework.Core.Base.ModelEntity;
 using MicroOrm.Dapper.Repositories;
 using MicroOrm.Dapper.Repositories.SqlGenerator.Filters;
 using Nelibur.ObjectMapper;
@@ -8,7 +10,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
-using VDVI.Repository.ApmaRepository.Interfaces;
+using VDVI.ApmaRepository.Interfaces;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using VDVI.Repository.Dtos.Accounts;
 using VDVI.Repository.Dtos.RoomSummary; 
@@ -31,7 +33,8 @@ namespace VDVI.Repository.ApmaRepository.Implementation
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_ReservationDashboard_Reservation_History", new { ReservationDashboard_Reservation_History_UDT = dt }, commandType: CommandType.StoredProcedure);
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_ReservationDashboard_Reservation_History",
+                            new { ReservationDashboard_Reservation_History_UDT = dt }, commandType: CommandType.StoredProcedure);
 
             return queryResult.ToString();
         }

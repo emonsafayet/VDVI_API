@@ -1,30 +1,28 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
-using Framework.Core.Utility;
-using SOAPAppCore.Interfaces;
+using Framework.Core.Utility; 
 using SOAPService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
-using VDVI.Services.Interfaces;
-using VDVI.Services.Interfaces.Apma.Accounts;
+using VDVI.Services.Interfaces; 
 
-namespace SOAPAppCore.Services.Apma
+namespace VDVI.Services
 {
     public class HcsReportManagementSummaryService : ApmaBaseService, IHcsReportManagementSummaryService
     {
 
-        private readonly IHcsRoomSummaryService _roomSummaryService;
+        private readonly IHcsRoomSummaryService _hcsroomSummaryService;
         private readonly IHcsLedgerBalanceService _hcsLedgerBalanceService;
 
         public HcsReportManagementSummaryService(
             IHcsRoomSummaryService roomSummaryService,
             IHcsLedgerBalanceService hcsLedgerBalanceService)
         {
-            _roomSummaryService = roomSummaryService;
+            _hcsroomSummaryService = roomSummaryService;
             _hcsLedgerBalanceService = hcsLedgerBalanceService;
         }
 
@@ -49,7 +47,7 @@ namespace SOAPAppCore.Services.Apma
                     }
 
 
-                    var dbroomSummariesRes = _roomSummaryService.BulkInsertAsync(roomSummaries);
+                    var dbroomSummariesRes = _hcsroomSummaryService.BulkInsertWithProcAsync(roomSummaries);
                     var dbledgerBalancesRes = _hcsLedgerBalanceService.BulkInsertWithProcAsync(ledgerBalances);
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");

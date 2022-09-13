@@ -8,24 +8,43 @@ using System.Threading.Tasks;
 using VDVI.ApmaRepository;
 using VDVI.DB.Dtos;
 using VDVI.Repository.ApmaRepository;
+using VDVI.Repository.Dtos.RoomSummary;
 using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
-    public class HcsLedgerBalanceService : IHcsLedgerBalanceService
+    public class HcsBIRoomsHistoryService : IHcsBIRoomsHistoryService
     {
-        private readonly IMasterRepository _masterRepository;
-        public HcsLedgerBalanceService(IMasterRepository masterRepository)
+        private readonly IMasterRepository _managementRepository;
+
+        public HcsBIRoomsHistoryService(IMasterRepository managementRepository)
         {
-            _masterRepository = masterRepository;
+            _managementRepository = managementRepository;
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<LedgerBalanceDto> dtos)
+        public async Task<Result<PrometheusResponse>> InsertAsync(RoomsHistoryDto dto)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _masterRepository.HcsLedgerBalanceRepository.BulkInsertAsync(dtos);
+                    dto = await _managementRepository.HcsBIRoomsHistoryRepository.InsertAsync(dto);
+
+                    return PrometheusResponse.Success(dto, "Data saved successful");
+                },
+                exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
+                {
+                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                    RethrowException = false
+                });
+        }
+
+        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<RoomsHistoryDto> dtos)
+        {
+
+            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
+                async () =>
+                {
+                    var resp = await _managementRepository.HcsBIRoomsHistoryRepository.BulkInsertAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -36,30 +55,14 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<LedgerBalanceDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<RoomsHistoryDto> dtos)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _masterRepository.HcsLedgerBalanceRepository.BulkInsertWithProcAsync(dtos);
+                    var resp = await _managementRepository.HcsBIRoomsHistoryRepository.BulkInsertWithProcAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
-                },
-                exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
-                {
-                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
-                    RethrowException = false
-                });
-        }
-
-        public async Task<Result<PrometheusResponse>> DeleteByPropertyCodeAsync(string propertyCode)
-        {
-            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
-                async () =>
-                {
-                    var dbroomSummariesRes = await _masterRepository.HcsLedgerBalanceRepository.DeleteByPropertyCodeAsync(propertyCode);
-
-                    return PrometheusResponse.Success("", "Data delete is successful");
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                 {
@@ -73,9 +76,9 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dtos = await _masterRepository.HcsLedgerBalanceRepository.GetAllByPropertyCodeAsync(propertyCode);
+                    var dtos = await _managementRepository.HcsBIRoomsHistoryRepository.GetAllByPropertyCodeAsync(propertyCode);
 
-                    return PrometheusResponse.Success(dtos, "Data retrival successful");
+                    return PrometheusResponse.Success(dtos, "Data saved successful");
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                 {
@@ -84,14 +87,14 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> InsertAsync(LedgerBalanceDto dto)
+        public async Task<Result<PrometheusResponse>> DeleteByPropertyCodeAsync(string propertyCode)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    dto = await _masterRepository.HcsLedgerBalanceRepository.InsertAsync(dto);
+                    var dbroomSummariesRes = await _managementRepository.HcsBIRoomsHistoryRepository.DeleteByPropertyCodeAsync(propertyCode);
 
-                    return PrometheusResponse.Success(dto, "Data saved successful");
+                    return PrometheusResponse.Success("", "Data removal is successful");
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                 {
@@ -105,7 +108,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _masterRepository.HcsLedgerBalanceRepository.DeleteByBusinessDateAsync(businessDate);
+                    var dbroomSummariesRes = await _managementRepository.HcsBIRoomsHistoryRepository.DeleteByDashboardDateAsync(businessDate);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },

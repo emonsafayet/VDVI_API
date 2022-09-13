@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VDVI.Services.Interfaces.Apma
+namespace VDVI.Services.Interfaces
 {
     public interface IHcsBIRatePlanStatisticsService
     {
-        Task<Result<PrometheusResponse>> HcsBIRatePlanStatisticsRepositoryAsyc(DateTime StartDate, DateTime EndDate);
+        Task<Result<PrometheusResponse>> HcsBIRatePlanStatisticsRepositoryHistoryAsyc(DateTime StartDate, DateTime EndDate);
     }
 }

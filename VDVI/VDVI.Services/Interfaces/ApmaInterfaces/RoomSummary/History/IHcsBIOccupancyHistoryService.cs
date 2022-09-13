@@ -1,19 +1,19 @@
-﻿using CSharpFunctionalExtensions;
+﻿
+using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
-using VDVI.Repository.Dtos.SourceStatistics;
+using VDVI.Repository.Dtos.RoomSummary;
 
 namespace VDVI.Services.Interfaces
 {
-    public interface IHcsSourceStasticsHistoryService
+    public interface IHcsBIOccupancyHistoryService
     {
-        Task<Result<PrometheusResponse>> InsertAsync(SourceStatisticHistoryDto dto);
-        Task<Result<PrometheusResponse>> BulkInsertAsync(List<SourceStatisticHistoryDto> dtos);
-        Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<SourceStatisticHistoryDto> dtos);
+        Task<Result<PrometheusResponse>> InsertAsync(OccupancyHistoryDto dto);
+        Task<Result<PrometheusResponse>> BulkInsertAsync(List<OccupancyHistoryDto> dtos);
+        Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<OccupancyHistoryDto> dtos);
         Task<Result<PrometheusResponse>> GetByPropertCodeAsync(string propertyCode);
         Task<Result<PrometheusResponse>> DeleteByPropertyCodeAsync(string propertyCode);
         Task<Result<PrometheusResponse>> DeleteByBusinessDateAsync(DateTime businessDate);

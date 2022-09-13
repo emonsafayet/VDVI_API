@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using VDVI.Repository.Dtos.Accounts;
 using VDVI.Repository.Dtos.SourceStatistics;
 
-namespace VDVI.Repository.ApmaRepository.Interfaces
+namespace VDVI.ApmaRepository.Interfaces
 {
     public interface IHcsBISourceStatisticsHistoryRepository
     {

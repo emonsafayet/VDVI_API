@@ -1,21 +1,14 @@
 ﻿using Unity;
-using Unity.Lifetime;
-using VDVI.DB.Repository;
-using SOAPAppCore.Interfaces;
-using Framework.Core.Repository;
-using SOAPAppCore.Services.Apma;
+using Unity.Lifetime; 
+using Framework.Core.Repository; 
 using VDVI.Repository.ApmaRepository;
-using VDVI.Repository.DbContext.ApmaDbContext;
-using VDVI.Repository.Implementation;
-using VDVI.Repository.Interfaces;
-using VDVI.Services.Interfaces;
-using VDVI.Services.Interfaces.Apma;
-using VDVI.Services.Interfaces.Apma.Accounts;
-using VDVI.Services.Services;
-using VDVI.Services.Services.Apma;
-using VDVI.Services.Services.Apma.Accounts;
+using VDVI.Repository.DbContext.ApmaDbContext; 
+using VDVI.Services.Interfaces;  
 using Framework.Core.IoC;
-using VDVI.Repository.Repository.ApmaRepository.Interfaces.Common;
+using VDVI.Services;
+using VDVI.ApmaRepository;
+using VDVI.ApmaRepository.Interfaces;
+using VDVI.Repository.ApmaRepository.Implementation;
 
 namespace VDVI.Client.IoC
 {
@@ -31,7 +24,7 @@ namespace VDVI.Client.IoC
 
             container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
 
-            container.RegisterType<IJobTaskSchedulerRepository, TaskSchedulerRepository>();
+            container.RegisterType<IJobTaskSchedulerRepository, JobTaskSchedulerRepository>();
 
             container.RegisterType<IMasterRepository, MasterRepository>();
 

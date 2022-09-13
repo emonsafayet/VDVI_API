@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Repository.Dtos.Accounts;
 
-namespace VDVI.Repository.ApmaRepository.Interfaces
+namespace VDVI.ApmaRepository.Interfaces
 {
     public interface IHcsLedgerBalanceRepository
     {

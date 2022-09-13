@@ -9,7 +9,7 @@ using VDVI.Repository.DbContext.ApmaDbContext;
 using Dapper;
 using Nelibur.ObjectMapper;
 using MicroOrm.Dapper.Repositories.SqlGenerator.Filters; 
-using VDVI.Repository.ApmaRepository.Interfaces;
+using VDVI.ApmaRepository.Interfaces;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {

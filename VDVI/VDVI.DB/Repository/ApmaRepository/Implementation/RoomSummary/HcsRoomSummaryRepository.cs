@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using VDVI.DB.DbModels.RoomSummary;
 using VDVI.DB.Dtos;
 using VDVI.Repository.DbContext.ApmaDbContext;
-using VDVI.Repository.ApmaRepository.Interfaces;
+using VDVI.ApmaRepository.Interfaces;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {

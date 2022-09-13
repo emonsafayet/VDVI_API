@@ -1,7 +1,7 @@
-﻿using Framework.Core.Repository;  
-using VDVI.Repository.ApmaRepository.Interfaces;
+﻿using Framework.Core.Repository;
+using VDVI.ApmaRepository.Interfaces;
 
-namespace VDVI.Repository.ApmaRepository
+namespace VDVI.ApmaRepository
 {
     public interface IMasterRepository : IProRepository
     {

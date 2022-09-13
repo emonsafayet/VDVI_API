@@ -5,11 +5,12 @@ using Framework.Core.Utility;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using VDVI.ApmaRepository;
 using VDVI.DB.Dtos;
 using VDVI.Repository.ApmaRepository;
 using VDVI.Services.Interfaces;
 
-namespace SOAPAppCore.Services.Apma
+namespace VDVI.Services
 {
     public class HcsRoomSummaryService : IHcsRoomSummaryService
     {

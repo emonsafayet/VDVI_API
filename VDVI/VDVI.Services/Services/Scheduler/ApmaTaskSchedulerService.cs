@@ -1,18 +1,19 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
 using Microsoft.Extensions.Configuration;
-using SOAPAppCore.Interfaces;
 using System;
 using System.Threading.Tasks;
 using VDVI.DB.Models.Common;
+using VDVI.ApmaRepository.Interfaces;
 using VDVI.Services.Interfaces;
 
-namespace VDVI.Services.Services
+namespace VDVI.Services
 {
     public class ApmaTaskSchedulerService : IApmaTaskSchedulerService
     {
-        public IJobTaskSchedulerRepository _taskScheduler;
         private readonly IHcsReportManagementSummaryService _reportSummary;
+        private readonly IJobTaskSchedulerRepository _jobTaskSchedulerRepository;
+
         //private readonly IHcsBIReservationDashboardService _hcsBIReservationDashboardService;
         //private readonly IHcsBIRatePlanStatisticsService _hcsBIRatePlanStatisticsService;
         //private readonly IHcsBISourceStatisticsService _hcsBISourceStatisticsService;
@@ -22,7 +23,7 @@ namespace VDVI.Services.Services
         private DateTime _endDate = new DateTime();
         int actionflag = 0;
         public ApmaTaskSchedulerService(
-            IJobTaskSchedulerRepository taskScheduler,
+            IJobTaskSchedulerRepository jobTaskSchedulerRepository,
             IConfiguration config,
             IHcsReportManagementSummaryService reportSummary
             //IHcsBIReservationDashboardService hcsBIReservationDashboardService,
@@ -30,7 +31,7 @@ namespace VDVI.Services.Services
             //IHcsBISourceStatisticsService hcsBISourceStatisticsService
             )
         {
-            _taskScheduler = taskScheduler;
+            _jobTaskSchedulerRepository = jobTaskSchedulerRepository;
             _config = config;
             _reportSummary = reportSummary;
             //_hcsBIReservationDashboardService = hcsBIReservationDashboardService;
@@ -43,8 +44,8 @@ namespace VDVI.Services.Services
         {
             bool flag = false;
             Result<PrometheusResponse> response;
-            GetStartAndEndDate(methodName);
-
+            GetStartAndEndDate(methodName); 
+          
             switch (methodName)
             {
                 case "HcsReportManagementSummary":
@@ -67,13 +68,19 @@ namespace VDVI.Services.Services
                 default:
                     break;
             }
+            JobTaskSchedulerDto dto = new JobTaskSchedulerDto()
+            {
+                LastExecutionDate = _endDate,
+                flag = flag,
+                MethodName = methodName
+            };
             if (flag)
-                _taskScheduler.InsertOrUpdateTaskScheduleDatetime(methodName, _endDate, actionflag);
+               await _jobTaskSchedulerRepository.SaveWithProcAsync(dto);
 
         }
 
 
-        private JobTaskSchedulerDto GetStartAndEndDate(string methodName)
+        private async Task<string> GetStartAndEndDate(string methodName)
         {
             string resultDate = _config.GetSection("ApmaServiceDateConfig").GetSection("initialStartDate").Value;
             DateTime apmaInitialDate = Convert.ToDateTime(resultDate);
@@ -81,7 +88,7 @@ namespace VDVI.Services.Services
             var dayDiffernce = _config.GetSection("ApmaServiceDateConfig").GetSection("DayDifferenceReportManagementRoomAndLedgerSummary").Value;
 
             //Check from the Database by method Name, if there have any existing value or not ;
-            JobTaskSchedulerDto taskScheduleEndDate = _taskScheduler.GetTaskScheduler(methodName);
+            var taskScheduleEndDate =await _jobTaskSchedulerRepository.FindByMethodNameAsync(methodName);
 
             if (taskScheduleEndDate == null)
             {
@@ -89,9 +96,9 @@ namespace VDVI.Services.Services
                 _startDate = apmaInitialDate;
                 _endDate = _startDate.AddDays(Convert.ToInt32(dayDiffernce));
             }
-            else if (taskScheduleEndDate.LastExecutionDate != null)
+            else if (taskScheduleEndDate != null)
             {
-                _startDate = Convert.ToDateTime(taskScheduleEndDate.LastExecutionDate);
+                _startDate = Convert.ToDateTime(taskScheduleEndDate);
                 _endDate = _startDate.AddDays(Convert.ToInt32(dayDiffernce));
                 actionflag = 1;
             }

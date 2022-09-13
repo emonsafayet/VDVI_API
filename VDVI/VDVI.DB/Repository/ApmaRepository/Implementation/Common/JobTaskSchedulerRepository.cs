@@ -11,10 +11,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using VDVI.DB.Models.Common;
-using VDVI.Repository.ApmaRepository.Interfaces;
+using VDVI.ApmaRepository.Interfaces;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using VDVI.Repository.Dtos.Accounts;
-using VDVI.Repository.Dtos.SourceStatistics; 
+using VDVI.Repository.Dtos.SourceStatistics;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {
@@ -29,11 +31,11 @@ namespace VDVI.Repository.ApmaRepository.Implementation
 
         public async Task<string> FindByMethodNameAsync(string methodName)
         {
-            var dbEntities = await _dbContext.JobTaskScheduler.FindAsync(x => x.MethodName == methodName);
+            DbJobTaskScheduler dbEntities = await _dbContext.JobTaskScheduler.FindAsync(x => x.MethodName == methodName);
             return dbEntities.MethodName;
         }
 
-        public async Task<string> SaveWithProcAsync(JobTaskSchedulerDto dto)
+        public async Task<string>  SaveWithProcAsync(JobTaskSchedulerDto dto)
         {
             var queryResult = await _dbContext.Connection.QueryAsync<string>("sp_hce_InsertOrUpdateTaskScheduleDatetime",
                 new
@@ -44,7 +46,8 @@ namespace VDVI.Repository.ApmaRepository.Implementation
                 },
                 commandType: CommandType.StoredProcedure);
 
-            return queryResult.ToString();
+            return null;
         }
+         
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 
-namespace VDVI.Services.Interfaces.Apma.Accounts
+namespace VDVI.Services.Interfaces
 {
     public interface IHcsLedgerBalanceService
     {

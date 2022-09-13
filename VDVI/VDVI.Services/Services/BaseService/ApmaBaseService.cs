@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 
-namespace SOAPAppCore.Services
+namespace VDVI.Services
 {
     public class ApmaBaseService
     {

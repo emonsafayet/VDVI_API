@@ -5,15 +5,15 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
-using VDVI.Repository.Dtos.SourceStatistics;
+using VDVI.Repository.Dtos.Accounts;
 
 namespace VDVI.Services.Interfaces
 {
-    public interface IHcsSourceStasticsHistoryService
+    public interface IHcsBIRevenueHistoryService
     {
-        Task<Result<PrometheusResponse>> InsertAsync(SourceStatisticHistoryDto dto);
-        Task<Result<PrometheusResponse>> BulkInsertAsync(List<SourceStatisticHistoryDto> dtos);
-        Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<SourceStatisticHistoryDto> dtos);
+        Task<Result<PrometheusResponse>> InsertAsync(RevenueHistoryDto dto);
+        Task<Result<PrometheusResponse>> BulkInsertAsync(List<RevenueHistoryDto> dtos);
+        Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<RevenueHistoryDto> dtos);
         Task<Result<PrometheusResponse>> GetByPropertCodeAsync(string propertyCode);
         Task<Result<PrometheusResponse>> DeleteByPropertyCodeAsync(string propertyCode);
         Task<Result<PrometheusResponse>> DeleteByBusinessDateAsync(DateTime businessDate);

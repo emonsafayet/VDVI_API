@@ -1,27 +1,35 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
-using Framework.Core.Utility;
-using SOAPAppCore.Services;
+using Framework.Core.Utility; 
 using SOAPService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VDVI.ApmaRepository.Interfaces;
 using VDVI.Repository.Dtos.Accounts;
 using VDVI.Repository.Dtos.RoomSummary;
-using VDVI.Services.Interfaces.Apma;
+using VDVI.Services.Interfaces;
 
-namespace VDVI.Services.Services.Apma
+namespace VDVI.Services
 {
     public class HcsBIReservationDashboardService : ApmaBaseService, IHcsBIReservationDashboardService
     {
-
-        private readonly IHcsBIReservationDashboardRepository _hcsBIReservationDashboardRepository;
-        public HcsBIReservationDashboardService(IHcsBIReservationDashboardRepository hcsBIReservationDashboardRepository)
+         
+        public HcsBIReservationDashboardService(IHcsBIRevenueHistoryService hcsBIRevenueHistoryService, IHcsBIOccupancyHistoryService hcsBIOccupancyHistoryService,
+                                           IHcsBIRoomsHistoryService hcsBIRoomsHistoryService, IHcsBIReservationHistoryService hcsBIReservationHistoryService)
         {
-            _hcsBIReservationDashboardRepository = hcsBIReservationDashboardRepository;
+            _hcsBIRevenueHistoryService = hcsBIRevenueHistoryService;
+            _hcsBIOccupancyHistoryService = hcsBIOccupancyHistoryService;
+            _hcsBIReservationHistoryService = hcsBIReservationHistoryService;
+            _hcsBIRoomsHistoryService = hcsBIRoomsHistoryService;
         }
+
+        public IHcsBIRevenueHistoryService _hcsBIRevenueHistoryService ;
+        public IHcsBIOccupancyHistoryService _hcsBIOccupancyHistoryService ;
+        public IHcsBIReservationHistoryService _hcsBIReservationHistoryService ;
+        public IHcsBIRoomsHistoryService _hcsBIRoomsHistoryService ;
 
         public async Task<Result<PrometheusResponse>> HcsBIReservationDashboardRepositoryAsyc(DateTime StartDate, DateTime EndDate)
         {
@@ -32,7 +40,7 @@ namespace VDVI.Services.Services.Apma
 
                               List<OccupancyHistoryDto> occupancies = new List<OccupancyHistoryDto>();
                               List<ReservationHistoryDto> reservations = new List<ReservationHistoryDto>();
-                              List<DbRevenueHistory> revenues = new List<DbRevenueHistory>();
+                              List<RevenueHistoryDto> revenues = new List<RevenueHistoryDto>();
                               List<RoomsHistoryDto> rooms = new List<RoomsHistoryDto>();
 
                               foreach (string property in ApmaProperties)
@@ -45,10 +53,10 @@ namespace VDVI.Services.Services.Apma
                               }
 
                               // DB operation
-                              var dboccupanciesRes = _hcsBIReservationDashboardRepository.InsertOccupancy(occupancies);
-                              var dbroomsRes = _hcsBIReservationDashboardRepository.InsertRooms(rooms);
-                              var dbreservationsRes = _hcsBIReservationDashboardRepository.InsertReservation(reservations);
-                              var dbrevenuesRes = _hcsBIReservationDashboardRepository.InsertRevenue(revenues);
+                              var dboccupanciesRes = _hcsBIOccupancyHistoryService.BulkInsertWithProcAsync(occupancies);
+                              var dbroomsRes = _hcsBIRoomsHistoryService.BulkInsertWithProcAsync(rooms);
+                              var dbreservationsRes = _hcsBIReservationHistoryService.BulkInsertWithProcAsync(reservations);
+                              var dbrevenuesRes = _hcsBIRevenueHistoryService.BulkInsertWithProcAsync(revenues);
 
                               return PrometheusResponse.Success("", "Data retrieval is successful");
                           },
@@ -60,7 +68,7 @@ namespace VDVI.Services.Services.Apma
         }
 
 
-        private void FormatSummaryObject(List<OccupancyHistoryDto> occupancies, List<ReservationHistoryDto> reservations, List<DbRevenueHistory> revenues,
+        private void FormatSummaryObject(List<OccupancyHistoryDto> occupancies, List<ReservationHistoryDto> reservations, List<RevenueHistoryDto> revenues,
 
                   List<RoomsHistoryDto> rooms, List<BIDashboardData> dashboard, string propertyCode)
         {
@@ -96,7 +104,7 @@ namespace VDVI.Services.Services.Apma
             }).ToList();
             reservations.AddRange(reservation);
 
-            List<DbRevenueHistory> revenue = dashboard.Select(x => new DbRevenueHistory()
+            List<RevenueHistoryDto> revenue = dashboard.Select(x => new RevenueHistoryDto()
             {
                 TypeA = x.Revenue.TypeA,
                 TypeB = x.Revenue.TypeB,

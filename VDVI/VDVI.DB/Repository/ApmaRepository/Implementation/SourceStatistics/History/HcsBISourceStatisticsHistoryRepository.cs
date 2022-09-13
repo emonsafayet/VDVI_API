@@ -9,7 +9,7 @@ using System.Data;
 using System.Threading.Tasks;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using VDVI.Repository.Dtos.SourceStatistics;
-using VDVI.Repository.ApmaRepository.Interfaces;
+using VDVI.ApmaRepository.Interfaces;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {
