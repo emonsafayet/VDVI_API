@@ -10,6 +10,7 @@ using Dapper;
 using Nelibur.ObjectMapper;
 using MicroOrm.Dapper.Repositories.SqlGenerator.Filters; 
 using VDVI.ApmaRepository.Interfaces;
+using VDVI.Repository.DB;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {

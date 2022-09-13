@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VDVI.DB.Models.Common
+namespace VDVI.Repository.DB
 {
     public class DbJobTaskScheduler
     {

@@ -6,8 +6,8 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.DB
 {
-    [Table("[hce].[SourceStatistics_History]")]
-    public class DbSourceStatisticHistory :Audit
+    [Table("[hce].[SourceStatistics_Future]")]
+    public class DbSourceStatisticFuture :Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }

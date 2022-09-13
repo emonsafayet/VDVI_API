@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.DB.DbModels.RoomSummary
+namespace VDVI.Repository.DB
 {
     [Table("[hce].[ManagementSummary_RoomSummary]")]
     public class DbRoomSummary : Audit

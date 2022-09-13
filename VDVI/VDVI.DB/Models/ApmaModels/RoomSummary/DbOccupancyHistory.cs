@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.Dtos.RoomSummary
+namespace VDVI.Repository.DB
 {
     [Table("[hce].[ReservationDashboard_Occupancy_History]")]
     public class DbOccupancyHistory : Audit

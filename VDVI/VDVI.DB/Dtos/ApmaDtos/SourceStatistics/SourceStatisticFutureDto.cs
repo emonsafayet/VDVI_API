@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.DB
+namespace VDVI.Repository.Dtos.SourceStatistics
 {
-    [Table("[hce].[RatePlanStatistics_History]")]
-    public class DbRatePlanStatisticHistory : Audit
+    public class SourceStatisticFutureDto :Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }
-        public string RatePlan { get; set; }
+        public string SourceCode { get; set; }
         public int NumberOfRooms { get; set; }
         public decimal TotalRevenue { get; set; }
         public decimal TotalRevenueExcl { get; set; }

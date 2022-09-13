@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.DB.Models.Accounts
+namespace VDVI.Repository.DB
 {
     [Table("[hce].[ManagementSummary_LedgerBalance]")]
     public class DbLedgerBalance: Audit

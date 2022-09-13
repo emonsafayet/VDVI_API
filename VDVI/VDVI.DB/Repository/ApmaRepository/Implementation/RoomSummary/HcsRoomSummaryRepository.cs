@@ -6,11 +6,11 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Threading.Tasks;
-using VDVI.DB.DbModels.RoomSummary;
+using System.Threading.Tasks; 
 using VDVI.DB.Dtos;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using VDVI.ApmaRepository.Interfaces;
+using VDVI.Repository.DB;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {

@@ -7,10 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
-using VDVI.DB.Dtos;
-using VDVI.DB.Models.Accounts;
+using VDVI.DB.Dtos; 
 using VDVI.ApmaRepository.Interfaces;
-using VDVI.Repository.DbContext.ApmaDbContext; 
+using VDVI.Repository.DbContext.ApmaDbContext;
+using VDVI.Repository.DB;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {

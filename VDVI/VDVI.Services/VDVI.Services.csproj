@@ -23,10 +23,8 @@
   <ItemGroup>
     <Folder Include="Interfaces\ApmaInterfaces\Accounts\Future\" />
     <Folder Include="Interfaces\ApmaInterfaces\RoomSummary\Future\" />
-    <Folder Include="Interfaces\ApmaInterfaces\SourceStatistics\Future\" />
     <Folder Include="Services\ApmaServices\Accounts\Future\" />
     <Folder Include="Services\ApmaServices\RoomSummary\Future\" />
-    <Folder Include="Services\ApmaServices\SourceStatistics\Future\" />
   </ItemGroup>
 
 </Project>
