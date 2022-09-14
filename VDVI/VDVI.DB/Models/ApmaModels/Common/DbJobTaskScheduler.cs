@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VDVI.Repository.DB
 {
+    [Table("[dbo].[JobTaskScheduler]")]
     public class DbJobTaskScheduler
     {
         public int Id { get; set; }

@@ -4,6 +4,6 @@ namespace VDVI.Services.Interfaces
 {
     public interface IApmaTaskSchedulerService
     {
-        Task SummaryScheduler(string methodName);
+        Task SummaryScheduler(string methodName, bool isFuture);
     }
 }

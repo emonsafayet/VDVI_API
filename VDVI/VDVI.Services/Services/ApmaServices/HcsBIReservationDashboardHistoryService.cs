@@ -14,7 +14,7 @@ using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
-    public class HcsBIReservationDashboardHistoryService : ApmaBaseService, IHcsBIReservationDashboardService
+    public class HcsBIReservationDashboardHistoryService : ApmaBaseService, IHcsBIReservationDashboardHistoryService
     {
          
         public HcsBIReservationDashboardHistoryService(IHcsBIRevenueHistoryService hcsBIRevenueHistoryService, IHcsBIOccupancyHistoryService hcsBIOccupancyHistoryService,

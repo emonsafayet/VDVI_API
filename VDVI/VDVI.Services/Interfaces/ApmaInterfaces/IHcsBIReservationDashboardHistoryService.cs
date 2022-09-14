@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VDVI.Services.Interfaces
 {
-    public interface IHcsBIReservationDashboardService
+    public interface IHcsBIReservationDashboardHistoryService
     {
         Task<Result<PrometheusResponse>> HcsBIReservationDashboardRepositoryAsyc(DateTime StartDate, DateTime EndDate);
     }

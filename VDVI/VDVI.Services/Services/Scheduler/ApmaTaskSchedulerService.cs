@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 using VDVI.DB.Models.Common;
 using VDVI.ApmaRepository.Interfaces;
 using VDVI.Services.Interfaces;
+using VDVI.Services;
 
 namespace VDVI.Services
 {
     public class ApmaTaskSchedulerService : IApmaTaskSchedulerService
     {
         private readonly IHcsReportManagementSummaryService _reportSummary;
+        private readonly IHcsBIReservationDashboardHistoryService _hcsBIReservationDashboardHistoryService;
+        private readonly IHcsBIRatePlanStatisticsHistoryService _hcsBIRatePlanStatisticsHistoryService;
+        private readonly IHcsBISourceStatisticsHistoryService _hcsBISourceStatisticsHistoryService;
+        //private readonly IHcsBISourceStatisticsFutureService _hcsBISourceStatisticsFutureService;
         private readonly IJobTaskSchedulerRepository _jobTaskSchedulerRepository;
-
-        //private readonly IHcsBIReservationDashboardService _hcsBIReservationDashboardService;
-        //private readonly IHcsBIRatePlanStatisticsService _hcsBIRatePlanStatisticsService;
-        //private readonly IHcsBISourceStatisticsService _hcsBISourceStatisticsService;
+         
         private readonly IConfiguration _config;
 
         private DateTime _startDate = new DateTime();
@@ -25,26 +27,29 @@ namespace VDVI.Services
         public ApmaTaskSchedulerService(
             IJobTaskSchedulerRepository jobTaskSchedulerRepository,
             IConfiguration config,
-            IHcsReportManagementSummaryService reportSummary
-            //IHcsBIReservationDashboardService hcsBIReservationDashboardService,
-            //IHcsBIRatePlanStatisticsService hcsBIRatePlanStatisticsService
-            //IHcsBISourceStatisticsService hcsBISourceStatisticsService
+            IHcsReportManagementSummaryService reportSummary,
+            IHcsBIReservationDashboardHistoryService hcsBIReservationDashboardHistoryService,
+            IHcsBIRatePlanStatisticsHistoryService hcsBIRatePlanStatisticsHistoryService,
+            IHcsBISourceStatisticsHistoryService hcsBISourceStatisticsHistoryService
+            //, IHcsBISourceStatisticsFutureService hcsBISourceStatisticsFutureService
+
             )
         {
             _jobTaskSchedulerRepository = jobTaskSchedulerRepository;
             _config = config;
             _reportSummary = reportSummary;
-            //_hcsBIReservationDashboardService = hcsBIReservationDashboardService;
-            //_hcsBIRatePlanStatisticsService = hcsBIRatePlanStatisticsService;
-            // _hcsBISourceStatisticsService = hcsBISourceStatisticsService;
+            _hcsBIReservationDashboardHistoryService = hcsBIReservationDashboardHistoryService;
+            _hcsBIRatePlanStatisticsHistoryService = hcsBIRatePlanStatisticsHistoryService;
+            _hcsBISourceStatisticsHistoryService = hcsBISourceStatisticsHistoryService;
+           //_hcsBISourceStatisticsFutureService = hcsBISourceStatisticsFutureService;
         }
 
 
-        public async Task SummaryScheduler(string methodName)
+        public async Task SummaryScheduler(string methodName,bool isFuture)
         {
             bool flag = false;
             Result<PrometheusResponse> response;
-            GetStartAndEndDate(methodName); 
+            if(!isFuture) await GetStartAndEndDate(methodName); 
           
             switch (methodName)
             {
@@ -52,18 +57,24 @@ namespace VDVI.Services
                     response = await _reportSummary.ReportManagementSummaryAsync(_startDate, _endDate);
                     flag = response.IsSuccess;
                     break;
-                //case "HcsBIReservationDashboard":
-                //    response = await _hcsBIReservationDashboardService.HcsBIReservationDashboardRepositoryAsyc(_startDate, _endDate);
+                case "HcsBIRatePlanStatisticsHistory":
+                    response = await _hcsBIRatePlanStatisticsHistoryService.HcsBIRatePlanStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
+                    flag = response.IsSuccess;
+                    break;
+                case "HcsBIReservationDashboardHistory":
+                    response = await _hcsBIReservationDashboardHistoryService.HcsBIReservationDashboardRepositoryAsyc(_startDate, _endDate);
+                    flag = response.IsSuccess;
+                    break;
+                //case "HcsBISourceStatisticsHistory":
+                //    response = await _hcsBISourceStatisticsHistoryService.HcsBIHcsBISourceStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
                 //    flag = response.IsSuccess;
                 //    break;
-                //case "HcsBIRatePlanStatistics":
-                //    response = await _hcsBIRatePlanStatisticsService.HcsBIRatePlanStatisticsRepositoryAsyc(_startDate, _endDate);
+                //case "HcsBISourceStatisticsFuture":
+                //    response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate, _endDate);
                 //    flag = response.IsSuccess;
                 //    break;
-                //case "HcsBISourceStatisticsService":
-                //    response = await _hcsBISourceStatisticsService.HcsBIHcsBISourceStatisticsRepositoryAsyc(_startDate, _endDate);
-                //    flag = response.IsSuccess;
-                //    break;
+
+                    
 
                 default:
                     break;

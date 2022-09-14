@@ -13,7 +13,7 @@ using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
-    public class HcsBIRatePlanStatisticsHistoryService : ApmaBaseService, IHcsBIRatePlanStatisticsService
+    public class HcsBIRatePlanStatisticsHistoryService : ApmaBaseService, IHcsBIRatePlanStatisticsHistoryService
     {
         private readonly IHcsRatePlanStatisticsHistoryService _hcsRatePlanStatisticsService;
         public HcsBIRatePlanStatisticsHistoryService(IHcsRatePlanStatisticsHistoryService hcsRatePlanStatisticsService)

@@ -21,13 +21,15 @@ namespace VDVI.Client.IoC
             container.RegisterType<IVDVISchedulerDbContext, VDVISchedulerDbContext>(new SingletonLifetimeManager());
 
             container.RegisterType<IProRepository, ProRepository>();
+            container.RegisterType<IJobTaskSchedulerRepository, JobTaskSchedulerRepository>();
+
             container.RegisterType<IMasterRepository, MasterRepository>();
 
-            container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();           
-
+            container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
+            
             container.RegisterType<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
-            container.RegisterType<IHcsBIReservationDashboardService, HcsBIReservationDashboardHistoryService>();
-            container.RegisterType<IHcsBIRatePlanStatisticsService, HcsBIRatePlanStatisticsHistoryService>();
+            container.RegisterType<IHcsBIReservationDashboardHistoryService, HcsBIReservationDashboardHistoryService>();
+            container.RegisterType<IHcsBIRatePlanStatisticsHistoryService, HcsBIRatePlanStatisticsHistoryService>();
             container.RegisterType<IHcsBISourceStatisticsHistoryService, HcsBISourceStatisticsHistoryService>();
             container.RegisterType<IHcsBISourceStatisticsFutureService, HcsBISourceStatisticsFutureService>();
 
