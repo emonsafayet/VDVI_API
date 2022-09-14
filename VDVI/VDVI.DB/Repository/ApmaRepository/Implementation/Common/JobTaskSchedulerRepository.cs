@@ -33,7 +33,7 @@ namespace VDVI.Repository.ApmaRepository.Implementation
         public async Task<string> FindByMethodNameAsync(string methodName)
         {
             DbJobTaskScheduler dbEntities = await _dbContext.JobTaskScheduler.FindAsync(x => x.MethodName == methodName);
-            return dbEntities?.MethodName;
+            return dbEntities?.LastExecutionDate.ToString();
         }
 
         public async Task<string>  SaveWithProcAsync(JobTaskSchedulerDto dto)

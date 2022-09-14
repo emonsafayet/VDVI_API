@@ -65,16 +65,16 @@ namespace VDVI.Services
                     response = await _hcsBIReservationDashboardHistoryService.HcsBIReservationDashboardRepositoryAsyc(_startDate, _endDate);
                     flag = response.IsSuccess;
                     break;
-                //case "HcsBISourceStatisticsHistory":
-                //    response = await _hcsBISourceStatisticsHistoryService.HcsBIHcsBISourceStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
-                //    flag = response.IsSuccess;
-                //    break;
+                case "HcsBISourceStatisticsHistory":
+                    response = await _hcsBISourceStatisticsHistoryService.HcsBIHcsBISourceStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
+                    flag = response.IsSuccess;
+                    break;
                 //case "HcsBISourceStatisticsFuture":
                 //    response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate, _endDate);
                 //    flag = response.IsSuccess;
                 //    break;
 
-                    
+
 
                 default:
                     break;
