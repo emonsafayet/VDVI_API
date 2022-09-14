@@ -47,7 +47,7 @@ namespace VDVI.Repository.ApmaRepository.Implementation
                 },
                 commandType: CommandType.StoredProcedure);
 
-            return null;
+            return queryResult.ToString();
         }
          
     }
