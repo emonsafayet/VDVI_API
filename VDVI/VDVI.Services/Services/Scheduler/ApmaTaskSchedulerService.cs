@@ -23,7 +23,7 @@ namespace VDVI.Services
 
         private DateTime _startDate = new DateTime();
         private DateTime _endDate = new DateTime();
-        int actionflag = 0;
+        bool actionflag = false;
         public ApmaTaskSchedulerService(
             IJobTaskSchedulerRepository jobTaskSchedulerRepository,
             IConfiguration config,
@@ -82,7 +82,7 @@ namespace VDVI.Services
             JobTaskSchedulerDto dto = new JobTaskSchedulerDto()
             {
                 LastExecutionDate = _endDate,
-                flag = flag,
+                flag = actionflag,
                 MethodName = methodName
             };
             if (flag)
@@ -103,7 +103,7 @@ namespace VDVI.Services
 
             if (taskScheduleEndDate == null)
             {
-                actionflag = 0;
+                actionflag = false;
                 _startDate = apmaInitialDate;
                 _endDate = _startDate.AddDays(Convert.ToInt32(dayDiffernce));
             }
@@ -111,7 +111,7 @@ namespace VDVI.Services
             {
                 _startDate = Convert.ToDateTime(taskScheduleEndDate);
                 _endDate = _startDate.AddDays(Convert.ToInt32(dayDiffernce));
-                actionflag = 1;
+                actionflag = true;
             }
             return taskScheduleEndDate;
         }
