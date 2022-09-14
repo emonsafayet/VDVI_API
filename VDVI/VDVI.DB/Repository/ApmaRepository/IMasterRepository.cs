@@ -7,6 +7,8 @@ namespace VDVI.ApmaRepository
     {
         // Common
         IJobTaskSchedulerRepository JobTaskSchedulerRepository { get; }
+        ISchedulerSetupRepository SchedulerSetupRepository { get; }
+        ISchedulerLogRepository SchedulerLogRepository { get; }
 
         // Accounts
         IHcsLedgerBalanceRepository HcsLedgerBalanceRepository { get; }

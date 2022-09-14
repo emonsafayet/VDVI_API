@@ -7,6 +7,10 @@ using VDVI.DB.Models.Common;
 using VDVI.ApmaRepository.Interfaces;
 using VDVI.Services.Interfaces;
 using VDVI.Services;
+using VDVI.Repository.Dtos.ApmaDtos.Common;
+using Ocelot.Responses;
+using System.Threading;
+using Unity;
 
 namespace VDVI.Services
 {
@@ -16,6 +20,8 @@ namespace VDVI.Services
         private readonly IHcsBIReservationDashboardHistoryService _hcsBIReservationDashboardHistoryService;
         private readonly IHcsBIRatePlanStatisticsHistoryService _hcsBIRatePlanStatisticsHistoryService;
         private readonly IHcsBISourceStatisticsHistoryService _hcsBISourceStatisticsHistoryService;
+        private readonly ISchedulerLogRepository _schedulerLogRepository;
+
         //private readonly IHcsBISourceStatisticsFutureService _hcsBISourceStatisticsFutureService;
         private readonly IJobTaskSchedulerRepository _jobTaskSchedulerRepository;
          
@@ -25,6 +31,7 @@ namespace VDVI.Services
         private DateTime _endDate = new DateTime();
         bool actionflag = false;
         public ApmaTaskSchedulerService(
+            ISchedulerLogRepository schedulerLogRepository,
             IJobTaskSchedulerRepository jobTaskSchedulerRepository,
             IConfiguration config,
             IHcsReportManagementSummaryService reportSummary,
@@ -35,22 +42,25 @@ namespace VDVI.Services
 
             )
         {
+            _schedulerLogRepository = schedulerLogRepository;
             _jobTaskSchedulerRepository = jobTaskSchedulerRepository;
             _config = config;
             _reportSummary = reportSummary;
             _hcsBIReservationDashboardHistoryService = hcsBIReservationDashboardHistoryService;
             _hcsBIRatePlanStatisticsHistoryService = hcsBIRatePlanStatisticsHistoryService;
             _hcsBISourceStatisticsHistoryService = hcsBISourceStatisticsHistoryService;
-           //_hcsBISourceStatisticsFutureService = hcsBISourceStatisticsFutureService;
+            //_hcsBISourceStatisticsFutureService = hcsBISourceStatisticsFutureService;
         }
 
+
+      
 
         public async Task SummaryScheduler(string methodName,bool isFuture)
         {
             bool flag = false;
             Result<PrometheusResponse> response;
             if(!isFuture) await GetStartAndEndDate(methodName); 
-          
+
             switch (methodName)
             {
                 case "HcsReportManagementSummary":
@@ -69,27 +79,34 @@ namespace VDVI.Services
                     response = await _hcsBISourceStatisticsHistoryService.HcsBIHcsBISourceStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
                     flag = response.IsSuccess;
                     break;
+
+                    //Future
                 //case "HcsBISourceStatisticsFuture":
                 //    response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate, _endDate);
                 //    flag = response.IsSuccess;
                 //    break;
 
-
-
                 default:
                     break;
             }
-            JobTaskSchedulerDto dto = new JobTaskSchedulerDto()
+            JobTaskSchedulerDto dtos = new JobTaskSchedulerDto()
             {
                 LastExecutionDate = _endDate,
                 flag = actionflag,
                 MethodName = methodName
             };
+            SchedulerLogDto logDtos = new SchedulerLogDto()
+            {
+                MethodName = methodName,
+                ExecutionDateTime = _endDate,
+            };
+
             if (flag)
-               await _jobTaskSchedulerRepository.SaveWithProcAsync(dto);
-
-        }
-
+            {
+                await _jobTaskSchedulerRepository.SaveWithProcAsync(dtos);
+                await _schedulerLogRepository.InsertAsync(logDtos);
+            } 
+        } 
 
         private async Task<string> GetStartAndEndDate(string methodName)
         {
@@ -115,5 +132,6 @@ namespace VDVI.Services
             }
             return taskScheduleEndDate;
         }
+  
     }
 }

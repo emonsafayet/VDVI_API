@@ -9,6 +9,7 @@ using VDVI.DB.Dtos;
 using VDVI.DB.Models.Common;
 using VDVI.Repository.DB;
 using VDVI.Repository.Dtos.Accounts;
+using VDVI.Repository.Dtos.ApmaDtos.Common;
 using VDVI.Repository.Dtos.RoomSummary;
 using VDVI.Repository.Dtos.SourceStatistics;
 
@@ -18,6 +19,11 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
     public class VDVISchedulerDbContext : ProDbContext, IVDVISchedulerDbContext
     {
         private IDapperRepository<DbJobTaskScheduler> _taskScheduler;
+        private IDapperRepository<DbSchedulerSetup> _schedulerSetup;
+        private IDapperRepository<DbSchedulerLog> _schedulerlog;
+
+
+
         private IDapperRepository<DbRoomSummary> _roomSummary;
         private IDapperRepository<DbLedgerBalance> _ledgerBalance;
 
@@ -34,6 +40,10 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         {
             // Dto to Db - Single
             TinyMapper.Bind<JobTaskSchedulerDto, DbJobTaskScheduler>();
+            TinyMapper.Bind<SchedulerSetupDto, DbSchedulerSetup>();
+            TinyMapper.Bind<SchedulerSetupDto, DbSchedulerLog>();
+
+            
             TinyMapper.Bind<RoomSummaryDto, DbRoomSummary>();
             TinyMapper.Bind<LedgerBalanceDto, DbLedgerBalance>();
             TinyMapper.Bind<RatePlanStatisticHistoryDto, DbRatePlanStatisticHistory>();
@@ -45,6 +55,7 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
             TinyMapper.Bind<SourceStatisticFutureDto, DbSourceStatisticFuture>();
 
             // Dto to Db List
+            TinyMapper.Bind<List<SchedulerSetupDto>,List<DbSchedulerSetup>>();
             TinyMapper.Bind<List<JobTaskSchedulerDto>, List<DbJobTaskScheduler>>();
             TinyMapper.Bind<List<RoomSummaryDto>, List<DbRoomSummary>>();
             TinyMapper.Bind<List<LedgerBalanceDto>, List<DbLedgerBalance>>();
@@ -55,9 +66,11 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
             TinyMapper.Bind<List<RoomsHistoryDto>, List<DbRoomsHistory>>();
             TinyMapper.Bind<List<RevenueHistoryDto>, List<DbRevenueHistory>>();
             TinyMapper.Bind<List<SourceStatisticFutureDto>, List<DbSourceStatisticFuture>>();
+            TinyMapper.Bind<List<SchedulerSetupDto>,List<DbSchedulerLog>>();
         }
-
+        public IDapperRepository<DbSchedulerSetup> SchedulerSetup => _schedulerSetup ??= new DapperRepository<DbSchedulerSetup>(Connection);
         public IDapperRepository<DbJobTaskScheduler> JobTaskScheduler => _taskScheduler ??= new DapperRepository<DbJobTaskScheduler>(Connection);
+        public IDapperRepository<DbSchedulerLog> SchedulerLog => _schedulerlog ??= new DapperRepository<DbSchedulerLog>(Connection);
         public IDapperRepository<DbRoomSummary> RoomSummary => _roomSummary ??= new DapperRepository<DbRoomSummary>(Connection);
         public IDapperRepository<DbLedgerBalance> LedgerBalance => _ledgerBalance ??= new DapperRepository<DbLedgerBalance>(Connection);
         public IDapperRepository<DbRatePlanStatisticHistory> RatePlanStatisticHistory => _ratePlanStatistic ??= new DapperRepository<DbRatePlanStatisticHistory>(Connection);

@@ -21,7 +21,9 @@ namespace VDVI.Client.IoC
             container.RegisterType<IVDVISchedulerDbContext, VDVISchedulerDbContext>(new SingletonLifetimeManager());
 
             container.RegisterType<IProRepository, ProRepository>();
-            container.RegisterType<IJobTaskSchedulerRepository, JobTaskSchedulerRepository>();
+            container.RegisterType<IJobTaskSchedulerRepository, JobTaskSchedulerRepository>();            
+            container.RegisterType<ISchedulerSetupRepository, SchedulerSetupRepository>();
+            container.RegisterType<ISchedulerLogRepository, SchedulerLogRepository>();
 
             container.RegisterType<IMasterRepository, MasterRepository>();
 

@@ -17,7 +17,8 @@ namespace VDVI.ApmaRepository
 
         // Common
         public IJobTaskSchedulerRepository JobTaskSchedulerRepository => new JobTaskSchedulerRepository(_dbContext);
-
+        public ISchedulerSetupRepository SchedulerSetupRepository => new SchedulerSetupRepository(_dbContext);
+        public ISchedulerLogRepository SchedulerLogRepository => new SchedulerLogRepository(_dbContext);
 
         // Accounts
         public IHcsLedgerBalanceRepository HcsLedgerBalanceRepository => new HcsLedgerBalanceRepository(_dbContext);
@@ -37,5 +38,7 @@ namespace VDVI.ApmaRepository
         public IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository => new HcsBISourceStatisticsHistoryRepository(_dbContext);
 
         public IHcsBISourceStatisticsFutureRepository HcsBISourceStatisticsFutureRepository => new HcsBISourceStatisticsFutureRepository(_dbContext);
+
+       
     }
 }
