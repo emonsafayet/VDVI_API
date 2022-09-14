@@ -14,10 +14,10 @@ using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
-    public class HcsBIReservationDashboardService : ApmaBaseService, IHcsBIReservationDashboardService
+    public class HcsBIReservationDashboardHistoryService : ApmaBaseService, IHcsBIReservationDashboardService
     {
          
-        public HcsBIReservationDashboardService(IHcsBIRevenueHistoryService hcsBIRevenueHistoryService, IHcsBIOccupancyHistoryService hcsBIOccupancyHistoryService,
+        public HcsBIReservationDashboardHistoryService(IHcsBIRevenueHistoryService hcsBIRevenueHistoryService, IHcsBIOccupancyHistoryService hcsBIOccupancyHistoryService,
                                            IHcsBIRoomsHistoryService hcsBIRoomsHistoryService, IHcsBIReservationHistoryService hcsBIReservationHistoryService)
         {
             _hcsBIRevenueHistoryService = hcsBIRevenueHistoryService;

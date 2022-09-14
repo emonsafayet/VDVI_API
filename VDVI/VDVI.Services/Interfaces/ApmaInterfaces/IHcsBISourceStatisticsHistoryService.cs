@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace VDVI.Services.Interfaces
 {
-    public interface IHcsBISourceStatisticsService
+    public interface IHcsBISourceStatisticsHistoryService
     {
         Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryHistoryAsyc(DateTime StartDate, DateTime EndDate);
-        Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime StartDate, DateTime EndDate);
     }
 }

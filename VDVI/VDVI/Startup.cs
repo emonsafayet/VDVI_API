@@ -9,6 +9,7 @@ using Serilog;
 using System;
 using Unity;
 using VDVI.Client.IoC;
+using VDVI.Services;
 using VDVI.Services.Interfaces;
 using StartupBase = Framework.Core.Base.Startup.StartupBase;
 
@@ -216,25 +217,39 @@ namespace VDVI
 
             var service = container.Resolve<IApmaTaskSchedulerService>();
 
-            recurringJobManager.AddOrUpdate(
-                  "InsertReportManagementRoomAndLedgerJob",
-                  () => service.SummaryScheduler("HcsReportManagementSummary"),
-                  configuration["ApmaHangfireJobSchedulerTime:HcsReportManagementSummary"], TimeZoneInfo.Utc
-                  );
+           recurringJobManager.AddOrUpdate(
+             "HcsReportManagementSummaryJob",
+             () => service.SummaryScheduler("HcsReportManagementSummary"),
+             configuration["ApmaHangfireJobSchedulerTime:HcsReportManagementSummary"], TimeZoneInfo.Utc
+             );
+           recurringJobManager.AddOrUpdate(
+            "HcsBIRatePlanStatisticsHistoryServiceJob",
+            () => service.SummaryScheduler("HcsBIRatePlanStatisticsHistory"),
+            configuration["ApmaHangfireJobSchedulerTime:HcsBIRatePlanStatisticsHistory"], TimeZoneInfo.Utc
+            );
+
+           recurringJobManager.AddOrUpdate(
+              "HcsBIReservationDashboardHistoryServiceJob",
+              () => service.SummaryScheduler("HcsBIReservationDashboardHistory"),
+              configuration["ApmaHangfireJobSchedulerTime:HcsBIReservationDashboardHistory"], TimeZoneInfo.Utc
+              );
+           recurringJobManager.AddOrUpdate(
+              "HcsBISourceStatisticsHistoryServiceJob",
+              () => service.SummaryScheduler("HcsBISourceStatisticsHistory"),
+              configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsHistory"], TimeZoneInfo.Utc
+              );
+           recurringJobManager.AddOrUpdate(
+              "HcsBISourceStatisticsFutureServiceJob",
+              () => service.SummaryScheduler("HcsBISourceStatisticsFuture"),
+              configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsFuture"], TimeZoneInfo.Utc
+              );
+
+
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
-            //var service = container.Resolve<IApmaTaskSchedulerService>();
-
-
-            //        RecurringJob.AddOrUpdate(
-            //"InsertReportManagementRoomAndLedgerJob",
-            //     () => serviceProvider.GetService<IApmaTaskSchedulerService>().SummaryScheduler("HcsReportManagementSummary"),
-            //       configuration["ApmaHangfireJobSchedulerTime:ReportManagementRoomAndLedgerSummary"], TimeZoneInfo.Utc
-            //);
         }
 
     }

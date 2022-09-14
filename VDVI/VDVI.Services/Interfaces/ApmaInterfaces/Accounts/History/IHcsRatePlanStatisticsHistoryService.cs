@@ -9,7 +9,7 @@ using VDVI.Repository.Dtos.Accounts;
 
 namespace VDVI.Services.Interfaces
 {
-    public interface IHcsRatePlanStatisticsService
+    public interface IHcsRatePlanStatisticsHistoryService
     {
         Task<Result<PrometheusResponse>> InsertAsync(RatePlanStatisticHistoryDto dto);
         Task<Result<PrometheusResponse>> BulkInsertAsync(List<RatePlanStatisticHistoryDto> dtos);

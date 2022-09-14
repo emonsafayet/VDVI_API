@@ -21,20 +21,32 @@ namespace VDVI.Client.IoC
             container.RegisterType<IVDVISchedulerDbContext, VDVISchedulerDbContext>(new SingletonLifetimeManager());
 
             container.RegisterType<IProRepository, ProRepository>();
-
-            container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
-
-            container.RegisterType<IJobTaskSchedulerRepository, JobTaskSchedulerRepository>();
-
             container.RegisterType<IMasterRepository, MasterRepository>();
 
+            container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();           
+
             container.RegisterType<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
+            container.RegisterType<IHcsBIReservationDashboardService, HcsBIReservationDashboardHistoryService>();
+            container.RegisterType<IHcsBIRatePlanStatisticsService, HcsBIRatePlanStatisticsHistoryService>();
+            container.RegisterType<IHcsBISourceStatisticsHistoryService, HcsBISourceStatisticsHistoryService>();
+            container.RegisterType<IHcsBISourceStatisticsFutureService, HcsBISourceStatisticsFutureService>();
+
 
             container.RegisterType<IHcsRoomSummaryService, HcsRoomSummaryService>();
-
-            container.RegisterType<IHcsBIReservationDashboardService, HcsBIReservationDashboardService>();
-
             container.RegisterType<IHcsLedgerBalanceService, HcsLedgerBalanceService>();
+            
+            container.RegisterType<IHcsRatePlanStatisticsHistoryService, HcsRatePlanStatisticsHistoryService>();
+            container.RegisterType<IHcsSourceStasticsHistoryService, HcsSourceStasticsHistoryService>();
+
+            
+            container.RegisterType<IHcsBIOccupancyHistoryService, HcsBIOccupancyHistoryService>();
+            container.RegisterType<IHcsBIReservationHistoryService, HcsBIReservationHistoryService>();
+            container.RegisterType<IHcsBIRoomsHistoryService, HcsBIRoomsHistoryService>();
+            container.RegisterType<IHcsBIRevenueHistoryService, HcsBIRevenueHistoryService>();
+
+            
+            container.RegisterType<IHcsSourceStasticsFutureService, HcsSourceStasticsFutureService>(); 
+
         }
     }
 }
