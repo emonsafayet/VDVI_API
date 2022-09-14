@@ -19,7 +19,7 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
     public class VDVISchedulerDbContext : ProDbContext, IVDVISchedulerDbContext
     {
         private IDapperRepository<DbJobTaskScheduler> _taskScheduler;
-        private IDapperRepository<DbSchedulerSetup> _schedulerSetup;
+        private IDapperRepository<DbSchedulerSetup> _schedulerSetup; 
         private IDapperRepository<DbSchedulerLog> _schedulerlog;
 
 
@@ -34,6 +34,8 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         private IDapperRepository<DbRoomsHistory> _rooms;
         private IDapperRepository<DbRevenueHistory> _revenue;
         private IDapperRepository<DbSourceStatisticFuture> _sourceStatisticFuture;
+        private IDapperRepository<DbSourceStatisticFutureAudit> _sourceStatisticFutureAudit;
+
 
 
         public VDVISchedulerDbContext(IConfiguration configuration) : base(new SqlConnection(configuration["ConnectionStrings:ApmaDb"]))
@@ -53,6 +55,9 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
             TinyMapper.Bind<RoomsHistoryDto, DbRoomsHistory>();
             TinyMapper.Bind<RevenueHistoryDto, DbRevenueHistory>();
             TinyMapper.Bind<SourceStatisticFutureDto, DbSourceStatisticFuture>();
+            TinyMapper.Bind<SourceStatisticsFutureAuditDto, DbSourceStatisticFutureAudit>();
+
+            
 
             // Dto to Db List
             TinyMapper.Bind<List<SchedulerLogDto>, List<DbSchedulerLog>>();
@@ -68,7 +73,8 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
             TinyMapper.Bind<List<RoomsHistoryDto>, List<DbRoomsHistory>>();
             TinyMapper.Bind<List<RevenueHistoryDto>, List<DbRevenueHistory>>();
             TinyMapper.Bind<List<SourceStatisticFutureDto>, List<DbSourceStatisticFuture>>();
-            
+            TinyMapper.Bind<List<SourceStatisticsFutureAuditDto>,List<DbSourceStatisticFutureAudit>>();
+
         }
         public IDapperRepository<DbSchedulerSetup> SchedulerSetup => _schedulerSetup ??= new DapperRepository<DbSchedulerSetup>(Connection);
         public IDapperRepository<DbJobTaskScheduler> JobTaskScheduler => _taskScheduler ??= new DapperRepository<DbJobTaskScheduler>(Connection);
@@ -82,5 +88,7 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         public IDapperRepository<DbRoomsHistory> Rooms => _rooms ??= new DapperRepository<DbRoomsHistory>(Connection);
         public IDapperRepository<DbRevenueHistory> Revenue => _revenue ??= new DapperRepository<DbRevenueHistory>(Connection);
         public IDapperRepository<DbSourceStatisticFuture> SourceStatisticFuture => _sourceStatisticFuture ??= new DapperRepository<DbSourceStatisticFuture>(Connection);
+        public IDapperRepository<DbSourceStatisticFutureAudit> SourceStatisticFutureAudit => _sourceStatisticFutureAudit ??= new DapperRepository<DbSourceStatisticFutureAudit>(Connection);
+
     }
 }

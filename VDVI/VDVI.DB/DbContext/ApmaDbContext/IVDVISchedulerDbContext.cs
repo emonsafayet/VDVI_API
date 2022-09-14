@@ -15,6 +15,7 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         IDapperRepository<DbLedgerBalance> LedgerBalance { get; }
         IDapperRepository<DbSourceStatisticHistory> SourceStatistic { get; }
         IDapperRepository<DbSourceStatisticFuture> SourceStatisticFuture { get; }
+        IDapperRepository<DbSourceStatisticFutureAudit> SourceStatisticFutureAudit { get; }
         IDapperRepository<DbRatePlanStatisticHistory> RatePlanStatisticHistory { get; }
         IDapperRepository<DbRoomsHistory> Rooms { get; }
         IDapperRepository<DbRevenueHistory> Revenue { get; }

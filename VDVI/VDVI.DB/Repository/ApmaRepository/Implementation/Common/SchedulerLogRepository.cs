@@ -31,8 +31,7 @@ namespace VDVI.Repository.ApmaRepository.Implementation
         {
             _dbContext = dbContext;
             _tblRepository = _dbContext.SchedulerLog;
-        } 
-
+        }
         public async Task<SchedulerLogDto> InsertAsync(SchedulerLogDto dto)
         {
             var dbEntity = TinyMapper.Map<DbSchedulerLog>(dto);
@@ -40,6 +39,33 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             await _tblRepository.InsertAsync(dbEntity);
 
             return TinyMapper.Map<SchedulerLogDto>(dbEntity);
+        }
+        public Task<IEnumerable<SchedulerLogDto>> BulkInsertAsync(IEnumerable<SchedulerLogDto> dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteByBusinessDateAsync(DateTime businessDate)
+        {
+            throw new NotImplementedException();
+        }
+
+       
+        public Task<SchedulerLogDto> FindByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<SchedulerLogDto>> GetAllByPropertyCodeAsync(string propertyCode)
+        {
+            throw new NotImplementedException();
+        }
+
+       
+
+        public Task<SchedulerLogDto> UpdateAsync(SchedulerLogDto dto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -24,5 +24,7 @@ namespace VDVI.ApmaRepository
         // SourceStatistics
         IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository { get; }
         IHcsBISourceStatisticsFutureRepository HcsBISourceStatisticsFutureRepository { get; }
-    }
+        IHcsBISourceStatisticsFutureAuditRepository HcsBISourceStatisticsFutureAuditRepository { get; }
+
+}
 }
