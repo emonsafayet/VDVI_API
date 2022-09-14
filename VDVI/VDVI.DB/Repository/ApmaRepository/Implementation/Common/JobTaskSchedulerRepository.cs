@@ -41,9 +41,9 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             var queryResult = await _dbContext.Connection.QueryAsync<string>("sp_hce_InsertOrUpdateTaskScheduleDatetime",
                 new
                 {
-                    dto.MethodName,
+                    MethodName=dto.MethodName,
                     lastExecutionDatetime = dto.LastExecutionDate,
-                    dto.flag
+                    flag=dto.flag
                 },
                 commandType: CommandType.StoredProcedure);
 
