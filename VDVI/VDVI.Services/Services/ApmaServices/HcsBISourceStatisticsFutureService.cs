@@ -2,15 +2,13 @@
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
 using Framework.Core.Utility;
-using Microsoft.Extensions.Configuration; 
 using SOAPService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VDVI.DB.Dtos;
 using VDVI.Repository.Dtos.SourceStatistics;
-using VDVI.Services.Interfaces; 
+using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
@@ -22,8 +20,11 @@ namespace VDVI.Services
         {
             _hcsSourceStasticsFutureService = hcsSourceStasticsFutureService;
         } 
-       public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime StartDate, DateTime EndDate)
+       public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate)
         {
+            DateTime nextExecutionDate = lastExecutionDate == null ? DateTime.UtcNow : lastExecutionDate.AddYears(1);
+            DateTime tempDate = lastExecutionDate;
+
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                  async () =>
                  {
@@ -31,13 +32,18 @@ namespace VDVI.Services
 
                      List<SourceStatisticFutureDto> dto = new List<SourceStatisticFutureDto>();
 
-                     foreach (string property in ApmaProperties)
+                     while (tempDate < nextExecutionDate)
                      {
-                         var res = await client.HcsBISourceStatisticsAsync(pmsAuthentication, PropertyCode: property, StartDate: StartDate, EndDate: EndDate, "", "");
+                         foreach (string property in ApmaProperties)
+                         {
+                             var res = await client.HcsBISourceStatisticsAsync(pmsAuthentication, PropertyCode: property, StartDate: tempDate, EndDate: tempDate.AddDays(6), "", "");
 
-                         var sourceStats = res.HcsBISourceStatisticsResult.SourceStatistics.ToList();
+                             var sourceStats = res.HcsBISourceStatisticsResult.SourceStatistics.ToList();
 
-                         FormatSummaryObject(dto, sourceStats, property);
+                             FormatSummaryObject(dto, sourceStats, property);
+                         }
+
+                         tempDate = tempDate.AddDays(7);
                      }
 
                      //This dto list need to implement
