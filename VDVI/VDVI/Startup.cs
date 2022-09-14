@@ -89,28 +89,28 @@ namespace VDVI
 
            recurringJobManager.AddOrUpdate(
              "HcsReportManagementSummaryJob",
-             () => service.SummaryScheduler("HcsReportManagementSummary",false),
+             () => service.SummaryScheduler("HcsReportManagementSummary"),
              configuration["ApmaHangfireJobSchedulerTime:HcsReportManagementSummary"], TimeZoneInfo.Utc
              );
            recurringJobManager.AddOrUpdate(
             "HcsBIRatePlanStatisticsHistoryServiceJob",
-            () => service.SummaryScheduler("HcsBIRatePlanStatisticsHistory", false),
+            () => service.SummaryScheduler("HcsBIRatePlanStatisticsHistory"),
             configuration["ApmaHangfireJobSchedulerTime:HcsBIRatePlanStatisticsHistory"], TimeZoneInfo.Utc
             );
 
             recurringJobManager.AddOrUpdate(
                "HcsBIReservationDashboardHistoryServiceJob",
-               () => service.SummaryScheduler("HcsBIReservationDashboardHistory", false),
+               () => service.SummaryScheduler("HcsBIReservationDashboardHistory"),
                configuration["ApmaHangfireJobSchedulerTime:HcsBIReservationDashboardHistory"], TimeZoneInfo.Utc
                );
             recurringJobManager.AddOrUpdate(
                "HcsBISourceStatisticsHistoryServiceJob",
-               () => service.SummaryScheduler("HcsBISourceStatisticsHistory", false),
+               () => service.SummaryScheduler("HcsBISourceStatisticsHistory"),
                configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsHistory"], TimeZoneInfo.Utc
                );
             //recurringJobManager.AddOrUpdate(
             //   "HcsBISourceStatisticsFutureServiceJob",
-            //   () => service.SummaryScheduler("HcsBISourceStatisticsFuture",true),
+            //   () => service.SummaryScheduler("HcsBISourceStatisticsFuture", true),
             //   configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsFuture"], TimeZoneInfo.Utc
             //   );
 

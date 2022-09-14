@@ -55,11 +55,11 @@ namespace VDVI.Services
 
       
 
-        public async Task SummaryScheduler(string methodName,bool isFuture)
+        public async Task SummaryScheduler(string methodName)
         {
             bool flag = false;
             Result<PrometheusResponse> response;
-            if(!isFuture) await GetStartAndEndDate(methodName); 
+            await GetStartAndEndDate(methodName); 
 
             switch (methodName)
             {
@@ -78,11 +78,10 @@ namespace VDVI.Services
                 case "HcsBISourceStatisticsHistory":
                     response = await _hcsBISourceStatisticsHistoryService.HcsBIHcsBISourceStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
                     flag = response.IsSuccess;
-                    break;
-
-                    //Future
+                    break; 
+              
                 //case "HcsBISourceStatisticsFuture":
-                //    response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate, _endDate);
+                //    response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime.Now);
                 //    flag = response.IsSuccess;
                 //    break;
 
@@ -104,7 +103,7 @@ namespace VDVI.Services
             if (flag)
             {
                 await _jobTaskSchedulerRepository.SaveWithProcAsync(dtos);
-                await _schedulerLogRepository.InsertAsync(logDtos);
+                //await _schedulerLogRepository.InsertAsync(logDtos);
             } 
         } 
 

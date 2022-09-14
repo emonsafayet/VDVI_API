@@ -30,7 +30,7 @@ namespace VDVI.Repository.ApmaRepository.Implementation
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_ReservationDashboard_Revenue_History", new { RatePlanStatistics_History_UDT = dt }, commandType: CommandType.StoredProcedure);
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_ReservationDashboard_Revenue_History", new { ReservationDashboard_Revenue_History_UDT = dt }, commandType: CommandType.StoredProcedure);
 
             return queryResult.ToString();
         }

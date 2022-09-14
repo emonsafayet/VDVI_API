@@ -8,8 +8,7 @@ namespace VDVI.Repository.Dtos.ApmaDtos.Common
 {
     [Table("[dbo].[SchedulerSetUp]")]
     public class DbSchedulerSetup
-    {
-        public int Id { get; set; }
+    { 
         public string SchedulerName { get; set; }
         public DateTime? LastExecutionDateTime { get; set; }
         public DateTime? NextExecutionDateTime { get; set; }
