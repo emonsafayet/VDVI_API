@@ -51,18 +51,28 @@ namespace VDVI.Services
             {
                 if (currentDateTime > scheduler.NextExecutionDateTime || scheduler.NextExecutionDateTime == null)
                 {
+                   
                     //History
-                    if (!scheduler.isFuture && scheduler.NextExecutionDateTime == null) 
+                    if (scheduler.isFuture==false 
+                        && scheduler.NextExecutionDateTime == null) 
                     {
                         _startDate = (DateTime)scheduler.BusinessStartDate;
                         _endDate = _startDate.AddDays(scheduler.DayDifference);
                     }
+                    else if (scheduler.isFuture==false
+                        && scheduler.NextExecutionDateTime != null) 
+                    {
+                        _startDate = (DateTime)scheduler.NextExecutionDateTime;
+                        _endDate = _startDate.AddDays(scheduler.DayDifference);
+                    }
 
                     // for future Method
-                    else if (scheduler.isFuture && scheduler.NextExecutionDateTime == null)
+                    else if (scheduler.isFuture
+                        && scheduler.NextExecutionDateTime == null)
                         _startDate = new DateTime(currentDateTime.Year, currentDateTime.Month, currentDateTime.Day, 0, 0, 0);
 
-                    else if (scheduler.isFuture && scheduler.NextExecutionDateTime != null)
+                    else if (scheduler.isFuture
+                        && scheduler.NextExecutionDateTime != null)
                         _startDate = (DateTime)scheduler.NextExecutionDateTime;
 
                     switch (scheduler.SchedulerName)
@@ -93,18 +103,17 @@ namespace VDVI.Services
                             break;
                     }
 
+                    dtos.LastExecutionDateTime = scheduler.isFuture==false? _endDate:_startDate;
+                    dtos.NextExecutionDateTime = scheduler.isFuture == false?
+                                                _endDate.AddHours(scheduler.NextExecutionHour):
+                                                _startDate.AddHours(scheduler.NextExecutionHour);
+                    dtos.SchedulerName = scheduler.SchedulerName;
+
+                    if (flag) 
+                        await _schedulerSetupService.SaveWithProcAsync(dtos);                    
                 }
-                dtos.LastExecutionDateTime = _endDate;
-                dtos.NextExecutionDateTime = _endDate.AddHours(dtos.NextExecutionHour); 
-                dtos.SchedulerName = dtos.SchedulerName;
-            }
-
-            if (flag)
-            {
-                await _schedulerSetupService.UpdateAsync(dtos);
-                //await _schedulerLogRepository.InsertAsync(logDtos);
-            }
-        }
-
+               
+            }            
+        } 
     }
 }

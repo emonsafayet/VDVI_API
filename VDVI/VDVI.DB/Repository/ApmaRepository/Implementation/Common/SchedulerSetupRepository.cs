@@ -51,18 +51,19 @@ namespace VDVI.Repository.ApmaRepository.Implementation
         {
             var entities = TinyMapper.Map<DbSchedulerSetup>(dto);
 
-            await _tblRepository.UpdateAsync(entities);
+            var res=await _tblRepository.UpdateAsync(entities);
 
             return dto;
         }
         public async Task<Result<PrometheusResponse>> SaveWithProcAsync(SchedulerSetupDto dto)
         {
 
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("sp_hce_InsertOrUpdateTaskScheduleDatetime",
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("sp_hce_UpdateTaskScheduleDatetime",
                 new
                 {
                     SchedulerName = dto.SchedulerName,
                     NextExecutionDateTime = dto.NextExecutionDateTime,
+                    LastExecutionDateTime = dto.LastExecutionDateTime,
                 },
                 commandType: CommandType.StoredProcedure);
 

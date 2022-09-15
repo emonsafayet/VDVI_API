@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
-using Framework.Core.Utility; 
+using Framework.Core.Utility;
 using SOAPService;
 using System;
 using System.Collections.Generic;
@@ -13,31 +13,45 @@ using VDVI.DB.Dtos;
 using VDVI.Repository.ApmaRepository.Implementation;
 using VDVI.Repository.Dtos.ApmaDtos.Common;
 using VDVI.Repository.Dtos.SourceStatistics;
-using VDVI.Services.Interfaces; 
+using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
     public class SchedulerSetupService : ApmaBaseService, ISchedulerSetupService
     {
-        private readonly IMasterRepository _masterRepository; 
+        private readonly IMasterRepository _masterRepository;
 
         public SchedulerSetupService(IMasterRepository masterRepository)
         {
-            _masterRepository=masterRepository; 
+            _masterRepository = masterRepository;
         }
         public async Task<Result<PrometheusResponse>> InsertAsync(SchedulerSetupDto dto)
-        {
-            return new PrometheusResponse
-            {
-                Data = await _masterRepository.SchedulerSetupRepository.InsertAsync(dto)
-            };
+        { 
+            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
+                async () =>
+                {
+                    await _masterRepository.SchedulerSetupRepository.InsertAsync(dto);
+                    return PrometheusResponse.Success("", "Data Insert is successful");
+                },
+                exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
+                {
+                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                    RethrowException = false
+                });
         }
         public async Task<Result<PrometheusResponse>> UpdateAsync(SchedulerSetupDto dto)
         {
-            return new PrometheusResponse
-            {
-                Data = await _masterRepository.SchedulerSetupRepository.UpdateAsync(dto)
-            };
+            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
+                 async () =>
+                 {
+                     await _masterRepository.SchedulerSetupRepository.UpdateAsync(dto);
+                     return PrometheusResponse.Success("", "Data Update is successful");
+                 },
+                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
+                 {
+                     DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                     RethrowException = false
+                 }); 
         }
         public async Task<Result<PrometheusResponse>> SaveWithProcAsync(SchedulerSetupDto dto)
         {
@@ -53,10 +67,10 @@ namespace VDVI.Services
                     DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
                     RethrowException = false
                 });
-        } 
+        }
         public async Task<IEnumerable<SchedulerSetupDto>> FindByAllScheduleAsync()
         {
-           var result = await _masterRepository.SchedulerSetupRepository.FindByAllScheduleAsync();
+            var result = await _masterRepository.SchedulerSetupRepository.FindByAllScheduleAsync();
 
             return result;
         }
