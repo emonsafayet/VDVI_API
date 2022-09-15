@@ -110,13 +110,11 @@ namespace VDVI
                () => service.SummaryScheduler("HcsBISourceStatisticsHistory"),
                configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsHistory"], TimeZoneInfo.Utc
                );
-            //recurringJobManager.AddOrUpdate(
-            //   "HcsBISourceStatisticsFutureServiceJob",
-            //   () => service.SummaryScheduler("HcsBISourceStatisticsFuture", true),
-            //   configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsFuture"], TimeZoneInfo.Utc
-            //   );
-
-
+            recurringJobManager.AddOrUpdate(
+               "HcsBISourceStatisticsFutureServiceJob",
+               () => service.SummaryScheduler("HcsBISourceStatisticsFuture"),
+               configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsFuture"], TimeZoneInfo.Utc
+               ); 
 
             app.UseEndpoints(endpoints =>
             {
