@@ -13,16 +13,18 @@ using VDVI.Services.Interfaces;
 namespace VDVI.Services
 {
     public class HcsBISourceStatisticsFutureService : ApmaBaseService, IHcsBISourceStatisticsFutureService
-    { 
+    {
         private readonly IHcsSourceStasticsFutureService _hcsSourceStasticsFutureService;
 
         public HcsBISourceStatisticsFutureService(IHcsSourceStasticsFutureService hcsSourceStasticsFutureService)
         {
             _hcsSourceStasticsFutureService = hcsSourceStasticsFutureService;
-        } 
-       public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate)
+        }
+        public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate)
         {
-            DateTime nextExecutionDate = lastExecutionDate == null ? DateTime.UtcNow : lastExecutionDate.AddYears(1);
+
+            lastExecutionDate = DateTime.UtcNow;
+            DateTime nextExecutionDate = lastExecutionDate == null ? DateTime.UtcNow : lastExecutionDate.AddMonths(1);
             DateTime tempDate = lastExecutionDate;
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
@@ -34,13 +36,13 @@ namespace VDVI.Services
 
                      while (tempDate < nextExecutionDate)
                      {
-                         foreach (string property in ApmaProperties)
+                         foreach (string propertyCode in ApmaProperties)
                          {
-                             var res = await client.HcsBISourceStatisticsAsync(pmsAuthentication, PropertyCode: property, StartDate: tempDate, EndDate: tempDate.AddDays(6), "", "");
+                             var res = await client.HcsBISourceStatisticsAsync(pmsAuthentication, PropertyCode: propertyCode, StartDate: tempDate, EndDate: tempDate.AddDays(6), "", "");
 
                              var sourceStats = res.HcsBISourceStatisticsResult.SourceStatistics.ToList();
 
-                             FormatSummaryObject(dto, sourceStats, property);
+                             FormatSummaryObject(dto, sourceStats, propertyCode);
                          }
 
                          tempDate = tempDate.AddDays(7);
@@ -57,7 +59,7 @@ namespace VDVI.Services
                      RethrowException = false
                  });
         }
-       private void FormatSummaryObject(List<SourceStatisticFutureDto> sourceStatDtos, List<BISourceStatistic> sourceStats, string propertyCode)
+        private void FormatSummaryObject(List<SourceStatisticFutureDto> sourceStatDtos, List<BISourceStatistic> sourceStats, string propertyCode)
         {
             List<SourceStatisticFutureDto> sourceStatz = sourceStats.Select(x => new SourceStatisticFutureDto()
             {
@@ -86,4 +88,4 @@ namespace VDVI.Services
         }
 
     }
-} 
+}
