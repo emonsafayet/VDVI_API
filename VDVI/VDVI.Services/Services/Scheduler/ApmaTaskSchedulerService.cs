@@ -22,7 +22,7 @@ namespace VDVI.Services
         private readonly IHcsBISourceStatisticsHistoryService _hcsBISourceStatisticsHistoryService;
         private readonly ISchedulerLogRepository _schedulerLogRepository;
 
-        //private readonly IHcsBISourceStatisticsFutureService _hcsBISourceStatisticsFutureService;
+        private readonly IHcsBISourceStatisticsFutureService _hcsBISourceStatisticsFutureService;
         private readonly IJobTaskSchedulerRepository _jobTaskSchedulerRepository;
          
         private readonly IConfiguration _config;
@@ -38,7 +38,7 @@ namespace VDVI.Services
             IHcsBIReservationDashboardHistoryService hcsBIReservationDashboardHistoryService,
             IHcsBIRatePlanStatisticsHistoryService hcsBIRatePlanStatisticsHistoryService,
             IHcsBISourceStatisticsHistoryService hcsBISourceStatisticsHistoryService
-            //, IHcsBISourceStatisticsFutureService hcsBISourceStatisticsFutureService
+            , IHcsBISourceStatisticsFutureService hcsBISourceStatisticsFutureService
 
             )
         {
@@ -49,7 +49,7 @@ namespace VDVI.Services
             _hcsBIReservationDashboardHistoryService = hcsBIReservationDashboardHistoryService;
             _hcsBIRatePlanStatisticsHistoryService = hcsBIRatePlanStatisticsHistoryService;
             _hcsBISourceStatisticsHistoryService = hcsBISourceStatisticsHistoryService;
-            //_hcsBISourceStatisticsFutureService = hcsBISourceStatisticsFutureService;
+            _hcsBISourceStatisticsFutureService = hcsBISourceStatisticsFutureService;
         }
 
 

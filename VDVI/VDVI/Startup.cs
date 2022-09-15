@@ -18,13 +18,13 @@ namespace VDVI
     public class Startup : StartupBase
     {
         private static string ApiTitle => "VDVI Application";
-        public Startup(IConfiguration configuration) : base(configuration, new UnityDependencyProvider(), ApiTitle)  {   }
- 
+        public Startup(IConfiguration configuration) : base(configuration, new UnityDependencyProvider(), ApiTitle) { }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public override void ConfigureServices(IServiceCollection services)
         {
-            base.ConfigureServices(services); 
-             
+            base.ConfigureServices(services);
+
 
             //Hangfire
             services.AddHangfire(config =>
@@ -36,22 +36,24 @@ namespace VDVI
 
             services.AddHangfireServer();
             services.AddMvc();
-        } 
+        }
 
-        public void Configure(IApplicationBuilder app,
-                              IWebHostEnvironment env,
-                              IApiVersionDescriptionProvider apiVersionDescriptionProvider,
-                              IConfiguration configuration,
-                                IBackgroundJobClient backgroundJobClient,
-                   IRecurringJobManager recurringJobManager,
-                 IServiceProvider serviceProvider,
-                 IUnityContainer container)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            IApiVersionDescriptionProvider apiVersionDescriptionProvider,
+            IConfiguration configuration,
+            IBackgroundJobClient backgroundJobClient,
+            IRecurringJobManager recurringJobManager,
+            IServiceProvider serviceProvider,
+            IUnityContainer container
+        )
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-             
+
 
             app.UseDefaultFiles()
                .UseStaticFiles();
@@ -121,6 +123,5 @@ namespace VDVI
                 endpoints.MapControllers();
             });
         }
-
     }
 }

@@ -13,16 +13,21 @@ using VDVI.Services.Interfaces;
 namespace VDVI.Services
 {
     public class HcsBISourceStatisticsFutureService : ApmaBaseService, IHcsBISourceStatisticsFutureService
-    { 
+    {
         private readonly IHcsSourceStasticsFutureService _hcsSourceStasticsFutureService;
+        private readonly int dayRange = 6;
 
         public HcsBISourceStatisticsFutureService(IHcsSourceStasticsFutureService hcsSourceStasticsFutureService)
         {
             _hcsSourceStasticsFutureService = hcsSourceStasticsFutureService;
-        } 
-       public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate)
+        }
+        public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate)
         {
-            DateTime nextExecutionDate = lastExecutionDate == null ? DateTime.UtcNow : lastExecutionDate.AddYears(1);
+            lastExecutionDate = DateTime.UtcNow;
+
+            // To take date and set time to 0:0:0 (hours: minuets:seconds)
+            lastExecutionDate = new DateTime(lastExecutionDate.Year, lastExecutionDate.Month, lastExecutionDate.Day, 0, 0, 0);
+            DateTime nextExecutionDate = lastExecutionDate == null ? DateTime.UtcNow : lastExecutionDate.AddYears(1).AddSeconds(1);
             DateTime tempDate = lastExecutionDate;
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
@@ -34,20 +39,23 @@ namespace VDVI.Services
 
                      while (tempDate < nextExecutionDate)
                      {
-                         foreach (string property in ApmaProperties)
+                         var endDate = tempDate.AddDays(dayRange);
+                         endDate = endDate > nextExecutionDate ? nextExecutionDate : endDate;
+
+                         foreach (string propertyCode in ApmaProperties)
                          {
-                             var res = await client.HcsBISourceStatisticsAsync(pmsAuthentication, PropertyCode: property, StartDate: tempDate, EndDate: tempDate.AddDays(6), "", "");
+                             var res = await client.HcsBISourceStatisticsAsync(pmsAuthentication, PropertyCode: propertyCode, StartDate: tempDate, EndDate: endDate, "", "");
 
                              var sourceStats = res.HcsBISourceStatisticsResult.SourceStatistics.ToList();
 
-                             FormatSummaryObject(dto, sourceStats, property);
+                             FormatSummaryObject(dto, sourceStats, propertyCode);
                          }
 
-                         tempDate = tempDate.AddDays(7);
+                         tempDate = tempDate.AddDays(dayRange).AddSeconds(1);
                      }
 
                      //This dto list need to implement
-                     var dbrevenuesRes = _hcsSourceStasticsFutureService.BulkInsertAsync(dto);
+                     var dbrevenuesRes = _hcsSourceStasticsFutureService.BulkInsertWithProcAsync(dto);
 
                      return PrometheusResponse.Success("", "Data retrieval is successful");
                  },
@@ -57,7 +65,7 @@ namespace VDVI.Services
                      RethrowException = false
                  });
         }
-       private void FormatSummaryObject(List<SourceStatisticFutureDto> sourceStatDtos, List<BISourceStatistic> sourceStats, string propertyCode)
+        private void FormatSummaryObject(List<SourceStatisticFutureDto> sourceStatDtos, List<BISourceStatistic> sourceStats, string propertyCode)
         {
             List<SourceStatisticFutureDto> sourceStatz = sourceStats.Select(x => new SourceStatisticFutureDto()
             {
@@ -86,4 +94,4 @@ namespace VDVI.Services
         }
 
     }
-} 
+}
