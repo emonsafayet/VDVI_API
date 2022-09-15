@@ -19,6 +19,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using VDVI.Repository.DB;
 using VDVI.Repository.Dtos.ApmaDtos.Common;
+using VDVI.DB.Dtos;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {
@@ -44,28 +45,37 @@ namespace VDVI.Repository.ApmaRepository.Implementation
         {
             throw new NotImplementedException();
         }
+        public async Task<bool> DeleteByMethodNameAsync(string methodName) => await _tblRepository.DeleteAsync(x => x.MethodName == methodName);
 
-        public Task<bool> DeleteByBusinessDateAsync(DateTime businessDate)
+        public async Task<bool> DeleteByDateAsync(DateTime executionDate) => await _tblRepository.DeleteAsync(x => x.ExecutionDateTime == executionDate);
+        public async Task<SchedulerLogDto> FindByMethodNameAsync(string methodName)
         {
-            throw new NotImplementedException();
+            var dbEntity = await _tblRepository.FindAsync(x => x.MethodName == methodName);
+
+            var dto = TinyMapper.Map<SchedulerLogDto>(dbEntity);
+
+            return dto;
+        }
+        public async Task<IEnumerable<SchedulerLogDto>> GetAllByMethodNameAsync(string methodName)
+        {
+            IEnumerable<DbSchedulerLog> dbEntities = await _dbContext
+                .SchedulerLog
+                .SetOrderBy(OrderInfo.SortDirection.DESC, x => x.MethodName)
+                .FindAllAsync(x => x.MethodName==methodName);
+
+            var entities = TinyMapper.Map<List<SchedulerLogDto>>(dbEntities);
+
+            return entities;
+        }
+        public async Task<SchedulerLogDto> UpdateAsync(SchedulerLogDto dto)
+        {
+            var entity = TinyMapper.Map<DbSchedulerLog>(dto);
+
+            await _tblRepository.UpdateAsync(entity);
+
+            return dto;
         }
 
-       
-        public Task<SchedulerLogDto> FindByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<SchedulerLogDto>> GetAllByPropertyCodeAsync(string propertyCode)
-        {
-            throw new NotImplementedException();
-        }
-
-       
-
-        public Task<SchedulerLogDto> UpdateAsync(SchedulerLogDto dto)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -78,12 +78,12 @@ namespace VDVI.Services
                 case "HcsBISourceStatisticsHistory":
                     response = await _hcsBISourceStatisticsHistoryService.HcsBIHcsBISourceStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
                     flag = response.IsSuccess;
-                    break; 
-              
-                //case "HcsBISourceStatisticsFuture":
-                //    response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime.Now);
-                //    flag = response.IsSuccess;
-                //    break;
+                    break;
+
+                case "HcsBISourceStatisticsFuture":
+                    response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime.Now);
+                    flag = response.IsSuccess;
+                    break;
 
                 default:
                     break;
