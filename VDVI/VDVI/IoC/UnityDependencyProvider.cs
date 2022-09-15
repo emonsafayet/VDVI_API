@@ -50,6 +50,7 @@ namespace VDVI.Client.IoC
 
             
             container.RegisterType<IHcsSourceStasticsFutureService, HcsSourceStasticsFutureService>(); 
+            container.RegisterType<ISchedulerSetupService, SchedulerSetupService>(); 
 
         }
     }

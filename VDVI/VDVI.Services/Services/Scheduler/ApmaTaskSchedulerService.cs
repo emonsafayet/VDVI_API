@@ -11,6 +11,8 @@ using VDVI.Repository.Dtos.ApmaDtos.Common;
 using Ocelot.Responses;
 using System.Threading;
 using Unity;
+using System.Collections.Generic;
+using Quartz;
 
 namespace VDVI.Services
 {
@@ -23,13 +25,15 @@ namespace VDVI.Services
         private readonly ISchedulerLogRepository _schedulerLogRepository;
 
         private readonly IHcsBISourceStatisticsFutureService _hcsBISourceStatisticsFutureService;
-        private readonly IJobTaskSchedulerRepository _jobTaskSchedulerRepository;
-         
+        private readonly ISchedulerSetupService _schedulerSetupService;
+
         private readonly IConfiguration _config;
 
         private DateTime _startDate = new DateTime();
         private DateTime _endDate = new DateTime();
         bool actionflag = false;
+
+        SchedulerSetupDto dtos = new SchedulerSetupDto();
         public ApmaTaskSchedulerService(
             ISchedulerLogRepository schedulerLogRepository,
             IJobTaskSchedulerRepository jobTaskSchedulerRepository,
@@ -39,98 +43,91 @@ namespace VDVI.Services
             IHcsBIRatePlanStatisticsHistoryService hcsBIRatePlanStatisticsHistoryService,
             IHcsBISourceStatisticsHistoryService hcsBISourceStatisticsHistoryService
             , IHcsBISourceStatisticsFutureService hcsBISourceStatisticsFutureService
+           , ISchedulerSetupService schedulerSetupService
 
             )
         {
             _schedulerLogRepository = schedulerLogRepository;
-            _jobTaskSchedulerRepository = jobTaskSchedulerRepository;
             _config = config;
             _reportSummary = reportSummary;
             _hcsBIReservationDashboardHistoryService = hcsBIReservationDashboardHistoryService;
             _hcsBIRatePlanStatisticsHistoryService = hcsBIRatePlanStatisticsHistoryService;
             _hcsBISourceStatisticsHistoryService = hcsBISourceStatisticsHistoryService;
             _hcsBISourceStatisticsFutureService = hcsBISourceStatisticsFutureService;
+            _schedulerSetupService = schedulerSetupService;
         }
-
-
-      
-
-        public async Task SummaryScheduler(string methodName)
+        public async Task SummaryScheduler()
         {
             bool flag = false;
             Result<PrometheusResponse> response;
-            await GetStartAndEndDate(methodName); 
+            DateTime forMateDateTime = DateTime.UtcNow;
 
-            switch (methodName)
-            {
-                case "HcsReportManagementSummary":
-                    response = await _reportSummary.ReportManagementSummaryAsync(_startDate, _endDate);
-                    flag = response.IsSuccess;
-                    break;
-                case "HcsBIRatePlanStatisticsHistory":
-                    response = await _hcsBIRatePlanStatisticsHistoryService.HcsBIRatePlanStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
-                    flag = response.IsSuccess;
-                    break;
-                case "HcsBIReservationDashboardHistory":
-                    response = await _hcsBIReservationDashboardHistoryService.HcsBIReservationDashboardRepositoryAsyc(_startDate, _endDate);
-                    flag = response.IsSuccess;
-                    break;
-                case "HcsBISourceStatisticsHistory":
-                    response = await _hcsBISourceStatisticsHistoryService.HcsBIHcsBISourceStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
-                    flag = response.IsSuccess;
-                    break;
-
-                case "HcsBISourceStatisticsFuture":
-                    response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime.Now);
-                    flag = response.IsSuccess;
-                    break;
-
-                default:
-                    break;
-            }
-            JobTaskSchedulerDto dtos = new JobTaskSchedulerDto()
-            {
-                LastExecutionDate = _endDate,
-                flag = actionflag,
-                MethodName = methodName
-            };
-            SchedulerLogDto logDtos = new SchedulerLogDto()
-            {
-                MethodName = methodName,
-                ExecutionDateTime = _endDate,
-            };
-
-            if (flag)
-            {
-                await _jobTaskSchedulerRepository.SaveWithProcAsync(dtos);
-                //await _schedulerLogRepository.InsertAsync(logDtos);
-            } 
-        } 
-
-        private async Task<string> GetStartAndEndDate(string methodName)
-        {
             string resultDate = _config.GetSection("ApmaServiceDateConfig").GetSection("initialStartDate").Value;
             DateTime apmaInitialDate = Convert.ToDateTime(resultDate);
 
-            var dayDiffernce = _config.GetSection("ApmaServiceDateConfig").GetSection("DayDifferenceReportManagementRoomAndLedgerSummary").Value;
+            var dayDifference = _config.GetSection("ApmaServiceDateConfig").GetSection("DayDifference").Value;
+            DateTime currentDateTime = DateTime.UtcNow;
 
-            //Check from the Database by method Name, if there have any existing value or not ;
-            var taskScheduleEndDate =await _jobTaskSchedulerRepository.FindByMethodNameAsync(methodName);
+            var schedulers = await _schedulerSetupService.FindByAllScheduleAsync();
 
-            if (taskScheduleEndDate == null)
+            foreach (var scheduler in schedulers)
             {
-                actionflag = false;
-                _startDate = apmaInitialDate;
-                _endDate = _startDate.AddDays(Convert.ToInt32(dayDiffernce));
+                if (currentDateTime > scheduler.NextExecutionDateTime || scheduler.NextExecutionDateTime == null)
+                {
+                    //History
+                    if (!scheduler.isFuture && scheduler.NextExecutionDateTime == null)
+                    {
+                        _startDate = (DateTime)scheduler.BusinessStartDate;
+                        _endDate = _startDate.AddDays(scheduler.DayDifference);
+                    }
+
+                    // for future Method
+                    else if (scheduler.isFuture && scheduler.NextExecutionDateTime == null)
+                        _startDate = new DateTime(forMateDateTime.Year, forMateDateTime.Month, forMateDateTime.Day, 0, 0, 0);
+
+                    else if (scheduler.isFuture && scheduler.NextExecutionDateTime != null)
+                        _startDate = (DateTime)scheduler.NextExecutionDateTime;
+
+                    switch (scheduler.SchedulerName)
+                    {
+                        case "HcsReportManagementSummary":
+                            response = await _reportSummary.ReportManagementSummaryAsync(_startDate, _endDate);
+                            flag = response.IsSuccess;
+                            break;
+                        case "HcsBIRatePlanStatisticsHistory":
+                            response = await _hcsBIRatePlanStatisticsHistoryService.HcsBIRatePlanStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
+                            flag = response.IsSuccess;
+                            break;
+                        case "HcsBIReservationDashboardHistory":
+                            response = await _hcsBIReservationDashboardHistoryService.HcsBIReservationDashboardRepositoryAsyc(_startDate, _endDate);
+                            flag = response.IsSuccess;
+                            break;
+                        case "HcsBISourceStatisticsHistory":
+                            response = await _hcsBISourceStatisticsHistoryService.HcsBIHcsBISourceStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
+                            flag = response.IsSuccess;
+                            break;
+
+                        case "HcsBISourceStatisticsFuture":
+                            response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate);
+                            flag = response.IsSuccess;
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                }
+                dtos.LastExecutionDateTime = _endDate;
+                dtos.NextExecutionDateTime = _endDate.AddHours(dtos.NextExecutionHour); 
+                dtos.SchedulerName = dtos.SchedulerName;
             }
-            else if (taskScheduleEndDate != null)
+
+            if (flag)
             {
-                _startDate = Convert.ToDateTime(taskScheduleEndDate);
-                _endDate = _startDate.AddDays(Convert.ToInt32(dayDiffernce));
-                actionflag = true;
+                await _schedulerSetupService.UpdateAsync(dtos);
+                //await _schedulerLogRepository.InsertAsync(logDtos);
             }
-            return taskScheduleEndDate;
         }
-  
+
     }
 }

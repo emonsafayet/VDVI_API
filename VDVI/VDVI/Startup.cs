@@ -90,31 +90,31 @@ namespace VDVI
             var service = container.Resolve<IApmaTaskSchedulerService>();
 
            recurringJobManager.AddOrUpdate(
-             "HcsReportManagementSummaryJob",
-             () => service.SummaryScheduler("HcsReportManagementSummary"),
-             configuration["ApmaHangfireJobSchedulerTime:HcsReportManagementSummary"], TimeZoneInfo.Utc
+             "HcsJob",
+             () => service.SummaryScheduler(),
+             configuration["ApmaHangfireJobSchedulerTime:HcsJob"], TimeZoneInfo.Utc
              );
-           recurringJobManager.AddOrUpdate(
-            "HcsBIRatePlanStatisticsHistoryServiceJob",
-            () => service.SummaryScheduler("HcsBIRatePlanStatisticsHistory"),
-            configuration["ApmaHangfireJobSchedulerTime:HcsBIRatePlanStatisticsHistory"], TimeZoneInfo.Utc
-            );
+           //recurringJobManager.AddOrUpdate(
+           // "HcsBIRatePlanStatisticsHistoryServiceJob",
+           // () => service.SummaryScheduler(),
+           // configuration["ApmaHangfireJobSchedulerTime:HcsBIRatePlanStatisticsHistory"], TimeZoneInfo.Utc
+           // );
 
-            recurringJobManager.AddOrUpdate(
-               "HcsBIReservationDashboardHistoryServiceJob",
-               () => service.SummaryScheduler("HcsBIReservationDashboardHistory"),
-               configuration["ApmaHangfireJobSchedulerTime:HcsBIReservationDashboardHistory"], TimeZoneInfo.Utc
-               );
-            recurringJobManager.AddOrUpdate(
-               "HcsBISourceStatisticsHistoryServiceJob",
-               () => service.SummaryScheduler("HcsBISourceStatisticsHistory"),
-               configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsHistory"], TimeZoneInfo.Utc
-               );
-            recurringJobManager.AddOrUpdate(
-               "HcsBISourceStatisticsFutureServiceJob",
-               () => service.SummaryScheduler("HcsBISourceStatisticsFuture"),
-               configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsFuture"], TimeZoneInfo.Utc
-               ); 
+           // recurringJobManager.AddOrUpdate(
+           //    "HcsBIReservationDashboardHistoryServiceJob",
+           //    () => service.SummaryScheduler(),
+           //    configuration["ApmaHangfireJobSchedulerTime:HcsBIReservationDashboardHistory"], TimeZoneInfo.Utc
+           //    );
+           // recurringJobManager.AddOrUpdate(
+           //    "HcsBISourceStatisticsHistoryServiceJob",
+           //    () => service.SummaryScheduler(),
+           //    configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsHistory"], TimeZoneInfo.Utc
+           //    );
+           // recurringJobManager.AddOrUpdate(
+           //    "HcsBISourceStatisticsFutureServiceJob",
+           //    () => service.SummaryScheduler(),
+           //    configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsFuture"], TimeZoneInfo.Utc
+           //    ); 
 
             app.UseEndpoints(endpoints =>
             {

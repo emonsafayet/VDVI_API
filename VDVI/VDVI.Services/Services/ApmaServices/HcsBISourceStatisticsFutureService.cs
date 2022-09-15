@@ -22,12 +22,8 @@ namespace VDVI.Services
             _hcsSourceStasticsFutureService = hcsSourceStasticsFutureService;
         }
         public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate)
-        {
-            lastExecutionDate = DateTime.UtcNow;
-
-            // To take date and set time to 0:0:0 (hours: minuets:seconds)
-            lastExecutionDate = new DateTime(lastExecutionDate.Year, lastExecutionDate.Month, lastExecutionDate.Day, 0, 0, 0);
-            DateTime nextExecutionDate = lastExecutionDate == null ? DateTime.UtcNow : lastExecutionDate.AddYears(1).AddSeconds(1);
+        {            
+            DateTime nextExecutionDate = lastExecutionDate.AddYears(1).AddSeconds(1);
             DateTime tempDate = lastExecutionDate;
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(

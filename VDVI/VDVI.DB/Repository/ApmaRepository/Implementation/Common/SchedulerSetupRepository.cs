@@ -20,6 +20,8 @@ using Microsoft.AspNetCore.Mvc;
 using VDVI.Repository.DB;
 using VDVI.Repository.Dtos.ApmaDtos.Common;
 using VDVI.DB.Dtos;
+using CSharpFunctionalExtensions;
+using Framework.Core.Base.ModelEntity;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {
@@ -32,14 +34,19 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             _dbContext = dbContext;
             _tblRepository = _dbContext.SchedulerSetup;
         }
+        public async Task<SchedulerSetupDto> InsertAsync(SchedulerSetupDto dto)
+        {
+            var dbEntity = TinyMapper.Map<DbSchedulerSetup>(dto);
 
+            await _tblRepository.InsertAsync(dbEntity);
+
+            return TinyMapper.Map<SchedulerSetupDto>(dbEntity);
+        }
         public async Task<DbSchedulerSetup> FindByMethodNameAsync(string methodName)
         {
-            DbSchedulerSetup dbEntities = await _tblRepository.FindAsync(x => x.SchedulerName == methodName);
+            var dbEntities = await _tblRepository.FindAsync(x => x.SchedulerName == methodName);
             return dbEntities;
         }
-
-
         public async Task<SchedulerSetupDto> UpdateAsync(SchedulerSetupDto dto)
         {
             var entities = TinyMapper.Map<DbSchedulerSetup>(dto);
@@ -48,22 +55,36 @@ namespace VDVI.Repository.ApmaRepository.Implementation
 
             return dto;
         }
-
-
-        public async Task<string>  SaveWithProcAsync(SchedulerSetupDto dto)
+        public async Task<Result<PrometheusResponse>> SaveWithProcAsync(SchedulerSetupDto dto)
         {
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("--writeprocedure--",
+
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("sp_hce_InsertOrUpdateTaskScheduleDatetime",
                 new
                 {
                     SchedulerName = dto.SchedulerName,
-                    LastExecutionDateTime = dto.LastExecutionDateTime,
                     NextExecutionDateTime = dto.NextExecutionDateTime,
-                    NextExecutionHour=dto.NextExecutionHour
                 },
                 commandType: CommandType.StoredProcedure);
 
-            return queryResult.ToString();
+            return new PrometheusResponse { Data = queryResult };
         }
-         
+        public async Task<IEnumerable<SchedulerSetupDto>> FindByAllScheduleAsync()
+        {
+            var result = await _dbContext.Connection.QueryAsync<SchedulerSetupDto>("sp_hce_GetSchedulers",
+                 commandType: CommandType.StoredProcedure);
+
+            return result;
+
+
+        }
+        public async Task<SchedulerSetupDto> FindByIdAsync(string schedulerName)
+        {
+            var dbEntity = await _tblRepository.FindAsync(x => x.SchedulerName == schedulerName);
+
+            var dto = TinyMapper.Map<SchedulerSetupDto>(dbEntity);
+
+            return dto;
+        }
+        public async Task<bool> DeleteByPropertyCodeAsync(string schedulerName) => await _tblRepository.DeleteAsync(x => x.SchedulerName == schedulerName);
     }
 }
