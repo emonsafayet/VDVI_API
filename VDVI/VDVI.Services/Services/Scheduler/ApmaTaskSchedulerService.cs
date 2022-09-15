@@ -1,18 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading.Tasks;
-using VDVI.DB.Models.Common;
-using VDVI.ApmaRepository.Interfaces;
-using VDVI.Services.Interfaces;
-using VDVI.Services;
 using VDVI.Repository.Dtos.ApmaDtos.Common;
-using Ocelot.Responses;
-using System.Threading;
-using Unity;
-using System.Collections.Generic;
-using Quartz;
+using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
@@ -22,22 +13,16 @@ namespace VDVI.Services
         private readonly IHcsBIReservationDashboardHistoryService _hcsBIReservationDashboardHistoryService;
         private readonly IHcsBIRatePlanStatisticsHistoryService _hcsBIRatePlanStatisticsHistoryService;
         private readonly IHcsBISourceStatisticsHistoryService _hcsBISourceStatisticsHistoryService;
-        private readonly ISchedulerLogRepository _schedulerLogRepository;
 
         private readonly IHcsBISourceStatisticsFutureService _hcsBISourceStatisticsFutureService;
         private readonly ISchedulerSetupService _schedulerSetupService;
 
-        private readonly IConfiguration _config;
 
         private DateTime _startDate = new DateTime();
         private DateTime _endDate = new DateTime();
-        bool actionflag = false;
 
         SchedulerSetupDto dtos = new SchedulerSetupDto();
         public ApmaTaskSchedulerService(
-            ISchedulerLogRepository schedulerLogRepository,
-            IJobTaskSchedulerRepository jobTaskSchedulerRepository,
-            IConfiguration config,
             IHcsReportManagementSummaryService reportSummary,
             IHcsBIReservationDashboardHistoryService hcsBIReservationDashboardHistoryService,
             IHcsBIRatePlanStatisticsHistoryService hcsBIRatePlanStatisticsHistoryService,
@@ -47,8 +32,6 @@ namespace VDVI.Services
 
             )
         {
-            _schedulerLogRepository = schedulerLogRepository;
-            _config = config;
             _reportSummary = reportSummary;
             _hcsBIReservationDashboardHistoryService = hcsBIReservationDashboardHistoryService;
             _hcsBIRatePlanStatisticsHistoryService = hcsBIRatePlanStatisticsHistoryService;
@@ -59,13 +42,7 @@ namespace VDVI.Services
         public async Task SummaryScheduler()
         {
             bool flag = false;
-            Result<PrometheusResponse> response;
-            DateTime forMateDateTime = DateTime.UtcNow;
-
-            string resultDate = _config.GetSection("ApmaServiceDateConfig").GetSection("initialStartDate").Value;
-            DateTime apmaInitialDate = Convert.ToDateTime(resultDate);
-
-            var dayDifference = _config.GetSection("ApmaServiceDateConfig").GetSection("DayDifference").Value;
+            Result<PrometheusResponse> response; 
             DateTime currentDateTime = DateTime.UtcNow;
 
             var schedulers = await _schedulerSetupService.FindByAllScheduleAsync();
@@ -75,7 +52,7 @@ namespace VDVI.Services
                 if (currentDateTime > scheduler.NextExecutionDateTime || scheduler.NextExecutionDateTime == null)
                 {
                     //History
-                    if (!scheduler.isFuture && scheduler.NextExecutionDateTime == null)
+                    if (!scheduler.isFuture && scheduler.NextExecutionDateTime == null) 
                     {
                         _startDate = (DateTime)scheduler.BusinessStartDate;
                         _endDate = _startDate.AddDays(scheduler.DayDifference);
@@ -83,7 +60,7 @@ namespace VDVI.Services
 
                     // for future Method
                     else if (scheduler.isFuture && scheduler.NextExecutionDateTime == null)
-                        _startDate = new DateTime(forMateDateTime.Year, forMateDateTime.Month, forMateDateTime.Day, 0, 0, 0);
+                        _startDate = new DateTime(currentDateTime.Year, currentDateTime.Month, currentDateTime.Day, 0, 0, 0);
 
                     else if (scheduler.isFuture && scheduler.NextExecutionDateTime != null)
                         _startDate = (DateTime)scheduler.NextExecutionDateTime;

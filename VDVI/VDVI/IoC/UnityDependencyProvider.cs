@@ -28,6 +28,7 @@ namespace VDVI.Client.IoC
             container.RegisterType<IMasterRepository, MasterRepository>();
 
             container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
+            container.RegisterType<ISchedulerSetupService, SchedulerSetupService>(); 
             
             container.RegisterType<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
             container.RegisterType<IHcsBIReservationDashboardHistoryService, HcsBIReservationDashboardHistoryService>();
@@ -50,7 +51,7 @@ namespace VDVI.Client.IoC
 
             
             container.RegisterType<IHcsSourceStasticsFutureService, HcsSourceStasticsFutureService>(); 
-            container.RegisterType<ISchedulerSetupService, SchedulerSetupService>(); 
+            
 
         }
     }
