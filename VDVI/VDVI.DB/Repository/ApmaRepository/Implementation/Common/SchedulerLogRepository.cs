@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
-using VDVI.DB.Models.Common;
 using VDVI.ApmaRepository.Interfaces;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using VDVI.Repository.Dtos.Accounts;
@@ -20,6 +19,8 @@ using Microsoft.AspNetCore.Mvc;
 using VDVI.Repository.DB;
 using VDVI.Repository.Dtos.ApmaDtos.Common;
 using VDVI.DB.Dtos;
+using CSharpFunctionalExtensions;
+using Framework.Core.Base.ModelEntity;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {
@@ -40,6 +41,19 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             await _tblRepository.InsertAsync(dbEntity);
 
             return TinyMapper.Map<SchedulerLogDto>(dbEntity);
+        }
+
+        public async Task<Result<PrometheusResponse>> SaveWithProcAsync(string methodName)
+        {
+
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("sp_InsertScheduleLog",
+                new
+                {
+                    MethodName = methodName
+                },
+                commandType: CommandType.StoredProcedure);
+
+            return new PrometheusResponse { Data = queryResult };
         }
         public Task<IEnumerable<SchedulerLogDto>> BulkInsertAsync(IEnumerable<SchedulerLogDto> dto)
         {

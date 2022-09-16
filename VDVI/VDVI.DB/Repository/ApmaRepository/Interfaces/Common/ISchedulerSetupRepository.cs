@@ -3,7 +3,6 @@ using Framework.Core.Base.ModelEntity;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using VDVI.DB.Models.Common;
 using VDVI.Repository.Dtos.Accounts;
 using VDVI.Repository.Dtos.ApmaDtos.Common;
 

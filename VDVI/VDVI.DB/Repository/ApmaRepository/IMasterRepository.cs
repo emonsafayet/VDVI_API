@@ -6,7 +6,6 @@ namespace VDVI.ApmaRepository
     public interface IMasterRepository : IProRepository
     {
         // Common
-        IJobTaskSchedulerRepository JobTaskSchedulerRepository { get; }
         ISchedulerSetupRepository SchedulerSetupRepository { get; }
         ISchedulerLogRepository SchedulerLogRepository { get; }
 

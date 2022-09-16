@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
-using VDVI.DB.Models.Common;
 using VDVI.ApmaRepository.Interfaces;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using VDVI.Repository.Dtos.Accounts;

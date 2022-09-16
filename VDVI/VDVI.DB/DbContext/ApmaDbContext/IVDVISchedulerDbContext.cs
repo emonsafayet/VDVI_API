@@ -8,7 +8,6 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
 {
     public interface IVDVISchedulerDbContext : IDapperDbContext
     {
-        IDapperRepository<DbJobTaskScheduler> JobTaskScheduler { get; }
         IDapperRepository<DbSchedulerSetup> SchedulerSetup { get; }
         IDapperRepository<DbSchedulerLog> SchedulerLog { get; }
         IDapperRepository<DbRoomSummary> RoomSummary { get; }

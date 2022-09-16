@@ -16,7 +16,6 @@ namespace VDVI.ApmaRepository
         }
 
         // Common
-        public IJobTaskSchedulerRepository JobTaskSchedulerRepository => new JobTaskSchedulerRepository(_dbContext);
         public ISchedulerSetupRepository SchedulerSetupRepository => new SchedulerSetupRepository(_dbContext);
         public ISchedulerLogRepository SchedulerLogRepository => new SchedulerLogRepository(_dbContext);
 

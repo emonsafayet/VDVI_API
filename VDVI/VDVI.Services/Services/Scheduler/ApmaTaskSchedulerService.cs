@@ -17,8 +17,7 @@ namespace VDVI.Services
 
         private readonly IHcsBISourceStatisticsFutureService _hcsBISourceStatisticsFutureService;
         private readonly ISchedulerSetupService _schedulerSetupService;
-
-
+        public readonly ISchedulerLogService _schedulerLogService;
         private DateTime _startDate = new DateTime();
         private DateTime _endDate = new DateTime();
 
@@ -30,6 +29,7 @@ namespace VDVI.Services
             IHcsBISourceStatisticsHistoryService hcsBISourceStatisticsHistoryService
             , IHcsBISourceStatisticsFutureService hcsBISourceStatisticsFutureService
            , ISchedulerSetupService schedulerSetupService
+           , ISchedulerLogService schedulerLogService
 
             )
         {
@@ -39,6 +39,7 @@ namespace VDVI.Services
             _hcsBISourceStatisticsHistoryService = hcsBISourceStatisticsHistoryService;
             _hcsBISourceStatisticsFutureService = hcsBISourceStatisticsFutureService;
             _schedulerSetupService = schedulerSetupService;
+            _schedulerLogService = schedulerLogService;
         }
         public async Task SummaryScheduler()
         {
@@ -115,8 +116,12 @@ namespace VDVI.Services
                                                 _startDate.AddHours(scheduler.NextExecutionHour);
                     dtos.SchedulerName = scheduler.SchedulerName;
 
-                    if (flag) 
+                    if (flag)
+                    {
                         await _schedulerSetupService.SaveWithProcAsync(dtos);                    
+                        await _schedulerLogService.SaveWithProcAsync(scheduler.SchedulerName);
+                    }
+                                           
                 }
                
             }            
