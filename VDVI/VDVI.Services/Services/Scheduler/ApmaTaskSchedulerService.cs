@@ -1,6 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using VDVI.Repository.Dtos.ApmaDtos.Common;
 using VDVI.Services.Interfaces;
@@ -46,9 +47,14 @@ namespace VDVI.Services
             DateTime currentDateTime = DateTime.UtcNow;
 
             var schedulers = await _schedulerSetupService.FindByAllScheduleAsync();
-
-            foreach (var scheduler in schedulers)
+            var new1 = schedulers.ToList();
+            //foreach (var scheduler in schedulers)
+            //{
+            for (int i = 0; i < new1.Count(); i++)
             {
+                var scheduler = new1[i];
+
+
                 if (currentDateTime > scheduler.NextExecutionDateTime || scheduler.NextExecutionDateTime == null)
                 {
                    

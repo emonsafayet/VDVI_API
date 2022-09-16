@@ -23,7 +23,7 @@ namespace VDVI.Services
         }
         public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate)
         {            
-            DateTime nextExecutionDate = lastExecutionDate.AddYears(1).AddSeconds(1);
+            DateTime nextExecutionDate = lastExecutionDate.AddMonths(12).AddSeconds(1);
             DateTime tempDate = lastExecutionDate;
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
@@ -37,9 +37,10 @@ namespace VDVI.Services
                      {
                          var endDate = tempDate.AddDays(dayRange);
                          endDate = endDate > nextExecutionDate ? nextExecutionDate : endDate;
-
-                         foreach (string propertyCode in ApmaProperties)
+                         
+                         for (int i = 0; i < ApmaProperties.Length; i++)
                          {
+                             var propertyCode = ApmaProperties[i];
                              var res = await client.HcsBISourceStatisticsAsync(pmsAuthentication, PropertyCode: propertyCode, StartDate: tempDate, EndDate: endDate, "", "");
 
                              var sourceStats = res.HcsBISourceStatisticsResult.SourceStatistics.ToList();
