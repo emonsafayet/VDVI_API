@@ -4,7 +4,7 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.DB
 {
-    [Table("[hce].[ManagementSummary_RoomSummary]")]
+    [Table("[hce].[ManagementSummaryRoomSummary]")]
     public class DbRoomSummary : Audit
     {
         public string PropertyCode { get; set; }

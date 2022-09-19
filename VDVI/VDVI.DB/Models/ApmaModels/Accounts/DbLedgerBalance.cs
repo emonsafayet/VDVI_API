@@ -4,7 +4,7 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.DB
 {
-    [Table("[hce].[ManagementSummary_LedgerBalance]")]
+    [Table("[hce].[ManagementSummaryLedgerBalance]")]
     public class DbLedgerBalance: Audit
     {
         public string PropertyCode { get; set; }
