@@ -16,9 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\ApmaRepository\Implementation\Accounts\Future\" />
     <Folder Include="Repository\ApmaRepository\Implementation\RoomSummary\Future\" />
-    <Folder Include="Repository\ApmaRepository\Interfaces\Accounts\Future\" />
     <Folder Include="Repository\ApmaRepository\Interfaces\RoomSummary\Future\" />
   </ItemGroup>
 

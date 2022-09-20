@@ -23,21 +23,17 @@ namespace VDVI.ApmaRepository
         public IHcsLedgerBalanceRepository HcsLedgerBalanceRepository => new HcsLedgerBalanceRepository(_dbContext);
         public IHcsBIRevenueHistoryRepository HcsBIRevenueHistoryRepository => new HcsBIRevenueHistoryRepository(_dbContext);
         public IHcsBIRatePlanStatisticsHistoryRepository HcsBIRatePlanStatisticsHistoryRepository => new HcsBIRatePlanStatisticsHistoryRepository(_dbContext);
+        public IHcsBIRatePlanStatisticsFutureRepository HcsBIRatePlanStatisticsFutureRepository => new HcsBIRatePlanStatisticsFutureRepository(_dbContext);
 
         // RoomSummary
         public IHcsRoomSummaryRepository HcsRoomSummaryRepository => new HcsRoomSummaryRepository(_dbContext);
-
         public IHcsBIOccupancyHistoryRepository HcsBIOccupancyHistoryRepository => new HcsBIOccupancyHistoryRepository(_dbContext);
-
         public IHcsBIRoomsHistoryRepository HcsBIRoomsHistoryRepository => new HcsBIRoomsHistoryRepository(_dbContext);
-
         public IHcsBIReservationHistoryRepository HcsBIReservationHistoryRepository => new HcsBIReservationHistoryRepository(_dbContext);
 
         // SourceStatistics
         public IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository => new HcsBISourceStatisticsHistoryRepository(_dbContext);
-
         public IHcsBISourceStatisticsFutureRepository HcsBISourceStatisticsFutureRepository => new HcsBISourceStatisticsFutureRepository(_dbContext);
-
         public IHcsBISourceStatisticsFutureAuditRepository HcsBISourceStatisticsFutureAuditRepository => new HcsBISourceStatisticsFutureAuditRepository(_dbContext);
     }
 }
