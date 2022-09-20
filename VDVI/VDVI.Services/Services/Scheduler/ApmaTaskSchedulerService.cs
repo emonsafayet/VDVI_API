@@ -49,8 +49,7 @@ namespace VDVI.Services
 
             var schedulers = await _schedulerSetupService.FindByAllScheduleAsync();
             var new1 = schedulers.ToList();
-            //foreach (var scheduler in schedulers)
-            //{
+
             for (int i = 0; i < new1.Count(); i++)
             {
                 var scheduler = new1[i];
@@ -74,12 +73,10 @@ namespace VDVI.Services
                     }
 
                     // for future Method
-                    else if (scheduler.isFuture
-                        && scheduler.NextExecutionDateTime == null)
+                    else if (scheduler.isFuture && scheduler.NextExecutionDateTime == null)
                         _startDate = new DateTime(currentDateTime.Year, currentDateTime.Month, currentDateTime.Day, 0, 0, 0);
 
-                    else if (scheduler.isFuture
-                        && scheduler.NextExecutionDateTime != null)
+                    else if (scheduler.isFuture && scheduler.NextExecutionDateTime != null)
                         _startDate = (DateTime)scheduler.NextExecutionDateTime;
 
                     switch (scheduler.SchedulerName)
