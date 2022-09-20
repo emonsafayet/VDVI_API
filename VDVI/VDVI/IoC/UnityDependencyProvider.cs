@@ -50,9 +50,8 @@ namespace VDVI.Client.IoC
             container.RegisterType<IHcsBIRevenueHistoryService, HcsBIRevenueHistoryService>();
 
             
-            container.RegisterType<IHcsSourceStasticsFutureService, HcsSourceStasticsFutureService>(); 
-            
-
+            container.RegisterType<IHcsSourceStasticsFutureService, HcsSourceStasticsFutureService>();
+            container.RegisterType<IHcsRatePlanStatisticsFutureService, HcsRatePlanStatisticsFutureService>();
         }
     }
 }
