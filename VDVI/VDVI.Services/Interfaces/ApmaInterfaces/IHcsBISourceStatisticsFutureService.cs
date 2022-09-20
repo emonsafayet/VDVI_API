@@ -9,6 +9,6 @@ namespace VDVI.Services.Interfaces
 {
     public interface IHcsBISourceStatisticsFutureService
     {
-       Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate);
+       Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate,int dayDifference);
     }
 }

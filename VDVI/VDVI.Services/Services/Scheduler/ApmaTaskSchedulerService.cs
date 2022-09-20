@@ -55,7 +55,8 @@ namespace VDVI.Services
                 var scheduler = new1[i];
 
 
-                if (currentDateTime > scheduler.NextExecutionDateTime || scheduler.NextExecutionDateTime == null)
+                if (scheduler.NextExecutionDateTime<= currentDateTime
+                    || scheduler.NextExecutionDateTime == null)
                 {
                    
                     //History
@@ -99,7 +100,7 @@ namespace VDVI.Services
                             break;
 
                         case "HcsBISourceStatisticsFuture":
-                            response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate);
+                            response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate, scheduler.DayDifference);
                             flag = response.IsSuccess;
                             break;
 
@@ -109,8 +110,8 @@ namespace VDVI.Services
 
                     dtos.LastExecutionDateTime = scheduler.isFuture==false? _endDate:_startDate;
                     dtos.NextExecutionDateTime = scheduler.isFuture == false?
-                                                _endDate.AddHours(scheduler.NextExecutionHour):
-                                                _startDate.AddHours(scheduler.NextExecutionHour);
+                                                _endDate.AddMinutes(scheduler.ExecutionIntervalMins):
+                                                _startDate.AddMinutes(scheduler.ExecutionIntervalMins);
                     dtos.SchedulerName = scheduler.SchedulerName;
 
                     if (flag)
