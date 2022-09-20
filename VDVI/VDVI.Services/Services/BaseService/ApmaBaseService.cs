@@ -8,21 +8,16 @@ namespace VDVI.Services
 {
     public class ApmaBaseService
     {
-        public SOAPService.HybridCloudEngineSoapClient client = new SOAPService.HybridCloudEngineSoapClient(SOAPService.HybridCloudEngineSoapClient.EndpointConfiguration.HybridCloudEngineSoap);
-        public static string ApmaAuthToken = null;
+        public HybridCloudEngineSoapClient client = new HybridCloudEngineSoapClient(HybridCloudEngineSoapClient.EndpointConfiguration.HybridCloudEngineSoap);
         public static string[] ApmaProperties;
         public static Authentication ApmaAuthCredential;
 
-
         IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
-        // Duplicate here any configuration sources you use.        
-
+        AuthenticationResponse authenticationResponse = new AuthenticationResponse();   
 
         public IConfiguration _config;
         public ApmaBaseService()
         {
-
-
             configurationBuilder.AddJsonFile("AppSettings.json");
             _config = configurationBuilder.Build();
         }
@@ -32,20 +27,19 @@ namespace VDVI.Services
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             if (ApmaAuthCredential != null)
-
                 return ApmaAuthCredential;
 
 
-            if (string.IsNullOrEmpty(ApmaAuthToken))
-                GetApmaApplicationToken();
+            if (authenticationResponse.UTCExpirationDate < DateTime.UtcNow) // Token validation
+                GetApmaApplicationResponse();
 
-            var authCredential = new SOAPService.Authentication
+            var authCredential = new Authentication
             {
                 User = _config.GetSection("AuthenticationCredential").GetSection("pmsUser").Value,
                 Password = _config.GetSection("AuthenticationCredential").GetSection("pmsPassword").Value,
                 VendorId = _config.GetSection("AuthenticationCredential").GetSection("pmsVendorId").Value,
                 CrsProperty = _config.GetSection("AuthenticationCredential").GetSection("pmsCrsProperty").Value,
-                Token = ApmaAuthToken
+                Token = authenticationResponse.Token
             };
 
 
@@ -58,22 +52,21 @@ namespace VDVI.Services
             return authCredential;
         }
 
-        public string GetApmaApplicationToken()
+        public AuthenticationResponse GetApmaApplicationResponse()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             //request
-            SOAPService.AuthenticationRequest authenticationRequest = new SOAPService.AuthenticationRequest
+            AuthenticationRequest authenticationRequest = new AuthenticationRequest
             {
                 User = _config.GetSection("AuthenticationCredential").GetSection("pmsUser").Value,
                 Password = _config.GetSection("AuthenticationCredential").GetSection("pmsPassword").Value,
                 VendorId = _config.GetSection("AuthenticationCredential").GetSection("pmsVendorId").Value
             };
 
-            SOAPService.AuthenticationResponse authenticationResponse = client.HceAuthenticateAsync(authenticationRequest).Result;
-
-            ApmaAuthToken = authenticationResponse.Token;
-            return authenticationResponse.Token;
+            authenticationResponse = client.HceAuthenticateAsync(authenticationRequest).Result; 
+            
+            return authenticationResponse;
         }
 
         public string[] GetApmaProperties(Authentication pmsAuthentication)
