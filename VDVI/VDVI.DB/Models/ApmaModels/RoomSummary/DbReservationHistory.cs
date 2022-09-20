@@ -27,5 +27,4 @@ namespace VDVI.Repository.DB
         public int NoShowProcessed { get; set; }
         public int NoShowUnprocessed { get; set; }
     }
-
 }
