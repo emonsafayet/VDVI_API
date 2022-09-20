@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.Models.ApmaModels.Accounts
+namespace VDVI.Repository.DB
 {
     [Table("[hce].[RatePlanStatisticsFuture]")]
     public class DbRatePlanStatisticFuture : Audit

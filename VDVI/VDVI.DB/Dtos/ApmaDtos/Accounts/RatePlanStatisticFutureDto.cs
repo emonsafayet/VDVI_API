@@ -1,7 +1,7 @@
 ﻿using System;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.Dtos.ApmaDtos.Accounts
+namespace VDVI.Repository.Dtos.Accounts
 {
     public class RatePlanStatisticFutureDto : Audit
     {
