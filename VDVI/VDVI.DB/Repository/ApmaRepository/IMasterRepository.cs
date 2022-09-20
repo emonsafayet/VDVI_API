@@ -12,6 +12,7 @@ namespace VDVI.ApmaRepository
         // Accounts
         IHcsLedgerBalanceRepository HcsLedgerBalanceRepository { get; }
         IHcsBIRatePlanStatisticsHistoryRepository HcsBIRatePlanStatisticsHistoryRepository { get; }
+        IHcsBIRatePlanStatisticsFutureRepository HcsBIRatePlanStatisticsFutureRepository { get; }
         IHcsBIRevenueHistoryRepository HcsBIRevenueHistoryRepository { get; }
 
         // RoomSummary
