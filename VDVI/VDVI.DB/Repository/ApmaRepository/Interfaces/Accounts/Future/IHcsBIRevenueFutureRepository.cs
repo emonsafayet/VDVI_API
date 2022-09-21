@@ -5,7 +5,7 @@ using VDVI.Repository.Dtos.Accounts;
 
 namespace VDVI.ApmaRepository.Interfaces
 {
-    internal interface IHcsBIRevenueFutureRepository
+    public interface IHcsBIRevenueFutureRepository
     {
         Task<RevenueFutureDto> InsertAsync(RevenueFutureDto dto);
         Task<IEnumerable<RevenueFutureDto>> BulkInsertAsync(IEnumerable<RevenueFutureDto> dto);

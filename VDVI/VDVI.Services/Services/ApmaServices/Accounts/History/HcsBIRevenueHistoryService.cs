@@ -4,11 +4,7 @@ using Framework.Core.Exceptions;
 using Framework.Core.Utility;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using VDVI.DB.Dtos;
-using VDVI.Repository.ApmaRepository;
-using VDVI.ApmaRepository.Interfaces;
 using VDVI.Repository.Dtos.Accounts;
 using VDVI.Services.Interfaces;
 using VDVI.ApmaRepository;
@@ -17,7 +13,6 @@ namespace VDVI.Services
 {
     public class HcsBIRevenueHistoryService : IHcsBIRevenueHistoryService
     {
-
         private readonly IMasterRepository _masterRepository;
         public HcsBIRevenueHistoryService(IMasterRepository masterRepository)
         {
