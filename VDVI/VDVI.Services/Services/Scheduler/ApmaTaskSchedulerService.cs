@@ -80,7 +80,10 @@ namespace VDVI.Services
                     else if (scheduler.isFuture && scheduler.NextExecutionDateTime != null)
                         _startDate = (DateTime)scheduler.NextExecutionDateTime;
 
-                    if (_endDate >= DateTime.UtcNow) _endDate = DateTime.UtcNow.AddDays(-1);
+                    if (_endDate >= currentDateTime) _endDate = currentDateTime.AddDays(-1);
+
+                    //regular endDate
+                    if (_endDate.Date < _startDate.Date) _endDate = _startDate;
 
                     switch (scheduler.SchedulerName)
                     {
