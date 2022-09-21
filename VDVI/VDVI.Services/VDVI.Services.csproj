@@ -20,9 +20,4 @@
     <ProjectReference Include="..\VDVI.DB\VDVI.Repository.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\ApmaInterfaces\RoomSummary\Future\" />
-    <Folder Include="Services\ApmaServices\RoomSummary\Future\" />
-  </ItemGroup>
-
 </Project>

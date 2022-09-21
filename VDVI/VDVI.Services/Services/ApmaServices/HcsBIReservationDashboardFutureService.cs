@@ -1,34 +1,33 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
-using Framework.Core.Utility; 
+using Framework.Core.Utility;
 using SOAPService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VDVI.ApmaRepository.Interfaces;
 using VDVI.Repository.Dtos.Accounts;
 using VDVI.Repository.Dtos.RoomSummary;
 using VDVI.Services.Interfaces;
 
-namespace VDVI.Services
+namespace VDVI.Services.Services.ApmaServices
 {
-    public class HcsBIReservationDashboardHistoryService : ApmaBaseService, IHcsBIReservationDashboardHistoryService
-    {         
-        public HcsBIReservationDashboardHistoryService(IHcsBIRevenueHistoryService hcsBIRevenueHistoryService, IHcsBIOccupancyHistoryService hcsBIOccupancyHistoryService,
-                                           IHcsBIRoomsHistoryService hcsBIRoomsHistoryService, IHcsBIReservationHistoryService hcsBIReservationHistoryService)
+    public class HcsBIReservationDashboardFutureService : ApmaBaseService, IHcsBIReservationDashboardFutureService
+    {
+        public HcsBIReservationDashboardFutureService(IHcsBIRevenueFutureService hcsBIRevenueFutureService, IHcsBIOccupancyFutureService hcsBIOccupancyFutureService,
+                                           IHcsBIRoomsFutureService hcsBIRoomsFutureService, IHcsBIReservationFutureService hcsBIReservationFutureService)
         {
-            _hcsBIRevenueHistoryService = hcsBIRevenueHistoryService;
-            _hcsBIOccupancyHistoryService = hcsBIOccupancyHistoryService;
-            _hcsBIReservationHistoryService = hcsBIReservationHistoryService;
-            _hcsBIRoomsHistoryService = hcsBIRoomsHistoryService;
+            _hcsBIRevenueFutureService = hcsBIRevenueFutureService;
+            _hcsBIOccupancyFutureService = hcsBIOccupancyFutureService;
+            _hcsBIReservationFutureService = hcsBIReservationFutureService;
+            _hcsBIRoomsFutureService = hcsBIRoomsFutureService;
         }
 
-        public IHcsBIRevenueHistoryService _hcsBIRevenueHistoryService ;
-        public IHcsBIOccupancyHistoryService _hcsBIOccupancyHistoryService ;
-        public IHcsBIReservationHistoryService _hcsBIReservationHistoryService ;
-        public IHcsBIRoomsHistoryService _hcsBIRoomsHistoryService ;
+        public IHcsBIRevenueFutureService _hcsBIRevenueFutureService;
+        public IHcsBIOccupancyFutureService _hcsBIOccupancyFutureService;
+        public IHcsBIReservationFutureService _hcsBIReservationFutureService;
+        public IHcsBIRoomsFutureService _hcsBIRoomsFutureService;
 
         public async Task<Result<PrometheusResponse>> HcsBIReservationDashboardRepositoryAsyc(DateTime StartDate, DateTime EndDate)
         {
@@ -37,10 +36,10 @@ namespace VDVI.Services
                           {
                               Authentication pmsAuthentication = GetApmaAuthCredential();
 
-                              List<OccupancyHistoryDto> occupancies = new List<OccupancyHistoryDto>();
-                              List<ReservationHistoryDto> reservations = new List<ReservationHistoryDto>();
-                              List<RevenueHistoryDto> revenues = new List<RevenueHistoryDto>();
-                              List<RoomsHistoryDto> rooms = new List<RoomsHistoryDto>();
+                              List<OccupancyFutureDto> occupancies = new List<OccupancyFutureDto>();
+                              List<ReservationFutureDto> reservations = new List<ReservationFutureDto>();
+                              List<RevenueFutureDto> revenues = new List<RevenueFutureDto>();
+                              List<RoomsFutureDto> rooms = new List<RoomsFutureDto>();
 
                               foreach (string property in ApmaProperties)
                               {
@@ -52,10 +51,10 @@ namespace VDVI.Services
                               }
 
                               // DB operation
-                              var dboccupanciesRes = _hcsBIOccupancyHistoryService.BulkInsertWithProcAsync(occupancies);
-                              var dbroomsRes = _hcsBIRoomsHistoryService.BulkInsertWithProcAsync(rooms);
-                              var dbreservationsRes = _hcsBIReservationHistoryService.BulkInsertWithProcAsync(reservations);
-                              var dbrevenuesRes = _hcsBIRevenueHistoryService.BulkInsertWithProcAsync(revenues);
+                              var dboccupanciesRes = _hcsBIOccupancyFutureService.BulkInsertWithProcAsync(occupancies);
+                              var dbroomsRes = _hcsBIRoomsFutureService.BulkInsertWithProcAsync(rooms);
+                              var dbreservationsRes = _hcsBIReservationFutureService.BulkInsertWithProcAsync(reservations);
+                              var dbrevenuesRes = _hcsBIRevenueFutureService.BulkInsertWithProcAsync(revenues);
 
                               return PrometheusResponse.Success("", "Data retrieval is successful");
                           },
@@ -67,11 +66,11 @@ namespace VDVI.Services
         }
 
 
-        private void FormatSummaryObject(List<OccupancyHistoryDto> occupancies, List<ReservationHistoryDto> reservations, List<RevenueHistoryDto> revenues,
+        private void FormatSummaryObject(List<OccupancyFutureDto> occupancies, List<ReservationFutureDto> reservations, List<RevenueFutureDto> revenues,
 
-                  List<RoomsHistoryDto> rooms, List<BIDashboardData> dashboard, string propertyCode)
+                  List<RoomsFutureDto> rooms, List<BIDashboardData> dashboard, string propertyCode)
         {
-            List<OccupancyHistoryDto> occupancys = dashboard.Select(x => new OccupancyHistoryDto()
+            List<OccupancyFutureDto> occupancys = dashboard.Select(x => new OccupancyFutureDto()
             {
                 Percentage = x.Occupancy.Percentage,
                 RoomsSold = x.Occupancy.RoomsSold,
@@ -81,7 +80,7 @@ namespace VDVI.Services
             }).ToList();
             occupancies.AddRange(occupancys);
 
-            List<ReservationHistoryDto> reservation = dashboard.Select(x => new ReservationHistoryDto()
+            List<ReservationFutureDto> reservation = dashboard.Select(x => new ReservationFutureDto()
             {
                 CreatedReservations = x.Reservation.CreatedReservations,
                 CreatedRoomNights = x.Reservation.CreatedRoomNights,
@@ -103,13 +102,13 @@ namespace VDVI.Services
             }).ToList();
             reservations.AddRange(reservation);
 
-            List<RevenueHistoryDto> revenue = dashboard.Select(x => new RevenueHistoryDto()
+            List<RevenueFutureDto> revenue = dashboard.Select(x => new RevenueFutureDto()
             {
                 TypeA = x.Revenue.TypeA,
                 TypeB = x.Revenue.TypeB,
-                TypeC = x.Revenue.TypeC, 
-                TypeD= x.Revenue.TypeD,
-                TypeE= x.Revenue.TypeE,
+                TypeC = x.Revenue.TypeC,
+                TypeD = x.Revenue.TypeD,
+                TypeE = x.Revenue.TypeE,
                 TypeF = x.Revenue.TypeF,
                 Undefined = x.Revenue.Undefined,
                 AverageDailyRate = x.Revenue.AverageDailyRate,
@@ -121,7 +120,7 @@ namespace VDVI.Services
             }).ToList();
             revenues.AddRange(revenue);
 
-            List<RoomsHistoryDto> room = dashboard.Select(x => new RoomsHistoryDto()
+            List<RoomsFutureDto> room = dashboard.Select(x => new RoomsFutureDto()
             {
                 Inventory = x.Rooms.Inventory,
                 OutOfInventory = x.Rooms.OutOfInventory,

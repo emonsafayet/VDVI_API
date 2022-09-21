@@ -11,21 +11,21 @@ using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
-    public class HcsBIRoomsHistoryService : IHcsBIRoomsHistoryService
+    public class HcsBIReservationFutureService: IHcsBIReservationFutureService
     {
-        private readonly IMasterRepository _managementRepository;
+        private readonly IMasterRepository _masterRepository;
 
-        public HcsBIRoomsHistoryService(IMasterRepository managementRepository)
+        public HcsBIReservationFutureService(IMasterRepository managementRepository)
         {
-            _managementRepository = managementRepository;
+            _masterRepository = managementRepository;
         }
 
-        public async Task<Result<PrometheusResponse>> InsertAsync(RoomsHistoryDto dto)
+        public async Task<Result<PrometheusResponse>> InsertAsync(ReservationFutureDto dto)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    dto = await _managementRepository.HcsBIRoomsHistoryRepository.InsertAsync(dto);
+                    dto = await _masterRepository.HcsBIReservationFutureRepository.InsertAsync(dto);
 
                     return PrometheusResponse.Success(dto, "Data saved successful");
                 },
@@ -36,13 +36,13 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<RoomsHistoryDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<ReservationFutureDto> dtos)
         {
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _managementRepository.HcsBIRoomsHistoryRepository.BulkInsertAsync(dtos);
+                    var resp = await _masterRepository.HcsBIReservationFutureRepository.BulkInsertAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -53,12 +53,12 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<RoomsHistoryDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<ReservationFutureDto> dtos)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _managementRepository.HcsBIRoomsHistoryRepository.BulkInsertWithProcAsync(dtos);
+                    var resp = await _masterRepository.HcsBIReservationFutureRepository.BulkInsertWithProcAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -74,7 +74,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dtos = await _managementRepository.HcsBIRoomsHistoryRepository.GetAllByPropertyCodeAsync(propertyCode);
+                    var dtos = await _masterRepository.HcsBIReservationFutureRepository.GetAllByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success(dtos, "Data saved successful");
                 },
@@ -90,7 +90,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _managementRepository.HcsBIRoomsHistoryRepository.DeleteByPropertyCodeAsync(propertyCode);
+                    var dbroomSummariesRes = await _masterRepository.HcsBIReservationFutureRepository.DeleteByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },
@@ -106,7 +106,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _managementRepository.HcsBIRoomsHistoryRepository.DeleteByDashboardDateAsync(businessDate);
+                    var dbroomSummariesRes = await _masterRepository.HcsBIReservationFutureRepository.DeleteByDashboardDateAsync(businessDate);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },
