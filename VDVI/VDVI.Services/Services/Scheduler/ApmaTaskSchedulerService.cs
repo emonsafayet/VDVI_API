@@ -113,7 +113,7 @@ namespace VDVI.Services
                             break;
                     }
 
-                    dtos.LastExecutionDateTime = scheduler.isFuture==false? _endDate:_startDate;
+                    dtos.LastExecutionDateTime = scheduler.isFuture==false? _endDate.Date:_startDate.Date;
                     dtos.NextExecutionDateTime = scheduler.isFuture == false?
                                                 _endDate.AddMinutes(scheduler.ExecutionIntervalMins):
                                                 _startDate.AddMinutes(scheduler.ExecutionIntervalMins);
