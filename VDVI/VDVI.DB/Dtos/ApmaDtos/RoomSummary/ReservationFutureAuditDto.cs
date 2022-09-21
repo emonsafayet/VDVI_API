@@ -3,7 +3,7 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.Dtos.RoomSummary
 {
-    public class ReservationHistoryDto : Audit
+    public class ReservationFutureAuditDto : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? DashboardDate { get; set; }
