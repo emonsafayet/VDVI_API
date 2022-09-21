@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VDVI.Repository.Dtos.ApmaDtos.Common;
 using VDVI.Services.Interfaces;
+using VDVI.Services.Services.ApmaServices;
 
 namespace VDVI.Services
 {
@@ -12,7 +13,9 @@ namespace VDVI.Services
     {
         private readonly IHcsReportManagementSummaryService _reportSummary;
         private readonly IHcsBIReservationDashboardHistoryService _hcsBIReservationDashboardHistoryService;
+        private readonly IHcsBIReservationDashboardFutureService _hcsBIReservationDashboardFutureService;
         private readonly IHcsBIRatePlanStatisticsHistoryService _hcsBIRatePlanStatisticsHistoryService;
+        private readonly IHcsBIRatePlanStatisticsFutureService _hcsBIRatePlanStatisticsFutureService;
         private readonly IHcsBISourceStatisticsHistoryService _hcsBISourceStatisticsHistoryService;
 
         private readonly IHcsBISourceStatisticsFutureService _hcsBISourceStatisticsFutureService;
@@ -25,7 +28,9 @@ namespace VDVI.Services
         public ApmaTaskSchedulerService(
             IHcsReportManagementSummaryService reportSummary,
             IHcsBIReservationDashboardHistoryService hcsBIReservationDashboardHistoryService,
+            IHcsBIReservationDashboardFutureService hcsBIReservationDashboardFutureService,
             IHcsBIRatePlanStatisticsHistoryService hcsBIRatePlanStatisticsHistoryService,
+            IHcsBIRatePlanStatisticsFutureService hcsBIRatePlanStatisticsFutureService,
             IHcsBISourceStatisticsHistoryService hcsBISourceStatisticsHistoryService
             , IHcsBISourceStatisticsFutureService hcsBISourceStatisticsFutureService
            , ISchedulerSetupService schedulerSetupService
@@ -35,7 +40,9 @@ namespace VDVI.Services
         {
             _reportSummary = reportSummary;
             _hcsBIReservationDashboardHistoryService = hcsBIReservationDashboardHistoryService;
+            _hcsBIReservationDashboardFutureService = hcsBIReservationDashboardFutureService;
             _hcsBIRatePlanStatisticsHistoryService = hcsBIRatePlanStatisticsHistoryService;
+            _hcsBIRatePlanStatisticsFutureService = hcsBIRatePlanStatisticsFutureService;
             _hcsBISourceStatisticsHistoryService = hcsBISourceStatisticsHistoryService;
             _hcsBISourceStatisticsFutureService = hcsBISourceStatisticsFutureService;
             _schedulerSetupService = schedulerSetupService;
@@ -94,8 +101,16 @@ namespace VDVI.Services
                             response = await _hcsBIRatePlanStatisticsHistoryService.HcsBIRatePlanStatisticsRepositoryHistoryAsyc(_startDate, _endDate);
                             flag = response.IsSuccess;
                             break;
+                        case "HcsBIRatePlanStatisticsFuture":
+                            response = await _hcsBIRatePlanStatisticsFutureService.HcsBIRatePlanStatisticsRepositoryFutureAsyc(_startDate, _endDate);
+                            flag = response.IsSuccess;
+                            break;
                         case "HcsBIReservationDashboardHistory":
                             response = await _hcsBIReservationDashboardHistoryService.HcsBIReservationDashboardRepositoryAsyc(_startDate, _endDate);
+                            flag = response.IsSuccess;
+                            break;
+                        case "HcsBIReservationDashboardFuture":
+                            response = await _hcsBIReservationDashboardFutureService.HcsBIReservationDashboardRepositoryAsyc(_startDate, _endDate);
                             flag = response.IsSuccess;
                             break;
                         case "HcsBISourceStatisticsHistory":
