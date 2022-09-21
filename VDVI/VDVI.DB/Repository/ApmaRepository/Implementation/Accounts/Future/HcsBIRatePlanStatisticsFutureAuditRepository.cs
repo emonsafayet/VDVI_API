@@ -25,16 +25,6 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             _tblRepository = _dbContext.RatePlanStatisticFutureAudit;
         }
 
-
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<RatePlanStatisticFutureAuditDto> dto)
-        {
-            DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
-
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_RatePlanStatistics_Future_Audit", new { RatePlanStatistics_Future_UDT = dt }, commandType: CommandType.StoredProcedure);
-
-            return queryResult.ToString();
-        }
-
         public async Task<IEnumerable<RatePlanStatisticFutureAuditDto>> BulkInsertAsync(IEnumerable<RatePlanStatisticFutureAuditDto> dto)
         {
             var dbEntity = TinyMapper.Map<List<DbRatePlanStatisticFutureAudit>>(dto);

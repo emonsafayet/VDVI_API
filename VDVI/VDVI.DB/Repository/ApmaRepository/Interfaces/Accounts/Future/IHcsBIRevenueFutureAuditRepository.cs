@@ -9,7 +9,6 @@ namespace VDVI.ApmaRepository.Interfaces
     {
         Task<RevenueFutureAuditDto> InsertAsync(RevenueFutureAuditDto dto);
         Task<IEnumerable<RevenueFutureAuditDto>> BulkInsertAsync(IEnumerable<RevenueFutureAuditDto> dto);
-        Task<string> BulkInsertWithProcAsync(IEnumerable<RevenueFutureAuditDto> dto);
         Task<RevenueFutureAuditDto> UpdateAsync(RevenueFutureAuditDto dto);
         Task<IEnumerable<RevenueFutureAuditDto>> GetAllByPropertyCodeAsync(string propertyCode);
         Task<RevenueFutureAuditDto> FindByIdAsync(int id);

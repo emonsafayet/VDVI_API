@@ -25,15 +25,6 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             _tblRepository = _dbContext.OccupancyFutureAudit;
         }
 
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<OccupancyFutureAuditDto> dto)
-        {
-            DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
-
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_ReservationDashboard_Occupancy_Future_Audit", new { ReservationDashboard_Occupancy_History_UDT = dt }, commandType: CommandType.StoredProcedure);
-
-            return queryResult.ToString();
-        }
-
         public async Task<IEnumerable<OccupancyFutureAuditDto>> BulkInsertAsync(IEnumerable<OccupancyFutureAuditDto> dto)
         {
             var dbEntity = TinyMapper.Map<List<DbOccupancyFutureAudit>>(dto);
