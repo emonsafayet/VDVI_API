@@ -22,14 +22,18 @@ namespace VDVI.ApmaRepository
         // Accounts
         public IHcsLedgerBalanceRepository HcsLedgerBalanceRepository => new HcsLedgerBalanceRepository(_dbContext);
         public IHcsBIRevenueHistoryRepository HcsBIRevenueHistoryRepository => new HcsBIRevenueHistoryRepository(_dbContext);
+        public IHcsBIRevenueFutureRepository HcsBIRevenueFutureRepository => new HcsBIRevenueFutureRepository(_dbContext);
         public IHcsBIRatePlanStatisticsHistoryRepository HcsBIRatePlanStatisticsHistoryRepository => new HcsBIRatePlanStatisticsHistoryRepository(_dbContext);
         public IHcsBIRatePlanStatisticsFutureRepository HcsBIRatePlanStatisticsFutureRepository => new HcsBIRatePlanStatisticsFutureRepository(_dbContext);
 
         // RoomSummary
         public IHcsRoomSummaryRepository HcsRoomSummaryRepository => new HcsRoomSummaryRepository(_dbContext);
         public IHcsBIOccupancyHistoryRepository HcsBIOccupancyHistoryRepository => new HcsBIOccupancyHistoryRepository(_dbContext);
+        public IHcsBIOccupancyFutureRepository HcsBIOccupancyFutureRepository => new HcsBIOccupancyFutureRepository(_dbContext);
         public IHcsBIRoomsHistoryRepository HcsBIRoomsHistoryRepository => new HcsBIRoomsHistoryRepository(_dbContext);
+        public IHcsBIRoomsFutureRepository HcsBIRoomsFutureRepository => new HcsBIRoomsFutureRepository(_dbContext);
         public IHcsBIReservationHistoryRepository HcsBIReservationHistoryRepository => new HcsBIReservationHistoryRepository(_dbContext);
+        public IHcsBIReservationFutureRepository HcsBIReservationFutureRepository => new HcsBIReservationFutureRepository(_dbContext);
 
         // SourceStatistics
         public IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository => new HcsBISourceStatisticsHistoryRepository(_dbContext);
