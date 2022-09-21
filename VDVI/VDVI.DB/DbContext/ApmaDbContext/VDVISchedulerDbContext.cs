@@ -35,6 +35,11 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         private IDapperRepository<DbRoomsFuture> _roomsFuture;
         private IDapperRepository<DbReservationFuture> _reservationFuture;
         private IDapperRepository<DbOccupancyFuture> _occupancyFuture;
+        private IDapperRepository<DbRatePlanStatisticFutureAudit> _ratePlanStatisticFutureAudit;
+        private IDapperRepository<DbRoomsFutureAudit> _roomsFutureAudit;
+        private IDapperRepository<DbOccupancyFutureAudit> _occupancyFutureAudit;
+        private IDapperRepository<DbReservationFutureAudit> _reservationFutureAudit;
+        private IDapperRepository<DbRevenueFutureAudit> _revenueFutureAudit;
 
         public VDVISchedulerDbContext(IConfiguration configuration) : base(new SqlConnection(configuration["ConnectionStrings:ApmaDb"]))
         {
@@ -55,6 +60,12 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
             TinyMapper.Bind<ReservationFutureDto, DbReservationFuture>();
             TinyMapper.Bind<RoomsFutureDto, DbRoomsFuture>();
             TinyMapper.Bind<RevenueFutureDto, DbRevenueFuture>();
+            TinyMapper.Bind<RatePlanStatisticFutureDto, DbRatePlanStatisticFuture>();
+            TinyMapper.Bind<RatePlanStatisticFutureAuditDto, DbRatePlanStatisticFutureAudit>();
+            TinyMapper.Bind<RoomsFutureAuditDto, DbRoomsFutureAudit>();
+            TinyMapper.Bind<OccupancyFutureAuditDto, DbOccupancyFutureAudit>();
+            TinyMapper.Bind<ReservationFutureAuditDto, DbReservationFutureAudit>();
+            TinyMapper.Bind<RevenueFutureAuditDto, DbRevenueFutureAudit>();
 
         // Dto to Db List
         TinyMapper.Bind<List<SchedulerLogDto>, List<DbSchedulerLog>>();
@@ -69,10 +80,16 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
             TinyMapper.Bind<List<RevenueHistoryDto>, List<DbRevenueHistory>>();
             TinyMapper.Bind<List<SourceStatisticFutureDto>, List<DbSourceStatisticFuture>>();
             TinyMapper.Bind<List<SourceStatisticsFutureAuditDto>,List<DbSourceStatisticFutureAudit>>();
-            TinyMapper.Bind< List<OccupancyFutureDto>, List<DbOccupancyFuture>>();
-            TinyMapper.Bind< List<ReservationFutureDto>, List<DbReservationFuture>>();
-            TinyMapper.Bind< List<RoomsFutureDto>, List<DbRoomsFuture>>();
-            TinyMapper.Bind< List<RevenueFutureDto>, List<DbRevenueFuture>>();
+            TinyMapper.Bind<List<OccupancyFutureDto>, List<DbOccupancyFuture>>();
+            TinyMapper.Bind<List<ReservationFutureDto>, List<DbReservationFuture>>();
+            TinyMapper.Bind<List<RoomsFutureDto>, List<DbRoomsFuture>>();
+            TinyMapper.Bind<List<RevenueFutureDto>, List<DbRevenueFuture>>();
+            TinyMapper.Bind<List<RatePlanStatisticFutureDto>, List<DbRatePlanStatisticFuture>>();
+            TinyMapper.Bind<List<RatePlanStatisticFutureAuditDto>, List<DbRatePlanStatisticFutureAudit>>();
+            TinyMapper.Bind<List<RoomsFutureAuditDto>, List<DbRoomsFutureAudit>>();
+            TinyMapper.Bind<List<OccupancyFutureAuditDto>, List<DbOccupancyFutureAudit>>();
+            TinyMapper.Bind<List<ReservationFutureAuditDto>, List<DbReservationFutureAudit>>();
+            TinyMapper.Bind<List<RevenueFutureAuditDto>, List<DbRevenueFutureAudit>>();
         }
         public IDapperRepository<DbSchedulerSetup> SchedulerSetup => _schedulerSetup ??= new DapperRepository<DbSchedulerSetup>(Connection);
         public IDapperRepository<DbSchedulerLog> SchedulerLog => _schedulerlog ??= new DapperRepository<DbSchedulerLog>(Connection);
@@ -91,5 +108,10 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         public IDapperRepository<DbRoomsFuture> RoomsFuture => _roomsFuture ??= new DapperRepository<DbRoomsFuture>(Connection);
         public IDapperRepository<DbReservationFuture> ReservationFuture => _reservationFuture ??= new DapperRepository<DbReservationFuture>(Connection);
         public IDapperRepository<DbOccupancyFuture> OccupancyFuture => _occupancyFuture ??= new DapperRepository<DbOccupancyFuture>(Connection);
+        public IDapperRepository<DbRatePlanStatisticFutureAudit> RatePlanStatisticFutureAudit => _ratePlanStatisticFutureAudit ??= new DapperRepository<DbRatePlanStatisticFutureAudit>(Connection);
+        public IDapperRepository<DbRoomsFutureAudit> RoomsFutureAudit => _roomsFutureAudit ??= new DapperRepository<DbRoomsFutureAudit>(Connection);
+        public IDapperRepository<DbOccupancyFutureAudit> OccupancyFutureAudit => _occupancyFutureAudit ??= new DapperRepository<DbOccupancyFutureAudit>(Connection);
+        public IDapperRepository<DbReservationFutureAudit> ReservationFutureAudit => _reservationFutureAudit ??= new DapperRepository<DbReservationFutureAudit>(Connection);
+        public IDapperRepository<DbRevenueFutureAudit> RevenueFutureAudit => _revenueFutureAudit ??= new DapperRepository<DbRevenueFutureAudit>(Connection);
     }
 }
