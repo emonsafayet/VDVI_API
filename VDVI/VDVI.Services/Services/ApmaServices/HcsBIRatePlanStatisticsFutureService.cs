@@ -2,6 +2,7 @@
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
 using Framework.Core.Utility;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 using SOAPService;
 using System;
 using System.Collections.Generic;
@@ -20,23 +21,33 @@ namespace VDVI.Services.Services.ApmaServices
             _hcsRatePlanStatisticsService = hcsRatePlanStatisticsService;
         }
 
-        public async Task<Result<PrometheusResponse>> HcsBIRatePlanStatisticsRepositoryFutureAsyc(DateTime StartDate, DateTime EndDate)
+        public async Task<Result<PrometheusResponse>> HcsBIRatePlanStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate, int dayDifference)
         {
+            DateTime nextExecutionDate = lastExecutionDate.AddMonths(12).AddSeconds(1);
+            DateTime tempDate = lastExecutionDate;
+
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
                     Authentication pmsAuthentication = GetApmaAuthCredential();
 
                     List<RatePlanStatisticFutureDto> dto = new List<RatePlanStatisticFutureDto>();
-
-                    foreach (string property in ApmaProperties)
+                    while (tempDate < nextExecutionDate)
                     {
-                        var res = await client.HcsBIRatePlanStatisticsAsync(pmsAuthentication, PropertyCode: property, StartDate: StartDate, EndDate: EndDate, "", "");
+                        var endDate = tempDate.AddDays(dayDifference);
+                        endDate = endDate > nextExecutionDate ? nextExecutionDate : endDate;
 
-                        var sourceStats = res.HcsBIRatePlanStatisticsResult.RatePlanStatistics.ToList();
+                        for (int i = 0; i < ApmaProperties.Length; i++)
+                        {
+                            var propertyCode = ApmaProperties[i];
+                            var res = await client.HcsBIRatePlanStatisticsAsync(pmsAuthentication, PropertyCode: propertyCode, StartDate: tempDate, EndDate: endDate, "","");
 
-                        FormatSummaryObject(dto, sourceStats, property);
-                    }
+                            var sourceStats = res.HcsBIRatePlanStatisticsResult.RatePlanStatistics.ToList();
+
+                            FormatSummaryObject(dto, sourceStats, propertyCode);
+                        }
+                        tempDate = tempDate.AddDays(dayDifference).AddSeconds(1);
+                    } 
 
                     // DB operation
                     var dboccupanciesRes = _hcsRatePlanStatisticsService.BulkInsertWithProcAsync(dto);

@@ -29,8 +29,11 @@ namespace VDVI.Services.Services.ApmaServices
         public IHcsBIReservationFutureService _hcsBIReservationFutureService;
         public IHcsBIRoomsFutureService _hcsBIRoomsFutureService;
 
-        public async Task<Result<PrometheusResponse>> HcsBIReservationDashboardRepositoryAsyc(DateTime StartDate, DateTime EndDate)
+        public async Task<Result<PrometheusResponse>> HcsBIReservationDashboardRepositoryAsyc(DateTime lastExecutionDate, int dayDifference)
         {
+            DateTime nextExecutionDate = lastExecutionDate.AddMonths(12).AddSeconds(1);
+            DateTime tempDate = lastExecutionDate;
+
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                           async () =>
                           {
@@ -41,15 +44,22 @@ namespace VDVI.Services.Services.ApmaServices
                               List<RevenueFutureDto> revenues = new List<RevenueFutureDto>();
                               List<RoomsFutureDto> rooms = new List<RoomsFutureDto>();
 
-                              foreach (string property in ApmaProperties)
+                              while (tempDate < nextExecutionDate)
                               {
-                                  var res = await client.HcsBIReservationsDashboardAsync(pmsAuthentication, PropertyCode: property, StartDate: StartDate, EndDate: EndDate, "");
+                                  var endDate = tempDate.AddDays(dayDifference);
+                                  endDate = endDate > nextExecutionDate ? nextExecutionDate : endDate;
 
-                                  List<BIDashboardData> dashboard = res.HcsBIReservationsDashboardResult.Dashboard.ToList();
+                                  for (int i = 0; i < ApmaProperties.Length; i++)
+                                  {
+                                      var propertyCode = ApmaProperties[i];
+                                      var res = await client.HcsBIReservationsDashboardAsync(pmsAuthentication, PropertyCode: propertyCode, StartDate: tempDate, EndDate: endDate, "");
 
-                                  FormatSummaryObject(occupancies, reservations, revenues, rooms, dashboard, property);
+                                      List<BIDashboardData> dashboard = res.HcsBIReservationsDashboardResult.Dashboard.ToList();
+
+                                      FormatSummaryObject(occupancies, reservations, revenues, rooms, dashboard, propertyCode);
+                                  }
+                                  tempDate = tempDate.AddDays(dayDifference).AddSeconds(1);
                               }
-
                               // DB operation
                               var dboccupanciesRes = _hcsBIOccupancyFutureService.BulkInsertWithProcAsync(occupancies);
                               var dbroomsRes = _hcsBIRoomsFutureService.BulkInsertWithProcAsync(rooms);

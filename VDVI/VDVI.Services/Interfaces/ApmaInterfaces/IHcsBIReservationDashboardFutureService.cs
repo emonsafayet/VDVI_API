@@ -7,6 +7,6 @@ namespace VDVI.Services.Interfaces
 {
     public interface IHcsBIReservationDashboardFutureService
     {
-        Task<Result<PrometheusResponse>> HcsBIReservationDashboardRepositoryAsyc(DateTime StartDate, DateTime EndDate);
+        Task<Result<PrometheusResponse>> HcsBIReservationDashboardRepositoryAsyc(DateTime lastExecutionDate, int dayDifference);
     }
 }

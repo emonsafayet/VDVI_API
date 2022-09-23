@@ -102,7 +102,7 @@ namespace VDVI.Services
                             flag = response.IsSuccess;
                             break;
                         case "HcsBIRatePlanStatisticsFuture":
-                            response = await _hcsBIRatePlanStatisticsFutureService.HcsBIRatePlanStatisticsRepositoryFutureAsyc(_startDate, _endDate);
+                            response = await _hcsBIRatePlanStatisticsFutureService.HcsBIRatePlanStatisticsRepositoryFutureAsyc(_startDate, scheduler.DayDifference);
                             flag = response.IsSuccess;
                             break;
                         case "HcsBIReservationDashboardHistory":
@@ -110,7 +110,7 @@ namespace VDVI.Services
                             flag = response.IsSuccess;
                             break;
                         case "HcsBIReservationDashboardFuture":
-                            response = await _hcsBIReservationDashboardFutureService.HcsBIReservationDashboardRepositoryAsyc(_startDate, _endDate);
+                            response = await _hcsBIReservationDashboardFutureService.HcsBIReservationDashboardRepositoryAsyc(_startDate, scheduler.DayDifference);
                             flag = response.IsSuccess;
                             break;
                         case "HcsBISourceStatisticsHistory":
