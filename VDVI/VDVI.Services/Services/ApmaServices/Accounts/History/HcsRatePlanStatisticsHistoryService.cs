@@ -5,7 +5,7 @@ using Framework.Core.Utility;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using VDVI.Repository.Dtos.Accounts;
+using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
 using VDVI.ApmaRepository;
 

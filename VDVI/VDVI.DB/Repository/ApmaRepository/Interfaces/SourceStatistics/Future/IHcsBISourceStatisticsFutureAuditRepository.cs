@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using VDVI.Repository.Dtos.Accounts;
-using VDVI.Repository.Dtos.SourceStatistics;
+using VDVI.DB.Dtos;
 
 namespace VDVI.ApmaRepository.Interfaces
 {

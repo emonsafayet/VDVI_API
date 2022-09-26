@@ -1,18 +1,12 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
-using Framework.Core.Utility;
-using SOAPService;
+using Framework.Core.Utility; 
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections.Generic; 
 using System.Threading.Tasks;
-using VDVI.ApmaRepository;
-using VDVI.ApmaRepository.Interfaces;
-using VDVI.DB.Dtos;
-using VDVI.Repository.ApmaRepository.Implementation;
-using VDVI.Repository.Dtos.ApmaDtos.Common;
-using VDVI.Repository.Dtos.SourceStatistics;
+using VDVI.ApmaRepository; 
+using VDVI.DB.Dtos; 
 using VDVI.Services.Interfaces;
 
 namespace VDVI.Services

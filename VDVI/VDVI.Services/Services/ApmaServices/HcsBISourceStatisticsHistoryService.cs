@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
-using VDVI.Repository.Dtos.SourceStatistics;
 using VDVI.Services.Interfaces; 
 
 namespace VDVI.Services

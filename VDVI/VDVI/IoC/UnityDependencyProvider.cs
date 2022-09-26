@@ -18,9 +18,7 @@ namespace VDVI.Client.IoC
 
             container.RegisterType<IVDVISchedulerDbContext, VDVISchedulerDbContext>(new SingletonLifetimeManager());
 
-            container.RegisterType<IProRepository, ProRepository>();          
-            //container.RegisterType<ISchedulerSetupRepository, SchedulerSetupRepository>();
-            //container.RegisterType<ISchedulerLogRepository, SchedulerLogRepository>();
+            container.RegisterType<IProRepository, ProRepository>();           
 
             container.RegisterType<IMasterRepository, MasterRepository>();
 
@@ -28,6 +26,7 @@ namespace VDVI.Client.IoC
             container.RegisterType<ISchedulerSetupService, SchedulerSetupService>(); 
             container.RegisterType<ISchedulerLogService, SchedulerLogService>(); 
             
+            //Parent
             container.RegisterType<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
             container.RegisterType<IHcsBIReservationDashboardHistoryService, HcsBIReservationDashboardHistoryService>();
             container.RegisterType<IHcsBIReservationDashboardFutureService, HcsBIReservationDashboardFutureService>();
@@ -35,15 +34,14 @@ namespace VDVI.Client.IoC
             container.RegisterType<IHcsBIRatePlanStatisticsFutureService, HcsBIRatePlanStatisticsFutureService>();            
             container.RegisterType<IHcsBISourceStatisticsHistoryService, HcsBISourceStatisticsHistoryService>();
             container.RegisterType<IHcsBISourceStatisticsFutureService, HcsBISourceStatisticsFutureService>();
-
-
+            container.RegisterType<IHcsGetDailyHistoryService, HcsGetDailyHistoryService>();
             container.RegisterType<IHcsRoomSummaryService, HcsRoomSummaryService>();
             container.RegisterType<IHcsLedgerBalanceService, HcsLedgerBalanceService>();
-            
-            container.RegisterType<IHcsRatePlanStatisticsHistoryService, HcsRatePlanStatisticsHistoryService>();
-            container.RegisterType<IHcsSourceStasticsHistoryService, HcsSourceStasticsHistoryService>();
 
-            
+
+            //Child
+            container.RegisterType<IHcsRatePlanStatisticsHistoryService, HcsRatePlanStatisticsHistoryService>();
+            container.RegisterType<IHcsSourceStasticsHistoryService, HcsSourceStasticsHistoryService>();            
             container.RegisterType<IHcsBIOccupancyHistoryService, HcsBIOccupancyHistoryService>();
             container.RegisterType<IHcsBIOccupancyFutureService, HcsBIOccupancyFutureService>();
             container.RegisterType<IHcsBIReservationHistoryService, HcsBIReservationHistoryService>();
@@ -52,8 +50,7 @@ namespace VDVI.Client.IoC
             container.RegisterType<IHcsBIRoomsFutureService, HcsBIRoomsFutureService>();
             container.RegisterType<IHcsBIRevenueHistoryService, HcsBIRevenueHistoryService>();
             container.RegisterType<IHcsBIRevenueFutureService, HcsBIRevenueFutureService>();
-
-            
+            container.RegisterType<IHcsDailyHistoryService, HcsDailyHistoryService>();   
             container.RegisterType<IHcsSourceStasticsFutureService, HcsSourceStasticsFutureService>();
             container.RegisterType<IHcsRatePlanStatisticsFutureService, HcsRatePlanStatisticsFutureService>();
         }

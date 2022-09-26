@@ -1,5 +1,6 @@
 ﻿using Framework.Core.Repository;
 using VDVI.ApmaRepository.Interfaces;
+using VDVI.Repository.ApmaRepository.Implementation;
 
 namespace VDVI.ApmaRepository
 {
@@ -24,6 +25,7 @@ namespace VDVI.ApmaRepository
         IHcsBIRoomsFutureRepository HcsBIRoomsFutureRepository { get; }
         IHcsBIReservationHistoryRepository HcsBIReservationHistoryRepository { get; }
         IHcsBIReservationFutureRepository HcsBIReservationFutureRepository { get; }
+        IHcsDailyHistoryRepository HcsDailyHistoryRepository { get; }
 
         // SourceStatistics
         IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository { get; }

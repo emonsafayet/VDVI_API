@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.Dtos.ApmaDtos.Common
+namespace VDVI.DB.Dtos
 {
     public class SchedulerSetupDto : Audit
     {

@@ -3,7 +3,7 @@ using Framework.Core.Base.ModelEntity;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using VDVI.Repository.Dtos.ApmaDtos.Common;
+using VDVI.DB.Dtos; 
 using VDVI.Services.Interfaces;
 using VDVI.Services.Services.ApmaServices;
 
@@ -19,6 +19,7 @@ namespace VDVI.Services
         private readonly IHcsBISourceStatisticsHistoryService _hcsBISourceStatisticsHistoryService;
 
         private readonly IHcsBISourceStatisticsFutureService _hcsBISourceStatisticsFutureService;
+        private readonly IHcsGetDailyHistoryService _hcsGetDailyHistoryService;
         private readonly ISchedulerSetupService _schedulerSetupService;
         public readonly ISchedulerLogService _schedulerLogService;
         private DateTime _startDate = new DateTime();
@@ -33,6 +34,7 @@ namespace VDVI.Services
             IHcsBIRatePlanStatisticsFutureService hcsBIRatePlanStatisticsFutureService,
             IHcsBISourceStatisticsHistoryService hcsBISourceStatisticsHistoryService
             , IHcsBISourceStatisticsFutureService hcsBISourceStatisticsFutureService
+            , IHcsGetDailyHistoryService hcsGetDailyHistoryService
            , ISchedulerSetupService schedulerSetupService
            , ISchedulerLogService schedulerLogService
 
@@ -45,6 +47,7 @@ namespace VDVI.Services
             _hcsBIRatePlanStatisticsFutureService = hcsBIRatePlanStatisticsFutureService;
             _hcsBISourceStatisticsHistoryService = hcsBISourceStatisticsHistoryService;
             _hcsBISourceStatisticsFutureService = hcsBISourceStatisticsFutureService;
+           _hcsGetDailyHistoryService = hcsGetDailyHistoryService;
             _schedulerSetupService = schedulerSetupService;
             _schedulerLogService = schedulerLogService;
         }
@@ -120,6 +123,10 @@ namespace VDVI.Services
 
                         case "HcsBISourceStatisticsFuture":
                             response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate, scheduler.DayDifference);
+                            flag = response.IsSuccess;
+                            break; 
+                        case "HcsGetDailyHistory":
+                            response = await _hcsGetDailyHistoryService.HcsGetDailyHistoryAsyc(_startDate, _endDate);
                             flag = response.IsSuccess;
                             break;
 

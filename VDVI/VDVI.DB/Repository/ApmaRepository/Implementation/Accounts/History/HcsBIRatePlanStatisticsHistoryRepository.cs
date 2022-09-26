@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Data;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using VDVI.Repository.Dtos.Accounts;
+using System.Collections.Generic; 
 using System.Threading.Tasks;
 using MicroOrm.Dapper.Repositories;
 using VDVI.Repository.DbContext.ApmaDbContext;
@@ -11,6 +10,7 @@ using Nelibur.ObjectMapper;
 using MicroOrm.Dapper.Repositories.SqlGenerator.Filters; 
 using VDVI.ApmaRepository.Interfaces;
 using VDVI.Repository.DB;
+using VDVI.DB.Dtos;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {

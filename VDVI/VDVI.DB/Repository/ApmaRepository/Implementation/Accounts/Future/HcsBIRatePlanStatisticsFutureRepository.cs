@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using VDVI.ApmaRepository.Interfaces;
 using VDVI.Repository.DB;
 using VDVI.Repository.DbContext.ApmaDbContext;
-using VDVI.Repository.Dtos.Accounts;
 using Dapper;
+using VDVI.DB.Dtos;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {

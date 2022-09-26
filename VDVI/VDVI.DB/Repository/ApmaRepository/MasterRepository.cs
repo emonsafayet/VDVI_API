@@ -39,6 +39,7 @@ namespace VDVI.ApmaRepository
         public IHcsBIReservationHistoryRepository HcsBIReservationHistoryRepository => new HcsBIReservationHistoryRepository(_dbContext);
         public IHcsBIReservationFutureRepository HcsBIReservationFutureRepository => new HcsBIReservationFutureRepository(_dbContext);
         public IHcsBIReservationFutureAuditRepository HcsBIReservationFutureAuditRepository => new HcsBIReservationFutureAuditRepository(_dbContext);
+        public IHcsDailyHistoryRepository HcsDailyHistoryRepository => new HcsDailyHistoryRepository(_dbContext);
 
         // SourceStatistics
         public IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository => new HcsBISourceStatisticsHistoryRepository(_dbContext);

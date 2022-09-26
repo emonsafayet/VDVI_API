@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace VDVI.Repository.Dtos.ApmaDtos.Common
+namespace VDVI.DB.Dtos
 {
     public class SchedulerLogDto
     { 

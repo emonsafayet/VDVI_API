@@ -1,8 +1,7 @@
 ﻿using MicroOrm.Dapper.Repositories;
 using MicroOrm.Dapper.Repositories.DbContext;
 using VDVI.Repository.DB;
-using VDVI.Repository.Dtos.ApmaDtos.Common;
-using VDVI.Repository.Dtos.SourceStatistics;
+using VDVI.Repository.Models.ApmaModels.RoomSummary;
 
 namespace VDVI.Repository.DbContext.ApmaDbContext
 {
@@ -20,5 +19,6 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         IDapperRepository<DbRevenueHistory> Revenue { get; }
         IDapperRepository<DbOccupancyHistory> Occupancy { get; }
         IDapperRepository<DbReservationHistory> Reservation { get; }
+        IDapperRepository<DbDailyHistory> DailyHistory { get; }
     }
 }

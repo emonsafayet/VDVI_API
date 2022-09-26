@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.Dtos.ApmaDtos.Common
+namespace VDVI.Repository.DB
 {
     [Table("[dbo].[SchedulerSetUp]")]
     public class DbSchedulerSetup : Audit

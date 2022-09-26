@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VDVI.Repository.Dtos.Accounts;
+using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
 
 namespace VDVI.Services.Services.ApmaServices

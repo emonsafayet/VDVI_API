@@ -9,10 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VDVI.ApmaRepository;
 using VDVI.ApmaRepository.Interfaces;
-using VDVI.DB.Dtos;
-using VDVI.Repository.ApmaRepository.Implementation;
-using VDVI.Repository.Dtos.ApmaDtos.Common;
-using VDVI.Repository.Dtos.SourceStatistics;
+using VDVI.DB.Dtos; 
 using VDVI.Services.Interfaces;
 
 namespace VDVI.Services

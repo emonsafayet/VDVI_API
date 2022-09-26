@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace VDVI.Repository.Dtos.ApmaDtos.Common
+namespace VDVI.Repository.DB
 {
     [Table("[dbo].[SchedulerLog]")]
     public class DbSchedulerLog

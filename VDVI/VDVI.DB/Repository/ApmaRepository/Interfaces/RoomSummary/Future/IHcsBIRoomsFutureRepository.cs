@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using VDVI.Repository.Dtos.RoomSummary;
+using VDVI.DB.Dtos;
 
 namespace VDVI.ApmaRepository.Interfaces
 {
