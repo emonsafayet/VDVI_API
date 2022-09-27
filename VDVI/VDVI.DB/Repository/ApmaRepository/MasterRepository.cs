@@ -40,10 +40,14 @@ namespace VDVI.ApmaRepository
         public IHcsBIReservationFutureRepository HcsBIReservationFutureRepository => new HcsBIReservationFutureRepository(_dbContext);
         public IHcsBIReservationFutureAuditRepository HcsBIReservationFutureAuditRepository => new HcsBIReservationFutureAuditRepository(_dbContext);
         public IHcsDailyHistoryRepository HcsDailyHistoryRepository => new HcsDailyHistoryRepository(_dbContext);
+        public IHcsDailyFutureRepository HcsDailyFutureRepository =>   new HcsDailyFutureRepository(_dbContext);
+        public IHcsDailyFutureAuditRepository HcsDailyFutureAuditRepository =>  new HcsDailyFutureAuditRepository(_dbContext);
 
         // SourceStatistics
         public IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository => new HcsBISourceStatisticsHistoryRepository(_dbContext);
         public IHcsBISourceStatisticsFutureRepository HcsBISourceStatisticsFutureRepository => new HcsBISourceStatisticsFutureRepository(_dbContext);
         public IHcsBISourceStatisticsFutureAuditRepository HcsBISourceStatisticsFutureAuditRepository => new HcsBISourceStatisticsFutureAuditRepository(_dbContext);
+
+      
     }
 }

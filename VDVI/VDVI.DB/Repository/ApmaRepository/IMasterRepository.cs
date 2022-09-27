@@ -26,6 +26,8 @@ namespace VDVI.ApmaRepository
         IHcsBIReservationHistoryRepository HcsBIReservationHistoryRepository { get; }
         IHcsBIReservationFutureRepository HcsBIReservationFutureRepository { get; }
         IHcsDailyHistoryRepository HcsDailyHistoryRepository { get; }
+        IHcsDailyFutureRepository HcsDailyFutureRepository { get; }
+        IHcsDailyFutureAuditRepository HcsDailyFutureAuditRepository { get; }
 
         // SourceStatistics
         IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository { get; }
