@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml;
 using VDVI.DB.Dtos;
 using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
@@ -31,16 +32,20 @@ namespace VDVI.Services
                      Authentication pmsAuthentication = GetApmaAuthCredential();
 
                      List<DailyHistoryDto> dto = new List<DailyHistoryDto>();
+                     HcsGetDailyHistoryResponse res = new HcsGetDailyHistoryResponse();
 
-                     foreach (string property in ApmaProperties)
+                     for (int i = 0; i < ApmaProperties.Length; i++)
                      {
-                         var res = await client.HcsGetDailyHistoryAsync(pmsAuthentication, PropertyCode: property, StartDate: StartDate, EndDate: EndDate, "", 10, 0, "");
-
-                         var dailyHistoryList = res.HcsGetDailyHistoryResult.DailyHistories.ToList();
-
-                         FormatSummaryObject(dto, dailyHistoryList, property);
+                         var propertyCode = ApmaProperties[i];
+                         int x = 0;
+                         res = await client.HcsGetDailyHistoryAsync(pmsAuthentication, PropertyCode: propertyCode, StartDate: StartDate, EndDate: EndDate, "", 0, 30, "");
+                         do
+                         {
+                             var dailyHistoryList = res.HcsGetDailyHistoryResult.DailyHistories.ToList();
+                             FormatSummaryObject(dto, dailyHistoryList, propertyCode);
+                             x++;
+                         } while (x < res.HcsGetDailyHistoryResult.TotalPages);
                      }
-
 
                      var result = _hcsDailyHistoryService.BulkInsertWithProcAsync(dto);
 
@@ -61,18 +66,18 @@ namespace VDVI.Services
                 PmsSegmentNumber = x.PmsSegmentNumber,
                 PmsSegmentType = x.PmsSegmentType,
                 RoomType = x.RoomType,
-                Source=x.Source,
-                SubSource=x.SubSource,
-                RateType=x.RateType,
-                Mealplan=x.Mealplan,
-                Package=x.Package,
-                CountryIso2Code=x.CountryIso2Code,
-                PaymentDebitor=x.PaymentDebitor,
-                PaymentNonDebitor=x.PaymentNonDebitor,
-                Adults=x.Adults,
-                Children=x.Children,
-                Infants=x.Infants,
-                IsDayuse=x.IsDayuse,
+                Source = x.Source,
+                SubSource = x.SubSource,
+                RateType = x.RateType,
+                Mealplan = x.Mealplan,
+                Package = x.Package,
+                CountryIso2Code = x.CountryIso2Code,
+                PaymentDebitor = x.PaymentDebitor,
+                PaymentNonDebitor = x.PaymentNonDebitor,
+                Adults = x.Adults,
+                Children = x.Children,
+                Infants = x.Infants,
+                IsDayuse = x.IsDayuse,
 
                 RevenueInclusiveA = x.RevenuesInclusive.RevenueA,
                 RevenueInclusiveB = x.RevenuesInclusive.RevenueB,
@@ -80,15 +85,15 @@ namespace VDVI.Services
                 RevenueInclusiveD = x.RevenuesInclusive.RevenueD,
                 RevenueInclusiveE = x.RevenuesInclusive.RevenueE,
                 RevenueInclusiveF = x.RevenuesInclusive.RevenueF,
-                RevenueInclusiveUndefined =x.RevenuesInclusive.RevenueUndefined,
+                RevenueInclusiveUndefined = x.RevenuesInclusive.RevenueUndefined,
 
-                RevenueExclusiveA=x.RevenuesExclusive.RevenueA,
-                RevenueExclusiveB=x.RevenuesExclusive.RevenueB,
-                RevenueExclusiveC=x.RevenuesExclusive.RevenueC,
-                RevenueExclusiveD=x.RevenuesExclusive.RevenueD,
-                RevenueExclusiveE=x.RevenuesExclusive.RevenueE,
-                RevenueExclusiveF=x.RevenuesExclusive.RevenueF,
-                RevenueExclusiveUndefined=x.RevenuesExclusive.RevenueUndefined
+                RevenueExclusiveA = x.RevenuesExclusive.RevenueA,
+                RevenueExclusiveB = x.RevenuesExclusive.RevenueB,
+                RevenueExclusiveC = x.RevenuesExclusive.RevenueC,
+                RevenueExclusiveD = x.RevenuesExclusive.RevenueD,
+                RevenueExclusiveE = x.RevenuesExclusive.RevenueE,
+                RevenueExclusiveF = x.RevenuesExclusive.RevenueF,
+                RevenueExclusiveUndefined = x.RevenuesExclusive.RevenueUndefined
 
             }).ToList();
             sourceStatDtos.AddRange(sourceStatz);
