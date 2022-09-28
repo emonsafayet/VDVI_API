@@ -3,7 +3,7 @@ using Framework.Core.Base.ModelEntity;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using VDVI.DB.Dtos; 
+using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
 using VDVI.Services.Services.ApmaServices;
 
@@ -20,6 +20,7 @@ namespace VDVI.Services
 
         private readonly IHcsBISourceStatisticsFutureService _hcsBISourceStatisticsFutureService;
         private readonly IHcsGetDailyHistoryService _hcsGetDailyHistoryService;
+        private readonly IHcsGetDailyFutureService _hcsGetDailyFutureService;
         private readonly ISchedulerSetupService _schedulerSetupService;
         public readonly ISchedulerLogService _schedulerLogService;
         private DateTime _startDate = new DateTime();
@@ -35,6 +36,7 @@ namespace VDVI.Services
             IHcsBISourceStatisticsHistoryService hcsBISourceStatisticsHistoryService
             , IHcsBISourceStatisticsFutureService hcsBISourceStatisticsFutureService
             , IHcsGetDailyHistoryService hcsGetDailyHistoryService
+            , IHcsGetDailyFutureService hcsGetDailyFutureService
            , ISchedulerSetupService schedulerSetupService
            , ISchedulerLogService schedulerLogService
 
@@ -47,14 +49,15 @@ namespace VDVI.Services
             _hcsBIRatePlanStatisticsFutureService = hcsBIRatePlanStatisticsFutureService;
             _hcsBISourceStatisticsHistoryService = hcsBISourceStatisticsHistoryService;
             _hcsBISourceStatisticsFutureService = hcsBISourceStatisticsFutureService;
-           _hcsGetDailyHistoryService = hcsGetDailyHistoryService;
+            _hcsGetDailyHistoryService = hcsGetDailyHistoryService;
+            _hcsGetDailyFutureService = hcsGetDailyFutureService;
             _schedulerSetupService = schedulerSetupService;
             _schedulerLogService = schedulerLogService;
         }
         public async Task SummaryScheduler()
         {
             bool flag = false;
-            Result<PrometheusResponse> response; 
+            Result<PrometheusResponse> response;
             DateTime currentDateTime = DateTime.UtcNow;
 
             var schedulers = await _schedulerSetupService.FindByAllScheduleAsync();
@@ -65,19 +68,19 @@ namespace VDVI.Services
                 var scheduler = new1[i];
 
 
-                if (scheduler.NextExecutionDateTime<= currentDateTime
+                if (scheduler.NextExecutionDateTime <= currentDateTime
                     || scheduler.NextExecutionDateTime == null)
                 {
-                   
+
                     //History
-                    if (scheduler.isFuture==false 
-                        && scheduler.NextExecutionDateTime == null) 
+                    if (scheduler.isFuture == false
+                        && scheduler.NextExecutionDateTime == null)
                     {
                         _startDate = (DateTime)scheduler.BusinessStartDate;
                         _endDate = _startDate.AddDays(scheduler.DayDifference);
                     }
-                    else if (scheduler.isFuture==false
-                        && scheduler.NextExecutionDateTime != null) 
+                    else if (scheduler.isFuture == false
+                        && scheduler.NextExecutionDateTime != null)
                     {
                         _startDate = (DateTime)scheduler.NextExecutionDateTime;
                         _endDate = _startDate.AddDays(scheduler.DayDifference);
@@ -91,7 +94,7 @@ namespace VDVI.Services
                         _startDate = (DateTime)scheduler.NextExecutionDateTime;
 
                     if (_endDate >= currentDateTime) _endDate = currentDateTime.AddDays(-1);
-                     
+
                     if (_endDate.Date < _startDate.Date) _endDate = _startDate;
 
                     switch (scheduler.SchedulerName)
@@ -124,9 +127,14 @@ namespace VDVI.Services
                         case "HcsBISourceStatisticsFuture":
                             response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate, scheduler.DayDifference);
                             flag = response.IsSuccess;
-                            break; 
+                            break;
                         case "HcsGetDailyHistory":
                             response = await _hcsGetDailyHistoryService.HcsGetDailyHistoryAsyc(_startDate, _endDate);
+                            flag = response.IsSuccess;
+                            break;
+
+                        case "HcsGetDailyFutureService":
+                            response = await _hcsGetDailyFutureService.HcsGetDailyFutureAsyc(_startDate, scheduler.DayDifference);
                             flag = response.IsSuccess;
                             break;
 
@@ -134,21 +142,21 @@ namespace VDVI.Services
                             break;
                     }
 
-                    dtos.LastExecutionDateTime = scheduler.isFuture==false? _endDate.Date:_startDate.Date;
-                    dtos.NextExecutionDateTime = scheduler.isFuture == false?
-                                                _endDate.AddMinutes(scheduler.ExecutionIntervalMins):
+                    dtos.LastExecutionDateTime = scheduler.isFuture == false ? _endDate.Date : _startDate.Date;
+                    dtos.NextExecutionDateTime = scheduler.isFuture == false ?
+                                                _endDate.AddMinutes(scheduler.ExecutionIntervalMins) :
                                                 _startDate.AddMinutes(scheduler.ExecutionIntervalMins);
                     dtos.SchedulerName = scheduler.SchedulerName;
 
                     if (flag)
                     {
-                        await _schedulerSetupService.SaveWithProcAsync(dtos);                    
+                        await _schedulerSetupService.SaveWithProcAsync(dtos);
                         await _schedulerLogService.SaveWithProcAsync(scheduler.SchedulerName);
                     }
-                                           
+
                 }
-               
-            }            
-        } 
+
+            }
+        }
     }
 }
