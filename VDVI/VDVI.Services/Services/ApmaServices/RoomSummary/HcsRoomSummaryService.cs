@@ -21,12 +21,12 @@ namespace VDVI.Services
             _managementRepository = managementRepository;
         }
 
-        public async Task<Result<PrometheusResponse>> InsertAsync(RoomSummaryDto dto)
+        public async Task<Result<PrometheusResponse>> InsertAsync(RoomSummaryHistoryDto dto)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    dto = await _managementRepository.HcsRoomSummaryRepository.InsertAsync(dto);
+                    dto = await _managementRepository.HcsRoomSummaryHistoryRepository.InsertAsync(dto);
 
                     return PrometheusResponse.Success(dto, "Data saved successful");
                 },
@@ -37,13 +37,13 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<RoomSummaryDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<RoomSummaryHistoryDto> dtos)
         {
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _managementRepository.HcsRoomSummaryRepository.BulkInsertAsync(dtos);
+                    var resp = await _managementRepository.HcsRoomSummaryHistoryRepository.BulkInsertAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -54,12 +54,12 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<RoomSummaryDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<RoomSummaryHistoryDto> dtos)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _managementRepository.HcsRoomSummaryRepository.BulkInsertWithProcAsync(dtos);
+                    var resp = await _managementRepository.HcsRoomSummaryHistoryRepository.BulkInsertWithProcAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -75,7 +75,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dtos = await _managementRepository.HcsRoomSummaryRepository.GetAllByPropertyCodeAsync(propertyCode);
+                    var dtos = await _managementRepository.HcsRoomSummaryHistoryRepository.GetAllByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success(dtos, "Data saved successful");
                 },
@@ -91,7 +91,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _managementRepository.HcsRoomSummaryRepository.DeleteByPropertyCodeAsync(propertyCode);
+                    var dbroomSummariesRes = await _managementRepository.HcsRoomSummaryHistoryRepository.DeleteByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },
@@ -107,7 +107,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _managementRepository.HcsRoomSummaryRepository.DeleteByBusinessDateAsync(businessDate);
+                    var dbroomSummariesRes = await _managementRepository.HcsRoomSummaryHistoryRepository.DeleteByBusinessDateAsync(businessDate);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },

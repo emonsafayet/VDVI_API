@@ -1,7 +1,6 @@
 ﻿using MicroOrm.Dapper.Repositories;
 using MicroOrm.Dapper.Repositories.DbContext;
-using VDVI.Repository.DB;
-using VDVI.Repository.Models.ApmaModels.RoomSummary;
+using VDVI.Repository.DB; 
 
 namespace VDVI.Repository.DbContext.ApmaDbContext
 {
@@ -9,8 +8,8 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
     {
         IDapperRepository<DbSchedulerSetup> SchedulerSetup { get; }
         IDapperRepository<DbSchedulerLog> SchedulerLog { get; }
-        IDapperRepository<DbRoomSummary> RoomSummary { get; }
-        IDapperRepository<DbLedgerBalance> LedgerBalance { get; }
+        IDapperRepository<DbRoomSummaryHistory> RoomSummary { get; }
+        IDapperRepository<DbLedgerBalanceHistory> LedgerBalance { get; }
         IDapperRepository<DbSourceStatisticHistory> SourceStatistic { get; }
         IDapperRepository<DbSourceStatisticFuture> SourceStatisticFuture { get; }
         IDapperRepository<DbSourceStatisticFutureAudit> SourceStatisticFutureAudit { get; }

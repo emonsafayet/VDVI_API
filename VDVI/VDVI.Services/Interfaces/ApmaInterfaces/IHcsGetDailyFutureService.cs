@@ -9,6 +9,6 @@ namespace VDVI.Services.Interfaces
 {
     public interface IHcsGetDailyFutureService
     {
-        Task<Result<PrometheusResponse>> HcsGetDailyFutureAsyc(DateTime lastExecutionDate, int dayDifference);
+        Task<Result<PrometheusResponse>> HcsGetDailyHistoryFutureAsyc(DateTime lastExecutionDate, int dayDifference);
     }
 }

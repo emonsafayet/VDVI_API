@@ -131,8 +131,8 @@ namespace VDVI.Services
                             flag = response.IsSuccess;
                             break;
 
-                        case "HcsGetDailyFutureService":
-                            response = await _hcsGetDailyFutureService.HcsGetDailyFutureAsyc(_startDate, scheduler.DayDifference);
+                        case "HcsGetDailyHistoryFuture":
+                            response = await _hcsGetDailyFutureService.HcsGetDailyHistoryFutureAsyc(_startDate, scheduler.DayDifference);
                             flag = response.IsSuccess;
                             break;
 

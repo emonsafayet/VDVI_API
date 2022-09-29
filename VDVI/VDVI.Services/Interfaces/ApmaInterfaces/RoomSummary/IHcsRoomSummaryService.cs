@@ -10,9 +10,9 @@ namespace VDVI.Services.Interfaces
 {
     public interface IHcsRoomSummaryService
     {
-        Task<Result<PrometheusResponse>> InsertAsync(RoomSummaryDto dto);
-        Task<Result<PrometheusResponse>> BulkInsertAsync(List<RoomSummaryDto> dtos);
-        Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<RoomSummaryDto> dtos);
+        Task<Result<PrometheusResponse>> InsertAsync(RoomSummaryHistoryDto dto);
+        Task<Result<PrometheusResponse>> BulkInsertAsync(List<RoomSummaryHistoryDto> dtos);
+        Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<RoomSummaryHistoryDto> dtos);
         Task<Result<PrometheusResponse>> GetByPropertCodeAsync(string propertyCode);
         Task<Result<PrometheusResponse>> DeleteByPropertyCodeAsync(string propertyCode);
         Task<Result<PrometheusResponse>> DeleteByBusinessDateAsync(DateTime businessDate);

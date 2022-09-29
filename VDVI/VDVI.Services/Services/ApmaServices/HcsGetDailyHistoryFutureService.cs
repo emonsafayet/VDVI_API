@@ -16,15 +16,15 @@ using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
-    public class HcsGetDailyFutureService : ApmaBaseService, IHcsGetDailyFutureService
+    public class HcsGetDailyHistoryFutureService : ApmaBaseService, IHcsGetDailyFutureService
     {
         private readonly IHcsDailyFutureService _hcsDailyFutureService;
 
-        public HcsGetDailyFutureService(IHcsDailyFutureService hcsDailyFutureService)
+        public HcsGetDailyHistoryFutureService(IHcsDailyFutureService hcsDailyFutureService)
         {
             _hcsDailyFutureService = hcsDailyFutureService;
         }
-        public async Task<Result<PrometheusResponse>> HcsGetDailyFutureAsyc(DateTime lastExecutionDate, int dayDifference)
+        public async Task<Result<PrometheusResponse>> HcsGetDailyHistoryFutureAsyc(DateTime lastExecutionDate, int dayDifference)
         {
             DateTime nextExecutionDate = lastExecutionDate.AddMonths(12).AddSeconds(1);
             DateTime tempDate = lastExecutionDate;
@@ -34,7 +34,7 @@ namespace VDVI.Services
                  {
                      Authentication pmsAuthentication = GetApmaAuthCredential();
 
-                     List<DailyFutureDto> dto = new List<DailyFutureDto>();
+                     List<DailyHistoryFutureDto> dto = new List<DailyHistoryFutureDto>();
                      HcsGetDailyHistoryResponse res = new HcsGetDailyHistoryResponse();
                      while (tempDate < nextExecutionDate)
                      {
@@ -66,9 +66,9 @@ namespace VDVI.Services
                      RethrowException = false
                  });
         }
-        private void FormatSummaryObject(List<DailyFutureDto> sourceStatDtos, List<DailyHistory> dailyHistoryList, string propertyCode)
+        private void FormatSummaryObject(List<DailyHistoryFutureDto> sourceStatDtos, List<DailyHistory> dailyHistoryList, string propertyCode)
         {
-            List<DailyFutureDto> sourceStatz = dailyHistoryList.Select(x => new DailyFutureDto()
+            List<DailyHistoryFutureDto> sourceStatz = dailyHistoryList.Select(x => new DailyHistoryFutureDto()
             {
                 PropertyCode = propertyCode,
                 Date = x.Date,

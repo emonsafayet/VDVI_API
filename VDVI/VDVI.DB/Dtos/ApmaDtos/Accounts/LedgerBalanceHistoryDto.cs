@@ -3,7 +3,7 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.DB.Dtos
 {
-    public class LedgerBalanceDto : Audit
+    public class LedgerBalanceHistoryDto : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }
@@ -16,12 +16,6 @@ namespace VDVI.DB.Dtos
         public decimal LodgingTurnover { get; set; }
         public decimal PaymentsDebitor { get; set; }
         public decimal PaymentsCash { get; set; }
-        public decimal CityLedger { get; set; }
-        public decimal? TotalTurnoverEx { get; set; }
-        public bool TotalTurnoverExSpecified { get; set; }
-        public decimal? LodgingTurnoverEx { get; set; }
-        public bool LodgingTurnoverExSpecified { get; set; }
-
-
+        public decimal CityLedger { get; set; } 
     }
 }

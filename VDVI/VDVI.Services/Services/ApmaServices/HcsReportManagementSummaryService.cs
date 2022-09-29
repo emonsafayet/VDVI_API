@@ -34,8 +34,8 @@ namespace VDVI.Services
                 {
                     Authentication pmsAuthentication = GetApmaAuthCredential();
 
-                    List<RoomSummaryDto> roomSummaries = new List<RoomSummaryDto>();
-                    List<LedgerBalanceDto> ledgerBalances = new List<LedgerBalanceDto>();
+                    List<RoomSummaryHistoryDto> roomSummaries = new List<RoomSummaryHistoryDto>();
+                    List<LedgerBalanceHistoryDto> ledgerBalances = new List<LedgerBalanceHistoryDto>();
 
                     foreach (string property in ApmaProperties)
                     {
@@ -59,9 +59,9 @@ namespace VDVI.Services
                 });
         }
 
-        private void FormatSummaryObject(List<RoomSummaryDto> roomSummaries, List<LedgerBalanceDto> ledgerBalances, List<ManagementSummary> managementSummary, string propertyCode)
+        private void FormatSummaryObject(List<RoomSummaryHistoryDto> roomSummaries, List<LedgerBalanceHistoryDto> ledgerBalances, List<ManagementSummary> managementSummary, string propertyCode)
         {
-            List<RoomSummaryDto> rooms = managementSummary.Select(x => new RoomSummaryDto()
+            List<RoomSummaryHistoryDto> rooms = managementSummary.Select(x => new RoomSummaryHistoryDto()
             {
                 InHouse = x.RoomSummary.InHouse,
                 DayUse = x.RoomSummary.DayUse,
@@ -84,8 +84,10 @@ namespace VDVI.Services
             roomSummaries.AddRange(rooms);
 
 
-            List<LedgerBalanceDto> ledgerList = managementSummary.Select(x => new LedgerBalanceDto()
+            List<LedgerBalanceHistoryDto> ledgerList = managementSummary.Select(x => new LedgerBalanceHistoryDto()
             {
+                BusinessDate = x.BusinessDate,
+                PropertyCode = propertyCode,
                 Reservations = x.LedgerBalance.Reservations,
                 InHouseReservations = x.LedgerBalance.InHouseReservations,
                 GroupReservations = x.LedgerBalance.GroupReservations,
@@ -94,13 +96,7 @@ namespace VDVI.Services
                 LodgingTurnover = x.LedgerBalance.LodgingTurnover,
                 PaymentsDebitor = x.LedgerBalance.PaymentsDebitor,
                 PaymentsCash = x.LedgerBalance.PaymentsCash,
-                CityLedger = x.LedgerBalance.CityLedger,
-                TotalTurnoverEx = x.LedgerBalance.TotalTurnoverEx,
-                TotalTurnoverExSpecified = x.LedgerBalance.TotalTurnoverExSpecified,
-                LodgingTurnoverEx = x.LedgerBalance.LodgingTurnoverEx,
-                LodgingTurnoverExSpecified = x.LedgerBalance.LodgingTurnoverExSpecified,
-                BusinessDate = x.BusinessDate,
-                PropertyCode = propertyCode
+                CityLedger = x.LedgerBalance.CityLedger   
 
             }).ToList();
 

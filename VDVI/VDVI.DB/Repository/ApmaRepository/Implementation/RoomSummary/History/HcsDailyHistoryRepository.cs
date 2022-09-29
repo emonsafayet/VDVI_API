@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 using VDVI.Repository.DbContext.ApmaDbContext; 
 using VDVI.ApmaRepository.Interfaces;
 using VDVI.Repository.DB;
-using VDVI.DB.Dtos;
-using VDVI.Repository.Models.ApmaModels.RoomSummary;
+using VDVI.DB.Dtos; 
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {
@@ -31,7 +30,7 @@ namespace VDVI.Repository.ApmaRepository.Implementation
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_DailyHistory", new { DailyHistoryUDT = dt }, commandType: CommandType.StoredProcedure);
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_hce_DailyHistory_History", new { DailyHistory_History_UDT = dt }, commandType: CommandType.StoredProcedure);
 
             return queryResult.ToString();
         }

@@ -4,8 +4,8 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.DB
 {
-    [Table("[hce].[ManagementSummaryRoomSummary]")]
-    public class DbRoomSummary : Audit
+    [Table("[hce].[ManagementSummary_RoomSummary_History]")]
+    public class DbRoomSummaryHistory : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }

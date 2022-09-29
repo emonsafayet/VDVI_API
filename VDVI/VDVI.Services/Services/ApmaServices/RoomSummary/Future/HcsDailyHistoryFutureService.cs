@@ -11,21 +11,21 @@ using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
-    public class HcsDailyFutureService : IHcsDailyFutureService
+    public class HcsDailyHistoryFutureService : IHcsDailyFutureService
     {
         private readonly IMasterRepository _managementRepository;
 
-        public HcsDailyFutureService(IMasterRepository managementRepository)
+        public HcsDailyHistoryFutureService(IMasterRepository managementRepository)
         {
             _managementRepository = managementRepository;
         }
 
-        public async Task<Result<PrometheusResponse>> InsertAsync(DailyFutureDto dto)
+        public async Task<Result<PrometheusResponse>> InsertAsync(DailyHistoryFutureDto dto)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    dto = await _managementRepository.HcsDailyFutureRepository.InsertAsync(dto);
+                    dto = await _managementRepository.HcsDailyHistoryFutureRepository.InsertAsync(dto);
 
                     return PrometheusResponse.Success(dto, "Data saved successful");
                 },
@@ -36,13 +36,13 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<DailyFutureDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<DailyHistoryFutureDto> dtos)
         {
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _managementRepository.HcsDailyFutureRepository.BulkInsertAsync(dtos);
+                    var resp = await _managementRepository.HcsDailyHistoryFutureRepository.BulkInsertAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -53,12 +53,12 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<DailyFutureDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<DailyHistoryFutureDto> dtos)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _managementRepository.HcsDailyFutureRepository.BulkInsertWithProcAsync(dtos);
+                    var resp = await _managementRepository.HcsDailyHistoryFutureRepository.BulkInsertWithProcAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -74,7 +74,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dtos = await _managementRepository.HcsDailyFutureRepository.GetAllByPropertyCodeAsync(propertyCode);
+                    var dtos = await _managementRepository.HcsDailyHistoryFutureRepository.GetAllByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success(dtos, "Data saved successful");
                 },
@@ -90,7 +90,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _managementRepository.HcsDailyFutureRepository.DeleteByPropertyCodeAsync(propertyCode);
+                    var dbroomSummariesRes = await _managementRepository.HcsDailyHistoryFutureRepository.DeleteByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },
@@ -106,7 +106,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _managementRepository.HcsDailyFutureRepository.DeleteByDashboardDateAsync(businessDate);
+                    var dbroomSummariesRes = await _managementRepository.HcsDailyHistoryFutureRepository.DeleteByDashboardDateAsync(businessDate);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },

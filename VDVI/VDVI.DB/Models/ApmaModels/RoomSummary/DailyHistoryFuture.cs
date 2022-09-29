@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.Models.ApmaModels.RoomSummary
+namespace VDVI.Repository.DB
 {
-    [Table("[hce].[DailyFutureAudit]")]
-    public class DbDailyFutureAudit : Audit
+    [Table("[hce].[DailyHistory_Future]")]
+    public class DailyHistoryFuture : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime Date { get; set; }

@@ -1,6 +1,6 @@
 ﻿using Framework.Core.Repository;
 using VDVI.ApmaRepository.Interfaces;
-using VDVI.Repository.ApmaRepository.Implementation;
+using VDVI.Repository.ApmaRepository.Implementation; 
 
 namespace VDVI.ApmaRepository
 {
@@ -11,14 +11,14 @@ namespace VDVI.ApmaRepository
         ISchedulerLogRepository SchedulerLogRepository { get; }
 
         // Accounts
-        IHcsLedgerBalanceRepository HcsLedgerBalanceRepository { get; }
+        IHcsLedgerBalanceHistoryRepository HcsLedgerBalanceRepository { get; }
         IHcsBIRatePlanStatisticsHistoryRepository HcsBIRatePlanStatisticsHistoryRepository { get; }
         IHcsBIRatePlanStatisticsFutureRepository HcsBIRatePlanStatisticsFutureRepository { get; }
         IHcsBIRevenueHistoryRepository HcsBIRevenueHistoryRepository { get; }
         IHcsBIRevenueFutureRepository HcsBIRevenueFutureRepository { get; }
 
         // RoomSummary
-        IHcsRoomSummaryRepository HcsRoomSummaryRepository { get; }
+        IHcsRoomSummaryHistoryRepository HcsRoomSummaryHistoryRepository { get; }
         IHcsBIOccupancyHistoryRepository HcsBIOccupancyHistoryRepository { get; }
         IHcsBIOccupancyFutureRepository HcsBIOccupancyFutureRepository { get; }
         IHcsBIRoomsHistoryRepository HcsBIRoomsHistoryRepository { get; }
@@ -26,8 +26,8 @@ namespace VDVI.ApmaRepository
         IHcsBIReservationHistoryRepository HcsBIReservationHistoryRepository { get; }
         IHcsBIReservationFutureRepository HcsBIReservationFutureRepository { get; }
         IHcsDailyHistoryRepository HcsDailyHistoryRepository { get; }
-        IHcsDailyFutureRepository HcsDailyFutureRepository { get; }
-        IHcsDailyFutureAuditRepository HcsDailyFutureAuditRepository { get; }
+        IHcsDailyHistoryFutureRepository HcsDailyHistoryFutureRepository { get; }
+        IHcsDailyFutureAuditRepository HcsDailyHistoryFutureAuditRepository { get; }
 
         // SourceStatistics
         IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository { get; }

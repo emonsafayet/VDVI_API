@@ -4,8 +4,8 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.DB
 {
-    [Table("[hce].[ManagementSummaryLedgerBalance]")]
-    public class DbLedgerBalance: Audit
+    [Table("[hce].[ManagementSummary_LedgerBalance_History]")]
+    public class DbLedgerBalanceHistory: Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? BusinessDate { get; set; }
@@ -18,10 +18,6 @@ namespace VDVI.Repository.DB
         public double LodgingTurnover { get; set; }
         public double PaymentsDebitor { get; set; }
         public double PaymentsCash { get; set; }
-        public double CityLedger { get; set; }
-        public double TotalTurnoverEx { get; set; }
-        public bool TotalTurnoverExSpecified { get; set; }
-        public double LodgingTurnoverEx { get; set; }
-        public bool LodgingTurnoverExSpecified { get; set; }
+        public double CityLedger { get; set; } 
     }
 }

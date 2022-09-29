@@ -5,8 +5,7 @@ using Nelibur.ObjectMapper;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using VDVI.DB.Dtos;
-using VDVI.Repository.DB;
-using VDVI.Repository.Models.ApmaModels.RoomSummary;
+using VDVI.Repository.DB; 
 
 namespace VDVI.Repository.DbContext.ApmaDbContext
 {
@@ -16,8 +15,8 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         private IDapperRepository<DbSchedulerSetup> _schedulerSetup;
         private IDapperRepository<DbSchedulerLog> _schedulerlog;
 
-        private IDapperRepository<DbRoomSummary> _roomSummary;
-        private IDapperRepository<DbLedgerBalance> _ledgerBalance;
+        private IDapperRepository<DbRoomSummaryHistory> _roomSummary;
+        private IDapperRepository<DbLedgerBalanceHistory> _ledgerBalance;
 
         private IDapperRepository<DbRatePlanStatisticHistory> _ratePlanStatistic;
         private IDapperRepository<DbSourceStatisticHistory> _sourceStatistic;
@@ -44,8 +43,8 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
             // Dto to Db - Single
             TinyMapper.Bind<SchedulerSetupDto, DbSchedulerSetup>();
             TinyMapper.Bind<SchedulerLogDto, DbSchedulerLog>();
-            TinyMapper.Bind<RoomSummaryDto, DbRoomSummary>();
-            TinyMapper.Bind<LedgerBalanceDto, DbLedgerBalance>();
+            TinyMapper.Bind<RoomSummaryHistoryDto, DbRoomSummaryHistory>();
+            TinyMapper.Bind<LedgerBalanceHistoryDto, DbLedgerBalanceHistory>();
             TinyMapper.Bind<RatePlanStatisticHistoryDto, DbRatePlanStatisticHistory>();
             TinyMapper.Bind<SourceStatisticHistoryDto, DbSourceStatisticHistory>();
             TinyMapper.Bind<OccupancyHistoryDto, DbOccupancyHistory>();
@@ -70,8 +69,8 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
             // Dto to Db List
             TinyMapper.Bind<List<SchedulerLogDto>, List<DbSchedulerLog>>();
             TinyMapper.Bind<List<SchedulerSetupDto>, List<DbSchedulerSetup>>();
-            TinyMapper.Bind<List<RoomSummaryDto>, List<DbRoomSummary>>();
-            TinyMapper.Bind<List<LedgerBalanceDto>, List<DbLedgerBalance>>();
+            TinyMapper.Bind<List<RoomSummaryHistoryDto>, List<DbRoomSummaryHistory>>();
+            TinyMapper.Bind<List<LedgerBalanceHistoryDto>, List<DbLedgerBalanceHistory>>();
             TinyMapper.Bind<List<RatePlanStatisticHistoryDto>, List<DbRatePlanStatisticHistory>>();
             TinyMapper.Bind<List<SourceStatisticHistoryDto>, List<DbSourceStatisticHistory>>();
             TinyMapper.Bind<List<OccupancyHistoryDto>, List<DbOccupancyHistory>>();
@@ -94,8 +93,8 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         }
         public IDapperRepository<DbSchedulerSetup> SchedulerSetup => _schedulerSetup ??= new DapperRepository<DbSchedulerSetup>(Connection);
         public IDapperRepository<DbSchedulerLog> SchedulerLog => _schedulerlog ??= new DapperRepository<DbSchedulerLog>(Connection);
-        public IDapperRepository<DbRoomSummary> RoomSummary => _roomSummary ??= new DapperRepository<DbRoomSummary>(Connection);
-        public IDapperRepository<DbLedgerBalance> LedgerBalance => _ledgerBalance ??= new DapperRepository<DbLedgerBalance>(Connection);
+        public IDapperRepository<DbRoomSummaryHistory> RoomSummary => _roomSummary ??= new DapperRepository<DbRoomSummaryHistory>(Connection);
+        public IDapperRepository<DbLedgerBalanceHistory> LedgerBalance => _ledgerBalance ??= new DapperRepository<DbLedgerBalanceHistory>(Connection);
         public IDapperRepository<DbRatePlanStatisticHistory> RatePlanStatisticHistory => _ratePlanStatistic ??= new DapperRepository<DbRatePlanStatisticHistory>(Connection);
         public IDapperRepository<DbRatePlanStatisticFuture> RatePlanStatisticFuture => _ratePlanStatisticFuture ??= new DapperRepository<DbRatePlanStatisticFuture>(Connection);
         public IDapperRepository<DbSourceStatisticHistory> SourceStatistic => _sourceStatistic ??= new DapperRepository<DbSourceStatisticHistory>(Connection);

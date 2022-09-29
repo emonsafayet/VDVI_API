@@ -6,7 +6,7 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.DB.Dtos
 {
-    public class DailyFutureAuditDto : Audit
+    public class DailyHistoryFutureDto : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime Date { get; set; }

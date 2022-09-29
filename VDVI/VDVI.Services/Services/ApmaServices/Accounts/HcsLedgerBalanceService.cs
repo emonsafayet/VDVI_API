@@ -20,7 +20,7 @@ namespace VDVI.Services
             _masterRepository = masterRepository;
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<LedgerBalanceDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<LedgerBalanceHistoryDto> dtos)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
@@ -36,7 +36,7 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<LedgerBalanceDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<LedgerBalanceHistoryDto> dtos)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
@@ -84,7 +84,7 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> InsertAsync(LedgerBalanceDto dto)
+        public async Task<Result<PrometheusResponse>> InsertAsync(LedgerBalanceHistoryDto dto)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
