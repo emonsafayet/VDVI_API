@@ -1,11 +1,9 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.DB
+namespace VDVI.DB.Dtos
 {
-    [Table("[hce].[ReservationDashboardReservationFutureAudit]")]
-    public class DbReservationFutureAudit : Audit
+    public class ReservationDashboardReservationFutureAuditDto : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? DashboardDate { get; set; }

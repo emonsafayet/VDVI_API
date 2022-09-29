@@ -7,7 +7,7 @@ using VDVI.Repository.Models.Common;
 namespace VDVI.Repository.DB
 {
     [Table("[hce].[ReservationDashboardRevenueFutureAudit]")]
-    public class DbRevenueFutureAudit : Audit
+    public class DbReservationDashboardRevenueFutureAudit : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? DashboardDate { get; set; }

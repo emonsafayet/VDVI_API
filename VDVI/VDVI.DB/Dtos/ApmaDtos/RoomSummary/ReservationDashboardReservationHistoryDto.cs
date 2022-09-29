@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using VDVI.Repository.Models.Common;
 
 namespace VDVI.DB.Dtos
 {
-    public class ReservationFutureDto : Audit
+    public class ReservationDashboardReservationHistoryDto : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? DashboardDate { get; set; }

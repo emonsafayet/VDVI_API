@@ -14,10 +14,10 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         IDapperRepository<DbSourceStatisticFuture> SourceStatisticFuture { get; }
         IDapperRepository<DbSourceStatisticFutureAudit> SourceStatisticFutureAudit { get; }
         IDapperRepository<DbRatePlanStatisticHistory> RatePlanStatisticHistory { get; }
-        IDapperRepository<DbRoomsHistory> Rooms { get; }
-        IDapperRepository<DbRevenueHistory> Revenue { get; }
-        IDapperRepository<DbOccupancyHistory> Occupancy { get; }
-        IDapperRepository<DbReservationHistory> Reservation { get; }
+        IDapperRepository<DbReservationDashboardRoomsHistory> Rooms { get; }
+        IDapperRepository<DbReservationDashboardRevenueHistory> Revenue { get; }
+        IDapperRepository<DbReservationDashboardOccupancyHistory> Occupancy { get; }
+        IDapperRepository<DbReservationDashboardReservationHistory> Reservation { get; }
         IDapperRepository<DbDailyHistory> DailyHistory { get; }
     }
 }

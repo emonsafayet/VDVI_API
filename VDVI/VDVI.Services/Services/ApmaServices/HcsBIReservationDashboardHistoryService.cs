@@ -36,10 +36,10 @@ namespace VDVI.Services
                           {
                               Authentication pmsAuthentication = GetApmaAuthCredential();
 
-                              List<OccupancyHistoryDto> occupancies = new List<OccupancyHistoryDto>();
-                              List<ReservationHistoryDto> reservations = new List<ReservationHistoryDto>();
-                              List<RevenueHistoryDto> revenues = new List<RevenueHistoryDto>();
-                              List<RoomsHistoryDto> rooms = new List<RoomsHistoryDto>();
+                              List<ReservationDashboardOccupancyHistoryDto> occupancies = new List<ReservationDashboardOccupancyHistoryDto>();
+                              List<ReservationDashboardReservationHistoryDto> reservations = new List<ReservationDashboardReservationHistoryDto>();
+                              List<ReservationDashboardRevenueHistoryDto> revenues = new List<ReservationDashboardRevenueHistoryDto>();
+                              List<ReservationDashboardRoomsHistoryDto> rooms = new List<ReservationDashboardRoomsHistoryDto>();
 
                               foreach (string property in ApmaProperties)
                               {
@@ -66,11 +66,11 @@ namespace VDVI.Services
         }
 
 
-        private void FormatSummaryObject(List<OccupancyHistoryDto> occupancies, List<ReservationHistoryDto> reservations, List<RevenueHistoryDto> revenues,
+        private void FormatSummaryObject(List<ReservationDashboardOccupancyHistoryDto> occupancies, List<ReservationDashboardReservationHistoryDto> reservations, List<ReservationDashboardRevenueHistoryDto> revenues,
 
-                  List<RoomsHistoryDto> rooms, List<BIDashboardData> dashboard, string propertyCode)
+                  List<ReservationDashboardRoomsHistoryDto> rooms, List<BIDashboardData> dashboard, string propertyCode)
         {
-            List<OccupancyHistoryDto> occupancys = dashboard.Select(x => new OccupancyHistoryDto()
+            List<ReservationDashboardOccupancyHistoryDto> occupancys = dashboard.Select(x => new ReservationDashboardOccupancyHistoryDto()
             {
                 Percentage = x.Occupancy.Percentage,
                 RoomsSold = x.Occupancy.RoomsSold,
@@ -80,7 +80,7 @@ namespace VDVI.Services
             }).ToList();
             occupancies.AddRange(occupancys);
 
-            List<ReservationHistoryDto> reservation = dashboard.Select(x => new ReservationHistoryDto()
+            List<ReservationDashboardReservationHistoryDto> reservation = dashboard.Select(x => new ReservationDashboardReservationHistoryDto()
             {
                 CreatedReservations = x.Reservation.CreatedReservations,
                 CreatedRoomNights = x.Reservation.CreatedRoomNights,
@@ -102,7 +102,7 @@ namespace VDVI.Services
             }).ToList();
             reservations.AddRange(reservation);
 
-            List<RevenueHistoryDto> revenue = dashboard.Select(x => new RevenueHistoryDto()
+            List<ReservationDashboardRevenueHistoryDto> revenue = dashboard.Select(x => new ReservationDashboardRevenueHistoryDto()
             {
                 TypeA = x.Revenue.TypeA,
                 TypeB = x.Revenue.TypeB,
@@ -120,7 +120,7 @@ namespace VDVI.Services
             }).ToList();
             revenues.AddRange(revenue);
 
-            List<RoomsHistoryDto> room = dashboard.Select(x => new RoomsHistoryDto()
+            List<ReservationDashboardRoomsHistoryDto> room = dashboard.Select(x => new ReservationDashboardRoomsHistoryDto()
             {
                 Inventory = x.Rooms.Inventory,
                 OutOfInventory = x.Rooms.OutOfInventory,

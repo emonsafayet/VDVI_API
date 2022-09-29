@@ -34,7 +34,7 @@ namespace VDVI.Services
                 {
                     Authentication pmsAuthentication = GetApmaAuthCredential();
 
-                    List<RoomSummaryHistoryDto> roomSummaries = new List<RoomSummaryHistoryDto>();
+                    List<ReservationDashboardRoomSummaryHistoryDto> roomSummaries = new List<ReservationDashboardRoomSummaryHistoryDto>();
                     List<LedgerBalanceHistoryDto> ledgerBalances = new List<LedgerBalanceHistoryDto>();
 
                     foreach (string property in ApmaProperties)
@@ -59,9 +59,9 @@ namespace VDVI.Services
                 });
         }
 
-        private void FormatSummaryObject(List<RoomSummaryHistoryDto> roomSummaries, List<LedgerBalanceHistoryDto> ledgerBalances, List<ManagementSummary> managementSummary, string propertyCode)
+        private void FormatSummaryObject(List<ReservationDashboardRoomSummaryHistoryDto> roomSummaries, List<LedgerBalanceHistoryDto> ledgerBalances, List<ManagementSummary> managementSummary, string propertyCode)
         {
-            List<RoomSummaryHistoryDto> rooms = managementSummary.Select(x => new RoomSummaryHistoryDto()
+            List<ReservationDashboardRoomSummaryHistoryDto> rooms = managementSummary.Select(x => new ReservationDashboardRoomSummaryHistoryDto()
             {
                 InHouse = x.RoomSummary.InHouse,
                 DayUse = x.RoomSummary.DayUse,

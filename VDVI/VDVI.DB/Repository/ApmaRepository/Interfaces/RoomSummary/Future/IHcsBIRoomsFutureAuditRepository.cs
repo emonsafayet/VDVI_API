@@ -7,12 +7,12 @@ namespace VDVI.ApmaRepository.Interfaces
 {
     public interface IHcsBIRoomsFutureAuditRepository
     {
-        Task<RoomsFutureAuditDto> InsertAsync(RoomsFutureAuditDto dto);
-        Task<IEnumerable<RoomsFutureAuditDto>> BulkInsertAsync(IEnumerable<RoomsFutureAuditDto> dto);
-        Task<string> BulkInsertWithProcAsync(IEnumerable<RoomsFutureAuditDto> dto);
-        Task<RoomsFutureAuditDto> UpdateAsync(RoomsFutureAuditDto dto);
-        Task<IEnumerable<RoomsFutureAuditDto>> GetAllByPropertyCodeAsync(string propertyCode);
-        Task<RoomsFutureAuditDto> FindByIdAsync(int id);
+        Task<ReservationDashboardRoomsFutureAuditDto> InsertAsync(ReservationDashboardRoomsFutureAuditDto dto);
+        Task<IEnumerable<ReservationDashboardRoomsFutureAuditDto>> BulkInsertAsync(IEnumerable<ReservationDashboardRoomsFutureAuditDto> dto);
+        Task<string> BulkInsertWithProcAsync(IEnumerable<ReservationDashboardRoomsFutureAuditDto> dto);
+        Task<ReservationDashboardRoomsFutureAuditDto> UpdateAsync(ReservationDashboardRoomsFutureAuditDto dto);
+        Task<IEnumerable<ReservationDashboardRoomsFutureAuditDto>> GetAllByPropertyCodeAsync(string propertyCode);
+        Task<ReservationDashboardRoomsFutureAuditDto> FindByIdAsync(int id);
         Task<bool> DeleteByPropertyCodeAsync(string propertyCode);
         Task<bool> DeleteByDashboardDateAsync(DateTime DashboardDate);
     }

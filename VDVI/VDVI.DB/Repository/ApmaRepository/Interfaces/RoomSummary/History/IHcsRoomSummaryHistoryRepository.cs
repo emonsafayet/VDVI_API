@@ -7,12 +7,12 @@ namespace VDVI.ApmaRepository.Interfaces
 {
     public interface IHcsRoomSummaryHistoryRepository
     {
-        Task<RoomSummaryHistoryDto> InsertAsync(RoomSummaryHistoryDto dto);
-        Task<IEnumerable<RoomSummaryHistoryDto>> BulkInsertAsync(IEnumerable<RoomSummaryHistoryDto> dto);
-        Task<string> BulkInsertWithProcAsync(IEnumerable<RoomSummaryHistoryDto> dto);
-        Task<RoomSummaryHistoryDto> UpdateAsync(RoomSummaryHistoryDto dto);
-        Task<IEnumerable<RoomSummaryHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode);
-        Task<RoomSummaryHistoryDto> FindByIdAsync(int id);
+        Task<ReservationDashboardRoomSummaryHistoryDto> InsertAsync(ReservationDashboardRoomSummaryHistoryDto dto);
+        Task<IEnumerable<ReservationDashboardRoomSummaryHistoryDto>> BulkInsertAsync(IEnumerable<ReservationDashboardRoomSummaryHistoryDto> dto);
+        Task<string> BulkInsertWithProcAsync(IEnumerable<ReservationDashboardRoomSummaryHistoryDto> dto);
+        Task<ReservationDashboardRoomSummaryHistoryDto> UpdateAsync(ReservationDashboardRoomSummaryHistoryDto dto);
+        Task<IEnumerable<ReservationDashboardRoomSummaryHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode);
+        Task<ReservationDashboardRoomSummaryHistoryDto> FindByIdAsync(int id);
         Task<bool> DeleteByPropertyCodeAsync(string propertyCode);
         Task<bool> DeleteByBusinessDateAsync(DateTime businessDate);
     }

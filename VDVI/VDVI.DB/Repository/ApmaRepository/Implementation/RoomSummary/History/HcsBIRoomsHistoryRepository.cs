@@ -14,10 +14,10 @@ using VDVI.DB.Dtos;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {
-    public class HcsBIRoomsHistoryRepository : DapperRepository<DbRoomsHistory>, IHcsBIRoomsHistoryRepository
+    public class HcsBIRoomsHistoryRepository : DapperRepository<DbReservationDashboardRoomsHistory>, IHcsBIRoomsHistoryRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
-        private readonly IDapperRepository<DbRoomsHistory> _tblRepository;
+        private readonly IDapperRepository<DbReservationDashboardRoomsHistory> _tblRepository;
 
         public HcsBIRoomsHistoryRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
@@ -26,7 +26,7 @@ namespace VDVI.Repository.ApmaRepository.Implementation
         }
 
 
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<RoomsHistoryDto> dto)
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<ReservationDashboardRoomsHistoryDto> dto)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
@@ -35,9 +35,9 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             return queryResult.ToString();
         }
 
-        public async Task<IEnumerable<RoomsHistoryDto>> BulkInsertAsync(IEnumerable<RoomsHistoryDto> dto)
+        public async Task<IEnumerable<ReservationDashboardRoomsHistoryDto>> BulkInsertAsync(IEnumerable<ReservationDashboardRoomsHistoryDto> dto)
         {
-            var dbEntity = TinyMapper.Map<List<DbRoomsHistory>>(dto);
+            var dbEntity = TinyMapper.Map<List<DbReservationDashboardRoomsHistory>>(dto);
 
             await _tblRepository.BulkInsertAsync(dbEntity);
 
@@ -48,39 +48,39 @@ namespace VDVI.Repository.ApmaRepository.Implementation
 
         public async Task<bool> DeleteByPropertyCodeAsync(string propertyCode) => await _tblRepository.DeleteAsync(x => x.PropertyCode == propertyCode);
 
-        public async Task<RoomsHistoryDto> FindByIdAsync(int id)
+        public async Task<ReservationDashboardRoomsHistoryDto> FindByIdAsync(int id)
         {
             var dbEntity = await _tblRepository.FindAsync(x => x.PropertyCode == "");
 
-            var dto = TinyMapper.Map<RoomsHistoryDto>(dbEntity);
+            var dto = TinyMapper.Map<ReservationDashboardRoomsHistoryDto>(dbEntity);
 
             return dto;
         }
 
-        public async Task<IEnumerable<RoomsHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode)
+        public async Task<IEnumerable<ReservationDashboardRoomsHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode)
         {
-            IEnumerable<DbRoomsHistory> dbEntities = await _dbContext
+            IEnumerable<DbReservationDashboardRoomsHistory> dbEntities = await _dbContext
                 .Rooms
                 .SetOrderBy(OrderInfo.SortDirection.DESC, x => x.PropertyCode)
                 .FindAllAsync(x => x.PropertyCode == propertyCode);
 
-            var entities = TinyMapper.Map<List<RoomsHistoryDto>>(dbEntities);
+            var entities = TinyMapper.Map<List<ReservationDashboardRoomsHistoryDto>>(dbEntities);
 
             return entities;
         }
 
-        public async Task<RoomsHistoryDto> InsertAsync(RoomsHistoryDto dto)
+        public async Task<ReservationDashboardRoomsHistoryDto> InsertAsync(ReservationDashboardRoomsHistoryDto dto)
         {
-            var dbEntity = TinyMapper.Map<DbRoomsHistory>(dto);
+            var dbEntity = TinyMapper.Map<DbReservationDashboardRoomsHistory>(dto);
 
             await _tblRepository.InsertAsync(dbEntity);
 
-            return TinyMapper.Map<RoomsHistoryDto>(dbEntity);
+            return TinyMapper.Map<ReservationDashboardRoomsHistoryDto>(dbEntity);
         }
 
-        public async Task<RoomsHistoryDto> UpdateAsync(RoomsHistoryDto dto)
+        public async Task<ReservationDashboardRoomsHistoryDto> UpdateAsync(ReservationDashboardRoomsHistoryDto dto)
         {
-            var dbCustomerEntity = TinyMapper.Map<DbRoomsHistory>(dto);
+            var dbCustomerEntity = TinyMapper.Map<DbReservationDashboardRoomsHistory>(dto);
 
             await _tblRepository.UpdateAsync(dbCustomerEntity);
 

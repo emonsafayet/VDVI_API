@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.DB.Dtos
+namespace VDVI.Repository.DB
 {
-    public class OccupancyFutureDto : Audit
+    [Table("[hce].[ReservationDashboard_Occupancy_FutureAudit]")]
+    public class DbReservationDashboardOccupancyFutureAudit : Audit
     {
         public string PropertyCode { get; set; }
         public DateTime? DashboardDate { get; set; }

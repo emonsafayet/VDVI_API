@@ -25,16 +25,16 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             _roomSummary = _dbContext.RoomSummary;
         }
 
-        public async Task<RoomSummaryHistoryDto> InsertAsync(RoomSummaryHistoryDto dto)
+        public async Task<ReservationDashboardRoomSummaryHistoryDto> InsertAsync(ReservationDashboardRoomSummaryHistoryDto dto)
         {
             var dbEntity = TinyMapper.Map<DbRoomSummaryHistory>(dto);
 
             await _roomSummary.InsertAsync(dbEntity);
 
-            return TinyMapper.Map<RoomSummaryHistoryDto>(dbEntity);
+            return TinyMapper.Map<ReservationDashboardRoomSummaryHistoryDto>(dbEntity);
         }
 
-        public async Task<IEnumerable<RoomSummaryHistoryDto>> BulkInsertAsync(IEnumerable<RoomSummaryHistoryDto> dto)
+        public async Task<IEnumerable<ReservationDashboardRoomSummaryHistoryDto>> BulkInsertAsync(IEnumerable<ReservationDashboardRoomSummaryHistoryDto> dto)
         {
             var dbEntity = TinyMapper.Map<List<DbRoomSummaryHistory>>(dto);
 
@@ -43,7 +43,7 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             return dto;
         }
 
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<RoomSummaryHistoryDto> dto)
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<ReservationDashboardRoomSummaryHistoryDto> dto)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
@@ -52,7 +52,7 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             return queryResult.ToString();
         }
 
-        public async Task<RoomSummaryHistoryDto> UpdateAsync(RoomSummaryHistoryDto dto)
+        public async Task<ReservationDashboardRoomSummaryHistoryDto> UpdateAsync(ReservationDashboardRoomSummaryHistoryDto dto)
         {
             var dbCustomerEntity = TinyMapper.Map<DbRoomSummaryHistory>(dto);
 
@@ -61,23 +61,23 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             return dto;
         }
 
-        public async Task<IEnumerable<RoomSummaryHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode)
+        public async Task<IEnumerable<ReservationDashboardRoomSummaryHistoryDto>> GetAllByPropertyCodeAsync(string propertyCode)
         {
             IEnumerable<DbRoomSummaryHistory> dbEntities = await _dbContext
                 .RoomSummary
                 .SetOrderBy(OrderInfo.SortDirection.DESC, x => x.PropertyCode)
                 .FindAllAsync(x => x.PropertyCode == propertyCode);
 
-            var entities = TinyMapper.Map<List<RoomSummaryHistoryDto>>(dbEntities);
+            var entities = TinyMapper.Map<List<ReservationDashboardRoomSummaryHistoryDto>>(dbEntities);
 
             return entities;
         }
 
-        public async Task<RoomSummaryHistoryDto> FindByIdAsync(int id)
+        public async Task<ReservationDashboardRoomSummaryHistoryDto> FindByIdAsync(int id)
         {
             var dbEntity = await _roomSummary.FindAsync(x => x.PropertyCode == "");
 
-            var dto = TinyMapper.Map<RoomSummaryHistoryDto>(dbEntity);
+            var dto = TinyMapper.Map<ReservationDashboardRoomSummaryHistoryDto>(dbEntity);
 
             return dto;
         }

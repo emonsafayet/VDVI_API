@@ -7,12 +7,12 @@ namespace VDVI.ApmaRepository.Interfaces
 {
     public interface IHcsBIRevenueFutureRepository
     {
-        Task<RevenueFutureDto> InsertAsync(RevenueFutureDto dto);
-        Task<IEnumerable<RevenueFutureDto>> BulkInsertAsync(IEnumerable<RevenueFutureDto> dto);
-        Task<string> BulkInsertWithProcAsync(IEnumerable<RevenueFutureDto> dto);
-        Task<RevenueFutureDto> UpdateAsync(RevenueFutureDto dto);
-        Task<IEnumerable<RevenueFutureDto>> GetAllByPropertyCodeAsync(string propertyCode);
-        Task<RevenueFutureDto> FindByIdAsync(int id);
+        Task<ReservationDashboardRevenueFutureDto> InsertAsync(ReservationDashboardRevenueFutureDto dto);
+        Task<IEnumerable<ReservationDashboardRevenueFutureDto>> BulkInsertAsync(IEnumerable<ReservationDashboardRevenueFutureDto> dto);
+        Task<string> BulkInsertWithProcAsync(IEnumerable<ReservationDashboardRevenueFutureDto> dto);
+        Task<ReservationDashboardRevenueFutureDto> UpdateAsync(ReservationDashboardRevenueFutureDto dto);
+        Task<IEnumerable<ReservationDashboardRevenueFutureDto>> GetAllByPropertyCodeAsync(string propertyCode);
+        Task<ReservationDashboardRevenueFutureDto> FindByIdAsync(int id);
         Task<bool> DeleteByPropertyCodeAsync(string propertyCode);
         Task<bool> DeleteByDashboardDateAsync(DateTime DashboardDate);
     }
