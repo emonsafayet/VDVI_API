@@ -6,7 +6,7 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.DB
 {
-    [Table("[hce].[ReservationDashboardRoomsHistory]")]
+    [Table("[hce].[ReservationDashboard_Rooms_History]")]
     public class DbReservationDashboardRoomsHistory : Audit
     {
         public string PropertyCode { get; set; }
