@@ -11,10 +11,9 @@ using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using VDVI.ApmaRepository.Interfaces;
+using VDVI.DB.Dtos;
 using VDVI.Repository.DB;
-using VDVI.Repository.DbContext.ApmaDbContext;
-using VDVI.Repository.Dtos.Accounts;
-using VDVI.Repository.Dtos.RoomSummary; 
+using VDVI.Repository.DbContext.ApmaDbContext; 
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {

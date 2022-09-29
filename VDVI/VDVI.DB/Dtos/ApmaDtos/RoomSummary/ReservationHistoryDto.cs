@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.Dtos.RoomSummary
+namespace VDVI.DB.Dtos
 {
     public class ReservationHistoryDto : Audit
     {
@@ -25,5 +23,4 @@ namespace VDVI.Repository.Dtos.RoomSummary
         public int NoShowProcessed { get; set; }
         public int NoShowUnprocessed { get; set; }
     }
-
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.Dtos.SourceStatistics
+namespace VDVI.DB.Dtos
 {
     public class SourceStatisticsFutureAuditDto : Audit
     {

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
-using VDVI.Repository.Dtos.RoomSummary;
+using VDVI.DB.Dtos;
 
 namespace VDVI.Services.Interfaces
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.Dtos.RoomSummary
+namespace VDVI.DB.Dtos
 {
     public class RoomsHistoryDto : Audit
     {

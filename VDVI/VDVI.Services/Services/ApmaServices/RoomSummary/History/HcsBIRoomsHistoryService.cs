@@ -7,8 +7,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.ApmaRepository;
 using VDVI.DB.Dtos;
-using VDVI.Repository.ApmaRepository;
-using VDVI.Repository.Dtos.RoomSummary;
 using VDVI.Services.Interfaces;
 
 namespace VDVI.Services

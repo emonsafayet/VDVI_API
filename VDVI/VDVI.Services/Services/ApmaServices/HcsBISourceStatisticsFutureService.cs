@@ -7,21 +7,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VDVI.Repository.Dtos.SourceStatistics;
+using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
     public class HcsBISourceStatisticsFutureService : ApmaBaseService, IHcsBISourceStatisticsFutureService
     {
-        private readonly IHcsSourceStasticsFutureService _hcsSourceStasticsFutureService;
-        private readonly int dayRange = 6;
+        private readonly IHcsSourceStasticsFutureService _hcsSourceStasticsFutureService; 
 
         public HcsBISourceStatisticsFutureService(IHcsSourceStasticsFutureService hcsSourceStasticsFutureService)
         {
             _hcsSourceStasticsFutureService = hcsSourceStasticsFutureService;
         }
-        public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate)
+        public async Task<Result<PrometheusResponse>> HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(DateTime lastExecutionDate, int dayDifference)
         {            
             DateTime nextExecutionDate = lastExecutionDate.AddMonths(12).AddSeconds(1);
             DateTime tempDate = lastExecutionDate;
@@ -35,7 +34,7 @@ namespace VDVI.Services
 
                      while (tempDate < nextExecutionDate)
                      {
-                         var endDate = tempDate.AddDays(dayRange);
+                         var endDate = tempDate.AddDays(dayDifference);
                          endDate = endDate > nextExecutionDate ? nextExecutionDate : endDate;
                          
                          for (int i = 0; i < ApmaProperties.Length; i++)
@@ -48,7 +47,7 @@ namespace VDVI.Services
                              FormatSummaryObject(dto, sourceStats, propertyCode);
                          }
 
-                         tempDate = tempDate.AddDays(dayRange).AddSeconds(1);
+                         tempDate = tempDate.AddDays(dayDifference).AddSeconds(1);
                      }
 
                      //This dto list need to implement
@@ -64,7 +63,7 @@ namespace VDVI.Services
         }
         private void FormatSummaryObject(List<SourceStatisticFutureDto> sourceStatDtos, List<BISourceStatistic> sourceStats, string propertyCode)
         {
-            List<SourceStatisticFutureDto> sourceStatz = sourceStats.Select(x => new SourceStatisticFutureDto()
+            List<SourceStatisticFutureDto> sourceStatus = sourceStats.Select(x => new SourceStatisticFutureDto()
             {
                 BusinessDate = x.BusinessDate,
                 SourceCode = x.SourceCode,
@@ -87,7 +86,7 @@ namespace VDVI.Services
                 RevenueStatCodeUndefinedExcl = x.RevenueStatCodeUndefinedExcl,
                 PropertyCode = propertyCode,
             }).ToList();
-            sourceStatDtos.AddRange(sourceStatz);
+            sourceStatDtos.AddRange(sourceStatus);
         }
 
     }

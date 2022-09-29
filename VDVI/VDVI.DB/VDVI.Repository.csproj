@@ -15,9 +15,4 @@
     <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repository\ApmaRepository\Implementation\RoomSummary\Future\" />
-    <Folder Include="Repository\ApmaRepository\Interfaces\RoomSummary\Future\" />
-  </ItemGroup>
-
 </Project>

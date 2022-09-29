@@ -2,8 +2,8 @@
 using Framework.Core.Base.ModelEntity;
 using System;
 using System.Collections.Generic; 
-using System.Threading.Tasks; 
-using VDVI.Repository.Dtos.ApmaDtos.Common; 
+using System.Threading.Tasks;
+using VDVI.DB.Dtos;
 
 namespace VDVI.Services.Interfaces
 {

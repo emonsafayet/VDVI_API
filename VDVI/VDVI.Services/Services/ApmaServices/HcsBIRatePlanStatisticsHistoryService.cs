@@ -7,8 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VDVI.Repository.Dtos.Accounts;
-using VDVI.Repository.Dtos.SourceStatistics;
+using VDVI.DB.Dtos; 
 using VDVI.Services.Interfaces; 
 
 namespace VDVI.Services
@@ -76,8 +75,8 @@ namespace VDVI.Services
                 RevenueStatCodeUndefined = x.RevenueStatCodeUndefined,
                 RevenueStatCodeUndefinedExcl = x.RevenueStatCodeUndefinedExcl
             }).ToList();
-            ratePlanStatistics.AddRange(ratePlanStatistic);
 
+            ratePlanStatistics.AddRange(ratePlanStatistic);
         }
     }
 }

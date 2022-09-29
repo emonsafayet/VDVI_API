@@ -8,15 +8,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VDVI.ApmaRepository.Interfaces;
-using VDVI.Repository.Dtos.Accounts;
-using VDVI.Repository.Dtos.RoomSummary;
+using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
 {
     public class HcsBIReservationDashboardHistoryService : ApmaBaseService, IHcsBIReservationDashboardHistoryService
-    {
-         
+    {         
         public HcsBIReservationDashboardHistoryService(IHcsBIRevenueHistoryService hcsBIRevenueHistoryService, IHcsBIOccupancyHistoryService hcsBIOccupancyHistoryService,
                                            IHcsBIRoomsHistoryService hcsBIRoomsHistoryService, IHcsBIReservationHistoryService hcsBIReservationHistoryService)
         {
