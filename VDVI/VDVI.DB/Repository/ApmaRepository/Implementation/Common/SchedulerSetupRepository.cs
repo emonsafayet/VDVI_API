@@ -45,13 +45,14 @@ namespace VDVI.Repository.ApmaRepository.Implementation
         }
         public async Task<Result<PrometheusResponse>> SaveWithProcAsync(SchedulerSetupDto dto)
         {
-
             var queryResult = await _dbContext.Connection.QueryAsync<string>("sp_hce_UpdateTaskScheduleDatetime",
                 new
                 {
                     SchedulerName = dto.SchedulerName,
                     NextExecutionDateTime = dto.NextExecutionDateTime,
                     LastExecutionDateTime = dto.LastExecutionDateTime,
+                    LastBusinessDate = dto.LastBusinessDate,
+
                 },
                 commandType: CommandType.StoredProcedure);
 

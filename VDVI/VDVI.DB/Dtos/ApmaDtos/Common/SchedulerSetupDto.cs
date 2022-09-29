@@ -1,7 +1,4 @@
-﻿using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System; 
 using VDVI.Repository.Models.Common;
 
 namespace VDVI.DB.Dtos
@@ -16,6 +13,6 @@ namespace VDVI.DB.Dtos
         public bool isFuture { get; set; }
         public bool isActive { get; set; }
         public int DayDifference { get; set; }
-
+        public DateTime? LastBusinessDate { get; set; }  
     }
 }

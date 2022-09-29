@@ -18,5 +18,6 @@ namespace VDVI.Repository.DB
         public bool isFuture { get; set; }
         public bool isActive { get; set; }
         public int DayDifference { get; set; }
+        public DateTime? LastBusinessDate { get; set; }
     }
 }

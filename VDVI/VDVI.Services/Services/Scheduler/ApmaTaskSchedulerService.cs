@@ -67,11 +67,9 @@ namespace VDVI.Services
             {
                 var scheduler = new1[i];
 
-
                 if (scheduler.NextExecutionDateTime <= currentDateTime
                     || scheduler.NextExecutionDateTime == null)
                 {
-
                     //History
                     if (scheduler.isFuture == false
                         && scheduler.NextExecutionDateTime == null)
@@ -81,8 +79,8 @@ namespace VDVI.Services
                     }
                     else if (scheduler.isFuture == false
                         && scheduler.NextExecutionDateTime != null)
-                    {
-                        _startDate = (DateTime)scheduler.NextExecutionDateTime;
+                    { 
+                        _startDate = ((DateTime)scheduler.LastBusinessDate).AddDays(1);
                         _endDate = _startDate.AddDays(scheduler.DayDifference);
                     }
 
@@ -141,11 +139,11 @@ namespace VDVI.Services
                         default:
                             break;
                     }
+                    DateTime? dateTime = null;
+                    dtos.LastExecutionDateTime = DateTime.UtcNow;
+                    dtos.NextExecutionDateTime = DateTime.UtcNow.AddMinutes(scheduler.ExecutionIntervalMins);
+                    dtos.LastBusinessDate = scheduler.isFuture == false ? _endDate.Date : dateTime; //_Future does not need LastBusinessDate, because tartingpoint is always To
 
-                    dtos.LastExecutionDateTime = scheduler.isFuture == false ? _endDate.Date : _startDate.Date;
-                    dtos.NextExecutionDateTime = scheduler.isFuture == false ?
-                                                _endDate.AddMinutes(scheduler.ExecutionIntervalMins) :
-                                                _startDate.AddMinutes(scheduler.ExecutionIntervalMins);
                     dtos.SchedulerName = scheduler.SchedulerName;
 
                     if (flag)
