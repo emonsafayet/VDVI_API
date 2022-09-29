@@ -6,7 +6,7 @@ using VDVI.Repository.Models.Common;
 
 namespace VDVI.Repository.DB
 {
-    [Table("[hce].[SourceStatisticsFutureAudit]")]
+    [Table("[hce].[SourceStatistics_FutureAudit]")]
     public class DbSourceStatisticFutureAudit :Audit
     {
         public string PropertyCode { get; set; }
