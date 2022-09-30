@@ -133,7 +133,7 @@ namespace VDVI.Services
                             flag = response.IsSuccess;
                             break;
 
-                        case "HcsGetDailyFutureService":
+                        case "HcsGetDailyHistoryFuture":
                             response = await _hcsGetDailyFutureService.HcsGetDailyFutureAsyc(_startDate, scheduler.DayDifference);
                             flag = response.IsSuccess;
                             break;
