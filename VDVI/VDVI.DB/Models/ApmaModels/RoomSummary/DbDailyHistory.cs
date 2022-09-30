@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using VDVI.Repository.Models.Common;
 
-namespace VDVI.Repository.Models.ApmaModels.RoomSummary
+namespace VDVI.Repository.DB
 {
-    [Table("[hce].[DailyHistory]")]
+    [Table("[hce].[DailyHistory_History]")]
     public class DbDailyHistory : Audit
     {
         public string PropertyCode { get; set; }

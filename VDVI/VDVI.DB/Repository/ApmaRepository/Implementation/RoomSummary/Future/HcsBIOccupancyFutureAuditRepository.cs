@@ -14,10 +14,10 @@ using VDVI.Repository.DbContext.ApmaDbContext;
 
 namespace VDVI.Repository.ApmaRepository.Implementation
 {
-    public class HcsBIOccupancyFutureAuditRepository : DapperRepository<DbOccupancyFutureAudit>, IHcsBIOccupancyFutureAuditRepository
+    public class HcsBIOccupancyFutureAuditRepository : DapperRepository<DbReservationDashboardOccupancyFutureAudit>, IHcsBIOccupancyFutureAuditRepository
     {
         private readonly VDVISchedulerDbContext _dbContext;
-        private readonly IDapperRepository<DbOccupancyFutureAudit> _tblRepository;
+        private readonly IDapperRepository<DbReservationDashboardOccupancyFutureAudit> _tblRepository;
 
         public HcsBIOccupancyFutureAuditRepository(VDVISchedulerDbContext dbContext) : base(dbContext.Connection)
         {
@@ -25,7 +25,7 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             _tblRepository = _dbContext.OccupancyFutureAudit;
         }
 
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<OccupancyFutureAuditDto> dto)
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<ReservationDashboardOccupancyFutureAuditDto> dto)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
@@ -34,9 +34,9 @@ namespace VDVI.Repository.ApmaRepository.Implementation
             return queryResult.ToString();
         }
 
-        public async Task<IEnumerable<OccupancyFutureAuditDto>> BulkInsertAsync(IEnumerable<OccupancyFutureAuditDto> dto)
+        public async Task<IEnumerable<ReservationDashboardOccupancyFutureAuditDto>> BulkInsertAsync(IEnumerable<ReservationDashboardOccupancyFutureAuditDto> dto)
         {
-            var dbEntity = TinyMapper.Map<List<DbOccupancyFutureAudit>>(dto);
+            var dbEntity = TinyMapper.Map<List<DbReservationDashboardOccupancyFutureAudit>>(dto);
 
             await _tblRepository.BulkInsertAsync(dbEntity);
 
@@ -47,39 +47,39 @@ namespace VDVI.Repository.ApmaRepository.Implementation
 
         public async Task<bool> DeleteByPropertyCodeAsync(string propertyCode) => await _tblRepository.DeleteAsync(x => x.PropertyCode == propertyCode);
 
-        public async Task<OccupancyFutureAuditDto> FindByIdAsync(int id)
+        public async Task<ReservationDashboardOccupancyFutureAuditDto> FindByIdAsync(int id)
         {
             var dbEntity = await _tblRepository.FindAsync(x => x.PropertyCode == "");
 
-            var dto = TinyMapper.Map<OccupancyFutureAuditDto>(dbEntity);
+            var dto = TinyMapper.Map<ReservationDashboardOccupancyFutureAuditDto>(dbEntity);
 
             return dto;
         }
 
-        public async Task<IEnumerable<OccupancyFutureAuditDto>> GetAllByPropertyCodeAsync(string propertyCode)
+        public async Task<IEnumerable<ReservationDashboardOccupancyFutureAuditDto>> GetAllByPropertyCodeAsync(string propertyCode)
         {
-            IEnumerable<DbOccupancyFuture> dbEntities = await _dbContext
+            IEnumerable<DbReservationDashboardOccupancyFuture> dbEntities = await _dbContext
                 .OccupancyFuture
                 .SetOrderBy(OrderInfo.SortDirection.DESC, x => x.PropertyCode)
                 .FindAllAsync(x => x.PropertyCode == propertyCode);
 
-            var entities = TinyMapper.Map<List<OccupancyFutureAuditDto>>(dbEntities);
+            var entities = TinyMapper.Map<List<ReservationDashboardOccupancyFutureAuditDto>>(dbEntities);
 
             return entities;
         }
 
-        public async Task<OccupancyFutureAuditDto> InsertAsync(OccupancyFutureAuditDto dto)
+        public async Task<ReservationDashboardOccupancyFutureAuditDto> InsertAsync(ReservationDashboardOccupancyFutureAuditDto dto)
         {
-            var dbEntity = TinyMapper.Map<DbOccupancyFutureAudit>(dto);
+            var dbEntity = TinyMapper.Map<DbReservationDashboardOccupancyFutureAudit>(dto);
 
             await _tblRepository.InsertAsync(dbEntity);
 
-            return TinyMapper.Map<OccupancyFutureAuditDto>(dbEntity);
+            return TinyMapper.Map<ReservationDashboardOccupancyFutureAuditDto>(dbEntity);
         }
 
-        public async Task<OccupancyFutureAuditDto> UpdateAsync(OccupancyFutureAuditDto dto)
+        public async Task<ReservationDashboardOccupancyFutureAuditDto> UpdateAsync(ReservationDashboardOccupancyFutureAuditDto dto)
         {
-            var dbCustomerEntity = TinyMapper.Map<DbOccupancyFutureAudit>(dto);
+            var dbCustomerEntity = TinyMapper.Map<DbReservationDashboardOccupancyFutureAudit>(dto);
 
             await _tblRepository.UpdateAsync(dbCustomerEntity);
 

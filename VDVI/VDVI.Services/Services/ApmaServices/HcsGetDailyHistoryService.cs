@@ -38,7 +38,7 @@ namespace VDVI.Services
                      {
                          var propertyCode = ApmaProperties[i];
                          int x = 0;
-                         res = await client.HcsGetDailyHistoryAsync(pmsAuthentication, PropertyCode: propertyCode, StartDate: StartDate, EndDate: EndDate, "", 0, 30, "");
+                         res = await client.HcsGetDailyHistoryAsync(pmsAuthentication, PropertyCode: propertyCode, StartDate: StartDate, EndDate: EndDate, "", 100, 1, "");
                          do
                          {
                              var dailyHistoryList = res.HcsGetDailyHistoryResult.DailyHistories.ToList();

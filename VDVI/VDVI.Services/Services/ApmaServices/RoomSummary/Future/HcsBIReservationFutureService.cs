@@ -20,7 +20,7 @@ namespace VDVI.Services
             _masterRepository = managementRepository;
         }
 
-        public async Task<Result<PrometheusResponse>> InsertAsync(ReservationFutureDto dto)
+        public async Task<Result<PrometheusResponse>> InsertAsync(ReservationDashboardReservationFutureDto dto)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
@@ -36,7 +36,7 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<ReservationFutureDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertAsync(List<ReservationDashboardReservationFutureDto> dtos)
         {
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
@@ -53,7 +53,7 @@ namespace VDVI.Services
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<ReservationFutureDto> dtos)
+        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<ReservationDashboardReservationFutureDto> dtos)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>

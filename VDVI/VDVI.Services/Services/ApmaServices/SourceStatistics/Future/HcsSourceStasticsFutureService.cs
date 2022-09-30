@@ -6,9 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.ApmaRepository;
-using VDVI.DB.Dtos;
-using VDVI.Repository.ApmaRepository;
-using VDVI.DB.Dtos;
+using VDVI.DB.Dtos; 
 using VDVI.Services.Interfaces;
 
 namespace VDVI.Services
@@ -76,7 +74,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dtos = await _masterRepository.HcsRoomSummaryRepository.GetAllByPropertyCodeAsync(propertyCode);
+                    var dtos = await _masterRepository.HcsRoomSummaryHistoryRepository.GetAllByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success(dtos, "Data saved successful");
                 },
@@ -92,7 +90,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _masterRepository.HcsRoomSummaryRepository.DeleteByPropertyCodeAsync(propertyCode);
+                    var dbroomSummariesRes = await _masterRepository.HcsRoomSummaryHistoryRepository.DeleteByPropertyCodeAsync(propertyCode);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },
@@ -108,7 +106,7 @@ namespace VDVI.Services
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var dbroomSummariesRes = await _masterRepository.HcsRoomSummaryRepository.DeleteByBusinessDateAsync(businessDate);
+                    var dbroomSummariesRes = await _masterRepository.HcsRoomSummaryHistoryRepository.DeleteByBusinessDateAsync(businessDate);
 
                     return PrometheusResponse.Success("", "Data removal is successful");
                 },

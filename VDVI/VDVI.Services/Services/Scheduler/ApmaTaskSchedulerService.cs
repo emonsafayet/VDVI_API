@@ -67,23 +67,21 @@ namespace VDVI.Services
             {
                 var scheduler = new1[i];
 
-
                 if (scheduler.NextExecutionDateTime <= currentDateTime
                     || scheduler.NextExecutionDateTime == null)
                 {
-
                     //History
                     if (scheduler.isFuture == false
                         && scheduler.NextExecutionDateTime == null)
                     {
                         _startDate = (DateTime)scheduler.BusinessStartDate;
-                        _endDate = _startDate.AddDays(scheduler.DayDifference);
+                        _endDate = _startDate.AddDays(scheduler.DaysLimit);
                     }
                     else if (scheduler.isFuture == false
                         && scheduler.NextExecutionDateTime != null)
-                    {
-                        _startDate = (DateTime)scheduler.NextExecutionDateTime;
-                        _endDate = _startDate.AddDays(scheduler.DayDifference);
+                    { 
+                        _startDate = ((DateTime)scheduler.LastBusinessDate).AddDays(1);
+                        _endDate = _startDate.AddDays(scheduler.DaysLimit);
                     }
 
                     // for future Method
@@ -108,7 +106,7 @@ namespace VDVI.Services
                             flag = response.IsSuccess;
                             break;
                         case "HcsBIRatePlanStatisticsFuture":
-                            response = await _hcsBIRatePlanStatisticsFutureService.HcsBIRatePlanStatisticsRepositoryFutureAsyc(_startDate, scheduler.DayDifference);
+                            response = await _hcsBIRatePlanStatisticsFutureService.HcsBIRatePlanStatisticsRepositoryFutureAsyc(_startDate, scheduler.DaysLimit);
                             flag = response.IsSuccess;
                             break;
                         case "HcsBIReservationDashboardHistory":
@@ -116,7 +114,7 @@ namespace VDVI.Services
                             flag = response.IsSuccess;
                             break;
                         case "HcsBIReservationDashboardFuture":
-                            response = await _hcsBIReservationDashboardFutureService.HcsBIReservationDashboardRepositoryAsyc(_startDate, scheduler.DayDifference);
+                            response = await _hcsBIReservationDashboardFutureService.HcsBIReservationDashboardRepositoryAsyc(_startDate, scheduler.DaysLimit);
                             flag = response.IsSuccess;
                             break;
                         case "HcsBISourceStatisticsHistory":
@@ -125,7 +123,7 @@ namespace VDVI.Services
                             break;
 
                         case "HcsBISourceStatisticsFuture":
-                            response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate, scheduler.DayDifference);
+                            response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate, scheduler.DaysLimit);
                             flag = response.IsSuccess;
                             break;
                         case "HcsGetDailyHistory":
@@ -134,18 +132,18 @@ namespace VDVI.Services
                             break;
 
                         case "HcsGetDailyHistoryFuture":
-                            response = await _hcsGetDailyFutureService.HcsGetDailyFutureAsyc(_startDate, scheduler.DayDifference);
+                            response = await _hcsGetDailyFutureService.HcsGetDailyHistoryFutureAsyc(_startDate, scheduler.DaysLimit);
                             flag = response.IsSuccess;
                             break;
 
                         default:
                             break;
                     }
+                    DateTime? dateTime = null;
+                    dtos.LastExecutionDateTime = DateTime.UtcNow;
+                    dtos.NextExecutionDateTime = DateTime.UtcNow.AddMinutes(scheduler.ExecutionIntervalMins);
+                    dtos.LastBusinessDate = scheduler.isFuture == false ? _endDate.Date : dateTime; //_Future does not need LastBusinessDate, because tartingpoint is always To
 
-                    dtos.LastExecutionDateTime = scheduler.isFuture == false ? _endDate.Date : _startDate.Date;
-                    dtos.NextExecutionDateTime = scheduler.isFuture == false ?
-                                                _endDate.AddMinutes(scheduler.ExecutionIntervalMins) :
-                                                _startDate.AddMinutes(scheduler.ExecutionIntervalMins);
                     dtos.SchedulerName = scheduler.SchedulerName;
 
                     if (flag)

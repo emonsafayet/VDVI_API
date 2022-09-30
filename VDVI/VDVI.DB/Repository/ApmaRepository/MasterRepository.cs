@@ -1,7 +1,7 @@
 ﻿using Framework.Core.Repository;
 using VDVI.Repository.DbContext.ApmaDbContext;
 using VDVI.Repository.ApmaRepository.Implementation;
-using VDVI.ApmaRepository.Interfaces;
+using VDVI.ApmaRepository.Interfaces; 
 
 namespace VDVI.ApmaRepository
 {
@@ -20,7 +20,7 @@ namespace VDVI.ApmaRepository
         public ISchedulerLogRepository SchedulerLogRepository => new SchedulerLogRepository(_dbContext);
 
         // Accounts
-        public IHcsLedgerBalanceRepository HcsLedgerBalanceRepository => new HcsLedgerBalanceRepository(_dbContext);
+        public IHcsLedgerBalanceHistoryRepository HcsLedgerBalanceRepository => new HcsLedgerBalanceHistoryRepository(_dbContext);
         public IHcsBIRevenueHistoryRepository HcsBIRevenueHistoryRepository => new HcsBIRevenueHistoryRepository(_dbContext);
         public IHcsBIRevenueFutureRepository HcsBIRevenueFutureRepository => new HcsBIRevenueFutureRepository(_dbContext);
         public IHcsBIRevenueFutureAuditRepository HcsBIRevenueFutureAuditRepository => new HcsBIRevenueFutureAuditRepository(_dbContext);
@@ -29,7 +29,7 @@ namespace VDVI.ApmaRepository
         public IHcsBIRatePlanStatisticsFutureAuditRepository HcsBIRatePlanStatisticsFutureAuditRepository => new HcsBIRatePlanStatisticsFutureAuditRepository(_dbContext);
 
         // RoomSummary
-        public IHcsRoomSummaryRepository HcsRoomSummaryRepository => new HcsRoomSummaryRepository(_dbContext);
+        public IHcsRoomSummaryHistoryRepository HcsRoomSummaryHistoryRepository => new HcsRoomSummaryHistoryRepository(_dbContext);
         public IHcsBIOccupancyHistoryRepository HcsBIOccupancyHistoryRepository => new HcsBIOccupancyHistoryRepository(_dbContext);
         public IHcsBIOccupancyFutureRepository HcsBIOccupancyFutureRepository => new HcsBIOccupancyFutureRepository(_dbContext);
         public IHcsBIOccupancyFutureAuditRepository HcsBIOccupancyFutureAuditRepository => new HcsBIOccupancyFutureAuditRepository(_dbContext);
@@ -40,8 +40,8 @@ namespace VDVI.ApmaRepository
         public IHcsBIReservationFutureRepository HcsBIReservationFutureRepository => new HcsBIReservationFutureRepository(_dbContext);
         public IHcsBIReservationFutureAuditRepository HcsBIReservationFutureAuditRepository => new HcsBIReservationFutureAuditRepository(_dbContext);
         public IHcsDailyHistoryRepository HcsDailyHistoryRepository => new HcsDailyHistoryRepository(_dbContext);
-        public IHcsDailyFutureRepository HcsDailyFutureRepository =>   new HcsDailyFutureRepository(_dbContext);
-        public IHcsDailyFutureAuditRepository HcsDailyFutureAuditRepository =>  new HcsDailyFutureAuditRepository(_dbContext);
+        public IHcsDailyHistoryFutureRepository HcsDailyHistoryFutureRepository =>   new HcsDailyHistoryFutureRepository(_dbContext);
+        public IHcsDailyFutureAuditRepository HcsDailyHistoryFutureAuditRepository =>  new HcsDailyHistoryFutureAuditRepository(_dbContext);
 
         // SourceStatistics
         public IHcsBISourceStatisticsHistoryRepository HcsBISourceStatisticsHistoryRepository => new HcsBISourceStatisticsHistoryRepository(_dbContext);

@@ -38,10 +38,10 @@ namespace VDVI.Services.Services.ApmaServices
                           {
                               Authentication pmsAuthentication = GetApmaAuthCredential();
 
-                              List<OccupancyFutureDto> occupancies = new List<OccupancyFutureDto>();
-                              List<ReservationFutureDto> reservations = new List<ReservationFutureDto>();
-                              List<RevenueFutureDto> revenues = new List<RevenueFutureDto>();
-                              List<RoomsFutureDto> rooms = new List<RoomsFutureDto>();
+                              List<ReservationDashboardOccupancyFutureDto> occupancies = new List<ReservationDashboardOccupancyFutureDto>();
+                              List<ReservationDashboardReservationFutureDto> reservations = new List<ReservationDashboardReservationFutureDto>();
+                              List<ReservationDashboardRevenueFutureDto> revenues = new List<ReservationDashboardRevenueFutureDto>();
+                              List<ReservationDashboardRoomsFutureDto> rooms = new List<ReservationDashboardRoomsFutureDto>();
 
                               while (tempDate < nextExecutionDate)
                               {
@@ -75,11 +75,11 @@ namespace VDVI.Services.Services.ApmaServices
         }
 
 
-        private void FormatSummaryObject(List<OccupancyFutureDto> occupancies, List<ReservationFutureDto> reservations, List<RevenueFutureDto> revenues,
+        private void FormatSummaryObject(List<ReservationDashboardOccupancyFutureDto> occupancies, List<ReservationDashboardReservationFutureDto> reservations, List<ReservationDashboardRevenueFutureDto> revenues,
 
-                  List<RoomsFutureDto> rooms, List<BIDashboardData> dashboard, string propertyCode)
+                  List<ReservationDashboardRoomsFutureDto> rooms, List<BIDashboardData> dashboard, string propertyCode)
         {
-            List<OccupancyFutureDto> occupancys = dashboard.Select(x => new OccupancyFutureDto()
+            List<ReservationDashboardOccupancyFutureDto> occupancys = dashboard.Select(x => new ReservationDashboardOccupancyFutureDto()
             {
                 Percentage = x.Occupancy.Percentage,
                 RoomsSold = x.Occupancy.RoomsSold,
@@ -89,7 +89,7 @@ namespace VDVI.Services.Services.ApmaServices
             }).ToList();
             occupancies.AddRange(occupancys);
 
-            List<ReservationFutureDto> reservation = dashboard.Select(x => new ReservationFutureDto()
+            List<ReservationDashboardReservationFutureDto> reservation = dashboard.Select(x => new ReservationDashboardReservationFutureDto()
             {
                 CreatedReservations = x.Reservation.CreatedReservations,
                 CreatedRoomNights = x.Reservation.CreatedRoomNights,
@@ -111,7 +111,7 @@ namespace VDVI.Services.Services.ApmaServices
             }).ToList();
             reservations.AddRange(reservation);
 
-            List<RevenueFutureDto> revenue = dashboard.Select(x => new RevenueFutureDto()
+            List<ReservationDashboardRevenueFutureDto> revenue = dashboard.Select(x => new ReservationDashboardRevenueFutureDto()
             {
                 TypeA = x.Revenue.TypeA,
                 TypeB = x.Revenue.TypeB,
@@ -129,7 +129,7 @@ namespace VDVI.Services.Services.ApmaServices
             }).ToList();
             revenues.AddRange(revenue);
 
-            List<RoomsFutureDto> room = dashboard.Select(x => new RoomsFutureDto()
+            List<ReservationDashboardRoomsFutureDto> room = dashboard.Select(x => new ReservationDashboardRoomsFutureDto()
             {
                 Inventory = x.Rooms.Inventory,
                 OutOfInventory = x.Rooms.OutOfInventory,
