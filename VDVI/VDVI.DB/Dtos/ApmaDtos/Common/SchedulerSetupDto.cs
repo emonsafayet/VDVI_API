@@ -12,7 +12,7 @@ namespace VDVI.DB.Dtos
         public DateTime? BusinessStartDate { get; set; }
         public bool isFuture { get; set; }
         public bool isActive { get; set; }
-        public int DayDifference { get; set; }
+        public int DaysLimit { get; set; }
         public DateTime? LastBusinessDate { get; set; }  
     }
 }

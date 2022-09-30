@@ -75,13 +75,13 @@ namespace VDVI.Services
                         && scheduler.NextExecutionDateTime == null)
                     {
                         _startDate = (DateTime)scheduler.BusinessStartDate;
-                        _endDate = _startDate.AddDays(scheduler.DayDifference);
+                        _endDate = _startDate.AddDays(scheduler.DaysLimit);
                     }
                     else if (scheduler.isFuture == false
                         && scheduler.NextExecutionDateTime != null)
                     { 
                         _startDate = ((DateTime)scheduler.LastBusinessDate).AddDays(1);
-                        _endDate = _startDate.AddDays(scheduler.DayDifference);
+                        _endDate = _startDate.AddDays(scheduler.DaysLimit);
                     }
 
                     // for future Method
@@ -106,7 +106,7 @@ namespace VDVI.Services
                             flag = response.IsSuccess;
                             break;
                         case "HcsBIRatePlanStatisticsFuture":
-                            response = await _hcsBIRatePlanStatisticsFutureService.HcsBIRatePlanStatisticsRepositoryFutureAsyc(_startDate, scheduler.DayDifference);
+                            response = await _hcsBIRatePlanStatisticsFutureService.HcsBIRatePlanStatisticsRepositoryFutureAsyc(_startDate, scheduler.DaysLimit);
                             flag = response.IsSuccess;
                             break;
                         case "HcsBIReservationDashboardHistory":
@@ -114,7 +114,7 @@ namespace VDVI.Services
                             flag = response.IsSuccess;
                             break;
                         case "HcsBIReservationDashboardFuture":
-                            response = await _hcsBIReservationDashboardFutureService.HcsBIReservationDashboardRepositoryAsyc(_startDate, scheduler.DayDifference);
+                            response = await _hcsBIReservationDashboardFutureService.HcsBIReservationDashboardRepositoryAsyc(_startDate, scheduler.DaysLimit);
                             flag = response.IsSuccess;
                             break;
                         case "HcsBISourceStatisticsHistory":
@@ -123,7 +123,7 @@ namespace VDVI.Services
                             break;
 
                         case "HcsBISourceStatisticsFuture":
-                            response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate, scheduler.DayDifference);
+                            response = await _hcsBISourceStatisticsFutureService.HcsBIHcsBISourceStatisticsRepositoryFutureAsyc(_startDate, scheduler.DaysLimit);
                             flag = response.IsSuccess;
                             break;
                         case "HcsGetDailyHistory":
@@ -132,7 +132,7 @@ namespace VDVI.Services
                             break;
 
                         case "HcsGetDailyHistoryFuture":
-                            response = await _hcsGetDailyFutureService.HcsGetDailyHistoryFutureAsyc(_startDate, scheduler.DayDifference);
+                            response = await _hcsGetDailyFutureService.HcsGetDailyHistoryFutureAsyc(_startDate, scheduler.DaysLimit);
                             flag = response.IsSuccess;
                             break;
 
