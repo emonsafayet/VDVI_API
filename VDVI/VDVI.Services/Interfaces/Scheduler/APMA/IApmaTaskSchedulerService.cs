@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace VDVI.Services.Interfaces
+namespace VDVI.Services.Interfaces.APMA
 {
     public interface IApmaTaskSchedulerService
     {

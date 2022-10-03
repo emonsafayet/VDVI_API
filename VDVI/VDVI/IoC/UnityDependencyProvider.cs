@@ -7,6 +7,8 @@ using Framework.Core.IoC;
 using VDVI.Services;
 using VDVI.ApmaRepository;
 using VDVI.Services.Services.ApmaServices;
+using VDVI.Services.Interfaces.APMA;
+using VDVI.Services.APMA;
 
 namespace VDVI.Client.IoC
 {

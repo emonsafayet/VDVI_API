@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
-using VDVI.Services.Services.ApmaServices;
+using VDVI.Services.Interfaces.APMA; 
 
-namespace VDVI.Services
+namespace VDVI.Services.APMA
 {
     public class ApmaTaskSchedulerService : IApmaTaskSchedulerService
     {
@@ -79,7 +79,7 @@ namespace VDVI.Services
                     }
                     else if (scheduler.isFuture == false
                         && scheduler.NextExecutionDateTime != null)
-                    { 
+                    {
                         _startDate = ((DateTime)scheduler.LastBusinessDate).AddDays(1);
                         _endDate = _startDate.AddDays(scheduler.DaysLimit);
                     }

@@ -1,15 +1,15 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
-using Framework.Core.Utility; 
+using Framework.Core.Utility;
 using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using VDVI.ApmaRepository; 
-using VDVI.DB.Dtos; 
-using VDVI.Services.Interfaces;
+using VDVI.ApmaRepository;
+using VDVI.DB.Dtos;
+using VDVI.Services.Interfaces.APMA;
 
-namespace VDVI.Services
+namespace VDVI.Services.APMA
 {
     public class SchedulerSetupService : ApmaBaseService, ISchedulerSetupService
     {
@@ -20,7 +20,7 @@ namespace VDVI.Services
             _masterRepository = masterRepository;
         }
         public async Task<Result<PrometheusResponse>> InsertAsync(SchedulerSetupDto dto)
-        { 
+        {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
@@ -29,7 +29,7 @@ namespace VDVI.Services
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                 {
-                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {exception.GetExceptionDetailMessage()}"),
                     RethrowException = false
                 });
         }
@@ -43,9 +43,9 @@ namespace VDVI.Services
                  },
                  exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                  {
-                     DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                     DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {exception.GetExceptionDetailMessage()}"),
                      RethrowException = false
-                 }); 
+                 });
         }
         public async Task<Result<PrometheusResponse>> SaveWithProcAsync(SchedulerSetupDto dto)
         {
@@ -58,7 +58,7 @@ namespace VDVI.Services
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                 {
-                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {exception.GetExceptionDetailMessage()}"),
                     RethrowException = false
                 });
         }

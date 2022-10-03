@@ -35,10 +35,10 @@ namespace VDVI.Services
 
             var authCredential = new Authentication
             {
-                User = _config.GetSection("AuthenticationCredential").GetSection("pmsUser").Value,
-                Password = _config.GetSection("AuthenticationCredential").GetSection("pmsPassword").Value,
-                VendorId = _config.GetSection("AuthenticationCredential").GetSection("pmsVendorId").Value,
-                CrsProperty = _config.GetSection("AuthenticationCredential").GetSection("pmsCrsProperty").Value,
+                User = _config.GetSection("ApmaAuthenticationCredential").GetSection("pmsUser").Value,
+                Password = _config.GetSection("ApmaAuthenticationCredential").GetSection("pmsPassword").Value,
+                VendorId = _config.GetSection("ApmaAuthenticationCredential").GetSection("pmsVendorId").Value,
+                CrsProperty = _config.GetSection("ApmaAuthenticationCredential").GetSection("pmsCrsProperty").Value,
                 Token = authenticationResponse.Token
             };
 
@@ -59,9 +59,9 @@ namespace VDVI.Services
             //request
             AuthenticationRequest authenticationRequest = new AuthenticationRequest
             {
-                User = _config.GetSection("AuthenticationCredential").GetSection("pmsUser").Value,
-                Password = _config.GetSection("AuthenticationCredential").GetSection("pmsPassword").Value,
-                VendorId = _config.GetSection("AuthenticationCredential").GetSection("pmsVendorId").Value
+                User = _config.GetSection("ApmaAuthenticationCredential").GetSection("pmsUser").Value,
+                Password = _config.GetSection("ApmaAuthenticationCredential").GetSection("pmsPassword").Value,
+                VendorId = _config.GetSection("ApmaAuthenticationCredential").GetSection("pmsVendorId").Value
             };
 
             authenticationResponse = client.HceAuthenticateAsync(authenticationRequest).Result; 
