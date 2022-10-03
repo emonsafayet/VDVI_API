@@ -10,7 +10,7 @@ using System;
 using Unity;
 using VDVI.Client.IoC;
 using VDVI.Services;
-using VDVI.Services.Interfaces;
+using VDVI.Services.Interfaces.APMA; 
 using StartupBase = Framework.Core.Base.Startup.StartupBase;
 
 namespace VDVI
@@ -90,31 +90,10 @@ namespace VDVI
             var service = container.Resolve<IApmaTaskSchedulerService>();
 
            recurringJobManager.AddOrUpdate(
-             "HcsJob",
+             "ApmaJob",
              () => service.SummaryScheduler(),
-             configuration["ApmaHangfireJobSchedulerTime:HcsJob"], TimeZoneInfo.Utc
-             );
-           //recurringJobManager.AddOrUpdate(
-           // "HcsBIRatePlanStatisticsHistoryServiceJob",
-           // () => service.SummaryScheduler(),
-           // configuration["ApmaHangfireJobSchedulerTime:HcsBIRatePlanStatisticsHistory"], TimeZoneInfo.Utc
-           // );
-
-           // recurringJobManager.AddOrUpdate(
-           //    "HcsBIReservationDashboardHistoryServiceJob",
-           //    () => service.SummaryScheduler(),
-           //    configuration["ApmaHangfireJobSchedulerTime:HcsBIReservationDashboardHistory"], TimeZoneInfo.Utc
-           //    );
-           // recurringJobManager.AddOrUpdate(
-           //    "HcsBISourceStatisticsHistoryServiceJob",
-           //    () => service.SummaryScheduler(),
-           //    configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsHistory"], TimeZoneInfo.Utc
-           //    );
-           // recurringJobManager.AddOrUpdate(
-           //    "HcsBISourceStatisticsFutureServiceJob",
-           //    () => service.SummaryScheduler(),
-           //    configuration["ApmaHangfireJobSchedulerTime:HcsBISourceStatisticsFuture"], TimeZoneInfo.Utc
-           //    ); 
+             configuration["HangfireJobSchedulerTime:ApmaJob"], TimeZoneInfo.Utc
+             ); 
 
             app.UseEndpoints(endpoints =>
             {

@@ -9,10 +9,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using VDVI.ApmaRepository;
 using VDVI.ApmaRepository.Interfaces;
-using VDVI.DB.Dtos; 
-using VDVI.Services.Interfaces;
+using VDVI.DB.Dtos;
+using VDVI.Services.Interfaces.APMA;
 
-namespace VDVI.Services
+namespace VDVI.Services.APMA
 {
     public class SchedulerLogService : ApmaBaseService, ISchedulerLogService
     {
@@ -23,7 +23,7 @@ namespace VDVI.Services
             _masterRepository = masterRepository;
         }
         public async Task<Result<PrometheusResponse>> InsertAsync(SchedulerLogDto dto)
-        { 
+        {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
@@ -32,7 +32,7 @@ namespace VDVI.Services
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                 {
-                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {exception.GetExceptionDetailMessage()}"),
                     RethrowException = false
                 });
         }
@@ -46,9 +46,9 @@ namespace VDVI.Services
                  },
                  exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                  {
-                     DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                     DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {exception.GetExceptionDetailMessage()}"),
                      RethrowException = false
-                 }); 
+                 });
         }
         public async Task<Result<PrometheusResponse>> SaveWithProcAsync(string methodName)
         {
@@ -61,10 +61,10 @@ namespace VDVI.Services
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                 {
-                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {ExceptionExtension.GetExceptionDetailMessage(exception)}"),
+                    DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {exception.GetExceptionDetailMessage()}"),
                     RethrowException = false
                 });
-        }        
+        }
         public async Task<Result<PrometheusResponse>> FindByMethodNameAsync(string methodName)
         {
             throw new NotImplementedException();
