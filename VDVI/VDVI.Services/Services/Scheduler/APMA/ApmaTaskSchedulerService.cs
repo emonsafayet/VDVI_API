@@ -5,8 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
-using VDVI.Services.Interfaces.APMA;
-using VDVI.Services.Services.ApmaServices;
+using VDVI.Services.Interfaces.APMA; 
 
 namespace VDVI.Services.APMA
 {
