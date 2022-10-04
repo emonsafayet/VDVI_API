@@ -1,5 +1,5 @@
 ﻿using System;
-using VDVI.Repository.Models.Common;
+using VDVI.Repository.Models;
 
 namespace VDVI.DB.Dtos
 {

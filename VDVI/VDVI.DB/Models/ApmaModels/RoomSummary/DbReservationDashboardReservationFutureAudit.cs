@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using VDVI.Repository.Models.Common;
+using VDVI.Repository.Models;
 
 namespace VDVI.Repository.DB
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VDVI.Repository.Models.Common
+namespace VDVI.Repository.Models
 {
     public class Audit
     {

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DutchGrit.AfasClient" Version="1.0.0.63" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
     <PackageReference Include="NCrontab.Signed" Version="3.3.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -18,6 +19,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj" />
     <ProjectReference Include="..\VDVI.DB\VDVI.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\AfasService\" />
+    <Folder Include="Services\Scheduler\AFAS\" />
   </ItemGroup>
 
 </Project>

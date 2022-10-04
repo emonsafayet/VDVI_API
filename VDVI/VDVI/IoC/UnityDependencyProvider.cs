@@ -9,6 +9,7 @@ using VDVI.ApmaRepository;
 using VDVI.Services.Services.ApmaServices;
 using VDVI.Services.Interfaces.APMA;
 using VDVI.Services.APMA;
+using VDVI.Repository.DbContext.AfasDbContext;
 
 namespace VDVI.Client.IoC
 {
@@ -16,8 +17,7 @@ namespace VDVI.Client.IoC
     {
         public void RegisterDependencies(IUnityContainer container)
         {
-            //dependency resolve:
-
+            //dependency resolve:           
             container.RegisterType<IVDVISchedulerDbContext, VDVISchedulerDbContext>(new SingletonLifetimeManager());
 
             container.RegisterType<IProRepository, ProRepository>();           
@@ -57,6 +57,11 @@ namespace VDVI.Client.IoC
             container.RegisterType<IHcsSourceStasticsFutureService, HcsSourceStasticsFutureService>();
             container.RegisterType<IHcsRatePlanStatisticsFutureService, HcsRatePlanStatisticsFutureService>();
             container.RegisterType<IHcsDailyFutureService, HcsDailyHistoryFutureService>();
+
+
+           // container.RegisterType<AfasDbContext, IAfasDbContext>(new SingletonLifetimeManager());
+
+
         }
     }
 }
