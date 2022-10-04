@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using VDVI.Repository.Models;
 
-namespace VDVI.Repository.Dtos.AfasDtos
+namespace VDVI.DB.Dtos
 {
     public class DMFAdministratiesDto : Audit
     {

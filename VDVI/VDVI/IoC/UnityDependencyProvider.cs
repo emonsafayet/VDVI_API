@@ -10,25 +10,32 @@ using VDVI.Services.Services.ApmaServices;
 using VDVI.Services.Interfaces.APMA;
 using VDVI.Services.APMA;
 using VDVI.Repository.DbContext.AfasDbContext;
+using VDVI.Services.Interfaces.AfasInterfaces.Administrators;
+using VDVI.Services.AfasInterfaces;
+using VDVI.Services.AfasServices;
+using VDVI.AfasRepository;
 
 namespace VDVI.Client.IoC
 {
     public class UnityDependencyProvider : IDependencyProvider
     {
         public void RegisterDependencies(IUnityContainer container)
-        {
-            //dependency resolve:           
+        { 
+            //APMA
+
+            //APMA-Db Context         
             container.RegisterType<IVDVISchedulerDbContext, VDVISchedulerDbContext>(new SingletonLifetimeManager());
-
+           
             container.RegisterType<IProRepository, ProRepository>();           
-
+            //APMA-MASTER
             container.RegisterType<IMasterRepository, MasterRepository>();
-
+          
+            //APMA-Scheduler
             container.RegisterType<IApmaTaskSchedulerService, ApmaTaskSchedulerService>();
             container.RegisterType<ISchedulerSetupService, SchedulerSetupService>(); 
-            container.RegisterType<ISchedulerLogService, SchedulerLogService>(); 
-            
-            //Parent
+            container.RegisterType<ISchedulerLogService, SchedulerLogService>();
+
+            //Parent-APMA
             container.RegisterType<IHcsReportManagementSummaryService, HcsReportManagementSummaryService>();
             container.RegisterType<IHcsBIReservationDashboardHistoryService, HcsBIReservationDashboardHistoryService>();
             container.RegisterType<IHcsBIReservationDashboardFutureService, HcsBIReservationDashboardFutureService>();
@@ -42,7 +49,7 @@ namespace VDVI.Client.IoC
             container.RegisterType<IHcsGetDailyFutureService, HcsGetDailyHistoryFutureService>();
 
 
-            //Child
+            //Child-APMA
             container.RegisterType<IHcsRatePlanStatisticsHistoryService, HcsRatePlanStatisticsHistoryService>();
             container.RegisterType<IHcsSourceStasticsHistoryService, HcsSourceStasticsHistoryService>();            
             container.RegisterType<IHcsBIOccupancyHistoryService, HcsBIOccupancyHistoryService>();
@@ -59,7 +66,23 @@ namespace VDVI.Client.IoC
             container.RegisterType<IHcsDailyFutureService, HcsDailyHistoryFutureService>();
 
 
-           // container.RegisterType<AfasDbContext, IAfasDbContext>(new SingletonLifetimeManager());
+            //AFAS-DbContext
+            container.RegisterType<IAfasDbContext, AfasDbContext>(new SingletonLifetimeManager());
+
+            //AFAS-Master
+            container.RegisterType<IAfasMasterRepositroy, AfasMasterRepository>();
+
+            //AFAS-Schedulers
+            //container.RegisterType<IAfasTaskSchedulerService, ApmaTaskSchedulerService>();
+            //container.RegisterType<ISchedulerSetupService, SchedulerSetupService>();
+            //container.RegisterType<ISchedulerLogService, SchedulerLogService>();
+
+
+            //Parent-AFAS
+            container.RegisterType<IdmfAdministratiesService, DmfAdministratiesService>();
+
+            //Child-AFAS
+            container.RegisterType<IdmfAdministraterService, DmfAdministraterService>();
 
 
         }

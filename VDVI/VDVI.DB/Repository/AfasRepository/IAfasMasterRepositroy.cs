@@ -1,10 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Framework.Core.Repository;
+using VDVI.AfasRepository.Interfaces; 
 
-namespace VDVI.Repository.Repository.AfasRepository
+namespace VDVI.AfasRepository
 {
-    public interface IAfasMasterRepositroy
+    public interface IAfasMasterRepositroy : IProRepository
     {
+        //Common
+        IAfasSchedulerSetupRepository AfasSchedulerSetupRepository { get; }
+        IAfasSchedulerLogRepository AfasSchedulerLogRepository { get; }
+
+        //Administration
+        IDMFAdministratiesRepository DMFAdministratiesRepository { get; }
+        //Accounts
+
+        //Finance
     }
 }

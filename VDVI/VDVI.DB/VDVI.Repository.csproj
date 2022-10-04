@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="DutchGrit.AfasClient" Version="1.0.0.63" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
@@ -16,7 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\AfasDtos\AfasCommonDtos\" />
+    <Folder Include="Repository\AfasRepository\Implementation\Accounts\" />
+    <Folder Include="Repository\AfasRepository\Implementation\Financials\" />
+    <Folder Include="Repository\AfasRepository\Interfaces\Accounts\" />
+    <Folder Include="Repository\AfasRepository\Interfaces\Financials\" />
   </ItemGroup>
 
 </Project>

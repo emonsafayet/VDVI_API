@@ -22,7 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\AfasService\" />
+    <Folder Include="Interfaces\AfasInterfaces\Accounts\" />
+    <Folder Include="Interfaces\AfasInterfaces\Finances\" />
+    <Folder Include="Interfaces\Scheduler\AFAS\" />
+    <Folder Include="Services\AfasServices\Accounts\" />
+    <Folder Include="Services\AfasServices\Finances\" />
     <Folder Include="Services\Scheduler\AFAS\" />
   </ItemGroup>
 
