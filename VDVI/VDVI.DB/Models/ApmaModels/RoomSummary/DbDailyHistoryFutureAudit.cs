@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-using VDVI.Repository.Models.Common;
+using VDVI.Repository.Models;
 
 namespace VDVI.Repository.DB
 {

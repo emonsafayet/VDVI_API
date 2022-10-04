@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VDVI.Repository.Models.Common;
+using VDVI.Repository.Models;
 
 namespace VDVI.DB.Dtos
 {
