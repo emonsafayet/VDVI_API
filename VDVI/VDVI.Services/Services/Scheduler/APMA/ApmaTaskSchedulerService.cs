@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
-using VDVI.Services.Interfaces.APMA; 
+using VDVI.Services.Interfaces.APMA;
 
 namespace VDVI.Services.APMA
 {
@@ -67,8 +67,9 @@ namespace VDVI.Services.APMA
             {
                 var scheduler = new1[i];
 
-                if (scheduler.NextExecutionDateTime <= currentDateTime
-                    || scheduler.NextExecutionDateTime == null)
+                if ((scheduler.NextExecutionDateTime <= currentDateTime || scheduler.NextExecutionDateTime == null)
+                    &&
+                    (scheduler.LastBusinessDate <= currentDateTime || scheduler.LastBusinessDate == null))
                 {
                     //History
                     if (scheduler.isFuture == false
