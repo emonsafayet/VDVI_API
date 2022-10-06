@@ -10,7 +10,8 @@ using System;
 using Unity;
 using VDVI.Client.IoC;
 using VDVI.Services;
-using VDVI.Services.Interfaces.APMA; 
+using VDVI.Services.Interfaces.AFAS;
+using VDVI.Services.Interfaces.APMA;
 using StartupBase = Framework.Core.Base.Startup.StartupBase;
 
 namespace VDVI
@@ -87,13 +88,19 @@ namespace VDVI
             });
 
 
-            var service = container.Resolve<IApmaTaskSchedulerService>();
+            var apmaservice = container.Resolve<IApmaTaskSchedulerService>();
+            var afasservice = container.Resolve<IAfasTaskSchedulerService>();
 
-           recurringJobManager.AddOrUpdate(
-             "ApmaJob",
-             () => service.SummaryScheduler(),
-             configuration["HangfireJobSchedulerTime:ApmaJob"], TimeZoneInfo.Utc
-             ); 
+            //recurringJobManager.AddOrUpdate(
+            //  "ApmaJob",
+            //  () => apmaservice.SummaryScheduler(),
+            //  configuration["HangfireJobSchedulerTime:ApmaJob"], TimeZoneInfo.Utc
+            //  );
+            recurringJobManager.AddOrUpdate(
+             "AfasJob",
+             () => afasservice.SummaryScheduler(),
+             configuration["HangfireJobSchedulerTime:AfasJob"], TimeZoneInfo.Utc
+             );
 
             app.UseEndpoints(endpoints =>
             {

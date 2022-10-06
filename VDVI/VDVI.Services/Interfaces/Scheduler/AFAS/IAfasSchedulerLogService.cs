@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Repository.Models.AfasModels.Dto;
 
-namespace VDVI.Services.Interfaces.APMA
+namespace VDVI.Services.Interfaces.AFAS
 {
     public interface IAfasSchedulerLogService
     {

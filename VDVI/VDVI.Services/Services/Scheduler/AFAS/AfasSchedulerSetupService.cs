@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using VDVI.AfasRepository; 
 using VDVI.Repository.Models.AfasModels.Dto;
+using VDVI.Services.Interfaces.AFAS;
 using VDVI.Services.Interfaces.APMA;
 using VDVI.Services.Services.BaseService;
 

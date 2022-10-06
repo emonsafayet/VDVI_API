@@ -16,7 +16,7 @@ namespace VDVI.Repository.DbContext.AfasDbContext
         private IDapperRepository<DbAfasSchedulerSetup> _afasSchedulerSetup;
         private IDapperRepository<DbAfasSchedulerLog> _afasSchedulerLog;
 
-        protected AfasDbContext(IConfiguration configuration) : base(new SqlConnection(configuration["ConnectionStrings:AfasDb"]))
+        public AfasDbContext(IConfiguration configuration) : base(new SqlConnection(configuration["ConnectionStrings:AfasDb"]))
         {
             // Dto to Db - Single
             TinyMapper.Bind<DMFAdministratiesDto, DbDMFAdministraties>();
@@ -27,9 +27,7 @@ namespace VDVI.Repository.DbContext.AfasDbContext
             TinyMapper.Bind<List<DMFAdministratiesDto>, List<DbDMFAdministraties>>();
         }
         public IDapperRepository<DbDMFAdministraties> Administraties => _administraties ??= new DapperRepository<DbDMFAdministraties>(Connection);
-
         public IDapperRepository<DbAfasSchedulerSetup> AfasSchedulerSetup => _afasSchedulerSetup ??= new DapperRepository<DbAfasSchedulerSetup>(Connection);
-
         public IDapperRepository<DbAfasSchedulerLog> AfasSchedulerLog => _afasSchedulerLog ??= new DapperRepository<DbAfasSchedulerLog>(Connection);
     }
 }

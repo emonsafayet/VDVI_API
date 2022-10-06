@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DutchGrit.Afas;
+using VDVI.Repository.Dtos.AfasDtos.AfasCommonDtos;
 
 namespace VDVI.Services.Services.BaseService
 {
@@ -16,17 +17,15 @@ namespace VDVI.Services.Services.BaseService
             configurationBuilder.AddJsonFile("AppSettings.json");
             _config = configurationBuilder.Build();
         }
-        public AfasClient clientAA;
-        public AfasClient clientAC;
-        public AfasClient clientAD;
-        public AfasClient clientAE;
-         
-        public void GetAfmaConnectors()
+        public AfasCrenditalsDto GetAfmaConnectors()
         {
-            clientAA = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendital").GetSection("AA").Value);
-            clientAC = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendital").GetSection("AC").Value);
-            clientAD = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendital").GetSection("AD").Value);
-            clientAE = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendital").GetSection("AE").Value);
-        }  
+            AfasCrenditalsDto afasCrenditalsDto = new AfasCrenditalsDto();
+            afasCrenditalsDto.clientAA = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendital").GetSection("AA").Value);
+            afasCrenditalsDto.clientAC = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendital").GetSection("AC").Value);
+            afasCrenditalsDto.clientAD = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendital").GetSection("AD").Value);
+            afasCrenditalsDto.clientAE = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendital").GetSection("AE").Value);
+
+            return afasCrenditalsDto;
+        }
     }
 }

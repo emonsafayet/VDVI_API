@@ -14,6 +14,8 @@ using VDVI.Services.Interfaces.AfasInterfaces.Administrators;
 using VDVI.Services.AfasInterfaces;
 using VDVI.Services.AfasServices;
 using VDVI.AfasRepository;
+using VDVI.Services.AFAS;
+using VDVI.Services.Interfaces.AFAS;
 
 namespace VDVI.Client.IoC
 {
@@ -21,12 +23,15 @@ namespace VDVI.Client.IoC
     {
         public void RegisterDependencies(IUnityContainer container)
         { 
-            //APMA
-
+             
             //APMA-Db Context         
             container.RegisterType<IVDVISchedulerDbContext, VDVISchedulerDbContext>(new SingletonLifetimeManager());
-           
-            container.RegisterType<IProRepository, ProRepository>();           
+
+            //AFAS-DbContext
+            container.RegisterType<IAfasDbContext, AfasDbContext>(new SingletonLifetimeManager());
+
+            container.RegisterType<IProRepository, ProRepository>();     
+            
             //APMA-MASTER
             container.RegisterType<IMasterRepository, MasterRepository>();
           
@@ -66,16 +71,14 @@ namespace VDVI.Client.IoC
             container.RegisterType<IHcsDailyFutureService, HcsDailyHistoryFutureService>();
 
 
-            //AFAS-DbContext
-            container.RegisterType<IAfasDbContext, AfasDbContext>(new SingletonLifetimeManager());
-
+          
             //AFAS-Master
             container.RegisterType<IAfasMasterRepositroy, AfasMasterRepository>();
 
             //AFAS-Schedulers
-            //container.RegisterType<IAfasTaskSchedulerService, ApmaTaskSchedulerService>();
-            //container.RegisterType<ISchedulerSetupService, SchedulerSetupService>();
-            //container.RegisterType<ISchedulerLogService, SchedulerLogService>();
+            container.RegisterType<IAfasTaskSchedulerService, AfasTaskSchedulerService>();
+            container.RegisterType<IAfasSchedulerSetupService, AfasSchedulerSetupService>();
+            container.RegisterType<IAfasSchedulerLogService, AfasSchedulerLogService>();
 
 
             //Parent-AFAS

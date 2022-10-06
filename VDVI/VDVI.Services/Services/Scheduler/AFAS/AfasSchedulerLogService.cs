@@ -12,9 +12,10 @@ using VDVI.ApmaRepository;
 using VDVI.ApmaRepository.Interfaces;
 using VDVI.DB.Dtos;
 using VDVI.Repository.Models.AfasModels.Dto;
+using VDVI.Services.Interfaces.AFAS;
 using VDVI.Services.Interfaces.APMA;
 
-namespace VDVI.Services.APMA
+namespace VDVI.Services.AFAS
 {
     public class AfasSchedulerLogService : ApmaBaseService, IAfasSchedulerLogService
     {

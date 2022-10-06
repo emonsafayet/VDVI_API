@@ -10,6 +10,6 @@ namespace VDVI.Services.AfasInterfaces
 {
     public interface IdmfAdministratiesService
     {
-        
+        Task<Result<PrometheusResponse>> HcsDmfAdministratiesAsyc();
     }
 }
