@@ -1,4 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
+using DutchGrit.Afas;
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
 using Framework.Core.Utility;
@@ -6,6 +7,7 @@ using Newtonsoft.Json;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Numeric;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
@@ -25,21 +27,23 @@ namespace VDVI.Services.AfasServices
             _dmfAdministraterService = dmfAdministraterService;
         }
         public async Task<Result<PrometheusResponse>> HcsDmfAdministratiesAsyc()
-        {           
+        { 
+
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
                     List<DMFAdministratiesDto> dto = new List<DMFAdministratiesDto>();
                     var getConnector = GetAfmaConnectors();
-                    var _aa = await getConnector.clientAA.Query<DbDMFAdministraties>().Skip(-1).GetAsync();
-                    //var _ac = await getConnector.clientAC.Query<DbDMFAdministraties>().Skip(-1).Take(-1).GetAsync();
-                    //var _ad = await getConnector.clientAD.Query<DbDMFAdministraties>().Skip(-1).Take(-1).GetAsync();
-                    //var _ae = await getConnector.clientAE.Query<DbDMFAdministraties>().skip(-1).Take(-1).GetAsync();
 
-                    //format data
+                    var _aa = await getConnector.clientAA.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();
+                    var _ac = await getConnector.clientAC.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();
+                    var _ad = await getConnector.clientAD.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();
+                    var _ae = await getConnector.clientAE.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();                  
+                    
+                    dto = _aa.Concat(_ac).Concat(_ad).Concat(_ae).OrderBy(x => x.Administratietype_code).ToList();                   
 
                     // DB operation
-                    var res = _dmfAdministraterService.BulkInsertWithProcAsync(dto);
+                     var res = _dmfAdministraterService.BulkInsertWithProcAsync(dto);
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },

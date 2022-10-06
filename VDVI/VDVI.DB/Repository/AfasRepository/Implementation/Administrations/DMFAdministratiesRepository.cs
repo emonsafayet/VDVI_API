@@ -56,7 +56,7 @@ namespace VDVI.Repository.AfasRepository.Implementation
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
 
-            var queryResult = await _dbContext.Connection.QueryAsync<string>(" spINSERT_dmf_Administraties", new { RatePlanStatistics_History_UDT = dt }, commandType: CommandType.StoredProcedure);
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_dmf_Administraties", new { Administraties_UDT = dt }, commandType: CommandType.StoredProcedure);
 
             return queryResult.ToString();
         }
