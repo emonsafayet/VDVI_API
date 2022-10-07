@@ -1,18 +1,11 @@
-﻿using CSharpFunctionalExtensions;
-using DutchGrit.Afas;
+﻿using CSharpFunctionalExtensions; 
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
 using Framework.Core.Utility;
-using Newtonsoft.Json;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Numeric;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Linq; 
 using System.Threading.Tasks;
-using VDVI.DB.Dtos;
-using VDVI.Repository.Dtos.AfasDtos.AfasCommonDtos;
-using VDVI.Repository.Models.AfasModel;
+using VDVI.Repository.AfasDtos;
 using VDVI.Services.AfasInterfaces;
 using VDVI.Services.Interfaces.AfasInterfaces.Administrators;
 using VDVI.Services.Services.BaseService;
@@ -35,10 +28,11 @@ namespace VDVI.Services.AfasServices
                     List<DMFAdministratiesDto> dto = new List<DMFAdministratiesDto>();
                     var getConnector = GetAfmaConnectors();
 
-                    var _aa = await getConnector.clientAA.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();
-                    var _ac = await getConnector.clientAC.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();
-                    var _ad = await getConnector.clientAD.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();
-                    var _ae = await getConnector.clientAE.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();
+                    //Netherlands (=Dutch)=aa  | Spain =ac| Bonaire =ad | Belgium=ae
+                    var _aa = await getConnector.clientAA.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).OrderBy(x=>x.Administratie_code).GetAsync();
+                    var _ac = await getConnector.clientAC.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).OrderBy(x=>x.Administratie_code).GetAsync();
+                    var _ad = await getConnector.clientAD.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).OrderBy(x=>x.Administratie_code).GetAsync();
+                    var _ae = await getConnector.clientAE.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
 
                     //Format data
                     FormatSummaryObject(_aa.ToList(), _ac.ToList(), _ad.ToList(), _ae.ToList(), dto);

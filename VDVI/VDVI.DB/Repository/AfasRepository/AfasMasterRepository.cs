@@ -1,6 +1,5 @@
 ﻿using Framework.Core.Repository;
-using VDVI.AfasRepository.Interfaces;
-using VDVI.ApmaRepository.Interfaces;
+using VDVI.AfasRepository.Interfaces; 
 using VDVI.Repository.AfasRepository.Implementation;
 using VDVI.Repository.ApmaRepository.Implementation;
 using VDVI.Repository.DbContext.AfasDbContext;
@@ -24,7 +23,10 @@ namespace VDVI.AfasRepository
         //Administrator
         public IDMFAdministratiesRepository DMFAdministratiesRepository =>  new DMFAdministratiesRepository(_dbContext);
         //Accounts
+        public IDMFGrootboekrekeningenRepository DMFGrootboekrekeningenRepository => new DMFGrootboekrekeningenRepository(_dbContext);
 
         //Finance
+        public IDMFBeginbalansRepository DMFBeginbalansRepository=> new DMFBeginbalansRepository(_dbContext);
+         
     }
 }

@@ -10,10 +10,11 @@ using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using VDVI.AfasRepository.Interfaces;
-using VDVI.DB.Dtos;
+using VDVI.Repository.AfasDtos;
+using VDVI.Repository.AfasModels;
 using VDVI.Repository.DB;
-using VDVI.Repository.DbContext.AfasDbContext;
-using VDVI.Repository.Models.AfasModel;
+using VDVI.Repository.DbContext.AfasDbContext; 
+using VDVI.Repository.Models.AfasModels;
 using VDVI.Repository.Models.AfasModels.Dto;
 
 namespace VDVI.Repository.AfasRepository.Implementation

@@ -16,20 +16,26 @@ namespace VDVI.Services.AFAS
     public class AfasTaskSchedulerService : IAfasTaskSchedulerService
     {
         private readonly IAfasSchedulerSetupService _afasschedulerSetupService;
-        private readonly IdmfAdministratiesService _idmfAdministratiesService;
         private readonly IAfasSchedulerLogService _afasSchedulerLogService;
         private readonly IAfasSchedulerSetupService _afasSchedulerSetupService;
+        private readonly IdmfAdministratiesService _idmfAdministratiesService;
+        private readonly IdmfBeginbalaniesService _idmfBeginbalaniesService;
+        private readonly IdmfGrootboekrekeningen _idmfGrootboekrekeningen;
 
         AfasSchedulerSetupDto dtos = new AfasSchedulerSetupDto();
         public AfasTaskSchedulerService(IAfasSchedulerSetupService afasschedulerSetupService,
             IdmfAdministratiesService idmfAdministratiesService,
+            IdmfBeginbalaniesService idmfBeginbalaniesService,
             IAfasSchedulerLogService afasSchedulerLogService,
-            IAfasSchedulerSetupService afasSchedulerSetupService)
+            IAfasSchedulerSetupService afasSchedulerSetupService,
+            IdmfGrootboekrekeningen idmfGrootboekrekeningen)
         {
             _afasschedulerSetupService = afasschedulerSetupService;
             _idmfAdministratiesService = idmfAdministratiesService;
             _afasSchedulerLogService = afasSchedulerLogService;
             _afasSchedulerSetupService = afasSchedulerSetupService;
+            _idmfBeginbalaniesService = idmfBeginbalaniesService;
+            _idmfGrootboekrekeningen = idmfGrootboekrekeningen;
         }
 
 
@@ -51,6 +57,14 @@ namespace VDVI.Services.AFAS
                     {
                         case "DMFAdministraties":
                             response = await _idmfAdministratiesService.HcsDmfAdministratiesAsyc();
+                            flag = response.IsSuccess;
+                            break; 
+                        case "DMFBeginbalans":
+                            response = await _idmfBeginbalaniesService.HcsDmfBeginbalaniesServiceAsyc((DateTime)afasscheduler.BusinessStartDate);
+                            flag = response.IsSuccess;
+                            break;
+                        case "DMFGrootboekrekeningen":
+                            response = await _idmfGrootboekrekeningen.HcsDmfGrootboekrekeningensServiceAsyc();
                             flag = response.IsSuccess;
                             break;
                         default:

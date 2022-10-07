@@ -16,11 +16,4 @@
     <ProjectReference Include="..\Framework\Framework.Core\Framework.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repository\AfasRepository\Implementation\Accounts\" />
-    <Folder Include="Repository\AfasRepository\Implementation\Financials\" />
-    <Folder Include="Repository\AfasRepository\Interfaces\Accounts\" />
-    <Folder Include="Repository\AfasRepository\Interfaces\Financials\" />
-  </ItemGroup>
-
 </Project>

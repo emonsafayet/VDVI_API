@@ -1,7 +1,8 @@
 ﻿using MicroOrm.Dapper.Repositories;
 using MicroOrm.Dapper.Repositories.DbContext;
-using VDVI.Repository.Models.AfasModel;
-using VDVI.Repository.DB; 
+using VDVI.Repository.AfasModels;
+using VDVI.Repository.Models.AfasModel; 
+using VDVI.Repository.Models.AfasModels;
 
 namespace VDVI.Repository.DbContext.AfasDbContext
 {

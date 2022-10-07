@@ -1,11 +1,13 @@
 ﻿using Framework.Core.Repository;
 using MicroOrm.Dapper.Repositories;
 using Microsoft.Extensions.Configuration;
-using Nelibur.ObjectMapper; 
-using System.Collections.Generic; 
+using Nelibur.ObjectMapper;
+using System.Collections.Generic;
 using System.Data.SqlClient;
-using VDVI.DB.Dtos;
+using VDVI.Repository.AfasDtos;
+using VDVI.Repository.AfasModels;
 using VDVI.Repository.Models.AfasModel;
+using VDVI.Repository.Models.AfasModels;
 using VDVI.Repository.Models.AfasModels.Dto;
 
 namespace VDVI.Repository.DbContext.AfasDbContext
@@ -15,6 +17,8 @@ namespace VDVI.Repository.DbContext.AfasDbContext
         private IDapperRepository<DbDMFAdministraties> _administraties;
         private IDapperRepository<DbAfasSchedulerSetup> _afasSchedulerSetup;
         private IDapperRepository<DbAfasSchedulerLog> _afasSchedulerLog;
+        private IDapperRepository<DbDMFBeginbalans> _beginbalans;
+        private IDapperRepository<DbDMFGrootboekrekeningen> _grootboekrekeningen;
 
         public AfasDbContext(IConfiguration configuration) : base(new SqlConnection(configuration["ConnectionStrings:AfasDb"]))
         {
@@ -22,10 +26,16 @@ namespace VDVI.Repository.DbContext.AfasDbContext
             TinyMapper.Bind<DMFAdministratiesDto, DbDMFAdministraties>();
             TinyMapper.Bind<AfasSchedulerSetupDto, DbAfasSchedulerSetup>();
             TinyMapper.Bind<AfasSchedulerLogDto, DbAfasSchedulerLog>();
+            TinyMapper.Bind<DMFBeginbalansDto, DbDMFBeginbalans>();
+            TinyMapper.Bind<DMFGrootboekrekeningenDto, DbDMFGrootboekrekeningen>();
 
             // Dto to Db List
             TinyMapper.Bind<List<DMFAdministratiesDto>, List<DbDMFAdministraties>>();
+            TinyMapper.Bind<List<DMFBeginbalansDto>, List<DbDMFBeginbalans>>();  
+            TinyMapper.Bind<List<DMFGrootboekrekeningenDto>, List<DbDMFGrootboekrekeningen>>();  
         }
+        public IDapperRepository<DbDMFGrootboekrekeningen> Grootboekrekeningen => _grootboekrekeningen ??= new DapperRepository<DbDMFGrootboekrekeningen>(Connection);
+        public IDapperRepository<DbDMFBeginbalans> Beginbalans => _beginbalans ??= new DapperRepository<DbDMFBeginbalans>(Connection);
         public IDapperRepository<DbDMFAdministraties> Administraties => _administraties ??= new DapperRepository<DbDMFAdministraties>(Connection);
         public IDapperRepository<DbAfasSchedulerSetup> AfasSchedulerSetup => _afasSchedulerSetup ??= new DapperRepository<DbAfasSchedulerSetup>(Connection);
         public IDapperRepository<DbAfasSchedulerLog> AfasSchedulerLog => _afasSchedulerLog ??= new DapperRepository<DbAfasSchedulerLog>(Connection);

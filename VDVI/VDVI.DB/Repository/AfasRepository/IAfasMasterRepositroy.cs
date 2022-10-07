@@ -1,5 +1,6 @@
 ﻿using Framework.Core.Repository;
-using VDVI.AfasRepository.Interfaces; 
+using VDVI.AfasRepository.Interfaces;
+using VDVI.Repository.AfasRepository.Implementation;
 
 namespace VDVI.AfasRepository
 {
@@ -12,7 +13,8 @@ namespace VDVI.AfasRepository
         //Administration
         IDMFAdministratiesRepository DMFAdministratiesRepository { get; }
         //Accounts
-
+        IDMFGrootboekrekeningenRepository DMFGrootboekrekeningenRepository { get; }
         //Finance
+        IDMFBeginbalansRepository DMFBeginbalansRepository { get; }
     }
 }

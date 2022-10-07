@@ -15,7 +15,7 @@ using VDVI.Services.AfasInterfaces;
 using VDVI.Services.AfasServices;
 using VDVI.AfasRepository;
 using VDVI.Services.AFAS;
-using VDVI.Services.Interfaces.AFAS;
+using VDVI.Services.Interfaces.AFAS; 
 
 namespace VDVI.Client.IoC
 {
@@ -68,9 +68,7 @@ namespace VDVI.Client.IoC
             container.RegisterType<IHcsDailyHistoryService, HcsDailyHistoryService>();   
             container.RegisterType<IHcsSourceStasticsFutureService, HcsSourceStasticsFutureService>();
             container.RegisterType<IHcsRatePlanStatisticsFutureService, HcsRatePlanStatisticsFutureService>();
-            container.RegisterType<IHcsDailyFutureService, HcsDailyHistoryFutureService>();
-
-
+            container.RegisterType<IHcsDailyFutureService, HcsDailyHistoryFutureService>(); 
           
             //AFAS-Master
             container.RegisterType<IAfasMasterRepositroy, AfasMasterRepository>();
@@ -78,16 +76,17 @@ namespace VDVI.Client.IoC
             //AFAS-Schedulers
             container.RegisterType<IAfasTaskSchedulerService, AfasTaskSchedulerService>();
             container.RegisterType<IAfasSchedulerSetupService, AfasSchedulerSetupService>();
-            container.RegisterType<IAfasSchedulerLogService, AfasSchedulerLogService>();
-
+            container.RegisterType<IAfasSchedulerLogService, AfasSchedulerLogService>(); 
 
             //Parent-AFAS
             container.RegisterType<IdmfAdministratiesService, DmfAdministratiesService>();
+            container.RegisterType<IdmfBeginbalaniesService, DmfBeginbalaniesService>();
+            container.RegisterType<IdmfGrootboekrekeningen, DmfGrootboekrekeningensService>();
 
             //Child-AFAS
             container.RegisterType<IdmfAdministraterService, DmfAdministraterService>();
-
-
+            container.RegisterType<IdmfBeginbalansService, DMFBeginbalansService>();
+            container.RegisterType<IdmfGrootboekrekeningenService, DMFGrootboekrekeningenService>(); 
         }
     }
 }
