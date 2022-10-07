@@ -32,10 +32,10 @@ namespace VDVI.Services.AfasServices
                     do
                     {
                         //Netherlands (=Dutch)=aa  | Spain =ac| Bonaire =ad | Belgium=ae
-                        var _aa = await getConnector.clientAA.Query<DMFBeginbalansDto>().WhereEquals("", startBusinessYear.ToString()).Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
-                        var _ac = await getConnector.clientAC.Query<DMFBeginbalansDto>().WhereEquals("", startBusinessYear.ToString()).Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
-                        var _ad = await getConnector.clientAD.Query<DMFBeginbalansDto>().WhereEquals("", startBusinessYear.ToString()).Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
-                        var _ae = await getConnector.clientAE.Query<DMFBeginbalansDto>().WhereEquals("", startBusinessYear.ToString()).Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
+                        var _aa = await getConnector.clientAA.Query<DMFBeginbalansDto>().WhereEquals(x => x.Jaar, startBusinessYear.ToString()).Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
+                        var _ac = await getConnector.clientAC.Query<DMFBeginbalansDto>().WhereEquals(x => x.Jaar, startBusinessYear.ToString()).Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
+                        var _ad = await getConnector.clientAD.Query<DMFBeginbalansDto>().WhereEquals(x => x.Jaar, startBusinessYear.ToString()).Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
+                        var _ae = await getConnector.clientAE.Query<DMFBeginbalansDto>().WhereEquals(x => x.Jaar, startBusinessYear.ToString()).Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
 
                         //Format data
                         FormatSummaryObject(_aa.ToList(), _ac.ToList(), _ad.ToList(), _ae.ToList(), dto);
