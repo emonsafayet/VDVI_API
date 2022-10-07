@@ -27,7 +27,7 @@ namespace VDVI.Services.AfasServices
             _dmfAdministraterService = dmfAdministraterService;
         }
         public async Task<Result<PrometheusResponse>> HcsDmfAdministratiesAsyc()
-        { 
+        {
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
@@ -38,12 +38,13 @@ namespace VDVI.Services.AfasServices
                     var _aa = await getConnector.clientAA.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();
                     var _ac = await getConnector.clientAC.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();
                     var _ad = await getConnector.clientAD.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();
-                    var _ae = await getConnector.clientAE.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();                  
-                    
-                    dto = _aa.Concat(_ac).Concat(_ad).Concat(_ae).OrderBy(x => x.Administratietype_code).ToList();                   
+                    var _ae = await getConnector.clientAE.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).GetAsync();
+
+                    //Format data
+                    FormatSummaryObject(_aa.ToList(), _ac.ToList(), _ad.ToList(), _ae.ToList(), dto);
 
                     // DB operation
-                     var res = _dmfAdministraterService.BulkInsertWithProcAsync(dto);
+                    var res = _dmfAdministraterService.BulkInsertWithProcAsync(dto);
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },
@@ -54,5 +55,53 @@ namespace VDVI.Services.AfasServices
                 }
             );
         }
+
+        private void FormatSummaryObject(List<DMFAdministratiesDto> aa, List<DMFAdministratiesDto> ac, List<DMFAdministratiesDto> ad, List<DMFAdministratiesDto> ae, List<DMFAdministratiesDto> dto)
+        {
+            List<DMFAdministratiesDto> aaList = aa.Select(x => new DMFAdministratiesDto()
+            {
+                Omgeving_code = "AA",
+                Administratietype_code = x.Administratietype_code,
+                Administratie=x.Administratie,
+                Administratie_code=x.Administratie_code,    
+                Administratietype=x.Administratietype
+
+            }).ToList();
+            dto.AddRange(aaList); 
+
+            List<DMFAdministratiesDto> acList = ac.Select(x => new DMFAdministratiesDto()
+            {
+                Omgeving_code = "AC",
+                Administratietype_code = x.Administratietype_code,
+                Administratie=x.Administratie,
+                Administratie_code=x.Administratie_code,    
+                Administratietype=x.Administratietype
+
+            }).ToList();
+            dto.AddRange(acList);
+
+            List<DMFAdministratiesDto> adList = ad.Select(x => new DMFAdministratiesDto()
+            {
+                Omgeving_code = "AD",
+                Administratietype_code = x.Administratietype_code,
+                Administratie = x.Administratie,
+                Administratie_code = x.Administratie_code,
+                Administratietype = x.Administratietype
+
+            }).ToList();
+            dto.AddRange(adList);
+
+            List<DMFAdministratiesDto> aeList = ae.Select(x => new DMFAdministratiesDto()
+            {
+                Omgeving_code = "AE",
+                Administratietype_code = x.Administratietype_code,
+                Administratie = x.Administratie,
+                Administratie_code = x.Administratie_code,
+                Administratietype = x.Administratietype
+
+            }).ToList();
+            dto.AddRange(aeList);
+        }
+
     }
 }

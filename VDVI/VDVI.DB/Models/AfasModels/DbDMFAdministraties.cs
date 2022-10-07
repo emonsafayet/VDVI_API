@@ -12,6 +12,7 @@ namespace VDVI.Repository.Models.AfasModel
     [Table("[dmf].[Administraties]")]
     public class DbDMFAdministraties : Audit
     {
+        public string Omgeving_code { get; set; }
         public int Administratie_code { get; set; }
         public string Administratie { get; set; }
         public string Administratietype_code { get; set; }
