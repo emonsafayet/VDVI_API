@@ -91,11 +91,11 @@ namespace VDVI
             var apmaservice = container.Resolve<IApmaTaskSchedulerService>();
             var afasservice = container.Resolve<IAfasTaskSchedulerService>();
 
-            //recurringJobManager.AddOrUpdate(
-            //  "ApmaJob",
-            //  () => apmaservice.SummaryScheduler(),
-            //  configuration["HangfireJobSchedulerTime:ApmaJob"], TimeZoneInfo.Utc
-            //  );
+            recurringJobManager.AddOrUpdate(
+              "ApmaJob",
+              () => apmaservice.SummaryScheduler(),
+              configuration["HangfireJobSchedulerTime:ApmaJob"], TimeZoneInfo.Utc
+              );
             recurringJobManager.AddOrUpdate(
              "AfasJob",
              () => afasservice.SummaryScheduler(),
