@@ -22,9 +22,9 @@ namespace VDVI
         public Startup(IConfiguration configuration) : base(configuration, new UnityDependencyProvider(), ApiTitle) { }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public override void ConfigureServices(IServiceCollection services)
+        public override void ConfigureServices(IServiceCollection services )
         {
-            base.ConfigureServices(services);
+            base.ConfigureServices(services); 
 
 
             //Hangfire
@@ -32,8 +32,8 @@ namespace VDVI
                        config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                        .UseSimpleAssemblyNameTypeSerializer()
                        .UseDefaultTypeSerializer()
-                       .UseSqlServerStorage(Configuration.GetConnectionString("ApmaDb")
-                       ));
+                       .UseSqlServerStorage(Configuration.GetConnectionString("HangfireDb")
+                       )); 
 
             services.AddHangfireServer();
             services.AddMvc();
@@ -96,6 +96,7 @@ namespace VDVI
               () => apmaservice.SummaryScheduler(),
               configuration["HangfireJobSchedulerTime:ApmaJob"], TimeZoneInfo.Utc
               );
+
             recurringJobManager.AddOrUpdate(
              "AfasJob",
              () => afasservice.SummaryScheduler(),
