@@ -31,6 +31,7 @@ namespace VDVI.Services.AfasServices
                     var getConnector = GetAfmaConnectors();
                     do
                     {
+                        //string rangYear = startBusinessYear.ToString();
                         //Netherlands (=Dutch)=aa  | Spain =ac| Bonaire =ad | Belgium=ae
                         var _aa = await getConnector.clientAA.Query<DMFBeginbalansDto>().WhereEquals(x => x.Jaar, startBusinessYear.ToString()).Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
                         var _ac = await getConnector.clientAC.Query<DMFBeginbalansDto>().WhereEquals(x => x.Jaar, startBusinessYear.ToString()).Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
