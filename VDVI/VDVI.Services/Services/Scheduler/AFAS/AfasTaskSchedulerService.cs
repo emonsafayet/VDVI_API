@@ -1,15 +1,12 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
-using Quartz;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using VDVI.DB.Dtos;
 using VDVI.Repository.Models.AfasModels.Dto;
 using VDVI.Services.AfasInterfaces;
-using VDVI.Services.Interfaces;
 using VDVI.Services.Interfaces.AFAS;
-using VDVI.Services.Interfaces.APMA;
 
 namespace VDVI.Services.AFAS
 {
@@ -21,6 +18,9 @@ namespace VDVI.Services.AFAS
         private readonly IdmfAdministratiesService _idmfAdministratiesService;
         private readonly IdmfBeginbalaniesService _idmfBeginbalaniesService;
         private readonly IdmfGrootboekrekeningen _idmfGrootboekrekeningen;
+
+        IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+        public IConfiguration _config;
 
         AfasSchedulerSetupDto dtos = new AfasSchedulerSetupDto();
         public AfasTaskSchedulerService(IAfasSchedulerSetupService afasschedulerSetupService,
@@ -36,6 +36,9 @@ namespace VDVI.Services.AFAS
             _afasSchedulerSetupService = afasSchedulerSetupService;
             _idmfBeginbalaniesService = idmfBeginbalaniesService;
             _idmfGrootboekrekeningen = idmfGrootboekrekeningen;
+
+            configurationBuilder.AddJsonFile("AppSettings.json");
+            _config = configurationBuilder.Build();
         }
 
 
@@ -44,6 +47,7 @@ namespace VDVI.Services.AFAS
             bool flag = false;
             Result<PrometheusResponse> response;
             DateTime currentDateTime = DateTime.UtcNow;
+            var logDayLimits =Convert.ToInt32(_config.GetSection("SchedulerLog").GetSection("AFASSchedulerLogLimitDays").Value);
 
             var afasschedulers = await _afasschedulerSetupService.FindByAllScheduleAsync();
             var new1 = afasschedulers.ToList();
@@ -77,7 +81,7 @@ namespace VDVI.Services.AFAS
                     if (flag)
                     {
                         await _afasSchedulerSetupService.SaveWithProcAsync(dtos);
-                        await _afasSchedulerLogService.SaveWithProcAsync(afasscheduler.SchedulerName);
+                        await _afasSchedulerLogService.SaveWithProcAsync(afasscheduler.SchedulerName, logDayLimits);
                     }
                 }
             }

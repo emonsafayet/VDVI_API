@@ -53,12 +53,12 @@ namespace VDVI.Services.AFAS
                      RethrowException = false
                  });
         }
-        public async Task<Result<PrometheusResponse>> SaveWithProcAsync(string methodName)
+        public async Task<Result<PrometheusResponse>> SaveWithProcAsync(string methodName,int  logDayLimits)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _masterRepository.AfasSchedulerLogRepository.SaveWithProcAsync(methodName);
+                    var resp = await _masterRepository.AfasSchedulerLogRepository.SaveWithProcAsync(methodName, logDayLimits);  
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },

@@ -1,11 +1,12 @@
 ﻿using CSharpFunctionalExtensions;
 using Framework.Core.Base.ModelEntity;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
-using VDVI.Services.Interfaces.APMA;
+using VDVI.Services.Interfaces.APMA; 
 
 namespace VDVI.Services.APMA
 {
@@ -23,6 +24,10 @@ namespace VDVI.Services.APMA
         private readonly IHcsGetDailyFutureService _hcsGetDailyFutureService;
         private readonly ISchedulerSetupService _schedulerSetupService;
         public readonly ISchedulerLogService _schedulerLogService;
+
+        IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+        public IConfiguration _config;
+
         private DateTime _startDate = new DateTime();
         private DateTime _endDate = new DateTime();
 
@@ -39,6 +44,7 @@ namespace VDVI.Services.APMA
             , IHcsGetDailyFutureService hcsGetDailyFutureService
            , ISchedulerSetupService schedulerSetupService
            , ISchedulerLogService schedulerLogService
+         
 
             )
         {
@@ -53,12 +59,16 @@ namespace VDVI.Services.APMA
             _hcsGetDailyFutureService = hcsGetDailyFutureService;
             _schedulerSetupService = schedulerSetupService;
             _schedulerLogService = schedulerLogService;
+
+            configurationBuilder.AddJsonFile("AppSettings.json");
+            _config = configurationBuilder.Build();
         }
         public async Task SummaryScheduler()
         {
             bool flag = false;
             Result<PrometheusResponse> response;
             DateTime currentDateTime = DateTime.UtcNow;
+            var logDayLimits =Convert.ToInt32(_config.GetSection("SchedulerLog").GetSection("APMASchedulerLogLimitDays").Value);
 
             var schedulers = await _schedulerSetupService.FindByAllScheduleAsync();
             var new1 = schedulers.ToList();
@@ -144,13 +154,12 @@ namespace VDVI.Services.APMA
                     dtos.LastExecutionDateTime = DateTime.UtcNow;
                     dtos.NextExecutionDateTime = DateTime.UtcNow.AddMinutes(scheduler.ExecutionIntervalMins);
                     dtos.LastBusinessDate = scheduler.isFuture == false ? _endDate.Date : dateTime; //_Future does not need LastBusinessDate, because tartingpoint is always To
-
                     dtos.SchedulerName = scheduler.SchedulerName;
-
+                   
                     if (flag)
                     {
                         await _schedulerSetupService.SaveWithProcAsync(dtos);
-                        await _schedulerLogService.SaveWithProcAsync(scheduler.SchedulerName);
+                        await _schedulerLogService.SaveWithProcAsync(scheduler.SchedulerName, logDayLimits);
                     }
 
                 }
