@@ -20,10 +20,10 @@ namespace VDVI.Services.Services.BaseService
         public AfasCrenditalsDto GetAfmaConnectors()
         {
             AfasCrenditalsDto afasCrenditalsDto = new AfasCrenditalsDto();
-            afasCrenditalsDto.clientAA = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendtial").GetSection("AA").Value);
-            afasCrenditalsDto.clientAC = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendtial").GetSection("AC").Value);
-            afasCrenditalsDto.clientAD = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendtial").GetSection("AD").Value);
-            afasCrenditalsDto.clientAE = new AfasClient(85007, _config.GetSection("AfasAuthenticationCrendtial").GetSection("AE").Value);
+            afasCrenditalsDto.clientAA = new AfasClient(85007, _config.GetSection("AfasAuthenticationCredential").GetSection("AA").Value);
+            afasCrenditalsDto.clientAC = new AfasClient(85007, _config.GetSection("AfasAuthenticationCredential").GetSection("AC").Value);
+            afasCrenditalsDto.clientAD = new AfasClient(85007, _config.GetSection("AfasAuthenticationCredential").GetSection("AD").Value);
+            afasCrenditalsDto.clientAE = new AfasClient(85007, _config.GetSection("AfasAuthenticationCredential").GetSection("AE").Value);
 
             return afasCrenditalsDto;
         }
