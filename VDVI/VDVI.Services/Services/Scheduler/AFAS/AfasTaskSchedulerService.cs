@@ -84,7 +84,7 @@ namespace VDVI.Services.AFAS
 
                     if ((timeOfDay.Hours) == 0)
                         currentDateTime = currentDateTime.AddDays(1);  // case : 1=> it will be work last hour on the dayend ; case 2(worst case)=>  it will be execute after at 11.59 PM on last day of the year | Like (year :2022,month :11,day: 31,hour : 11,min:56,sec : 10) - this will be 2023/01/01: 01:00:00; 
-                    var dateFormat = currentDateTime.ToString("MM/dd/yyyy");
+                    var dateFormat = currentDateTime.ToString("dd/MM/yyyy");
 
                     dtos.LastExecutionDateTime = currentDateTime;
                     dtos.NextExecutionDateTime = Convert.ToDateTime(dateFormat) + nextFullHour;
