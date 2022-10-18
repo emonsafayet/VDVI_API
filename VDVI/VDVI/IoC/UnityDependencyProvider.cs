@@ -51,7 +51,7 @@ namespace VDVI.Client.IoC
             container.RegisterType<IHcsGetDailyHistoryService, HcsGetDailyHistoryService>();
             container.RegisterType<IHcsRoomSummaryService, HcsRoomSummaryService>();
             container.RegisterType<IHcsLedgerBalanceService, HcsLedgerBalanceService>();
-            container.RegisterType<IHcsGetDailyFutureService, HcsGetDailyHistoryFutureService>();
+            container.RegisterType<IHcsGetDailyFutureService, HcsGetDailyHistoryFutureService>(); 
 
 
             //Child-APMA
@@ -82,11 +82,14 @@ namespace VDVI.Client.IoC
             container.RegisterType<IdmfAdministratiesService, DmfAdministratiesService>();
             container.RegisterType<IdmfBeginbalaniesService, DmfBeginbalaniesService>();
             container.RegisterType<IdmfGrootboekrekeningen, DmfGrootboekrekeningensService>();
-
+            container.RegisterType<IdmfGrootboekrekeningen, DmfGrootboekrekeningensService>();
+            container.RegisterType<IdmfFinancieleMutatiesService, DmfFinancieleMutatesService>();
             //Child-AFAS
             container.RegisterType<IdmfAdministraterService, DmfAdministraterService>();
             container.RegisterType<IdmfBeginbalansService, DMFBeginbalansService>();
             container.RegisterType<IdmfGrootboekrekeningenService, DMFGrootboekrekeningenService>(); 
+            container.RegisterType<IdmFFinancieleMutationService, DMFFinancieleMutationService>(); 
+
         }
     }
 }

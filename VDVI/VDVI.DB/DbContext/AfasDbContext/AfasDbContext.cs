@@ -19,6 +19,7 @@ namespace VDVI.Repository.DbContext.AfasDbContext
         private IDapperRepository<DbAfasSchedulerLog> _afasSchedulerLog;
         private IDapperRepository<DbDMFBeginbalans> _beginbalans;
         private IDapperRepository<DbDMFGrootboekrekeningen> _grootboekrekeningen;
+        private IDapperRepository<DbDMFFinancieleMutaties> _financieleMutaties;
 
         public AfasDbContext(IConfiguration configuration) : base(new SqlConnection(configuration["ConnectionStrings:AfasDb"]))
         {
@@ -28,12 +29,17 @@ namespace VDVI.Repository.DbContext.AfasDbContext
             TinyMapper.Bind<AfasSchedulerLogDto, DbAfasSchedulerLog>();
             TinyMapper.Bind<DMFBeginbalansDto, DbDMFBeginbalans>();
             TinyMapper.Bind<DMFGrootboekrekeningenDto, DbDMFGrootboekrekeningen>();
+            TinyMapper.Bind<DMFFinancieleMutatiesDto, DbDMFFinancieleMutaties>();
 
             // Dto to Db List
             TinyMapper.Bind<List<DMFAdministratiesDto>, List<DbDMFAdministraties>>();
             TinyMapper.Bind<List<DMFBeginbalansDto>, List<DbDMFBeginbalans>>();  
-            TinyMapper.Bind<List<DMFGrootboekrekeningenDto>, List<DbDMFGrootboekrekeningen>>();  
+            TinyMapper.Bind<List<DMFGrootboekrekeningenDto>, List<DbDMFGrootboekrekeningen>>();
+            TinyMapper.Bind<List<DMFFinancieleMutatiesDto>, List<DbDMFFinancieleMutaties>>();
+  
+
         }
+        public IDapperRepository<DbDMFFinancieleMutaties> FinancieleMutaties => _financieleMutaties ??= new DapperRepository<DbDMFFinancieleMutaties>(Connection);
         public IDapperRepository<DbDMFGrootboekrekeningen> Grootboekrekeningen => _grootboekrekeningen ??= new DapperRepository<DbDMFGrootboekrekeningen>(Connection);
         public IDapperRepository<DbDMFBeginbalans> Beginbalans => _beginbalans ??= new DapperRepository<DbDMFBeginbalans>(Connection);
         public IDapperRepository<DbDMFAdministraties> Administraties => _administraties ??= new DapperRepository<DbDMFAdministraties>(Connection);

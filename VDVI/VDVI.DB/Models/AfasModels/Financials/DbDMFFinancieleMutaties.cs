@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using VDVI.Repository.Models;
 
-namespace VDVI.Repository.Models.AfasModels.Financials
+namespace VDVI.Repository.AfasModels
 {
     [Table("[dmf].[Financiele_Mutaties]")]
     public class DbDMFFinancieleMutaties : Audit

@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using VDVI.Repository.Models;
 
-namespace VDVI.Repository.Models.AfasModels.Financials
+namespace VDVI.Repository.AfasDtos
 {
     [ConnectorName("DMF_Financiele_Mutaties")]
     public class DMFFinancieleMutatiesDto : Audit, IGetEntity

@@ -16,5 +16,6 @@ namespace VDVI.AfasRepository
         IDMFGrootboekrekeningenRepository DMFGrootboekrekeningenRepository { get; }
         //Finance
         IDMFBeginbalansRepository DMFBeginbalansRepository { get; }
+        IDMFFinancieleMutatiesRepository DMFFinancieleMutatiesRepository { get; }
     }
 }
