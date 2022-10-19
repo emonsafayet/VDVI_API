@@ -59,57 +59,17 @@ namespace VDVI.Services.AfasServices
 
         private void FormatSummaryObject(List<DMFBeginbalansDto> aa, List<DMFBeginbalansDto> ac, List<DMFBeginbalansDto> ad, List<DMFBeginbalansDto> ae, List<DMFBeginbalansDto> dto)
         {
-            List<DMFBeginbalansDto> aaList = aa.Select(x => new DMFBeginbalansDto()
-            {
-                Omgeving_code = "AA",
-                Administratie_code = x.Administratie_code,
-                Rekeningnummer = x.Rekeningnummer,
-                Jaar = x.Jaar,
-                Periode = x.Periode,
-                Datum_boeking = x.Datum_boeking,
-                Saldo = x.Saldo,
+            aa.ForEach(a => a.Omgeving_code = "AA");
+            dto.AddRange(aa);
 
-            }).ToList();
-            dto.AddRange(aaList); 
+            ac.ForEach(a => a.Omgeving_code = "AC");
+            dto.AddRange(ac);
 
-            List<DMFBeginbalansDto> acList = ac.Select(x => new DMFBeginbalansDto()
-            {
-                Omgeving_code = "AC",
-                Administratie_code = x.Administratie_code,
-                Rekeningnummer = x.Rekeningnummer,
-                Jaar = x.Jaar,
-                Periode = x.Periode,
-                Datum_boeking = x.Datum_boeking,
-                Saldo = x.Saldo,
+            ad.ForEach(a => a.Omgeving_code = "AD");
+            dto.AddRange(ad);
 
-            }).ToList();
-            dto.AddRange(acList);
-
-            List<DMFBeginbalansDto> adList = ad.Select(x => new DMFBeginbalansDto()
-            {
-                Omgeving_code = "AD",
-                Administratie_code = x.Administratie_code,
-                Rekeningnummer = x.Rekeningnummer,
-                Jaar = x.Jaar,
-                Periode = x.Periode,
-                Datum_boeking = x.Datum_boeking,
-                Saldo = x.Saldo,
-
-            }).ToList();
-            dto.AddRange(adList);
-
-            List<DMFBeginbalansDto> aeList = ae.Select(x => new DMFBeginbalansDto()
-            {
-                Omgeving_code = "AE",
-                Administratie_code = x.Administratie_code,
-                Rekeningnummer = x.Rekeningnummer,
-                Jaar = x.Jaar,
-                Periode = x.Periode,
-                Datum_boeking = x.Datum_boeking,
-                Saldo = x.Saldo,
-
-            }).ToList();
-            dto.AddRange(aeList);
+            ae.ForEach(a => a.Omgeving_code = "AE");
+            dto.AddRange(ae); 
         }
 
     }

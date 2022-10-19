@@ -2,6 +2,8 @@
 using Framework.Core.Base.ModelEntity;
 using Framework.Core.Exceptions;
 using Framework.Core.Utility;
+using Nelibur.ObjectMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq; 
 using System.Threading.Tasks;
@@ -15,30 +17,23 @@ namespace VDVI.Services.AfasServices
     public class DmfAdministratiesService : AfasBaseService, IdmfAdministratiesService
     {
         private readonly IdmfAdministraterService _dmfAdministraterService;
+        List<DMFAdministratiesDto>  administratiesdto = new List<DMFAdministratiesDto>();
         public DmfAdministratiesService(IdmfAdministraterService dmfAdministraterService)
         {
             _dmfAdministraterService = dmfAdministraterService;
-        }
+        } 
+
         public async Task<Result<PrometheusResponse>> HcsDmfAdministratiesAsyc()
         {
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    List<DMFAdministratiesDto> dto = new List<DMFAdministratiesDto>();
-                    var getConnector = GetAfmaConnectors();
-
-                    //Netherlands (=Dutch)=aa  | Spain =ac| Bonaire =ad | Belgium=ae
-                    var _aa = await getConnector.clientAA.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).OrderBy(x=>x.Administratie_code).GetAsync();
-                    var _ac = await getConnector.clientAC.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).OrderBy(x=>x.Administratie_code).GetAsync();
-                    var _ad = await getConnector.clientAD.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).OrderBy(x=>x.Administratie_code).GetAsync();
-                    var _ae = await getConnector.clientAE.Query<DMFAdministratiesDto>().Skip(-1).Take(-1).OrderBy(x => x.Administratie_code).GetAsync();
-
-                    //Format data
-                    FormatSummaryObject(_aa.ToList(), _ac.ToList(), _ad.ToList(), _ae.ToList(), dto);
+                    var dto = await AdministrativeList();
+                    FormatSummaryObject(dto._AA.ToList(), dto._AC.ToList(), dto._AD.ToList(), dto._AE.ToList(), administratiesdto);
 
                     // DB operation
-                    var res = _dmfAdministraterService.BulkInsertWithProcAsync(dto);
+                     var res = _dmfAdministraterService.BulkInsertWithProcAsync(administratiesdto);
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },
@@ -52,50 +47,22 @@ namespace VDVI.Services.AfasServices
 
         private void FormatSummaryObject(List<DMFAdministratiesDto> aa, List<DMFAdministratiesDto> ac, List<DMFAdministratiesDto> ad, List<DMFAdministratiesDto> ae, List<DMFAdministratiesDto> dto)
         {
-            List<DMFAdministratiesDto> aaList = aa.Select(x => new DMFAdministratiesDto()
-            {
-                Omgeving_code = "AA",
-                Administratietype_code = x.Administratietype_code,
-                Administratie=x.Administratie,
-                Administratie_code=x.Administratie_code,    
-                Administratietype=x.Administratietype
 
-            }).ToList();
-            dto.AddRange(aaList); 
+            aa.ForEach(a => a.Omgeving_code = "AA");                        
+            dto.AddRange(aa);
 
-            List<DMFAdministratiesDto> acList = ac.Select(x => new DMFAdministratiesDto()
-            {
-                Omgeving_code = "AC",
-                Administratietype_code = x.Administratietype_code,
-                Administratie=x.Administratie,
-                Administratie_code=x.Administratie_code,    
-                Administratietype=x.Administratietype
+            ac.ForEach(a => a.Omgeving_code = "AC");
+            dto.AddRange(ac);
 
-            }).ToList();
-            dto.AddRange(acList);
+            ad.ForEach(a => a.Omgeving_code = "AD");
+            dto.AddRange(ad); 
+            
+            ae.ForEach(a => a.Omgeving_code = "AE");
+            dto.AddRange(ae);
 
-            List<DMFAdministratiesDto> adList = ad.Select(x => new DMFAdministratiesDto()
-            {
-                Omgeving_code = "AD",
-                Administratietype_code = x.Administratietype_code,
-                Administratie = x.Administratie,
-                Administratie_code = x.Administratie_code,
-                Administratietype = x.Administratietype
-
-            }).ToList();
-            dto.AddRange(adList);
-
-            List<DMFAdministratiesDto> aeList = ae.Select(x => new DMFAdministratiesDto()
-            {
-                Omgeving_code = "AE",
-                Administratietype_code = x.Administratietype_code,
-                Administratie = x.Administratie,
-                Administratie_code = x.Administratie_code,
-                Administratietype = x.Administratietype
-
-            }).ToList();
-            dto.AddRange(aeList);
+     
         }
+         
 
     }
 }

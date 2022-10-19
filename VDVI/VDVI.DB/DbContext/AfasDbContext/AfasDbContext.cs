@@ -25,6 +25,7 @@ namespace VDVI.Repository.DbContext.AfasDbContext
         {
             // Dto to Db - Single
             TinyMapper.Bind<DMFAdministratiesDto, DbDMFAdministraties>();
+           
             TinyMapper.Bind<AfasSchedulerSetupDto, DbAfasSchedulerSetup>();
             TinyMapper.Bind<AfasSchedulerLogDto, DbAfasSchedulerLog>();
             TinyMapper.Bind<DMFBeginbalansDto, DbDMFBeginbalans>();

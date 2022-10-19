@@ -14,6 +14,9 @@ namespace VDVI.Repository.AfasDtos
     {
         public string Omgeving_code { get; set; }
 
+        [JsonProperty("Administratie_code")]
+        public virtual int? Administratie_code { get; set; }
+
         [JsonProperty("Journaalpost_nr")]
         public virtual int? Journaalpost_nr { get; set; }
 

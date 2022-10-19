@@ -10,7 +10,8 @@ namespace VDVI.Repository.AfasModels
     [Table("[dmf].[Financiele_Mutaties]")]
     public class DbDMFFinancieleMutaties : Audit
     {
-        public string Omgeving_code { get; set; }
+        public string Omgeving_code { get; set; } 
+        public virtual int? Administratie_code { get; set; }
         public virtual int? Journaalpost_nr { get; set; }
         public virtual int? Journaalpost_vnr { get; set; }
         public virtual int? Journaalpost_vnr_vb { get; set; }

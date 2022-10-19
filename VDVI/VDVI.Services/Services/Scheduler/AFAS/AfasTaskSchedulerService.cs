@@ -22,6 +22,7 @@ namespace VDVI.Services.AFAS
         private readonly IdmfAdministratiesService _idmfAdministratiesService;
         private readonly IdmfBeginbalaniesService _idmfBeginbalaniesService;
         private readonly IdmfGrootboekrekeningen _idmfGrootboekrekeningen;
+        private readonly IdmfFinancieleMutatiesService _idmfFinancieleMutatiesService;
 
         IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
         public IConfiguration _config;
@@ -32,7 +33,8 @@ namespace VDVI.Services.AFAS
             IdmfBeginbalaniesService idmfBeginbalaniesService,
             IAfasSchedulerLogService afasSchedulerLogService,
             IAfasSchedulerSetupService afasSchedulerSetupService,
-            IdmfGrootboekrekeningen idmfGrootboekrekeningen)
+            IdmfGrootboekrekeningen idmfGrootboekrekeningen,
+            IdmfFinancieleMutatiesService idmfFinancieleMutatiesService)
         {
             _afasschedulerSetupService = afasschedulerSetupService;
             _idmfAdministratiesService = idmfAdministratiesService;
@@ -40,6 +42,7 @@ namespace VDVI.Services.AFAS
             _afasSchedulerSetupService = afasSchedulerSetupService;
             _idmfBeginbalaniesService = idmfBeginbalaniesService;
             _idmfGrootboekrekeningen = idmfGrootboekrekeningen;
+            _idmfFinancieleMutatiesService = idmfFinancieleMutatiesService;
 
             configurationBuilder.AddJsonFile("AppSettings.json");
             _config = configurationBuilder.Build();
@@ -73,6 +76,10 @@ namespace VDVI.Services.AFAS
                             break;
                         case "DMFGrootboekrekeningen":
                             response = await _idmfGrootboekrekeningen.HcsDmfGrootboekrekeningensServiceAsyc();
+                            flag = response.IsSuccess;
+                            break;
+                        case "DMFFinancieleMutaties":
+                            response = await _idmfFinancieleMutatiesService.HcsDmfFinancieleMutatiesServiceAsyc((DateTime)afasscheduler.BusinessStartDate);
                             flag = response.IsSuccess;
                             break;
                         default:

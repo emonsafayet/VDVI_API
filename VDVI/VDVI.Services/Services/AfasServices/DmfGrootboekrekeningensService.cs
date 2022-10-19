@@ -53,78 +53,17 @@ namespace VDVI.Services.AfasServices
 
         private void FormatSummaryObject(List<DMFGrootboekrekeningenDto> aa, List<DMFGrootboekrekeningenDto> ac, List<DMFGrootboekrekeningenDto> ad, List<DMFGrootboekrekeningenDto> ae, List<DMFGrootboekrekeningenDto> dto)
         {
-            List<DMFGrootboekrekeningenDto> aaList = aa.Select(x => new DMFGrootboekrekeningenDto()
-            {
-                Omgeving_code = "AA",
-                Rekeningnummer = x.Rekeningnummer,
-                Grootboekrekening = x.Grootboekrekening,
-                Rekeningtype = x.Rekeningtype,
-                Rekeningkenmerk = x.Rekeningkenmerk,
-                Consolidatiecode = x.Consolidatiecode,
-                PL_code = x.PL_code,
-                Verbijzondering_bedrijfsonderdeel = x.Verbijzondering_bedrijfsonderdeel,
-                Verbijzondering_afdeling = x.Verbijzondering_afdeling,
-                Verbijzondering_wkr = x.Verbijzondering_wkr,
-                Verbijzondering_nieuwbouw = x.Verbijzondering_nieuwbouw,
-                Verbijzondering_medewerker = x.Verbijzondering_medewerker,
+            aa.ForEach(a => a.Omgeving_code = "AA");
+            dto.AddRange(aa);
 
+            ac.ForEach(a => a.Omgeving_code = "AC");
+            dto.AddRange(ac);
 
-            }).ToList();
-            dto.AddRange(aaList);
+            ad.ForEach(a => a.Omgeving_code = "AD");
+            dto.AddRange(ad);
 
-            List<DMFGrootboekrekeningenDto> acList = ac.Select(x => new DMFGrootboekrekeningenDto()
-            {
-                Omgeving_code = "AC",
-                Rekeningnummer = x.Rekeningnummer,
-                Grootboekrekening = x.Grootboekrekening,
-                Rekeningtype = x.Rekeningtype,
-                Rekeningkenmerk = x.Rekeningkenmerk,
-                Consolidatiecode = x.Consolidatiecode,
-                PL_code = x.PL_code,
-                Verbijzondering_bedrijfsonderdeel = x.Verbijzondering_bedrijfsonderdeel,
-                Verbijzondering_afdeling = x.Verbijzondering_afdeling,
-                Verbijzondering_wkr = x.Verbijzondering_wkr,
-                Verbijzondering_nieuwbouw = x.Verbijzondering_nieuwbouw,
-                Verbijzondering_medewerker = x.Verbijzondering_medewerker,
-
-            }).ToList();
-            dto.AddRange(acList);
-
-            List<DMFGrootboekrekeningenDto> adList = ad.Select(x => new DMFGrootboekrekeningenDto()
-            {
-                Omgeving_code = "AD",
-                Rekeningnummer = x.Rekeningnummer,
-                Grootboekrekening = x.Grootboekrekening,
-                Rekeningtype = x.Rekeningtype,
-                Rekeningkenmerk = x.Rekeningkenmerk,
-                Consolidatiecode = x.Consolidatiecode,
-                PL_code = x.PL_code,
-                Verbijzondering_bedrijfsonderdeel = x.Verbijzondering_bedrijfsonderdeel,
-                Verbijzondering_afdeling = x.Verbijzondering_afdeling,
-                Verbijzondering_wkr = x.Verbijzondering_wkr,
-                Verbijzondering_nieuwbouw = x.Verbijzondering_nieuwbouw,
-                Verbijzondering_medewerker = x.Verbijzondering_medewerker,
-
-            }).ToList();
-            dto.AddRange(adList);
-
-            List<DMFGrootboekrekeningenDto> aeList = ae.Select(x => new DMFGrootboekrekeningenDto()
-            {
-                Omgeving_code = "AE",
-                Rekeningnummer = x.Rekeningnummer,
-                Grootboekrekening = x.Grootboekrekening,
-                Rekeningtype = x.Rekeningtype,
-                Rekeningkenmerk = x.Rekeningkenmerk,
-                Consolidatiecode = x.Consolidatiecode,
-                PL_code = x.PL_code,
-                Verbijzondering_bedrijfsonderdeel = x.Verbijzondering_bedrijfsonderdeel,
-                Verbijzondering_afdeling = x.Verbijzondering_afdeling,
-                Verbijzondering_wkr = x.Verbijzondering_wkr,
-                Verbijzondering_nieuwbouw = x.Verbijzondering_nieuwbouw,
-                Verbijzondering_medewerker = x.Verbijzondering_medewerker,
-
-            }).ToList();
-            dto.AddRange(aeList);
+            ae.ForEach(a => a.Omgeving_code = "AE");
+            dto.AddRange(ae); 
         }
 
     }
