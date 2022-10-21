@@ -10,6 +10,6 @@ namespace VDVI.Services.AfasInterfaces
 {
     public interface IdmfFinancieleMutatiesService
     {
-        Task<Result<PrometheusResponse>> HcsDmfFinancieleMutatiesServiceAsyc(DateTime startDate);
+        Task<Result<PrometheusResponse>> DmfFinancieleMutatiesServiceAsync(DateTime startDate);
     }
 }

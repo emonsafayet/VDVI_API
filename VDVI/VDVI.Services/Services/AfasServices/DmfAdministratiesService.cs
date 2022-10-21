@@ -23,7 +23,7 @@ namespace VDVI.Services.AfasServices
             _dmfAdministraterService = dmfAdministraterService;
         } 
 
-        public async Task<Result<PrometheusResponse>> HcsDmfAdministratiesAsyc()
+        public async Task<Result<PrometheusResponse>> DmfAdministratiesAsync()
         {
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(

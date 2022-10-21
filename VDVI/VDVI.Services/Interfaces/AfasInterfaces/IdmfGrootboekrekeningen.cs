@@ -10,6 +10,6 @@ namespace VDVI.Services.AfasInterfaces
 {
     public interface IdmfGrootboekrekeningen
     {
-        Task<Result<PrometheusResponse>> HcsDmfGrootboekrekeningensServiceAsyc();
+        Task<Result<PrometheusResponse>> DmfFinancieleMutatiesServiceAsync();
     }
 }

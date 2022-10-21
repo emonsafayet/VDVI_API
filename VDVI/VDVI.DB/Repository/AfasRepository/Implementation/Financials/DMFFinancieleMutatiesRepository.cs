@@ -1,6 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using Dapper;
 using Framework.Core.Base.ModelEntity;
+using Framework.Core.Extensions;
 using MicroOrm.Dapper.Repositories;
 using Nelibur.ObjectMapper;
 using Newtonsoft.Json;
@@ -13,7 +14,8 @@ using VDVI.AfasRepository.Interfaces;
 using VDVI.Repository.AfasDtos;
 using VDVI.Repository.AfasModels;
 using VDVI.Repository.DB;
-using VDVI.Repository.DbContext.AfasDbContext; 
+using VDVI.Repository.DbContext.AfasDbContext;
+using VDVI.Repository.Dtos.AfasDtos.AfasCommonDtos;
 using VDVI.Repository.Models.AfasModels;
 using VDVI.Repository.Models.AfasModels.Dto;
 
@@ -62,5 +64,11 @@ namespace VDVI.Repository.AfasRepository.Implementation
 
             return queryResult.ToString();
         } 
+
+        public async Task<MutationDto> GetInitialRecordAndLastRecordDatetime()
+        {  
+            var obj = await _dbContext.Connection.QueryFirstAsync<MutationDto>("spGet_FinancialMutationRecordCheckAndLastBusinessDate",  commandType: CommandType.StoredProcedure); 
+            return obj;
+        }
     }
 }

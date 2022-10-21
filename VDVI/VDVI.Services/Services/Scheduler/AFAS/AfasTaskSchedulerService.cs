@@ -67,19 +67,19 @@ namespace VDVI.Services.AFAS
                     switch (afasscheduler.SchedulerName)
                     {
                         case "DMFAdministraties":
-                            response = await _idmfAdministratiesService.HcsDmfAdministratiesAsyc();
+                            response = await _idmfAdministratiesService.DmfAdministratiesAsync();
                             flag = response.IsSuccess;
                             break; 
                         case "DMFBeginbalans":
-                            response = await _idmfBeginbalaniesService.HcsDmfBeginbalaniesServiceAsyc((DateTime)afasscheduler.BusinessStartDate);
+                            response = await _idmfBeginbalaniesService.DmfFinancieleMutatiesServiceAsync((DateTime)afasscheduler.BusinessStartDate);
                             flag = response.IsSuccess;
                             break;
                         case "DMFGrootboekrekeningen":
-                            response = await _idmfGrootboekrekeningen.HcsDmfGrootboekrekeningensServiceAsyc();
+                            response = await _idmfGrootboekrekeningen.DmfFinancieleMutatiesServiceAsync();
                             flag = response.IsSuccess;
                             break;
                         case "DMFFinancieleMutaties":
-                            response = await _idmfFinancieleMutatiesService.HcsDmfFinancieleMutatiesServiceAsyc((DateTime)afasscheduler.BusinessStartDate);
+                            response = await _idmfFinancieleMutatiesService.DmfFinancieleMutatiesServiceAsync((DateTime)afasscheduler.BusinessStartDate);
                             flag = response.IsSuccess;
                             break;
                         default:

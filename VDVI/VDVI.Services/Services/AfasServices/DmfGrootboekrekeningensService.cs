@@ -20,7 +20,7 @@ namespace VDVI.Services.AfasServices
         {
             _dmfGrootboekrekeningenService = dmfGrootboekrekeningenService;
         }
-        public async Task<Result<PrometheusResponse>> HcsDmfGrootboekrekeningensServiceAsyc()
+        public async Task<Result<PrometheusResponse>> DmfFinancieleMutatiesServiceAsync()
         { 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>

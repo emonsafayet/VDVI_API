@@ -20,7 +20,7 @@ namespace VDVI.Services.AfasServices
         {
             _dmfBeginbalansService = dmfBeginbalansService;
         }
-        public async Task<Result<PrometheusResponse>> HcsDmfBeginbalaniesServiceAsyc(DateTime startDate)
+        public async Task<Result<PrometheusResponse>> DmfFinancieleMutatiesServiceAsync(DateTime startDate)
         {
             int startBusinessYear= startDate.Year;
             int currentYear = DateTime.UtcNow.Year;
