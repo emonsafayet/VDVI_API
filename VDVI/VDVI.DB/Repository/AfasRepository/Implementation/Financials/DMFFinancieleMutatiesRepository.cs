@@ -21,7 +21,7 @@ using VDVI.Repository.Models.AfasModels.Dto;
 
 namespace VDVI.Repository.AfasRepository.Implementation
 {
-    
+
     public class DMFFinancieleMutatiesRepository : DapperRepository<DbDMFFinancieleMutaties>, IDMFFinancieleMutatiesRepository
     {
         private readonly AfasDbContext _dbContext;
@@ -39,7 +39,7 @@ namespace VDVI.Repository.AfasRepository.Implementation
 
             return TinyMapper.Map<DMFFinancieleMutatiesDto>(dbEntity);
         }
-        
+
         public async Task<DMFFinancieleMutatiesDto> UpdateAsync(DMFFinancieleMutatiesDto dto)
         {
             var entities = TinyMapper.Map<DbDMFFinancieleMutaties>(dto);
@@ -58,25 +58,14 @@ namespace VDVI.Repository.AfasRepository.Implementation
         }
         public async Task<string> BulkInsertWithProcAsync(IEnumerable<DMFFinancieleMutatiesDto> dto)
         {
-            try
-            {
-                DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
-
-                var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_dmf_Financiele_Mutaties", new { Financiele_Mutaties_UDT = dt }, commandType: CommandType.StoredProcedure);
-
-                return queryResult.ToString();
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-           
-        } 
+            DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_dmf_Financiele_Mutaties", new { Financiele_Mutaties_UDT = dt }, commandType: CommandType.StoredProcedure);
+            return queryResult.ToString();
+        }
 
         public async Task<MutationDto> GetInitialRecordAndLastRecordDatetime()
-        {  
-            var obj = await _dbContext.Connection.QueryFirstAsync<MutationDto>("spGet_FinancialMutationRecordCheckAndLastBusinessDate",  commandType: CommandType.StoredProcedure); 
+        {
+            var obj = await _dbContext.Connection.QueryFirstAsync<MutationDto>("spGet_FinancialMutationRecordCheckAndLastBusinessDate", commandType: CommandType.StoredProcedure);
             return obj;
         }
     }

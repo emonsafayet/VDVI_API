@@ -104,7 +104,7 @@ namespace VDVI.Repository.AfasDtos
         /// </summary>
         [Description("Verbijzondering_bedrijfsonderdeel")]
         [JsonProperty("Verbijzondering_bedrijfsonderdeel")]
-        public virtual string Verbijzondering_bedrijfsonderdeel { get; set; }
+        public virtual string? Verbijzondering_bedrijfsonderdeel { get; set; }
 
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace VDVI.Repository.AfasDtos
         /// </summary>
         [Description("Verbijzondering_afdeling")]
         [JsonProperty("Verbijzondering_afdeling")]
-        public virtual string Verbijzondering_afdeling { get; set; }
+        public virtual string? Verbijzondering_afdeling { get; set; }
 
         /// <summary>
         /// Verbijzondering_wkr
