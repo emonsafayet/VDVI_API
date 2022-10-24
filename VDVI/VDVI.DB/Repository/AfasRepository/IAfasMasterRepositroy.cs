@@ -10,12 +10,19 @@ namespace VDVI.AfasRepository
         IAfasSchedulerSetupRepository AfasSchedulerSetupRepository { get; }
         IAfasSchedulerLogRepository AfasSchedulerLogRepository { get; }
 
+
         //Administration
         IDMFAdministratiesRepository DMFAdministratiesRepository { get; }
+
+
         //Accounts
         IDMFGrootboekrekeningenRepository DMFGrootboekrekeningenRepository { get; }
+
+
         //Finance
         IDMFBeginbalansRepository DMFBeginbalansRepository { get; }
         IDMFFinancieleMutatiesRepository DMFFinancieleMutatiesRepository { get; }
+        IDMFBoekingsdagenMutatiesRepository DMFBoekingsdagenMutatiesRepository { get; }
+
     }
 }

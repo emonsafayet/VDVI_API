@@ -62,8 +62,7 @@ namespace VDVI.Services.AfasServices
             DMFBoekingsdagenMutatiesDto[]? boekingsdagenMutatiesAA;
             DMFBoekingsdagenMutatiesDto[]? boekingsdagenMutatiesAC;
             DMFBoekingsdagenMutatiesDto[]? boekingsdagenMutatiesAD;
-            DMFBoekingsdagenMutatiesDto[]? boekingsdagenMutatiesAE;
-
+            DMFBoekingsdagenMutatiesDto[]? boekingsdagenMutatiesAE; 
             boekingsdagenMutatiesAA = await getConnector.clientAA.Query<DMFBoekingsdagenMutatiesDto>()
                                             .WhereGreaterThen(x => x.Datum_gewijzigd, lastmutationdatetime)
                                             .WhereLessOrEqual(x => x.Datum_boeking, lastdayofthisyear)
@@ -165,8 +164,12 @@ namespace VDVI.Services.AfasServices
                     //Get Changes Record  
                     else
                     {
+
+
                         //last mutation datetime (example 18-10-2022 12:30:05)
-                        string lastmutationdatetime = formatres.LastRecordDate.ToString(); //check this date in the database
+
+                        DateTime? dt = formatres.LastRecordDate;
+                        string lastmutationdatetime = String.Format("{0:yyyy-MM-ddTHH:mm:ss}", dt); //check this date in the database 
                         string lastdayofthisyear = DateTime.Now.Year.ToString() + "-12-31T00:00:00.000"; //last day of current year
 
                         await DmfFinancieleMutatiesServiceExistingAsync(lastmutationdatetime, lastdayofthisyear, getConnector);

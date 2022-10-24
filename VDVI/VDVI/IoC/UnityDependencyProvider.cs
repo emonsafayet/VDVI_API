@@ -84,11 +84,15 @@ namespace VDVI.Client.IoC
             container.RegisterType<IdmfGrootboekrekeningen, DmfGrootboekrekeningensService>();
             container.RegisterType<IdmfGrootboekrekeningen, DmfGrootboekrekeningensService>();
             container.RegisterType<IdmfFinancieleMutatiesService, DmfFinancieleMutatesService>();
+            container.RegisterType<IdmfBoekingsdagenMutatiesService, DmfBoekingsdagenMutatesService>();
+
             //Child-AFAS
             container.RegisterType<IdmfAdministraterService, DmfAdministraterService>();
             container.RegisterType<IdmfBeginbalansService, DMFBeginbalansService>();
             container.RegisterType<IdmfGrootboekrekeningenService, DMFGrootboekrekeningenService>(); 
-            container.RegisterType<IdmFFinancieleMutationService, DMFFinancieleMutationService>(); 
+            container.RegisterType<IdmFFinancieleMutationService, DMFFinancieleMutationService>();
+            container.RegisterType<IdmFBoekingsdagenMutationService, DMFBoekingsdagenMutationService>();
+
 
         }
     }

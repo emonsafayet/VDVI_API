@@ -29,5 +29,9 @@ namespace VDVI.AfasRepository
         public IDMFBeginbalansRepository DMFBeginbalansRepository=> new DMFBeginbalansRepository(_dbContext);
 
         public IDMFFinancieleMutatiesRepository DMFFinancieleMutatiesRepository => new DMFFinancieleMutatiesRepository(_dbContext);
+
+        public IDMFBoekingsdagenMutatiesRepository DMFBoekingsdagenMutatiesRepository => new DMFBoekingsdagenMutatiesRepository(_dbContext); 
+
+
     }
 }

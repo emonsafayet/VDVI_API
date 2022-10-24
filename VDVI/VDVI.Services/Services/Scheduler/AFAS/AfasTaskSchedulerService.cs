@@ -23,7 +23,9 @@ namespace VDVI.Services.AFAS
         private readonly IdmfBeginbalaniesService _idmfBeginbalaniesService;
         private readonly IdmfGrootboekrekeningen _idmfGrootboekrekeningen;
         private readonly IdmfFinancieleMutatiesService _idmfFinancieleMutatiesService;
+        private readonly IdmfBoekingsdagenMutatiesService _idmfBoekingsdagenMutatiesService; 
 
+        
         IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
         public IConfiguration _config;
 
@@ -34,7 +36,8 @@ namespace VDVI.Services.AFAS
             IAfasSchedulerLogService afasSchedulerLogService,
             IAfasSchedulerSetupService afasSchedulerSetupService,
             IdmfGrootboekrekeningen idmfGrootboekrekeningen,
-            IdmfFinancieleMutatiesService idmfFinancieleMutatiesService)
+            IdmfFinancieleMutatiesService idmfFinancieleMutatiesService,
+            IdmfBoekingsdagenMutatiesService idmfBoekingsdagenMutatiesService)
         {
             _afasschedulerSetupService = afasschedulerSetupService;
             _idmfAdministratiesService = idmfAdministratiesService;
@@ -43,6 +46,7 @@ namespace VDVI.Services.AFAS
             _idmfBeginbalaniesService = idmfBeginbalaniesService;
             _idmfGrootboekrekeningen = idmfGrootboekrekeningen;
             _idmfFinancieleMutatiesService = idmfFinancieleMutatiesService;
+            _idmfBoekingsdagenMutatiesService = idmfBoekingsdagenMutatiesService;
 
             configurationBuilder.AddJsonFile("AppSettings.json");
             _config = configurationBuilder.Build();
@@ -80,6 +84,10 @@ namespace VDVI.Services.AFAS
                             break;
                         case "DMFFinancieleMutaties":
                             response = await _idmfFinancieleMutatiesService.DmfFinancieleMutatiesServiceAsync((DateTime)afasscheduler.BusinessStartDate);
+                            flag = response.IsSuccess;
+                            break;
+                        case "DMFBoekingsdagenMutaties":
+                            response = await _idmfBoekingsdagenMutatiesService.DmfBoekingsdagenMutatiesServiceAsync();
                             flag = response.IsSuccess;
                             break;
                         default:
