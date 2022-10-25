@@ -20,7 +20,7 @@ namespace VDVI.Services.AfasServices
         {
             _dmfBeginbalansService = dmfBeginbalansService;
         }
-        public async Task<Result<PrometheusResponse>> DmfFinancieleMutatiesServiceAsync(DateTime startDate)
+        public async Task<Result<PrometheusResponse>> DmfBeginbalanieServiceAsync(DateTime startDate)
         {
             int startBusinessYear= startDate.Year;
             int currentYear = DateTime.UtcNow.Year;
@@ -55,8 +55,7 @@ namespace VDVI.Services.AfasServices
                     RethrowException = false
                 }
             );
-        }
-
+        } 
         private void FormatSummaryObject(List<DMFBeginbalansDto> aa, List<DMFBeginbalansDto> ac, List<DMFBeginbalansDto> ad, List<DMFBeginbalansDto> ae, List<DMFBeginbalansDto> dto)
         {
             aa.ForEach(a => a.Omgeving_code = "AA");
