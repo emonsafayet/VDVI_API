@@ -92,17 +92,11 @@ namespace VDVI.Services.AFAS
                             break;
                         default:
                             break;
-                    }                
-
-                    var timeOfDay = currentDateTime.AddMinutes(afasscheduler.ExecutionIntervalMins).TimeOfDay;  
-                    var nextFullHour = TimeSpan.FromHours(Math.Ceiling(timeOfDay.TotalHours)); // Get next execution hours from full dateTime and celling into next hour.
-
-                    if ((timeOfDay.Hours) == 0)
-                        currentDateTime = currentDateTime.AddDays(1);  // case : 1=> it will be work last hour on the dayend ; case 2(worst case)=>  it will be execute after at 11.59 PM on last day of the year | Like (year :2022,month :11,day: 31,hour : 11,min:56,sec : 10) - this will be 2023/01/01: 01:00:00; 
-                    var dateFormat = currentDateTime.ToString("yyyy/MM/dd");
+                    } 
 
                     dtos.LastExecutionDateTime = currentDateTime;
-                    dtos.NextExecutionDateTime = Convert.ToDateTime(dateFormat) + nextFullHour;
+                    //NextExecutionDateTime: 2022-10-25 15:30 ; ExecutionIntervalMins: 15 ;NextExecutionDateTime: 2022-10-25 15:45 
+                    dtos.NextExecutionDateTime = dtos.NextExecutionDateTime.Value.AddMinutes(dtos.ExecutionIntervalMins);                  
                     dtos.SchedulerName = afasscheduler.SchedulerName;
 
                     if (flag)
