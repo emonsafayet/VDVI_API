@@ -77,9 +77,18 @@ namespace VDVI.Services.APMA
             {
                 var scheduler = new1[i];
 
-                if ((scheduler.NextExecutionDateTime <= currentDateTime || scheduler.NextExecutionDateTime == null)
-                    &&
-                    (scheduler.LastBusinessDate <= currentDateTime || scheduler.LastBusinessDate == null))
+                // LastBusinessDate marked to NextExecutionDate 
+                if (scheduler.LastBusinessDate != null) scheduler.LastBusinessDate = ((DateTime)scheduler.LastBusinessDate).AddDays(1);
+
+                if(
+                     (scheduler.NextExecutionDateTime == null || scheduler.NextExecutionDateTime <= currentDateTime)
+                     &&
+                     ( 
+                         (scheduler.isFuture ==false && scheduler.LastBusinessDate.Value.Date < currentDateTime.Date) // for History Condition
+                         ||                   
+                         (scheduler.isFuture == true && (scheduler.LastBusinessDate == null ||  scheduler.LastBusinessDate.Value.Date <= currentDateTime.Date)) // for Future Condition
+                     )
+                  )
                 {
                     //History
                     if (scheduler.isFuture == false
@@ -91,7 +100,7 @@ namespace VDVI.Services.APMA
                     else if (scheduler.isFuture == false
                         && scheduler.NextExecutionDateTime != null)
                     {
-                        _startDate = ((DateTime)scheduler.LastBusinessDate).AddDays(1);
+                        _startDate = ((DateTime)scheduler.LastBusinessDate);
                         _endDate = _startDate.AddDays(scheduler.DaysLimit);
                     }
 
@@ -102,9 +111,9 @@ namespace VDVI.Services.APMA
                     else if (scheduler.isFuture && scheduler.NextExecutionDateTime != null)
                         _startDate = (DateTime)scheduler.NextExecutionDateTime;
 
-                    if (_endDate >= currentDateTime) _endDate = currentDateTime.AddDays(-1);
+                    if (_endDate >= currentDateTime) _endDate = currentDateTime.AddDays(-1); // if endDate cross the CurrentDate; then endDate would be change 
 
-                    if (_endDate.Date < _startDate.Date) _endDate = _startDate;
+                    if (_endDate.Date < _startDate.Date) _endDate = _startDate;  
 
                     switch (scheduler.SchedulerName)
                     {
