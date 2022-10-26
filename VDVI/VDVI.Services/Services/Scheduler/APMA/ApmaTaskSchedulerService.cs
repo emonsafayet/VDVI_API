@@ -78,7 +78,8 @@ namespace VDVI.Services.APMA
                 var scheduler = new1[i];
 
                 // LastBusinessDate marked to NextExecutionDate 
-                if (scheduler.LastBusinessDate != null) scheduler.LastBusinessDate = ((DateTime)scheduler.LastBusinessDate).AddDays(1);
+                if (scheduler.LastBusinessDate != null)
+                    scheduler.LastBusinessDate = ((DateTime)scheduler.LastBusinessDate).AddDays(1);
 
                 if(
                      (scheduler.NextExecutionDateTime == null || scheduler.NextExecutionDateTime <= currentDateTime)

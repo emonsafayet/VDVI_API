@@ -28,8 +28,7 @@ namespace VDVI.Services.AfasServices
         } 
        
         public async Task<Result<PrometheusResponse>> DmfBoekingsdagenMutatiesServiceAsync()
-        {  
-            int currentYear = DateTime.UtcNow.Year;
+        {   
             var Dto = new List<DMFBoekingsdagenMutatiesDto>();
             AfasCrenditalsDto getConnector = GetAfmaConnectors();
 
@@ -53,7 +52,6 @@ namespace VDVI.Services.AfasServices
                        
                     }
                     //Format Data
-
                     FormatSummaryObject(AA.ToList(), Dto);
                     //FormatSummaryObject(AA.ToList(),AC.ToList(),AD.ToList(),AE.ToList(), Dto);
 

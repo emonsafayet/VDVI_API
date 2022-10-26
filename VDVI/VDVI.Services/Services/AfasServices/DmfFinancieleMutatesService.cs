@@ -144,7 +144,7 @@ namespace VDVI.Services.AfasServices
                         FormatAdministrativeObject(dto._AA.ToList(), dto._AC.ToList(), dto._AD.ToList(), dto._AE.ToList(), administratiesdto);
                         foreach (var admin in administratiesdto)
                         {
-                            for (int year = startBusinessYear; year < currentYear; year++)
+                            for (int year = startBusinessYear; year <= currentYear; year++)
                             {
                                 await DmfFinancieleMutatiesServiceInitial(startBusinessYear, admin.Administratie_code, getConnector);
                                 FormatDMFFinancieleMutatiesSummaryObject(financielemutatiesAA.ToList(), financielemutatiesDto);

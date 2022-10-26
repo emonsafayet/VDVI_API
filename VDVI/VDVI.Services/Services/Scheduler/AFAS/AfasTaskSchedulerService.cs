@@ -66,7 +66,8 @@ namespace VDVI.Services.AFAS
             for (int i = 0; i < new1.Count(); i++)
             {
                 var afasscheduler = new1[i];
-                if (afasscheduler.NextExecutionDateTime == null || afasscheduler.NextExecutionDateTime <= currentDateTime)
+
+                if (afasscheduler.NextExecutionDateTime != null || afasscheduler.NextExecutionDateTime <= currentDateTime)
                 {
                     switch (afasscheduler.SchedulerName)
                     {
@@ -96,7 +97,7 @@ namespace VDVI.Services.AFAS
 
                     dtos.LastExecutionDateTime = currentDateTime;
                     //NextExecutionDateTime: 2022-10-25 15:30 ; ExecutionIntervalMins: 15 ;NextExecutionDateTime: 2022-10-25 15:45 
-                    dtos.NextExecutionDateTime = dtos.NextExecutionDateTime.Value.AddMinutes(dtos.ExecutionIntervalMins);                  
+                    dtos.NextExecutionDateTime = afasscheduler.NextExecutionDateTime.Value.AddMinutes(afasscheduler.ExecutionIntervalMins);                  
                     dtos.SchedulerName = afasscheduler.SchedulerName;
 
                     if (flag)

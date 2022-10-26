@@ -39,7 +39,10 @@ namespace VDVI.Services.AfasServices
 
 
                     // DB operation
-                    var res = _dmfGrootboekrekeningenService.BulkInsertWithProcAsync(dto);
+                    if (dto.Count > 0)
+                    {
+                        var res = _dmfGrootboekrekeningenService.BulkInsertWithProcAsync(dto);
+                    }
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },
