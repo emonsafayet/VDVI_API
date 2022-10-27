@@ -88,7 +88,7 @@ namespace VDVI.Services.AFAS
                             flag = response.IsSuccess;
                             break;
                         case "DMFBoekingsdagenMutaties":
-                            response = await _idmfBoekingsdagenMutatiesService.DmfBoekingsdagenMutatiesServiceAsync();
+                            response = await _idmfBoekingsdagenMutatiesService.DmfBoekingsdagenMutatiesServiceAsync((DateTime)afasscheduler.BusinessStartDate);
                             flag = response.IsSuccess;
                             break;
                         default:
