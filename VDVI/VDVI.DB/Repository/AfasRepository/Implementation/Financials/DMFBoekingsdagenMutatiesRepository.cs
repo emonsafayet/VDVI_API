@@ -48,10 +48,15 @@ namespace VDVI.Repository.AfasRepository.Implementation
 
             return dto;
         }
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<DMFBoekingsdagenMutatiesDto> dto)
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<DMFBoekingsdagenMutatiesDto> dto, bool isInitial)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_dmf_Boekingsdagen_Mutaties", new { BoekingsdagenMutaties_UDT = dt }, commandType: CommandType.StoredProcedure);
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_dmf_Boekingsdagen_Mutaties",
+                new
+                {
+                    BoekingsdagenMutaties_UDT = dt,
+                    IsInitial= isInitial
+                }, commandType: CommandType.StoredProcedure);
             return queryResult.ToString();
         }
 
@@ -60,6 +65,6 @@ namespace VDVI.Repository.AfasRepository.Implementation
             var obj = await _dbContext.Connection.QueryFirstAsync<MutationDto>("spGet_BoekingsdagenMutationRecordCheckAndLastBusinessDate", commandType: CommandType.StoredProcedure);
             return obj;
         }
-         
+
     }
 }

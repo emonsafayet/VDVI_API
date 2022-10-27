@@ -226,10 +226,11 @@ namespace VDVI.Services.AfasServices
                         await DmfFinancieleMutatiesServiceExistingAsync(lastmutationdatetime, lastdayofthisyear, getConnector);
                         // DB operation
                         if (financielemutatiesDto.Count > 0)
-                            await _dmFFinancieleMutationService.BulkInsertWithProcAsync(financielemutatiesDto, true);
-                    }
-
-
+                        {
+                            await _dmFFinancieleMutationService.BulkInsertWithProcAsync(financielemutatiesDto, false);
+                            financielemutatiesDto.Clear();
+                        }
+                    } 
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },
