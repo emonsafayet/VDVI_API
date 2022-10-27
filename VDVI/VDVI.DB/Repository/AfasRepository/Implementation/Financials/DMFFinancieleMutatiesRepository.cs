@@ -56,10 +56,16 @@ namespace VDVI.Repository.AfasRepository.Implementation
 
             return dto;
         }
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<DMFFinancieleMutatiesDto> dto)
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<DMFFinancieleMutatiesDto> dto, bool isInitial)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
-            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_dmf_Financiele_Mutaties", new { Financiele_Mutaties_UDT = dt }, commandType: CommandType.StoredProcedure);
+            var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_dmf_Financiele_Mutaties",
+                new
+                {
+
+                    Financiele_Mutaties_UDT = dt,
+                    IsInitial=  isInitial
+                }, commandType: CommandType.StoredProcedure);
             return queryResult.ToString();
         }
 
