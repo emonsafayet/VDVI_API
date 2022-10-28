@@ -75,19 +75,19 @@ namespace VDVI.Services.AFAS
                             response = await _idmfAdministratiesService.DmfAdministratiesAsync();
                             flag = response.IsSuccess;
                             break; 
-                        case "DMFBeginbalans":
+                        case "DMFBeginbalans"://Opening Balance
                             response = await _idmfBeginbalaniesService.DmfBeginbalanieServiceAsync((DateTime)afasscheduler.BusinessStartDate);
                             flag = response.IsSuccess;
                             break;
-                        case "DMFGrootboekrekeningen": 
+                        case "DMFGrootboekrekeningen": //Ledger of Accounts
                             response = await _idmfGrootboekrekeningen.DmfGrootboekrekeningenServiceAsync();
                             flag = response.IsSuccess;
                             break;
-                        case "DMFFinancieleMutaties":
+                        case "DMFFinancieleMutaties"://Financial Mutations
                             response = await _idmfFinancieleMutatiesService.DmfFinancieleMutatiesServiceAsync((DateTime)afasscheduler.BusinessStartDate);
                             flag = response.IsSuccess;
                             break;
-                        case "DMFBoekingsdagenMutaties":
+                        case "DMFBoekingsdagenMutaties"://Booking Dates Mutations
                             response = await _idmfBoekingsdagenMutatiesService.DmfBoekingsdagenMutatiesServiceAsync((DateTime)afasscheduler.BusinessStartDate);
                             flag = response.IsSuccess;
                             break;
