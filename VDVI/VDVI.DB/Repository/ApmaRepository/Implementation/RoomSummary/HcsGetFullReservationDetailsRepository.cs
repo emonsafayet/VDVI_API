@@ -15,7 +15,7 @@ using VDVI.DB.Dtos;
 using VDVI.Repository.DB;
 using VDVI.Repository.DbContext.ApmaDbContext;
 
-namespace VDVI.Repository.Repository.ApmaRepository.Implementation.RoomSummary
+namespace VDVI.Repository.ApmaRepository.Implementation
 {
     public class HcsGetFullReservationDetailsRepository : DapperRepository<DbGetFullReservationDetails>, IHcsGetFullReservationDetailsRepository
     {
