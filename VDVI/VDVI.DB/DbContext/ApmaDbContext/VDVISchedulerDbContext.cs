@@ -37,8 +37,13 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         private IDapperRepository<DbReservationDashboardReservationFutureAudit> _reservationFutureAudit;
         private IDapperRepository<DbReservationDashboardRevenueFutureAudit> _revenueFutureAudit;
         private IDapperRepository<DbDailyHistory> _dailyHistory;
+        private IDapperRepository<DbGetFullReservationDetails> _getFullReservationDetails;
 
-        public VDVISchedulerDbContext(IConfiguration configuration) : base(new SqlConnection(configuration["ConnectionStrings:ApmaDb"]))
+
+
+
+
+        public VDVISchedulerDbContext(IConfiguration configuration, IDapperRepository<DbGetFullReservationDetails> getFullReservationDetails = null) : base(new SqlConnection(configuration["ConnectionStrings:ApmaDb"]))
         {
             // Dto to Db - Single
             TinyMapper.Bind<SchedulerSetupDto, DbSchedulerSetup>();
@@ -64,7 +69,7 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
             TinyMapper.Bind<ReservationDashboardReservationFutureAuditDto, DbReservationDashboardReservationFutureAudit>();
             TinyMapper.Bind<ReservationDashboardRevenueFutureAuditDto, DbReservationDashboardRevenueFutureAudit>();
             TinyMapper.Bind<DailyHistoryDto, DbDailyHistory>();
-
+            TinyMapper.Bind<GetFullReservationDetailsDto, GetFullReservationDetailsDto>(); 
 
             // Dto to Db List
             TinyMapper.Bind<List<SchedulerLogDto>, List<DbSchedulerLog>>();
@@ -89,7 +94,9 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
             TinyMapper.Bind<List<ReservationDashboardOccupancyFutureAuditDto>, List<DbReservationDashboardOccupancyFutureAudit>>();
             TinyMapper.Bind<List<ReservationDashboardReservationFutureAuditDto>, List<DbReservationDashboardReservationFutureAudit>>();
             TinyMapper.Bind<List<ReservationDashboardRevenueFutureAuditDto>, List<DbReservationDashboardRevenueFutureAudit>>();
-            TinyMapper.Bind<List<DailyHistoryDto>, List<DbDailyHistory>>(); 
+            TinyMapper.Bind<List<DailyHistoryDto>, List<DbDailyHistory>>();
+            TinyMapper.Bind<List<GetFullReservationDetailsDto>, List<DbGetFullReservationDetails>>();
+           
         }
         public IDapperRepository<DbSchedulerSetup> SchedulerSetup => _schedulerSetup ??= new DapperRepository<DbSchedulerSetup>(Connection);
         public IDapperRepository<DbSchedulerLog> SchedulerLog => _schedulerlog ??= new DapperRepository<DbSchedulerLog>(Connection);
@@ -114,5 +121,6 @@ namespace VDVI.Repository.DbContext.ApmaDbContext
         public IDapperRepository<DbReservationDashboardReservationFutureAudit> ReservationFutureAudit => _reservationFutureAudit ??= new DapperRepository<DbReservationDashboardReservationFutureAudit>(Connection);
         public IDapperRepository<DbReservationDashboardRevenueFutureAudit> RevenueFutureAudit => _revenueFutureAudit ??= new DapperRepository<DbReservationDashboardRevenueFutureAudit>(Connection);
         public IDapperRepository<DbDailyHistory> DailyHistory => _dailyHistory ??= new DapperRepository<DbDailyHistory>(Connection);
+        public IDapperRepository<DbGetFullReservationDetails> GetFullReservationDetails => _getFullReservationDetails ??= new DapperRepository<DbGetFullReservationDetails>(Connection);
     }
 }
