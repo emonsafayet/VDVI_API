@@ -7,6 +7,6 @@ namespace VDVI.Services.Interfaces
 {
     public interface IHcsGetFullReservationDetailsService
     {
-        Task<Result<PrometheusResponse>> GetFullReservationDetailsAsync();
+        Task<Result<PrometheusResponse>> HcsGetFullReservationDetailsAsync();
     }
 }

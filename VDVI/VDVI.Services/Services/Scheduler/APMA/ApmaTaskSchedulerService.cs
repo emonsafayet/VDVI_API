@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VDVI.DB.Dtos;
 using VDVI.Services.Interfaces;
-using VDVI.Services.Interfaces.APMA; 
+using VDVI.Services.Interfaces.APMA;
 
 namespace VDVI.Services.APMA
 {
@@ -18,10 +18,11 @@ namespace VDVI.Services.APMA
         private readonly IHcsBIRatePlanStatisticsHistoryService _hcsBIRatePlanStatisticsHistoryService;
         private readonly IHcsBIRatePlanStatisticsFutureService _hcsBIRatePlanStatisticsFutureService;
         private readonly IHcsBISourceStatisticsHistoryService _hcsBISourceStatisticsHistoryService;
-
         private readonly IHcsBISourceStatisticsFutureService _hcsBISourceStatisticsFutureService;
         private readonly IHcsGetDailyHistoryService _hcsGetDailyHistoryService;
         private readonly IHcsGetDailyFutureService _hcsGetDailyFutureService;
+        private readonly IHcsGetFullReservationDetailsService _hcsGetFullReservationDetailsService;
+
         private readonly ISchedulerSetupService _schedulerSetupService;
         public readonly ISchedulerLogService _schedulerLogService;
 
@@ -38,13 +39,15 @@ namespace VDVI.Services.APMA
             IHcsBIReservationDashboardFutureService hcsBIReservationDashboardFutureService,
             IHcsBIRatePlanStatisticsHistoryService hcsBIRatePlanStatisticsHistoryService,
             IHcsBIRatePlanStatisticsFutureService hcsBIRatePlanStatisticsFutureService,
-            IHcsBISourceStatisticsHistoryService hcsBISourceStatisticsHistoryService
-            , IHcsBISourceStatisticsFutureService hcsBISourceStatisticsFutureService
-            , IHcsGetDailyHistoryService hcsGetDailyHistoryService
-            , IHcsGetDailyFutureService hcsGetDailyFutureService
-           , ISchedulerSetupService schedulerSetupService
-           , ISchedulerLogService schedulerLogService
-         
+            IHcsBISourceStatisticsHistoryService hcsBISourceStatisticsHistoryService,
+            IHcsBISourceStatisticsFutureService hcsBISourceStatisticsFutureService,
+            IHcsGetDailyHistoryService hcsGetDailyHistoryService,
+            IHcsGetDailyFutureService hcsGetDailyFutureService,
+            IHcsGetFullReservationDetailsService hcsGetFullReservationDetailsService,
+
+            ISchedulerSetupService schedulerSetupService,
+            ISchedulerLogService schedulerLogService
+
 
             )
         {
@@ -57,6 +60,7 @@ namespace VDVI.Services.APMA
             _hcsBISourceStatisticsFutureService = hcsBISourceStatisticsFutureService;
             _hcsGetDailyHistoryService = hcsGetDailyHistoryService;
             _hcsGetDailyFutureService = hcsGetDailyFutureService;
+            _hcsGetFullReservationDetailsService = hcsGetFullReservationDetailsService;
             _schedulerSetupService = schedulerSetupService;
             _schedulerLogService = schedulerLogService;
 
@@ -68,7 +72,7 @@ namespace VDVI.Services.APMA
             bool flag = false;
             Result<PrometheusResponse> response;
             DateTime currentDateTime = DateTime.UtcNow;
-            var logDayLimits =Convert.ToInt32(_config.GetSection("SchedulerLog").GetSection("APMASchedulerLogLimitDays").Value);
+            var logDayLimits = Convert.ToInt32(_config.GetSection("SchedulerLog").GetSection("APMASchedulerLogLimitDays").Value);
 
             var schedulers = await _schedulerSetupService.FindByAllScheduleAsync();
             var new1 = schedulers.ToList();
@@ -81,13 +85,13 @@ namespace VDVI.Services.APMA
                 if (scheduler.LastBusinessDate != null)
                     scheduler.LastBusinessDate = ((DateTime)scheduler.LastBusinessDate).AddDays(1);
 
-                if(
+                if (
                      (scheduler.NextExecutionDateTime == null || scheduler.NextExecutionDateTime <= currentDateTime)
                      &&
-                     ( 
-                         (scheduler.isFuture ==false && scheduler.LastBusinessDate.Value.Date < currentDateTime.Date) // for History Condition
-                         ||                   
-                         (scheduler.isFuture == true && (scheduler.LastBusinessDate == null ||  scheduler.LastBusinessDate.Value.Date <= currentDateTime.Date)) // for Future Condition
+                     (
+                         (scheduler.isFuture == false && scheduler.LastBusinessDate.Value.Date < currentDateTime.Date) // for History Condition
+                         ||
+                         (scheduler.isFuture == true && (scheduler.LastBusinessDate == null || scheduler.LastBusinessDate.Value.Date <= currentDateTime.Date)) // for Future Condition
                      )
                   )
                 {
@@ -114,7 +118,7 @@ namespace VDVI.Services.APMA
 
                     if (_endDate >= currentDateTime) _endDate = currentDateTime.AddDays(-1); // if endDate cross the CurrentDate; then endDate would be change 
 
-                    if (_endDate.Date < _startDate.Date) _endDate = _startDate;  
+                    if (_endDate.Date < _startDate.Date) _endDate = _startDate;
 
                     switch (scheduler.SchedulerName)
                     {
@@ -156,6 +160,10 @@ namespace VDVI.Services.APMA
                             response = await _hcsGetDailyFutureService.HcsGetDailyHistoryFutureAsyc(_startDate, scheduler.DaysLimit);
                             flag = response.IsSuccess;
                             break;
+                        case "HcsGetFullReservationDetails":
+                            response = await _hcsGetFullReservationDetailsService.HcsGetFullReservationDetailsAsync();
+                            flag = response.IsSuccess;
+                            break;
 
                         default:
                             break;
@@ -165,7 +173,7 @@ namespace VDVI.Services.APMA
                     dtos.NextExecutionDateTime = DateTime.UtcNow.AddMinutes(scheduler.ExecutionIntervalMins);
                     dtos.LastBusinessDate = scheduler.isFuture == false ? _endDate.Date : dateTime; //_Future does not need LastBusinessDate, because tartingpoint is always To
                     dtos.SchedulerName = scheduler.SchedulerName;
-                   
+
                     if (flag)
                     {
                         await _schedulerSetupService.SaveWithProcAsync(dtos);

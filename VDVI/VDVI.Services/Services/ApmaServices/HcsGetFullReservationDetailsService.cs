@@ -23,7 +23,7 @@ namespace VDVI.Services
             _hcsGetFullReservationDetailService = hcsGetFullReservationDetailService; 
         }
 
-        public async Task<Result<PrometheusResponse>> GetFullReservationDetailsAsync()
+        public async Task<Result<PrometheusResponse>> HcsGetFullReservationDetailsAsync()
         {
 
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
@@ -31,16 +31,16 @@ namespace VDVI.Services
                 {
                     Authentication pmsAuthentication = GetApmaAuthCredential();
 
-                    List<GetFullReservationDetailsDto> dto = new List<GetFullReservationDetailsDto>(); 
+                    GetFullReservationDetailsDto dto = new GetFullReservationDetailsDto(); 
 
                     foreach (string property in ApmaProperties)
                     {
-                        await client.HcsGetFullReservationDetailsAsync(pmsAuthentication, PropertyCode: property,"","","","","");                         
-                        FormatSummaryObject(dto, property);
+                        var res = await  client.HcsGetFullReservationDetailsAsync(pmsAuthentication, PropertyCode: property,"", "TIE-FX127097", "","","");                         
+                        //FormatSummaryObject(dto, property);
                     } 
-                    var res = _hcsGetFullReservationDetailService.BulkInsertWithProcAsync(ReservationDetailsdto); 
+                    var result = _hcsGetFullReservationDetailService.BulkInsertWithProcAsync(ReservationDetailsdto); 
 
-                    return PrometheusResponse.Success("", "Data retrieval is successful");
+                    return PrometheusResponse.Success("", result.ToString());
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
                 {
@@ -49,10 +49,10 @@ namespace VDVI.Services
                 });
         }
 
-        private void FormatSummaryObject(List<GetFullReservationDetailsDto> dto, string propertyCode)
+        private void FormatSummaryObject(GetFullReservationDetailsDto dto, string propertyCode)
         {
-            dto.ForEach(x => x.PropertyCode = propertyCode);
-            ReservationDetailsdto.AddRange(dto); 
+            //dto.PropertyCode = propertyCode;
+            //ReservationDetailsdto.AddRange(dto); 
         }
     }
 }
