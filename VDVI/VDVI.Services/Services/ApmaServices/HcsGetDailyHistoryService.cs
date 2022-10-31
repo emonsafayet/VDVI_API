@@ -26,6 +26,7 @@ namespace VDVI.Services
         }
         public async Task<Result<PrometheusResponse>> HcsGetDailyHistoryAsyc(DateTime StartDate, DateTime EndDate)
         {
+            Task<Result<PrometheusResponse>> result;
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                  async () =>
                  {
@@ -43,11 +44,12 @@ namespace VDVI.Services
                          {
                              var dailyHistoryList = res.HcsGetDailyHistoryResult.DailyHistories.ToList();
                              FormatSummaryObject(dto, dailyHistoryList, propertyCode);
+                             result = _hcsDailyHistoryService.BulkInsertWithProcAsync(dto);
                              x++;
                          } while (x < res.HcsGetDailyHistoryResult.TotalPages);
                      }
 
-                     var result = _hcsDailyHistoryService.BulkInsertWithProcAsync(dto);
+                     
 
                      return PrometheusResponse.Success("", "Data retrieval is successful");
                  },
