@@ -169,8 +169,9 @@ namespace VDVI.Services.APMA
                             break;
                     }
                     DateTime? dateTime = null;
-                    dtos.LastExecutionDateTime = DateTime.UtcNow;
-                    dtos.NextExecutionDateTime = DateTime.UtcNow.AddMinutes(scheduler.ExecutionIntervalMins);
+                    dtos.LastExecutionDateTime = currentDateTime;
+                    dtos.NextExecutionDateTime = scheduler.NextExecutionDateTime.Value.AddMinutes(scheduler.ExecutionIntervalMins);
+                    //dtos.NextExecutionDateTime = DateTime.UtcNow.AddMinutes(scheduler.ExecutionIntervalMins);
                     dtos.LastBusinessDate = scheduler.isFuture == false ? _endDate.Date : dateTime; //_Future does not need LastBusinessDate, because tartingpoint is always To
                     dtos.SchedulerName = scheduler.SchedulerName;
 
