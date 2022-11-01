@@ -197,10 +197,8 @@ namespace VDVI.Services.AfasServices
                         var ac = dto._AC.Select(x => x.Administratie_code);
                         var ad = dto._AD.Select(x => x.Administratie_code);
                         var ae = dto._AE.Select(x => x.Administratie_code);
-                        var administratiesCode = aa.Concat(ac).Concat(ad).Concat(ae).Distinct().ToList().OrderBy(x => x);
-
-                        // FormatAdministrativeObject(dto._AA.ToList(), dto._AC.ToList(), dto._AD.ToList(), dto._AE.ToList(), administratiesdto);
-
+                        var administratiesCode = aa.Concat(ac).Concat(ad).Concat(ae).Distinct().ToList().OrderBy(x => x); 
+                        
                         for (int year = startBusinessYear; year <= currentYear; year++)
                         {
                             foreach (var code in administratiesCode)

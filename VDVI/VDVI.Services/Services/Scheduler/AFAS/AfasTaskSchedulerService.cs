@@ -67,7 +67,10 @@ namespace VDVI.Services.AFAS
             {
                 var afasscheduler = new1[i];
 
-                if (afasscheduler.NextExecutionDateTime != null || afasscheduler.NextExecutionDateTime <= currentDateTime)
+                if (
+                        afasscheduler.NextExecutionDateTime != null 
+                        && afasscheduler.NextExecutionDateTime <= currentDateTime
+                    )
                 {
                     switch (afasscheduler.SchedulerName)
                     {
