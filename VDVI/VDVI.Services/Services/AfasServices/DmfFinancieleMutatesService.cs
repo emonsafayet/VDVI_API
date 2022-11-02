@@ -200,7 +200,7 @@ namespace VDVI.Services.AfasServices
                         var administratiesCode = aa.Concat(ac).Concat(ad).Concat(ae).Distinct().ToList().OrderBy(x => x); 
                         
                         for (int year = startBusinessYear; year <= currentYear; year++)
-                        {
+                        {  
                             foreach (var code in administratiesCode)
                             {
                                 await DmfFinancieleMutatiesServiceInitial(year, code, getConnector);
@@ -245,7 +245,7 @@ namespace VDVI.Services.AfasServices
 
             if (_financielemutatiesAA.Count > 0)
             {
-                _financielemutatiesAA.ForEach(a => a.Omgeving_code = "AC");
+                _financielemutatiesAA.ForEach(a => a.Omgeving_code = "AA");
                 _financielemutatiesDto.AddRange(_financielemutatiesAA);
             }
 
