@@ -18,7 +18,7 @@ namespace VDVI.Client.Controllers.ApmaControllers
             _hcsBISourceStatisticsHistoryService = hcsBISourceStatisticsHistoryService;
         }
         [HttpPost("HcsBISourceStatisticsHistory")]
-        public async Task<IActionResult> HcsBISourceStatisticsHistory(DateTime startDate,, DateTime endDate)
+        public async Task<IActionResult> HcsBISourceStatisticsHistory(DateTime startDate, DateTime endDate)
         {
             var response = await _hcsBISourceStatisticsHistoryService.HcsBIHcsBISourceStatisticsRepositoryHistoryAsyc(startDate, endDate);
             return Ok(response);

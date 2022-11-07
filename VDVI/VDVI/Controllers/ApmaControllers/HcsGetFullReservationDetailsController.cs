@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using System;
-using VDVI.Services;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks; 
 using VDVI.Services.Interfaces;
 
 namespace VDVI.Client.Controllers.ApmaControllers

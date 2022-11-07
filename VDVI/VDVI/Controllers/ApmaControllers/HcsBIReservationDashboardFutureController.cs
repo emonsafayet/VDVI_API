@@ -18,9 +18,9 @@ namespace VDVI.Client.Controllers.ApmaControllers
             _hcsBIReservationDashboardFutureService = hcsBIReservationDashboardFutureService;
         }
         [HttpPost("HcsBIReservationDashboardFuture")]
-        public async Task<IActionResult> HcsBIReservationDashboardFuture(DateTime startDate, int daydifference)
+        public async Task<IActionResult> HcsBIReservationDashboardFuture(DateTime lastExecutionDate, int daydifference)
         {
-            var response = await _hcsBIReservationDashboardFutureService.HcsBIReservationDashboardRepositoryAsyc(startDate, daydifference);
+            var response = await _hcsBIReservationDashboardFutureService.HcsBIReservationDashboardRepositoryAsyc(lastExecutionDate, daydifference);
             return Ok(response);
         }
 
