@@ -138,42 +138,56 @@ namespace VDVI.Services.AfasServices
             }
         }
 
-        public async Task DmfFinancieleMutatiesServiceInitial(int year, int code, AfasCrenditalsDto getConnector)
+        public async Task DmfFinancieleMutatiesServiceInitial(int year, IOrderedEnumerable<int> administratiesCode, AfasCrenditalsDto getConnector)
         {
 
+            foreach (int code in administratiesCode)
+            {
+                financielemutatiesAA = await getConnector.clientAA.Query<DMFFinancieleMutatiesDto>()
+                                                              .WhereEquals(x => x.Administratie_code, code.ToString())
+                                                              .WhereEquals(x => x.Jaar, year.ToString())
+                                                              .Skip(-1)
+                                                              .Take(-1)
+                                                              .GetAsync();
+                if (financielemutatiesAA.Length > 0)
+                    FormatSummaryObjectAA(financielemutatiesAA.ToList(), financielemutatiesDto);
 
-            financielemutatiesAA = await getConnector.clientAA.Query<DMFFinancieleMutatiesDto>()
-                                                                .WhereEquals(x => x.Administratie_code, code.ToString())
-                                                                .WhereEquals(x => x.Jaar, year.ToString())
-                                                                .Skip(-1)
-                                                                .Take(-1)
-                                                                .GetAsync();
-            if (financielemutatiesAA.Length > 0) FormatSummaryObjectAA(financielemutatiesAA.ToList(), financielemutatiesDto);
 
-            financielemutatiesAC = await getConnector.clientAC.Query<DMFFinancieleMutatiesDto>()
-                                                                .WhereEquals(x => x.Administratie_code, code.ToString())
-                                                                .WhereEquals(x => x.Jaar, year.ToString())
-                                                                .Skip(-1)
-                                                                .Take(-1)
-                                                                .GetAsync();
-            if (financielemutatiesAC.Length > 0) FormatSummaryObjectAC(financielemutatiesAC.ToList(), financielemutatiesDto);
 
-            financielemutatiesAD = await getConnector.clientAD.Query<DMFFinancieleMutatiesDto>()
-                                                                .WhereEquals(x => x.Administratie_code, code.ToString())
-                                                                .WhereEquals(x => x.Jaar, year.ToString())
-                                                                .Skip(-1)
-                                                                .Take(-1)
-                                                                .GetAsync();
-            if (financielemutatiesAD.Length > 0) FormatSummaryObjectAD(financielemutatiesAD.ToList(), financielemutatiesDto);
+                financielemutatiesAC = await getConnector.clientAC.Query<DMFFinancieleMutatiesDto>()
+                                                                    .WhereEquals(x => x.Administratie_code, code.ToString())
+                                                                    .WhereEquals(x => x.Jaar, year.ToString())
+                                                                    .Skip(-1)
+                                                                    .Take(-1)
+                                                                    .GetAsync();
+                if (financielemutatiesAC.Length > 0) 
+                    FormatSummaryObjectAC(financielemutatiesAC.ToList(), financielemutatiesDto);
 
-            financielemutatiesAE = await getConnector.clientAE.Query<DMFFinancieleMutatiesDto>()
-                                                                .WhereEquals(x => x.Administratie_code, code.ToString())
-                                                                .WhereEquals(x => x.Jaar, year.ToString())
-                                                                .Skip(-1)
-                                                                .Take(-1)
-                                                                .GetAsync();
-            if (financielemutatiesAE.Length > 0) FormatSummaryObjectAE(financielemutatiesAE.ToList(), financielemutatiesDto);
+                financielemutatiesAD = await getConnector.clientAD.Query<DMFFinancieleMutatiesDto>()
+                                                                    .WhereEquals(x => x.Administratie_code, code.ToString())
+                                                                    .WhereEquals(x => x.Jaar, year.ToString())
+                                                                    .Skip(-1)
+                                                                    .Take(-1)
+                                                                    .GetAsync();
+                if (financielemutatiesAD.Length > 0) 
+                    FormatSummaryObjectAD(financielemutatiesAD.ToList(), financielemutatiesDto);
 
+                financielemutatiesAE = await getConnector.clientAE.Query<DMFFinancieleMutatiesDto>()
+                                                                    .WhereEquals(x => x.Administratie_code, code.ToString())
+                                                                    .WhereEquals(x => x.Jaar, year.ToString())
+                                                                    .Skip(-1)
+                                                                    .Take(-1)
+                                                                    .GetAsync();
+                if (financielemutatiesAE.Length > 0)
+                    FormatSummaryObjectAE(financielemutatiesAE.ToList(), financielemutatiesDto);
+
+                // DB operation
+                if (financielemutatiesDto.Count > 0)
+                {
+                    _dmFFinancieleMutationService.BulkInsertWithProcAsync(financielemutatiesDto, true);
+                    financielemutatiesDto.Clear();
+                }
+            }
 
         }
         public async Task<Result<PrometheusResponse>> DmfFinancieleMutatiesServiceAsync(DateTime startDate)
@@ -197,20 +211,11 @@ namespace VDVI.Services.AfasServices
                         var ac = dto._AC.Select(x => x.Administratie_code);
                         var ad = dto._AD.Select(x => x.Administratie_code);
                         var ae = dto._AE.Select(x => x.Administratie_code);
-                        var administratiesCode = aa.Concat(ac).Concat(ad).Concat(ae).Distinct().ToList().OrderBy(x => x); 
-                        
+                        var administratiesCode = aa.Concat(ac).Concat(ad).Concat(ae).Distinct().ToList().OrderBy(x => x);
+
                         for (int year = startBusinessYear; year <= currentYear; year++)
-                        {
-                            foreach (var code in administratiesCode)
-                            {
-                                await DmfFinancieleMutatiesServiceInitial(year, code, getConnector);
-                                // DB operation
-                                if (financielemutatiesDto.Count > 0)
-                                {
-                                    await _dmFFinancieleMutationService.BulkInsertWithProcAsync(financielemutatiesDto, true);
-                                    financielemutatiesDto.Clear();
-                                }
-                            } 
+                        { 
+                            DmfFinancieleMutatiesServiceInitial(year, administratiesCode, getConnector);                           
                         }
                     }
                     //Get Changes Record  
@@ -228,7 +233,7 @@ namespace VDVI.Services.AfasServices
                             await _dmFFinancieleMutationService.BulkInsertWithProcAsync(financielemutatiesDto, false);
                             financielemutatiesDto.Clear();
                         }
-                    } 
+                    }
 
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },
@@ -240,12 +245,14 @@ namespace VDVI.Services.AfasServices
             );
 
         }
+
+
         private void FormatSummaryObjectAA(List<DMFFinancieleMutatiesDto> _financielemutatiesAA, List<DMFFinancieleMutatiesDto> _financielemutatiesDto)
         {
 
             if (_financielemutatiesAA.Count > 0)
             {
-                _financielemutatiesAA.ForEach(a => a.Omgeving_code = "AC");
+                _financielemutatiesAA.ForEach(a => a.Omgeving_code = "AA");
                 _financielemutatiesDto.AddRange(_financielemutatiesAA);
             }
 
