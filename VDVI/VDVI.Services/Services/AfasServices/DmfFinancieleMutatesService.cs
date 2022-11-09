@@ -87,7 +87,10 @@ namespace VDVI.Services.AfasServices
                 {
                     var codes = administrationCodes.Skip(pageIndex * pageSize).Take(pageSize).ToArray();
 
-                    var tempResult = (await Client.Query<DMFFinancieleMutatiesDto>().WhereEquals(x => x.Jaar, year).WhereEquals(x => x.Administratie_code, codes).Skip(-1).Take(-1).OrderBy(x => x.Rekeningnummer).GetAsync()).Where(predicate).ToList();
+                    var tempResult = (await Client.Query<DMFFinancieleMutatiesDto>()
+                        .WhereEquals(x => x.Jaar, year)
+                        .WhereEquals(x => x.Administratie_code, codes)
+                        .Skip(-1).Take(-1).OrderBy(x => x.Rekeningnummer).GetAsync()).Where(predicate).ToList();
                     pageIndex++;
 
                     tempResult.FormatList(x => x.Omgeving_code, environmentCode);
