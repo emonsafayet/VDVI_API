@@ -64,7 +64,7 @@ namespace VDVI.Services.AfasServices
 
         private async Task<List<DMFBoekingsdagenMutatiesDto>> GetBoekingsdagenMutatiesAsync(AfasClient Client, Func<DMFBoekingsdagenMutatiesDto, bool> predicate, string environmentCode)
         {
-            var result = (await Client.Query<DMFBoekingsdagenMutatiesDto>().Skip(-1).Take(-1).GetAsync()).ToList().Where(predicate).ToList();
+            var result = (await Client.Query<DMFBoekingsdagenMutatiesDto>().Skip(-1).Take(-1).GetAsync()).Where(predicate).ToList();
             if (result.Count > 0)
                 return result.FormatList(x => x.Omgeving_code, environmentCode);
 
