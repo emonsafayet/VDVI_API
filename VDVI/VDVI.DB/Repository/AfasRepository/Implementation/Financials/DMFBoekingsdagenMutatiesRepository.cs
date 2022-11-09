@@ -48,14 +48,13 @@ namespace VDVI.Repository.AfasRepository.Implementation
 
             return dto;
         }
-        public async Task<string> BulkInsertWithProcAsync(IEnumerable<DMFBoekingsdagenMutatiesDto> dto, bool isInitial)
+        public async Task<string> BulkInsertWithProcAsync(IEnumerable<DMFBoekingsdagenMutatiesDto> dto)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(dto));
             var queryResult = await _dbContext.Connection.QueryAsync<string>("spINSERT_dmf_Boekingsdagen_Mutaties",
                 new
                 {
-                    BoekingsdagenMutaties_UDT = dt,
-                    IsInitial= isInitial
+                    BoekingsdagenMutaties_UDT = dt
                 }, commandType: CommandType.StoredProcedure);
             return queryResult.ToString();
         }

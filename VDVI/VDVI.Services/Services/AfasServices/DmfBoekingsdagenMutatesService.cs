@@ -19,14 +19,17 @@ namespace VDVI.Services.AfasServices
     {
         private readonly IdmFBoekingsdagenMutationService _dmFBoekingsdagenMutationService;
 
-        public DmfBoekingsdagenMutatesService(IdmFBoekingsdagenMutationService dmFBoekingsdagenMutationService)
+        public DmfBoekingsdagenMutatesService
+            (
+                IdmFBoekingsdagenMutationService dmFBoekingsdagenMutationService,
+                AfasCrenditalsDto afasCrenditalsDto
+            ): base (afasCrenditalsDto)
         {
             _dmFBoekingsdagenMutationService = dmFBoekingsdagenMutationService;
         }
 
         public async Task<Result<PrometheusResponse>> DmfBoekingsdagenMutatiesServiceAsync()
         {
-            AfasCrenditalsDto getConnector = GetAfmaConnectors();
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
@@ -34,16 +37,16 @@ namespace VDVI.Services.AfasServices
                     var currentDate = DateTime.UtcNow.Date;
 
                     List<DMFBoekingsdagenMutatiesDto> DtoList = new List<DMFBoekingsdagenMutatiesDto>();
-                    DtoList.AddRange(await GetBoekingsdagenMutatiesAsync(getConnector.clientAA, p => p.Datum_boeking <= currentDate, "AA"));
-                    DtoList.AddRange(await GetBoekingsdagenMutatiesAsync(getConnector.clientAC, p => p.Datum_boeking <= currentDate, "AC"));
-                    DtoList.AddRange(await GetBoekingsdagenMutatiesAsync(getConnector.clientAD, p => p.Datum_boeking <= currentDate, "AD"));
-                    DtoList.AddRange(await GetBoekingsdagenMutatiesAsync(getConnector.clientAE, p => p.Datum_boeking <= currentDate, "AE"));
+                    DtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAA, p => p.Datum_boeking <= currentDate, "AA"));
+                    DtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAC, p => p.Datum_boeking <= currentDate, "AC"));
+                    DtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAD, p => p.Datum_boeking <= currentDate, "AD"));
+                    DtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAE, p => p.Datum_boeking <= currentDate, "AE"));
 
                    
                     // DB operation
                     if (DtoList.Count > 0)
                     {
-                        await _dmFBoekingsdagenMutationService.BulkInsertWithProcAsync(DtoList, true);
+                        await _dmFBoekingsdagenMutationService.BulkInsertWithProcAsync(DtoList);
                         DtoList.Clear();
                     }
 

@@ -12,7 +12,7 @@ namespace VDVI.AfasRepository.Interfaces
     {
         Task<DMFBoekingsdagenMutatiesDto> InsertAsync(DMFBoekingsdagenMutatiesDto dto);
         Task<IEnumerable<DMFBoekingsdagenMutatiesDto>> BulkInsertAsync(IEnumerable<DMFBoekingsdagenMutatiesDto> dto);
-        Task<string> BulkInsertWithProcAsync(IEnumerable<DMFBoekingsdagenMutatiesDto> dto, bool isInitial);
+        Task<string> BulkInsertWithProcAsync(IEnumerable<DMFBoekingsdagenMutatiesDto> dto);
         Task<DMFBoekingsdagenMutatiesDto> UpdateAsync(DMFBoekingsdagenMutatiesDto dto);
         Task <MutationDto> GetInitialRecordAndLastRecordDatetime();
     }

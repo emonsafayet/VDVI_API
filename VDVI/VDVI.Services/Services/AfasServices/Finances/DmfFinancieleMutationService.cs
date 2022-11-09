@@ -33,12 +33,12 @@ namespace VDVI.Services.AfasServices
                     RethrowException = false
                 });
         }
-        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<DMFFinancieleMutatiesDto> dtos,bool isInitial)
+        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<DMFFinancieleMutatiesDto> dtos)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _masterRepository.DMFFinancieleMutatiesRepository.BulkInsertWithProcAsync(dtos, isInitial);
+                    var resp = await _masterRepository.DMFFinancieleMutatiesRepository.BulkInsertWithProcAsync(dtos);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
