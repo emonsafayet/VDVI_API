@@ -23,9 +23,9 @@ namespace VDVI.Services.AFAS
         private readonly IdmfBeginbalaniesService _idmfBeginbalaniesService;
         private readonly IdmfGrootboekrekeningen _idmfGrootboekrekeningen;
         private readonly IdmfFinancieleMutatiesService _idmfFinancieleMutatiesService;
-        private readonly IdmfBoekingsdagenMutatiesService _idmfBoekingsdagenMutatiesService; 
+        private readonly IdmfBoekingsdagenMutatiesService _idmfBoekingsdagenMutatiesService;
 
-        
+
         IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
         public IConfiguration _config;
 
@@ -68,7 +68,7 @@ namespace VDVI.Services.AFAS
                 var afasscheduler = new1[i];
 
                 if (
-                        afasscheduler.NextExecutionDateTime != null 
+                        afasscheduler.NextExecutionDateTime != null
                         && afasscheduler.NextExecutionDateTime <= currentDateTime
                     )
                 {
@@ -77,7 +77,7 @@ namespace VDVI.Services.AFAS
                         case "DMFAdministraties":
                             response = await _idmfAdministratiesService.DmfAdministratiesAsync();
                             flag = response.IsSuccess;
-                            break; 
+                            break;
                         case "DMFBeginbalans"://Opening Balance
                             response = await _idmfBeginbalaniesService.DmfBeginbalanieServiceAsync((DateTime)afasscheduler.BusinessStartDate);
                             flag = response.IsSuccess;
@@ -91,16 +91,16 @@ namespace VDVI.Services.AFAS
                             flag = response.IsSuccess;
                             break;
                         case "DMFBoekingsdagenMutaties"://Booking Dates Mutations
-                            response = await _idmfBoekingsdagenMutatiesService.DmfBoekingsdagenMutatiesServiceAsync((DateTime)afasscheduler.BusinessStartDate);
+                            response = await _idmfBoekingsdagenMutatiesService.DmfBoekingsdagenMutatiesServiceAsync();
                             flag = response.IsSuccess;
                             break;
                         default:
                             break;
-                    } 
+                    }
 
                     dtos.LastExecutionDateTime = currentDateTime;
                     //NextExecutionDateTime: 2022-10-25 15:30 ; ExecutionIntervalMins: 15 ;NextExecutionDateTime: 2022-10-25 15:45 
-                    dtos.NextExecutionDateTime = afasscheduler.NextExecutionDateTime.Value.AddMinutes(afasscheduler.ExecutionIntervalMins);                  
+                    dtos.NextExecutionDateTime = afasscheduler.NextExecutionDateTime.Value.AddMinutes(afasscheduler.ExecutionIntervalMins);
                     dtos.SchedulerName = afasscheduler.SchedulerName;
 
                     if (flag)

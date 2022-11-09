@@ -22,53 +22,30 @@ namespace VDVI.Services.AfasServices
         DMFBoekingsdagenMutatiesDto[]? AD;
         DMFBoekingsdagenMutatiesDto[]? AE;
         List<DMFBoekingsdagenMutatiesDto> Dto = new List<DMFBoekingsdagenMutatiesDto>();
+        private DateTime currentDate = DateTime.Now;
+
         public DmfBoekingsdagenMutatesService(IdmFBoekingsdagenMutationService dmFBoekingsdagenMutationService)
         {
             _dmFBoekingsdagenMutationService = dmFBoekingsdagenMutationService;
         }
 
-        public async Task<Result<PrometheusResponse>> DmfBoekingsdagenMutatiesServiceAsync(DateTime startDate)
+        public async Task<Result<PrometheusResponse>> DmfBoekingsdagenMutatiesServiceAsync()
         {
-            int startBusinessYear = startDate.Year;
-            int currentYear = DateTime.UtcNow.Year;
             AfasCrenditalsDto getConnector = GetAfmaConnectors();
-
-            var res = await _dmFBoekingsdagenMutationService.GetInitialRecordAndLastRecordDatetime();
-            var formatres = (MutationDto)res.Value.Data;
-
-
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    //Load Initial Records  
-                    if (formatres.IsInitialRecord == false)
+
+                    await LoadAsync(getConnector);
+                   
+                    // DB operation
+                    if (Dto.Count > 0)
                     {
-
-                        await LoadInitialAsync(getConnector);
-                        // DB operation
-                        if (Dto.Count > 0)
-                        {
-                            await _dmFBoekingsdagenMutationService.BulkInsertWithProcAsync(Dto, true);
-                            Dto.Clear();
-                        }
-
+                        await _dmFBoekingsdagenMutationService.BulkInsertWithProcAsync(Dto, true);
+                        Dto.Clear();
                     }
-                    //Get Changes Record  
-                    else
-                    {
-                        DateTime? dt = formatres.LastRecordDate;
-                        string lastmutationdatetime = String.Format("{0:yyyy-MM-ddTHH:mm:ss}", dt); //check this date in the database 
-                        string lastdayofthisyear = DateTime.Now.Year.ToString() + "-12-31T00:00:00.000"; //last day of current year
-                        await LoadExistingAsync(lastmutationdatetime, lastdayofthisyear, getConnector);
 
-                        // DB operation
-                        if (Dto.Count > 0)
-                        {
-                            await _dmFBoekingsdagenMutationService.BulkInsertWithProcAsync(Dto, false);
-                            Dto.Clear();
-                        }
 
-                    }
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
@@ -79,7 +56,7 @@ namespace VDVI.Services.AfasServices
             );
 
         }
-        public async Task LoadInitialAsync(AfasCrenditalsDto getConnector)
+        public async Task LoadAsync(AfasCrenditalsDto getConnector)
         {
             AA = await getConnector.clientAA.Query<DMFBoekingsdagenMutatiesDto>().Skip(-1).Take(-1).GetAsync();
             if (AA.Length > 0) FormatSummaryObjectAA(AA.ToList(), Dto);
@@ -89,29 +66,14 @@ namespace VDVI.Services.AfasServices
             if (AD.Length > 0) FormatSummaryObjectAD(AD.ToList(), Dto);
             AE = await getConnector.clientAE.Query<DMFBoekingsdagenMutatiesDto>().Skip(-1).Take(-1).GetAsync();
             if (AE.Length > 0) FormatSummaryObjectAE(AE.ToList(), Dto);
+
+            
         }
-        public async Task LoadExistingAsync(string lastmutationdatetime, string lastdayofthisyear, AfasCrenditalsDto getConnector)
-        {
-            AA = await getConnector.clientAA.Query<DMFBoekingsdagenMutatiesDto>().WhereGreaterThen(x => x.Datum_gewijzigd, lastmutationdatetime)
-                                           .WhereLessOrEqual(x => x.Datum_gewijzigd, lastdayofthisyear).Skip(-1).Take(-1).GetAsync();
-            if (AA.Length > 0) FormatSummaryObjectAA(AA.ToList(), Dto);
 
-            AC = await getConnector.clientAC.Query<DMFBoekingsdagenMutatiesDto>().WhereGreaterThen(x => x.Datum_gewijzigd, lastmutationdatetime)
-                                           .WhereLessOrEqual(x => x.Datum_gewijzigd, lastdayofthisyear).Skip(-1).Take(-1).GetAsync();
-            if (AC.Length > 0) FormatSummaryObjectAC(AC.ToList(), Dto);
-
-            AD = await getConnector.clientAD.Query<DMFBoekingsdagenMutatiesDto>().WhereGreaterThen(x => x.Datum_gewijzigd, lastmutationdatetime)
-                                           .WhereLessOrEqual(x => x.Datum_gewijzigd, lastdayofthisyear).Skip(-1).Take(-1).GetAsync();
-            if (AD.Length > 0) FormatSummaryObjectAD(AD.ToList(), Dto);
-
-            AE = await getConnector.clientAE.Query<DMFBoekingsdagenMutatiesDto>().WhereGreaterThen(x => x.Datum_gewijzigd, lastmutationdatetime)
-                                           .WhereLessOrEqual(x => x.Datum_gewijzigd, lastdayofthisyear).Skip(-1).Take(-1).GetAsync();
-            if (AE.Length > 0) FormatSummaryObjectAE(AE.ToList(), Dto);
-        }
         private void FormatSummaryObjectAA(List<DMFBoekingsdagenMutatiesDto> _AA, List<DMFBoekingsdagenMutatiesDto> _Dto)
         {
             if (_AA.Count > 0)
-            {
+            { 
                 _AA.ForEach(a => a.Omgeving_code = "AA");
                 _Dto.AddRange(_AA);
             }
