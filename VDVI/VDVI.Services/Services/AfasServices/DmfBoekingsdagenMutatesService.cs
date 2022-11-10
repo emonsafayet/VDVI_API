@@ -57,10 +57,10 @@ namespace VDVI.Services.AfasServices
                         var uniqueDatelist = boekingsdagenMutatieDtoList.Select(x => x.Datum_boeking).Distinct().ToList();
                         if (uniqueDatelist.Count > 0)
                         {
-                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAA, p => true, boekingsdagenMutatieDtoList, uniqueDatelist, "AA");
-                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAC, p => true, boekingsdagenMutatieDtoList, uniqueDatelist, "AC");
-                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAD, p => true, boekingsdagenMutatieDtoList, uniqueDatelist, "AD");
-                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAE, p => true, boekingsdagenMutatieDtoList, uniqueDatelist, "AE");
+                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAA, p => true, uniqueDatelist, "AA");
+                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAC, p => true, uniqueDatelist, "AC");
+                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAD, p => true, uniqueDatelist, "AD");
+                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAE, p => true, uniqueDatelist, "AE");
                         }
                     }
 
@@ -86,7 +86,7 @@ namespace VDVI.Services.AfasServices
 
             return result;
         }
-        private async Task GetDMFFinancieleMutatiesAsync(AfasClient Client, Func<DMFFinancieleMutatiesDto, bool> predicate, List<DMFBoekingsdagenMutatiesDto> boekingsdagenMutatieDtoList,
+        private async Task GetDMFFinancieleMutatiesAsync(AfasClient Client, Func<DMFFinancieleMutatiesDto, bool> predicate,
                                       List<DateTime?> Listyear, string environmentCode)
         {
             List<DMFFinancieleMutatiesDto> result = new List<DMFFinancieleMutatiesDto>();
