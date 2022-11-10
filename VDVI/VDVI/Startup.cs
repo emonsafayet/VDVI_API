@@ -9,7 +9,6 @@ using Serilog;
 using System;
 using Unity;
 using VDVI.Client.IoC;
-using VDVI.Services;
 using VDVI.Services.Configurations;
 using VDVI.Services.Interfaces.AFAS;
 using VDVI.Services.Interfaces.APMA;
@@ -30,6 +29,9 @@ namespace VDVI
 
             // Add Afas Configuration
             services.AddAfasConfig(Configuration);
+
+            // Add Scheduler Log config
+            services.AddSchedulerLogConfig(Configuration, "SchedulerLog");
 
             //Hangfire
             services.AddHangfire(config =>

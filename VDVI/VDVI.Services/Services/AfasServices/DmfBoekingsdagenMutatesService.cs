@@ -13,6 +13,7 @@ using VDVI.Services.Services.BaseService;
 using DutchGrit.Afas;
 using Framework.Core.Extensions;
 using VDVI.Repository.AfasDtos;
+using static Framework.Constants.Constants;
 
 namespace VDVI.Services.AfasServices
 {
@@ -20,13 +21,11 @@ namespace VDVI.Services.AfasServices
     {
         private readonly IdmFFinancieleMutationService _dmFFinancieleMutationService;
         private readonly IdmFBoekingsdagenMutationService _dmFBoekingsdagenMutationService;
-        List<DMFFinancieleMutatiesDto> FinancieleMutatiesDto = new List<DMFFinancieleMutatiesDto>();
-        List<DMFBoekingsdagenMutatiesDto> BoekingsdagenMutatieDtoList = new List<DMFBoekingsdagenMutatiesDto>();
 
         public DmfBoekingsdagenMutatesService
             (
                 IdmFBoekingsdagenMutationService dmFBoekingsdagenMutationService,
-                  IdmFFinancieleMutationService dmFFinancieleMutationService,
+                IdmFFinancieleMutationService dmFFinancieleMutationService,
                 AfasCrenditalsDto afasCrenditalsDto
             ) : base(afasCrenditalsDto)
         {
@@ -42,24 +41,24 @@ namespace VDVI.Services.AfasServices
 
                     var currentDate = DateTime.UtcNow.Date;
 
-                    BoekingsdagenMutatieDtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAA, p => p.Datum_boeking <= currentDate, "AA"));
-                    BoekingsdagenMutatieDtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAC, p => p.Datum_boeking <= currentDate, "AC"));
-                    BoekingsdagenMutatieDtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAD, p => p.Datum_boeking <= currentDate, "AD"));
-                    BoekingsdagenMutatieDtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAE, p => p.Datum_boeking <= currentDate, "AE"));
+                    List<DMFBoekingsdagenMutatiesDto> boekingsdagenMutatieDtoList = new List<DMFBoekingsdagenMutatiesDto>();
 
-                    var datelist = BoekingsdagenMutatieDtoList.Select(x=>x.Datum_boeking).Distinct().ToList();
+                    boekingsdagenMutatieDtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAA, p => p.Datum_boeking <= currentDate, "AA"));
+                    boekingsdagenMutatieDtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAC, p => p.Datum_boeking <= currentDate, "AC"));
+                    boekingsdagenMutatieDtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAD, p => p.Datum_boeking <= currentDate, "AD"));
+                    boekingsdagenMutatieDtoList.AddRange(await GetBoekingsdagenMutatiesAsync(AfasClients.clientAE, p => p.Datum_boeking <= currentDate, "AE"));
+
+                    var uniqueDatelist = boekingsdagenMutatieDtoList.Select(x=>x.Datum_boeking).Distinct().ToList();
                 
-                    if (datelist.Count > 0)
+                    if (uniqueDatelist.Count > 0)
                     {
-                            FinancieleMutatiesDto.AddRange(await GetDMFFinancieleMutatiesAsync(AfasClients.clientAA, p => true,
-                                                    datelist,  "AA"));
-                            FinancieleMutatiesDto.AddRange(await GetDMFFinancieleMutatiesAsync(AfasClients.clientAC, p => true,
-                                                  datelist, "AC"));
-                            FinancieleMutatiesDto.AddRange(await GetDMFFinancieleMutatiesAsync(AfasClients.clientAD, p => true,
-                                                    datelist, "AD"));
-                            FinancieleMutatiesDto.AddRange(await GetDMFFinancieleMutatiesAsync(AfasClients.clientAE, p => true,
-                                                   datelist, "AE")); 
+                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAA, p => true, boekingsdagenMutatieDtoList, uniqueDatelist,  "AA");
+                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAC, p => true, boekingsdagenMutatieDtoList, uniqueDatelist, "AC");
+                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAD, p => true, boekingsdagenMutatieDtoList, uniqueDatelist, "AD");
+                            await GetDMFFinancieleMutatiesAsync(AfasClients.clientAE, p => true, boekingsdagenMutatieDtoList, uniqueDatelist, "AE"); 
                     }
+
+
                     return PrometheusResponse.Success("", "Data retrieval is successful");
                 },
                 exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
@@ -74,37 +73,37 @@ namespace VDVI.Services.AfasServices
         private async Task<List<DMFBoekingsdagenMutatiesDto>> GetBoekingsdagenMutatiesAsync(AfasClient Client, 
                                     Func<DMFBoekingsdagenMutatiesDto, bool> predicate, string environmentCode)
         {
-            var result = (await Client.Query<DMFBoekingsdagenMutatiesDto>().Skip(-1).Take(-1).GetAsync()).Where(predicate).ToList();
+            List<DMFBoekingsdagenMutatiesDto> result = new List<DMFBoekingsdagenMutatiesDto>();
+
+            result = (await Client.Query<DMFBoekingsdagenMutatiesDto>().Skip(-1).Take(-1).GetAsync()).Where(predicate).ToList();
             if (result.Count > 0)
                 return result.FormatList(x => x.Omgeving_code, environmentCode);
 
-            return new List<DMFBoekingsdagenMutatiesDto>();
+            return result;
         }
-        private async Task<List<DMFFinancieleMutatiesDto>> GetDMFFinancieleMutatiesAsync(AfasClient Client, Func<DMFFinancieleMutatiesDto, bool> predicate, 
+        private async Task GetDMFFinancieleMutatiesAsync(AfasClient Client, Func<DMFFinancieleMutatiesDto, bool> predicate, List<DMFBoekingsdagenMutatiesDto> boekingsdagenMutatieDtoList,
                                       List<DateTime?> Listyear, string environmentCode)
         {
             List<DMFFinancieleMutatiesDto> result = new List<DMFFinancieleMutatiesDto>();
 
-            //for (int i = 1; i <= Listyear.Count; i++)
-            //{
-            foreach (var item in Listyear)
-            { 
-                //var datebooking = Listyear.Skip(pageIndex * pageSize).Take(pageSize);
+            foreach (var bookingDate in Listyear)
+            {
+                var bookingDateFormat = bookingDate.Value.ToString(DateFormatter.yyyy_MM_dd_Dash_DelimitedWithZeroTime);
 
-                var tempResult = (await Client.Query<DMFFinancieleMutatiesDto>()
-                        .WhereEquals(x => x.Datum_boeking,  item.ToString())
+                var financialResult = (await Client.Query<DMFFinancieleMutatiesDto>()
+                        .WhereEquals(x => x.Datum_boeking, bookingDateFormat)
                         .Skip(-1).Take(-1).OrderBy(x => x.Rekeningnummer).GetAsync()).Where(predicate).ToList();
                  
 
-                    tempResult.FormatList(x => x.Omgeving_code, environmentCode);
+                    financialResult.FormatList(x => x.Omgeving_code, environmentCode);
 
-                if (tempResult.Count > 0) 
-                    await _dmFBoekingsdagenMutationService.BulkInsertWithProcAsync(BoekingsdagenMutatieDtoList,FinancieleMutatiesDto); 
+                if (financialResult.Count > 0) 
+                    await _dmFBoekingsdagenMutationService.BulkInsertWithProcAsync(boekingsdagenMutatieDtoList, financialResult); 
 
 
             }
 
-            return result;
+            return;
         }
 
     }
