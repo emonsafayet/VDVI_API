@@ -14,6 +14,6 @@ namespace VDVI.Services.AfasInterfaces
         Task<Result<PrometheusResponse>> InsertAsync(DMFFinancieleMutatiesDto dto);
         Task<Result<PrometheusResponse>> BulkInsertAsync(List<DMFFinancieleMutatiesDto> dtos);
         Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<DMFFinancieleMutatiesDto> dto);
-        Task<Result<PrometheusResponse>> GetInitialRecordAndLastRecordDatetime();
+        Task<Result<PrometheusResponse>> BulkInsertWithBoekingsdagenMutatiesAsync(List<DMFFinancieleMutatiesDto>dto); 
     }
 }

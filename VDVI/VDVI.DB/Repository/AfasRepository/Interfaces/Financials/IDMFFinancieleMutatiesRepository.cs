@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CSharpFunctionalExtensions;
+using Framework.Core.Base.ModelEntity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,8 @@ namespace VDVI.AfasRepository.Interfaces
         Task<DMFFinancieleMutatiesDto> InsertAsync(DMFFinancieleMutatiesDto dto);
         Task<IEnumerable<DMFFinancieleMutatiesDto>> BulkInsertAsync(IEnumerable<DMFFinancieleMutatiesDto> dto);
         Task<string> BulkInsertWithProcAsync(IEnumerable<DMFFinancieleMutatiesDto> dto);
-        Task<DMFFinancieleMutatiesDto> UpdateAsync(DMFFinancieleMutatiesDto dto);
-        Task <MutationDto> GetInitialRecordAndLastRecordDatetime();
+        Task<string> BulkInsertWithBoekingsdagenMutatiesAsync(IEnumerable<DMFFinancieleMutatiesDto> dto);
+        Task<DMFFinancieleMutatiesDto> UpdateAsync(DMFFinancieleMutatiesDto dto); 
+         
     }
 }

@@ -34,12 +34,12 @@ namespace VDVI.Services.AfasServices
                     RethrowException = false
                 });
         } 
-        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<DMFBoekingsdagenMutatiesDto> bdto, List<DMFFinancieleMutatiesDto> fdto)
+        public async Task<Result<PrometheusResponse>> BulkInsertWithProcAsync(List<DMFBoekingsdagenMutatiesDto> dto)
         {
             return await TryCatchExtension.ExecuteAndHandleErrorAsync(
                 async () =>
                 {
-                    var resp = await _masterRepository.DMFBoekingsdagenMutatiesRepository.BulkInsertWithProcAsync(bdto, fdto);
+                    var resp = await _masterRepository.DMFBoekingsdagenMutatiesRepository.BulkInsertWithProcAsync( dto);
 
                     return PrometheusResponse.Success(resp, "Data saved successful");
                 },
@@ -50,21 +50,7 @@ namespace VDVI.Services.AfasServices
                 });
         }
 
-        public async Task<Result<PrometheusResponse>> GetInitialRecordAndLastRecordDatetime()
-        {
-            return await TryCatchExtension.ExecuteAndHandleErrorAsync(
-               async () =>
-               {
-                   var resp = await _masterRepository.DMFBoekingsdagenMutatiesRepository.GetInitialRecordAndLastRecordDatetime();
-
-                   return PrometheusResponse.Success(resp, "Data saved successful");
-               },
-               exception => new TryCatchExtensionResult<Result<PrometheusResponse>>
-               {
-                   DefaultResult = PrometheusResponse.Failure($"Error message: {exception.Message}. Details: {exception.GetExceptionDetailMessage()}"),
-                   RethrowException = false
-               });
-        }
+         
 
         public async Task<Result<PrometheusResponse>> InsertAsync(DMFBoekingsdagenMutatiesDto dto)
         {
