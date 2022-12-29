@@ -22,7 +22,7 @@ namespace VDVI
         public Startup(IConfiguration configuration) : base(configuration, new UnityDependencyProvider(), ApiTitle) { }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public override void ConfigureServices(IServiceCollection services )
+        public override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
 
@@ -39,7 +39,7 @@ namespace VDVI
                        .UseSimpleAssemblyNameTypeSerializer()
                        .UseDefaultTypeSerializer()
                        .UseSqlServerStorage(Configuration.GetConnectionString("HangfireDb")
-                       )); 
+                       ));
 
             services.AddHangfireServer();
             services.AddMvc();
@@ -54,7 +54,7 @@ namespace VDVI
             IRecurringJobManager recurringJobManager,
             IServiceProvider serviceProvider,
             IUnityContainer container
-        )
+, System.Collections.Generic.IEnumerable<Hangfire.Dashboard.IDashboardAuthorizationFilter> hangfireAuthorizationFilters)
         {
             if (env.IsDevelopment())
             {
@@ -88,14 +88,24 @@ namespace VDVI
 
 
 
+            //app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            //{
+            //    DashboardTitle = "Scheduled Jobs"
+            //});
+
             app.UseHangfireDashboard("/hangfire", new DashboardOptions
             {
-                DashboardTitle = "Scheduled Jobs"
+                DashboardTitle = "Scheduled Jobs",
+                Authorization = hangfireAuthorizationFilters
             });
 
 
             var apmaservice = container.Resolve<IApmaTaskSchedulerService>();
             var afasservice = container.Resolve<IAfasTaskSchedulerService>();
+
+            // to remove existing hangfire
+            recurringJobManager.RemoveIfExists("ApmaJob");
+            recurringJobManager.RemoveIfExists("AfasJob");
 
             recurringJobManager.AddOrUpdate(
               "ApmaJob",
